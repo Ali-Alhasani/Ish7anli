@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="65" id="ep6-Kh-Crb" customClass="AddAddressTableViewCell" customModule="Ish7anli" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ep6-Kh-Crb" id="Mja-En-NIg">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAz-Ub-6cw">
+                        <rect key="frame" x="88" y="12.5" width="200" height="40"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Ofk-Yw-mzr"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="gw0-ik-4YT"/>
+                        </constraints>
+                        <state key="normal" title="Add Address" image="location blue">
+                            <color key="titleColor" name="black"/>
+                            <color key="titleShadowColor" name="black"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" name="niceBlue"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="addAddressAction:" destination="ep6-Kh-Crb" eventType="touchUpInside" id="2T4-Kk-LxT"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" name="background"/>
+                <constraints>
+                    <constraint firstItem="TAz-Ub-6cw" firstAttribute="centerX" secondItem="Mja-En-NIg" secondAttribute="centerX" id="41y-kt-ACz"/>
+                    <constraint firstItem="TAz-Ub-6cw" firstAttribute="centerY" secondItem="Mja-En-NIg" secondAttribute="centerY" id="zfl-gO-OBA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="background"/>
+            <point key="canvasLocation" x="34.5" y="54"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="location blue" width="13" height="19"/>
+        <namedColor name="background">
+            <color red="0.98000001910000001" green="0.98000001910000001" blue="0.98000001910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="black">
+            <color red="0.1289999932" green="0.1289999932" blue="0.1289999932" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="niceBlue">
+            <color red="0.082000002259999996" green="0.39599999790000001" blue="0.75300002099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
