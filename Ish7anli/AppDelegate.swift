@@ -56,6 +56,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         SlideMenuOptions.contentViewScale = 1.0
         }
+        if (SessionManager.shared.isCaptainLogged) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainCaptainViewController")
+            let rightViewController = storyboard.instantiateViewController(withIdentifier: "RightViewController") as! RightViewController
+            if MOLHLanguage.isRTL() {
+                let slideMenuController = SlideMenuController(mainViewController: mainViewController, rightMenuViewController: rightViewController)
+                self.window?.rootViewController = slideMenuController
+                
+                
+            }else {
+                let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: rightViewController)
+                self.window?.rootViewController = slideMenuController
+                
+                
+            }
+            self.window?.makeKeyAndVisible()
+            SlideMenuOptions.contentViewScale = 1.0
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

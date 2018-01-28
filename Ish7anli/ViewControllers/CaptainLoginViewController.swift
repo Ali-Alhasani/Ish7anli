@@ -10,9 +10,10 @@ import UIKit
 
 class CaptainLoginViewController: UIViewController {
 
+    @IBOutlet weak var passwordText: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        passwordText.setBottomBorder()
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +22,25 @@ class CaptainLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    @IBAction func loginAction(_ sender: Any) {
+        DataClient.shared.loginCaptain(password:  passwordText.text!, success: {
+            let delegate = UIApplication.shared.delegate as! AppDelegate
+            delegate.move()
+        }) { (_ error) in
+            
+        }
+   
+    }
+    
+    @IBAction func forgetAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func newAccountAction(_ sender: Any) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

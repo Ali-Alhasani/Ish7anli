@@ -57,12 +57,12 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.ContactUsTableViewController = ContactUsTableViewController
 
         let CaptainLoginViewController = storyboard.instantiateViewController(withIdentifier: "CaptainLoginViewController") as! CaptainLoginViewController
-        self.CaptainLoginViewController = UINavigationController(rootViewController: CaptainLoginViewController)
+        self.CaptainLoginViewController = CaptainLoginViewController
 
         self.tableView.registerCellClass(DataTableViewCell.self)
         
-        self.imageHeaderView = ImageHeaderView.loadNib()
-        self.view.addSubview(self.imageHeaderView)
+       // self.imageHeaderView = ImageHeaderView.loadNib()
+        //self.view.addSubview(self.imageHeaderView)
     }
     
     override func didReceiveMemoryWarning() {

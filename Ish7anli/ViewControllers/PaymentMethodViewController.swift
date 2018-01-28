@@ -10,9 +10,23 @@ import UIKit
 
 class PaymentMethodViewController: UIViewController {
 
+    @IBOutlet weak var firstButton: RadioButton!
+    @IBOutlet weak var secondButton: RadioButton!
+    @IBOutlet weak var thirdButton: RadioButton!
+    
+    @IBOutlet weak var accountNumber: UITextField!
+    @IBOutlet weak var amountOfMoney: UITextField!
+    var indexPath:Int?
+    
+    var senderAddress:String?
+    var receiveAddress:String?
+    var weghitIndex:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        firstButton.alternateButton = [secondButton,thirdButton]
+        secondButton.alternateButton = [firstButton,thirdButton]
+        thirdButton.alternateButton = [firstButton,secondButton]
         // Do any additional setup after loading the view.
     }
 
@@ -22,6 +36,21 @@ class PaymentMethodViewController: UIViewController {
     }
     
 
+    @IBAction func orderAction(_ sender: Any) {
+        var paymentId:Int?
+        if firstButton.isSelected {
+           paymentId = 1
+        }else if secondButton.isSelected {
+             paymentId = 2
+        }else if thirdButton.isSelected {
+            paymentId = 3
+        }
+        DataClient.shared.addOffer(addressSenderId: Int(senderAddress!)! , deliveryType: 3, weight: weghitIndex!, addressReceiverId: Int(receiveAddress!)!, receiverName: "receiveAddress", receiverPhone: "String", paymentType: paymentId!, success: {
+            print("Fuck you, you did it!")
+        }) { (_ error) in
+            print(error)
+        }
+    }
     /*
     // MARK: - Navigation
 

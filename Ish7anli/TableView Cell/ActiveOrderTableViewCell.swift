@@ -7,9 +7,40 @@
 //
 
 import UIKit
-
+protocol ActiveOrderTableViewDelegate : class {
+    func didPressNonFinishedDetailsButton(sender: UIButton)
+}
+struct ActiveOrderTableViewData {
+    
+    init(price: Double, image:String,name:String,cityFrom:String,cityTo:String ) {
+        self.price = price
+        self.image = image
+        self.name = name
+        self.cityFrom = cityFrom
+        self.cityTo = cityTo
+    }
+    var price: Double
+    var image:String
+    var name:String
+    var cityFrom:String
+    var cityTo:String
+}
 class ActiveOrderTableViewCell: UITableViewCell {
+    weak var cellDelegate: ActiveOrderTableViewDelegate?
+    @IBOutlet weak var ProfileimageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
 
+    @IBOutlet weak var firstPoint: UIView!
+    @IBOutlet weak var secondPoint: UIView!
+    @IBOutlet weak var thirdPoint: UIView!
+    
+    @IBOutlet weak var senderCityLabel: UILabel!
+    @IBOutlet weak var middlePointLabel: UILabel!
+    @IBOutlet weak var LastCityLabel: UILabel!
+    
+    @IBOutlet weak var actionButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +52,24 @@ class ActiveOrderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setData(_ data: Any?) {
+        if let data = data as? ActiveOrderTableViewData {
+            
+            self.priceLabel.text = String(data.price)
+            APIClient.sendImageRequest(path: data.image, success: { (_ image) in
+                self.ProfileimageView.image = image
+            }, failure: { (_ error) in
+                
+            })
+            self.nameLabel.text = data.name
+            self.senderCityLabel.text = data.cityFrom
+            self.LastCityLabel.text = data.cityTo
+            self.middlePointLabel.text = "in the Way"
+            
+        }
+    }
+    
+    @IBAction func buttonAction(_ sender: Any) {
+        
+    }
 }

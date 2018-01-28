@@ -21,9 +21,26 @@ class OfferDetailsViewController: UIViewController {
     @IBOutlet weak var dateFrom: UILabel!
     @IBOutlet weak var dateTo: UILabel!
     @IBOutlet weak var price: UILabel!
+    var indexPath:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if indexPath != nil {
+        nameLabel.text = DataClient.shared.offer[indexPath!].captainName
+        starsView.rating = DataClient.shared.offer[indexPath!].captainRate!
+        destinationCity.text =  DataClient.shared.offer[indexPath!].cityNameTo
+        fromCity.text =  DataClient.shared.offer[indexPath!].cityNameFrom
+        timeFrom.text = DataClient.shared.offer[indexPath!].goTime
+        timeTo.text =  DataClient.shared.offer[indexPath!].arrivalTime
+        dateFrom.text = DataClient.shared.offer[indexPath!].goDate
+        dateTo.text = DataClient.shared.offer[indexPath!].arrivalDate
+        price.text = DataClient.shared.offer[indexPath!].price! + " SAR"
+            
+            APIClient.sendImageRequest(path: DataClient.shared.offer[indexPath!].captainImage!, success: { (_ image) in
+                self.imageView.image = image
+            }, failure: { (_ error) in
+                
+            })
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -33,10 +50,18 @@ class OfferDetailsViewController: UIViewController {
     }
     
     @IBAction func chooseAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "toAddOffer", sender: self)
     }
     
     @IBAction func chatAction(_ sender: Any) {
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toPayment" {
+//            let vc = segue.destination as! OfferDetailsViewController
+//            vc.indexPath = self.indexPath
+//        }
+//    }
     
     /*
     // MARK: - Navigation

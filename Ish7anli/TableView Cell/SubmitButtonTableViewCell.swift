@@ -8,8 +8,12 @@
 
 import UIKit
 
-class SubmitButtonTableViewCell: UITableViewCell {
+protocol SubmitButtonTableViewCellDelegate : class {
+    func didPressButtonSubmit(sender: UIButton)
+}
 
+class SubmitButtonTableViewCell: UITableViewCell {
+  weak var cellDelegate: SubmitButtonTableViewCellDelegate?
     @IBOutlet weak var sumbitButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +38,10 @@ class SubmitButtonTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func orderButton(_ sender: Any) {
+        cellDelegate?.didPressButtonSubmit(sender: sender as! UIButton)
     }
     
 }

@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         //load()
+      
         
         viewModel.delegate = self
         
@@ -38,6 +38,7 @@ class SettingsViewController: UIViewController {
         self.tableView?.register(AddressSettingsTableViewCell.nib, forCellReuseIdentifier: AddressSettingsTableViewCell.identifier)
         self.tableView?.register(AddAddressTableViewCell.nib, forCellReuseIdentifier: AddAddressTableViewCell.identifier)
         viewModel.addListener()
+        viewModel.addSlientData()
         
 
         // Do any additional setup after loading the view.
@@ -78,6 +79,19 @@ class SettingsViewController: UIViewController {
 
 }
 extension SettingsViewController: ProfileViewModelDelegate {
+    func finishLoadData() {
+        nameLabel.text = DataClient.shared.profile?.name
+        IdentityLabel.text = String((DataClient.shared.profile?.id!)!)
+        phoneNumberLabel.text = DataClient.shared.profile?.phone
+        mailLabel.text = DataClient.shared.profile?.email
+        APIClient.sendImageRequest(path: (DataClient.shared.profile?.image)!, success: { (_ image) in
+            self.imageView.image = image
+        }, failure: { (_ error) in
+            
+        })
+        
+    }
+    
     func apply(changes: SectionChanges) {
         self.tableView?.beginUpdates()
         

@@ -10,9 +10,13 @@ import UIKit
 protocol AddAddressTableViewCellDelegate : class {
     func didPressButton(sender: UIButton)
 }
+protocol AddAddressTableViewCellDelegate2 : class {
+    func didPressButton2(sender: UIButton)
+}
 
 class AddAddressTableViewCell: UITableViewCell{
  weak var cellDelegate: AddAddressTableViewCellDelegate?
+    weak var cellDelegate2: AddAddressTableViewCellDelegate2?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,6 +36,7 @@ class AddAddressTableViewCell: UITableViewCell{
     
     @IBAction func addAddressAction(_ sender: Any) {
         cellDelegate?.didPressButton(sender: sender as! UIButton)
+        cellDelegate2?.didPressButton2(sender: sender as! UIButton)
 
     }
     

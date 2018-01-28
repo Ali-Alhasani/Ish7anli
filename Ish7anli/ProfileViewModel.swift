@@ -33,6 +33,7 @@ struct CellItem: Equatable {
 protocol ProfileViewModelDelegate: class {
     func apply(changes: SectionChanges)
     func move()
+    func finishLoadData()
 }
 class ProfileViewModel: NSObject {
     fileprivate var items = [ProfileViewModelItem]()
@@ -60,6 +61,15 @@ class ProfileViewModel: NSObject {
     func addListener() {
         DataClient.shared.getProfile(success: { profile in
             self.parseData(profile: profile)
+          
+        }) { (_ error) in
+            print(error)
+        }
+        
+    }
+    func addSlientData() {
+        DataClient.shared.getProfile(success: { profile in
+              self.delegate?.finishLoadData()
         }) { (_ error) in
             print(error)
         }
@@ -128,7 +138,7 @@ extension ProfileViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
             print("Mother Fucker")
             if let headerTitle = view as? UITableViewHeaderFooterView {
                 headerTitle.backgroundView?.backgroundColor = UIColor(named: "background")
-                headerTitle.textLabel?.backgroundColor = UIColor.clear
+                //headerTitle.textLabel?.backgroundColor = UIColor.clear
                 headerTitle.textLabel?.textColor = UIColor(named: "niceBlue")
             }
         }

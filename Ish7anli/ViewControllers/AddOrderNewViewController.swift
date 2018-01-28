@@ -53,12 +53,16 @@ class AddOrderNewViewController: UIViewController {
 
 }
 extension AddOrderNewViewController: AddressViewModelDelegate {
+    func move2(_ senderAddress: String, _ deliveryIndex: Int, weghitIndex: Int) {
+          self.performSegue(withIdentifier: "toSecond", sender: self)
+    }
+    
     func apply2() {
          self.tableView?.reloadData()
     }
-    
+
     func move() {
-        
+      
     }
     
     func apply(changes: SectionChanges) {

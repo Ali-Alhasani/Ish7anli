@@ -32,6 +32,7 @@ var selectedWeghit: Int = 0
 protocol AddressViewModelDelegate: class {
     func apply(changes: SectionChanges)
     func move()
+     func move2(_ senderAddress:String,_ deliveryIndex:Int , weghitIndex:Int)
     func apply2()
 }
 class AddressViewModel: NSObject {
@@ -88,7 +89,9 @@ class AddressViewModel: NSObject {
         
     }
 }
-extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDelegate,AddAddressTableViewCellDelegate,ListTableViewCellDelegate {
+extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDelegate,AddAddressTableViewCellDelegate,ListTableViewCellDelegate,SubmitButtonTableViewCellDelegate {
+  
+    
     func didPressRadioButton(sender: UIButton, type: CellType) {
         switch type {
         case .address :
@@ -111,7 +114,15 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
             selected = sender.tag
             delegate?.apply2()
     }
-    
+    func didPressButtonSubmit(sender: UIButton) {
+        var senderAddress:String?
+        
+        if let item = items[0] as? AddressViewModeAddressItem {
+            senderAddress = item.address[selectedSender].id
+        }
+        
+        delegate?.move2(senderAddress!, selectedType, weghitIndex: selectedWeghit2 + 1)
+    }
     func didPressButton(sender: UIButton) {
         delegate?.move()
     }
@@ -182,6 +193,7 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
         case .addOrderButton:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SubmitButtonTableViewCell.identifier, for: indexPath) as? SubmitButtonTableViewCell {
                 cell.item = "Continue"
+                cell.cellDelegate = self
                 return cell
             }
             
@@ -205,7 +217,7 @@ extension AddressViewModel:UITableViewDelegate {
         print("Mother Fucker")
         if let headerTitle = view as? UITableViewHeaderFooterView {
             headerTitle.backgroundView?.backgroundColor = UIColor(named: "background")
-            headerTitle.textLabel?.backgroundColor = UIColor.clear
+            //headerTitle.textLabel?.backgroundColor = UIColor.clear
             headerTitle.textLabel?.textColor = UIColor(named: "niceBlue")
         }
     }

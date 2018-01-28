@@ -8,9 +8,10 @@
 
 import UIKit
 import Alamofire
-
-class APIClient: NSObject {
+import AlamofireImage
+class APIClient:NSObject {
     
+   
     class func sendRequest(path: String, httpMethod: HTTPMethod ,isLangRequired : Bool ,parameters: Dictionary<String, Any>, success: @escaping (_ response: Any?) -> Void, failure: @escaping (_ error: Error) -> Void){
         var requestURL : String
         if isLangRequired{
@@ -20,7 +21,7 @@ class APIClient: NSObject {
         }
         
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIxLCJpc3MiOiJodHRwOi8vc2hpcGZvcm1la3NhLmNvbS9hcGkvY3VzdG9tZXJfbG9naW4iLCJpYXQiOjE1MTYzOTM0MzQsImV4cCI6MTUxNzYwMzAzNCwibmJmIjoxNTE2MzkzNDM0LCJqdGkiOiJhMTQ3UzVZYnhmMjJ6TVNXIn0.tRnmMLvf7m_tRgtdvu9vossdGxrEHbpbIfofOGX7aYM",
+            "Authorization": SessionManager.shared.token,
             "Content-Type" : "application/json",
         ]
         
@@ -75,15 +76,19 @@ class APIClient: NSObject {
         }
     }
     
-    class func sendImageRequest(path: URL, success: @escaping (_ image: UIImage) -> Void, failure: @escaping (_ error: Error) -> Void){
-        
-//        Alamofire.request(path).responseImage { response in
-//            debugPrint(response)
-//
-//            if let image = response.result.value {
-//                success(image)
-//            }
-//        }
+
+     class func sendImageRequest(path: String, success: @escaping (_ image: UIImage) -> Void, failure: @escaping (_ error: Error) -> Void){
+        DataRequest.addAcceptableImageContentTypes(["image/jpg"])
+       // DataRequest.addAcceptableImageContentTypes(["image/jpg","image/png","binary/octet-stream"])
+     // Alamofire.DataRequest.addAcceptableImageContentTypes(["image/jpg", "image/png", "image/jpeg"])
+        Alamofire.request(path).responseImage { response in
+            debugPrint(response)
+           // DataRequest.addAcceptableImageContentTypes(["image/jpg"])
+
+            if let image = response.result.value {
+                success(image)
+            }
+        }
     }
 }
 

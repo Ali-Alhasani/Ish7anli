@@ -11,6 +11,9 @@ import UIKit
 class AddOfferViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel = OfferAddressViewModel()
+    var senderAddress:String?
+    var receiveAddress:String?
+    var weghitIndex:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +40,14 @@ class AddOfferViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
+        
+        guard let AddAddressViewController = segue.source as? AddAddressViewController  else {
+            return
+        }
+        viewModel.addListener()
+        
+    }
     
 
     /*
@@ -48,15 +59,38 @@ class AddOfferViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPayment" {
+            
+            let vc = segue.destination as! PaymentMethodViewController
+            vc.senderAddress = senderAddress!
+            vc.receiveAddress = receiveAddress!
+            vc.weghitIndex = weghitIndex!
+        }
+    }
+
 
 }
 extension AddOfferViewController: OfferAddressViewModelDelegate {
+    func move2(_ senderAddress: String, _ receiveAddress: String, weghitIndex: Int) {
+        self.senderAddress = senderAddress
+          self.receiveAddress = receiveAddress
+         self.weghitIndex = weghitIndex
+        self.performSegue(withIdentifier: "toPayment", sender: self)
+    }
+    
+ 
+    
     func apply2() {
         self.tableView?.reloadData()
     }
     
     func move() {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "AddAddressViewController") as! AddAddressViewController
+        let navInofrmationViewController = UINavigationController(rootViewController: AddAddressViewController)
+        self.present(navInofrmationViewController, animated:true, completion: nil)
     }
     
     func apply(changes: SectionChanges) {

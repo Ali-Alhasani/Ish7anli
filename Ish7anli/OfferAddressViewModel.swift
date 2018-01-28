@@ -12,6 +12,7 @@ enum OfferAddressViewModelItemType: String {
     case addSenderAddress = "addSenderAddress"
     case receiverAddress = "receiverAddress"
     case addReceiverAddress = "addReceiverAddress"
+    case weight = "weight"
     case receiverInformation = "receiverInformation"
     case addOrderButton = "addOrderButton"
 }
@@ -26,11 +27,14 @@ protocol OfferAddressViewModelItem {
 
 var selectedSender: Int = 0
 var selectedReceiver: Int = 0
+var selectedWeghit2: Int = 0
+
 var textPalceHolder = ["Name", "Mobile"]
 
 protocol OfferAddressViewModelDelegate: class {
     func apply(changes: SectionChanges)
     func move()
+    func move2(_ senderAddress:String , _ receiveAddress:String , weghitIndex:Int )
     func apply2()
 }
 
@@ -87,6 +91,10 @@ class OfferAddressViewModel: NSObject {
         let receiverInformationItem = OfferAddressViewModeReceiverInformation(text : textPalceHolder)
         newItems.append(receiverInformationItem)
         
+        
+        let addAddressWeghitItem = OfferAddressModeWeghitAddress(weghit : Weghit)
+        newItems.append(addAddressWeghitItem)
+        
         let addOrderButton = OfferAddressViewModeAddOrderButton()
         newItems.append(addOrderButton)
         
@@ -95,7 +103,30 @@ class OfferAddressViewModel: NSObject {
     }
 }
 
-extension OfferAddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDelegate,AddAddressTableViewCellDelegate,ListTableViewCellDelegate{
+extension OfferAddressViewModel: UITableViewDataSource,AddAddressTableViewCellDelegate,ListTableViewCellDelegate,SubmitButtonTableViewCellDelegate{
+    
+    func didPressButtonSubmit(sender: UIButton) {
+        var senderAddress:String?
+        var receiverAddress:String?
+        
+        if let item = items[0] as? OfferAddressViewModeSenderAddressItem {
+            senderAddress = item.address[selectedSender].id
+        }
+      
+        if let item = items[2] as? OfferAddressViewModeReceiverAddressItem {
+            receiverAddress = item.address[selectedReceiver].id
+        }
+        
+//        if let item = items[4] as? OfferAddressViewModeReceiverInformation {
+//           
+//        }
+
+        delegate?.move2(senderAddress!, receiverAddress!, weghitIndex: selectedWeghit2 + 1)
+
+
+        
+    }
+    
     func didPressRadioButton(sender: UIButton, type: CellType) {
         switch type {
         case .address :
@@ -123,10 +154,7 @@ extension OfferAddressViewModel: UITableViewDataSource,AddressSettingsTableViewC
     func didPressButton(sender: UIButton) {
         delegate?.move()
     }
-    
-    func didPressDeleteButton(sender: UIButton) {
-        addListener()
-    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
@@ -188,6 +216,7 @@ extension OfferAddressViewModel: UITableViewDataSource,AddressSettingsTableViewC
             if let item = item as? OfferAddressViewModeReceiverInformation ,let cell = tableView.dequeueReusableCell(withIdentifier: TextViewTableViewCell.identifier, for: indexPath) as? TextViewTableViewCell {
                 let address = item.text[indexPath.row]
                 cell.item = address
+                //cell.textView.text = 
                 //cell.cellDelegate = self
                 //cell.button.tag = indexPath.row
               
@@ -196,9 +225,23 @@ extension OfferAddressViewModel: UITableViewDataSource,AddressSettingsTableViewC
         case .addOrderButton:
             if let cell = tableView.dequeueReusableCell(withIdentifier: SubmitButtonTableViewCell.identifier, for: indexPath) as? SubmitButtonTableViewCell {
                 cell.item = "Order"
+                cell.cellDelegate = self
                 return cell
             }
             
+        case .weight:
+            if let item = item as? OfferAddressModeWeghitAddress ,let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell {
+                let address = item.weghit[indexPath.row]
+                cell.item2 = address
+                cell.cellDelegate = self
+                cell.button.tag = indexPath.row
+                if indexPath.row == selectedWeghit2 {
+                    cell.button.isSelected = true
+                }else {
+                    cell.button.isSelected = false
+                }
+                return cell
+            }
         }
         return UITableViewCell()
     }
@@ -215,10 +258,9 @@ extension OfferAddressViewModel: UITableViewDataSource,AddressSettingsTableViewC
 extension OfferAddressViewModel:UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
-        print("Mother Fucker")
         if let headerTitle = view as? UITableViewHeaderFooterView {
             headerTitle.backgroundView?.backgroundColor = UIColor(named: "background")
-            headerTitle.textLabel?.backgroundColor = UIColor.clear
+            //headerTitle.textLabel?.backgroundColor = UIColor.clear
             headerTitle.textLabel?.textColor = UIColor(named: "niceBlue")
         }
     }
@@ -306,6 +348,28 @@ class OfferAddressViewModeAddOrderButton: OfferAddressViewModelItem {
     
     var cellItems: [CellItem] {
         return [CellItem(value: sectionTitle, id: sectionTitle)]
+    }
+}
+
+class OfferAddressModeWeghitAddress: OfferAddressViewModelItem {
+    var type: OfferAddressViewModelItemType {
+        return .weight
+    }
+    
+    var sectionTitle: String {
+        return "Weghit"
+        
+    }
+    
+    var cellItems: [CellItem] {
+        return weghit
+            .map { CellItem(value: $0, id: $0) }
+    }
+    
+    var weghit: [String]
+    
+    init(weghit: [String]) {
+        self.weghit = weghit
     }
 }
 

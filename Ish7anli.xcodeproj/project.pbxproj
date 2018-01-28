@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B10F5FC20194271002F5276 /* CustomerOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F5FB20194271002F5276 /* CustomerOffer.swift */; };
+		6B10F6002019EC67002F5276 /* AddressViewModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */; };
+		6B10F6022019F384002F5276 /* AddOrder2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */; };
+		6B10F6042019FBD5002F5276 /* ArchiveOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F6032019FBD5002F5276 /* ArchiveOrder.swift */; };
 		6B18DEE3200F8BBE00C73BA2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEE2200F8BBE00C73BA2 /* SignInViewController.swift */; };
 		6B18DEE5200F8CB500C73BA2 /* ActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEE4200F8CB500C73BA2 /* ActivationViewController.swift */; };
 		6B18DEE7200F8E3800C73BA2 /* OfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEE6200F8E3800C73BA2 /* OfferDetailsViewController.swift */; };
 		6B18DEE9200F910300C73BA2 /* AddOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEE8200F910300C73BA2 /* AddOfferViewController.swift */; };
 		6B18DEEB200F94B400C73BA2 /* PaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEEA200F94B400C73BA2 /* PaymentMethodViewController.swift */; };
 		6B18DEED200F95A500C73BA2 /* AddOrder2TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEEC200F95A500C73BA2 /* AddOrder2TableViewController.swift */; };
-		6B18DEEF200F972F00C73BA2 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEEE200F972F00C73BA2 /* SettingsTableViewController.swift */; };
 		6B18DEF1200F978000C73BA2 /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEF0200F978000C73BA2 /* AddAddressViewController.swift */; };
 		6B18DEF3200F981B00C73BA2 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEF2200F981B00C73BA2 /* OrderDetailsViewController.swift */; };
 		6B18DEF5200F983000C73BA2 /* OrderDetails2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEF4200F983000C73BA2 /* OrderDetails2ViewController.swift */; };
@@ -26,6 +29,18 @@
 		6B18DF062010B7A700C73BA2 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B18DF042010B7A700C73BA2 /* ListTableViewCell.xib */; };
 		6B18DF082010B81B00C73BA2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DF072010B81B00C73BA2 /* SettingsViewController.swift */; };
 		6B18DF0A2010BBD500C73BA2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DF092010BBD500C73BA2 /* ProfileModel.swift */; };
+		6B271D29201C85440030BBF4 /* CaptainCustomerOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */; };
+		6B271D2B201C87EC0030BBF4 /* CpatainNewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */; };
+		6B271D2D201C94E20030BBF4 /* CpatainActiveOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D2C201C94E20030BBF4 /* CpatainActiveOrderViewController.swift */; };
+		6B271D2F201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D2E201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift */; };
+		6B271D31201C9BF00030BBF4 /* CaptainOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D30201C9BF00030BBF4 /* CaptainOfferViewController.swift */; };
+		6B271D33201D18C80030BBF4 /* CaptainSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D32201D18C80030BBF4 /* CaptainSettingsViewController.swift */; };
+		6B271D35201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D34201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift */; };
+		6B271D37201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D36201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift */; };
+		6B271D39201DDEA60030BBF4 /* CaptainActiveOrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D38201DDEA60030BBF4 /* CaptainActiveOrderDetailsViewController.swift */; };
+		6B271D3B201DE0020030BBF4 /* CaptainArchiveOrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D3A201DE0020030BBF4 /* CaptainArchiveOrderDetailsViewController.swift */; };
+		6B271D3D201E08900030BBF4 /* CaptainAddOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D3C201E08900030BBF4 /* CaptainAddOfferViewController.swift */; };
+		6B271D3F201E119B0030BBF4 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D3E201E119B0030BBF4 /* City.swift */; };
 		6B517CB9200E03C400CFE5DC /* newOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CB7200E03C400CFE5DC /* newOrderTableViewCell.swift */; };
 		6B517CBA200E03C400CFE5DC /* newOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B517CB8200E03C400CFE5DC /* newOrderTableViewCell.xib */; };
 		6B517CBD200E250100CFE5DC /* ActiveOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CBB200E250100CFE5DC /* ActiveOrderTableViewCell.swift */; };
@@ -69,6 +84,11 @@
 		6B6BB4662010CC1800BECA87 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB4652010CC1800BECA87 /* ProfileViewModel.swift */; };
 		6B6BB46820111E9E00BECA87 /* DiffCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB46720111E9E00BECA87 /* DiffCalculator.swift */; };
 		6B6BB46A20111F1000BECA87 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB46920111F1000BECA87 /* Array+Extensions.swift */; };
+		6B7C88D1201A10650096FB87 /* OldOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D0201A10650096FB87 /* OldOrder.swift */; };
+		6B7C88D3201B437D0096FB87 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D2201B437D0096FB87 /* UITextField.swift */; };
+		6B7C88D5201B9A330096FB87 /* JoinCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D4201B9A330096FB87 /* JoinCaptainViewController.swift */; };
+		6B7C88D7201BC2110096FB87 /* CompleteJoinCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D6201BC2110096FB87 /* CompleteJoinCaptainViewController.swift */; };
+		6B7C88D9201BC3CB0096FB87 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D8201BC3CB0096FB87 /* CheckBox.swift */; };
 		6B96F3FF201290D100AE909C /* AddOrderNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */; };
 		6B9AD2D320063C0B00C4869C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9AD2D220063C0B00C4869C /* AppDelegate.swift */; };
 		6B9AD2D520063C0B00C4869C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9AD2D420063C0B00C4869C /* ViewController.swift */; };
@@ -82,6 +102,7 @@
 		6BA8267420156713002BC608 /* TextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BA8267220156713002BC608 /* TextViewTableViewCell.xib */; };
 		6BA826772015DA41002BC608 /* SubmitButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA826752015DA41002BC608 /* SubmitButtonTableViewCell.swift */; };
 		6BA826782015DA41002BC608 /* SubmitButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BA826762015DA41002BC608 /* SubmitButtonTableViewCell.xib */; };
+		6BA8267A20173E64002BC608 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA8267920173E64002BC608 /* Offer.swift */; };
 		6BAD09D92006D72A003D63C8 /* MyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD09D82006D72A003D63C8 /* MyOrderViewController.swift */; };
 		6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */; };
 		6BC256A120127B4900A5AD20 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC256A020127B4900A5AD20 /* RadioButton.swift */; };
@@ -91,13 +112,16 @@
 
 /* Begin PBXFileReference section */
 		5592F19F09592F1A3AF5E5E9 /* Pods-Ish7anli.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ish7anli.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ish7anli/Pods-Ish7anli.release.xcconfig"; sourceTree = "<group>"; };
+		6B10F5FB20194271002F5276 /* CustomerOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOffer.swift; sourceTree = "<group>"; };
+		6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel2.swift; sourceTree = "<group>"; };
+		6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrder2ViewController.swift; sourceTree = "<group>"; };
+		6B10F6032019FBD5002F5276 /* ArchiveOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveOrder.swift; sourceTree = "<group>"; };
 		6B18DEE2200F8BBE00C73BA2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6B18DEE4200F8CB500C73BA2 /* ActivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationViewController.swift; sourceTree = "<group>"; };
 		6B18DEE6200F8E3800C73BA2 /* OfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsViewController.swift; sourceTree = "<group>"; };
 		6B18DEE8200F910300C73BA2 /* AddOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfferViewController.swift; sourceTree = "<group>"; };
 		6B18DEEA200F94B400C73BA2 /* PaymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodViewController.swift; sourceTree = "<group>"; };
 		6B18DEEC200F95A500C73BA2 /* AddOrder2TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrder2TableViewController.swift; sourceTree = "<group>"; };
-		6B18DEEE200F972F00C73BA2 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		6B18DEF0200F978000C73BA2 /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		6B18DEF2200F981B00C73BA2 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		6B18DEF4200F983000C73BA2 /* OrderDetails2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetails2ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +134,18 @@
 		6B18DF042010B7A700C73BA2 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		6B18DF072010B81B00C73BA2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6B18DF092010BBD500C73BA2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainCustomerOffer.swift; sourceTree = "<group>"; };
+		6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpatainNewOrderViewController.swift; sourceTree = "<group>"; };
+		6B271D2C201C94E20030BBF4 /* CpatainActiveOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpatainActiveOrderViewController.swift; sourceTree = "<group>"; };
+		6B271D2E201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptianArchiveOrderViewController.swift; sourceTree = "<group>"; };
+		6B271D30201C9BF00030BBF4 /* CaptainOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainOfferViewController.swift; sourceTree = "<group>"; };
+		6B271D32201D18C80030BBF4 /* CaptainSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainSettingsViewController.swift; sourceTree = "<group>"; };
+		6B271D34201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainOfferDetailsViewController.swift; sourceTree = "<group>"; };
+		6B271D36201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpatainNewOrderDetailsViewController.swift; sourceTree = "<group>"; };
+		6B271D38201DDEA60030BBF4 /* CaptainActiveOrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainActiveOrderDetailsViewController.swift; sourceTree = "<group>"; };
+		6B271D3A201DE0020030BBF4 /* CaptainArchiveOrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainArchiveOrderDetailsViewController.swift; sourceTree = "<group>"; };
+		6B271D3C201E08900030BBF4 /* CaptainAddOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainAddOfferViewController.swift; sourceTree = "<group>"; };
+		6B271D3E201E119B0030BBF4 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		6B517CB7200E03C400CFE5DC /* newOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newOrderTableViewCell.swift; sourceTree = "<group>"; };
 		6B517CB8200E03C400CFE5DC /* newOrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = newOrderTableViewCell.xib; sourceTree = "<group>"; };
 		6B517CBB200E250100CFE5DC /* ActiveOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveOrderTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,6 +191,11 @@
 		6B6BB4652010CC1800BECA87 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		6B6BB46720111E9E00BECA87 /* DiffCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffCalculator.swift; sourceTree = "<group>"; };
 		6B6BB46920111F1000BECA87 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		6B7C88D0201A10650096FB87 /* OldOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldOrder.swift; sourceTree = "<group>"; };
+		6B7C88D2201B437D0096FB87 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		6B7C88D4201B9A330096FB87 /* JoinCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCaptainViewController.swift; sourceTree = "<group>"; };
+		6B7C88D6201BC2110096FB87 /* CompleteJoinCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteJoinCaptainViewController.swift; sourceTree = "<group>"; };
+		6B7C88D8201BC3CB0096FB87 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderNewViewController.swift; sourceTree = "<group>"; };
 		6B9AD2CF20063C0B00C4869C /* Ish7anli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ish7anli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9AD2D220063C0B00C4869C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +211,7 @@
 		6BA8267220156713002BC608 /* TextViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewTableViewCell.xib; sourceTree = "<group>"; };
 		6BA826752015DA41002BC608 /* SubmitButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButtonTableViewCell.swift; sourceTree = "<group>"; };
 		6BA826762015DA41002BC608 /* SubmitButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitButtonTableViewCell.xib; sourceTree = "<group>"; };
+		6BA8267920173E64002BC608 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		6BAD09D82006D72A003D63C8 /* MyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderViewController.swift; sourceTree = "<group>"; };
 		6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		6BC256A020127B4900A5AD20 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -220,13 +262,25 @@
 				6B18DEE8200F910300C73BA2 /* AddOfferViewController.swift */,
 				6B18DEEA200F94B400C73BA2 /* PaymentMethodViewController.swift */,
 				6B18DEEC200F95A500C73BA2 /* AddOrder2TableViewController.swift */,
-				6B18DEEE200F972F00C73BA2 /* SettingsTableViewController.swift */,
 				6B18DEF0200F978000C73BA2 /* AddAddressViewController.swift */,
 				6B18DEF2200F981B00C73BA2 /* OrderDetailsViewController.swift */,
 				6B18DEF4200F983000C73BA2 /* OrderDetails2ViewController.swift */,
 				6B517CFA200EA49300CFE5DC /* CaptainLoginViewController.swift */,
 				6B18DF072010B81B00C73BA2 /* SettingsViewController.swift */,
 				6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */,
+				6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */,
+				6B7C88D4201B9A330096FB87 /* JoinCaptainViewController.swift */,
+				6B7C88D6201BC2110096FB87 /* CompleteJoinCaptainViewController.swift */,
+				6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */,
+				6B271D2C201C94E20030BBF4 /* CpatainActiveOrderViewController.swift */,
+				6B271D2E201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift */,
+				6B271D30201C9BF00030BBF4 /* CaptainOfferViewController.swift */,
+				6B271D32201D18C80030BBF4 /* CaptainSettingsViewController.swift */,
+				6B271D34201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift */,
+				6B271D36201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift */,
+				6B271D38201DDEA60030BBF4 /* CaptainActiveOrderDetailsViewController.swift */,
+				6B271D3A201DE0020030BBF4 /* CaptainArchiveOrderDetailsViewController.swift */,
+				6B271D3C201E08900030BBF4 /* CaptainAddOfferViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -283,6 +337,8 @@
 				6BF631812006E39600D19370 /* IBDesignable.swift */,
 				6B517CD2200E9BD400CFE5DC /* Ish7anli-Bridging-Header.h */,
 				6BC256A020127B4900A5AD20 /* RadioButton.swift */,
+				6B7C88D8201BC3CB0096FB87 /* CheckBox.swift */,
+				6B7C88D2201B437D0096FB87 /* UITextField.swift */,
 			);
 			path = "Extension & Helpers";
 			sourceTree = "<group>";
@@ -355,9 +411,16 @@
 				6B18DEE1200F8B0E00C73BA2 /* ViewControllers */,
 				6B517CEF200EA23400CFE5DC /* Menu */,
 				6B18DF092010BBD500C73BA2 /* ProfileModel.swift */,
+				6B7C88D0201A10650096FB87 /* OldOrder.swift */,
 				6B6BB4652010CC1800BECA87 /* ProfileViewModel.swift */,
 				6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */,
 				6BA8266F20155F09002BC608 /* OfferAddressViewModel.swift */,
+				6BA8267920173E64002BC608 /* Offer.swift */,
+				6B10F6032019FBD5002F5276 /* ArchiveOrder.swift */,
+				6B10F5FB20194271002F5276 /* CustomerOffer.swift */,
+				6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */,
+				6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */,
+				6B271D3E201E119B0030BBF4 /* City.swift */,
 			);
 			path = Ish7anli;
 			sourceTree = "<group>";
@@ -489,10 +552,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Ish7anli/Pods-Ish7anli-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -507,6 +572,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B517CFF200EAB8C00CFE5DC /* ContactUsTableViewController.swift in Sources */,
+				6B10F6002019EC67002F5276 /* AddressViewModel2.swift in Sources */,
+				6B7C88D3201B437D0096FB87 /* UITextField.swift in Sources */,
 				6B517CDD200E9BE000CFE5DC /* MOLHLanguage.swift in Sources */,
 				6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */,
 				6B18DEE5200F8CB500C73BA2 /* ActivationViewController.swift in Sources */,
@@ -514,12 +581,14 @@
 				6B517CF1200EA25500CFE5DC /* AboutUsViewController.swift in Sources */,
 				6B18DEEB200F94B400C73BA2 /* PaymentMethodViewController.swift in Sources */,
 				6B517CBD200E250100CFE5DC /* ActiveOrderTableViewCell.swift in Sources */,
+				6B271D3D201E08900030BBF4 /* CaptainAddOfferViewController.swift in Sources */,
 				6B517CCC200E8EBB00CFE5DC /* AddOrderTableViewController.swift in Sources */,
 				6B6BB46820111E9E00BECA87 /* DiffCalculator.swift in Sources */,
 				6B517CF9200EA3C300CFE5DC /* String.swift in Sources */,
 				6B18DF012010B72400C73BA2 /* AddAddressTableViewCell.swift in Sources */,
 				6B517CDF200E9BE000CFE5DC /* MOLHSizable.swift in Sources */,
 				6B517CFB200EA49300CFE5DC /* CaptainLoginViewController.swift in Sources */,
+				6B271D31201C9BF00030BBF4 /* CaptainOfferViewController.swift in Sources */,
 				6B9AD2D520063C0B00C4869C /* ViewController.swift in Sources */,
 				6B9AD2E7200642CF00C4869C /* TmpTableViewCell.swift in Sources */,
 				6B517CE2200E9BE000CFE5DC /* SlideMenuController.swift in Sources */,
@@ -527,6 +596,7 @@
 				6B18DEF1200F978000C73BA2 /* AddAddressViewController.swift in Sources */,
 				6BC256A120127B4900A5AD20 /* RadioButton.swift in Sources */,
 				6BAD09D92006D72A003D63C8 /* MyOrderViewController.swift in Sources */,
+				6B7C88D5201B9A330096FB87 /* JoinCaptainViewController.swift in Sources */,
 				6B18DEFB2010B33A00C73BA2 /* AddressSettingsTableViewCell.swift in Sources */,
 				6B517CB9200E03C400CFE5DC /* newOrderTableViewCell.swift in Sources */,
 				6BA826772015DA41002BC608 /* SubmitButtonTableViewCell.swift in Sources */,
@@ -534,38 +604,54 @@
 				6B517CFD200EA6A500CFE5DC /* UIView.swift in Sources */,
 				6B517CC6200E808B00CFE5DC /* NewOrderViewController.swift in Sources */,
 				6BF631822006E39600D19370 /* IBDesignable.swift in Sources */,
+				6B271D37201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift in Sources */,
 				6B55DA322007878900BB535B /* OldOrderWithRateTableViewCell.swift in Sources */,
+				6B10F6022019F384002F5276 /* AddOrder2ViewController.swift in Sources */,
 				6B18DF082010B81B00C73BA2 /* SettingsViewController.swift in Sources */,
+				6B10F6042019FBD5002F5276 /* ArchiveOrder.swift in Sources */,
 				6B18DEE7200F8E3800C73BA2 /* OfferDetailsViewController.swift in Sources */,
 				6B517CF7200EA3BA00CFE5DC /* UIViewController.swift in Sources */,
 				6B517CE4200E9C5F00CFE5DC /* RightViewController.swift in Sources */,
 				6B6BB45E2010C56000BECA87 /* SessionManager.swift in Sources */,
 				6B6BB4662010CC1800BECA87 /* ProfileViewModel.swift in Sources */,
 				6B6BB4642010C6EE00BECA87 /* LLError.swift in Sources */,
+				6B271D2D201C94E20030BBF4 /* CpatainActiveOrderViewController.swift in Sources */,
 				6B6BB4602010C5A500BECA87 /* DataClient.swift in Sources */,
 				6B18DEED200F95A500C73BA2 /* AddOrder2TableViewController.swift in Sources */,
 				6B517CC8200E810900CFE5DC /* NewOrderCollectionViewCell.swift in Sources */,
 				6B18DEE9200F910300C73BA2 /* AddOfferViewController.swift in Sources */,
 				6BA8267320156713002BC608 /* TextViewTableViewCell.swift in Sources */,
+				6B271D2F201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift in Sources */,
 				6B517CE7200E9EC200CFE5DC /* ImageHeaderView.swift in Sources */,
+				6B271D33201D18C80030BBF4 /* CaptainSettingsViewController.swift in Sources */,
+				6BA8267A20173E64002BC608 /* Offer.swift in Sources */,
 				6B517CDE200E9BE000CFE5DC /* MOLH.swift in Sources */,
 				6B517CEB200E9ECD00CFE5DC /* DataTableViewCell.swift in Sources */,
 				6B55DA2F2007831C00BB535B /* OldOrderViewController.swift in Sources */,
 				6B517CC1200E28BA00CFE5DC /* ArchiveOrderTableViewCell.swift in Sources */,
 				6B18DEF3200F981B00C73BA2 /* OrderDetailsViewController.swift in Sources */,
+				6B271D3B201DE0020030BBF4 /* CaptainArchiveOrderDetailsViewController.swift in Sources */,
+				6B271D35201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift in Sources */,
 				6B18DEF5200F983000C73BA2 /* OrderDetails2ViewController.swift in Sources */,
 				6B18DF052010B7A700C73BA2 /* ListTableViewCell.swift in Sources */,
+				6B10F5FC20194271002F5276 /* CustomerOffer.swift in Sources */,
+				6B7C88D9201BC3CB0096FB87 /* CheckBox.swift in Sources */,
+				6B271D29201C85440030BBF4 /* CaptainCustomerOffer.swift in Sources */,
+				6B271D39201DDEA60030BBF4 /* CaptainActiveOrderDetailsViewController.swift in Sources */,
 				6B55DA2C20076EA200BB535B /* OldOrderTableViewCell.swift in Sources */,
 				6B18DEE3200F8BBE00C73BA2 /* SignInViewController.swift in Sources */,
 				6B517CF3200EA30B00CFE5DC /* ContactUsViewController.swift in Sources */,
 				6B517CEE200EA22F00CFE5DC /* NotificationViewController.swift in Sources */,
 				6B96F3FF201290D100AE909C /* AddOrderNewViewController.swift in Sources */,
+				6B7C88D7201BC2110096FB87 /* CompleteJoinCaptainViewController.swift in Sources */,
 				6B6BB4622010C5BB00BECA87 /* APIClient.swift in Sources */,
+				6B7C88D1201A10650096FB87 /* OldOrder.swift in Sources */,
 				6B9AD2D320063C0B00C4869C /* AppDelegate.swift in Sources */,
 				6BA8267020155F09002BC608 /* OfferAddressViewModel.swift in Sources */,
-				6B18DEEF200F972F00C73BA2 /* SettingsTableViewController.swift in Sources */,
 				6B517CF5200EA39E00CFE5DC /* UITableViewExtension.swift in Sources */,
 				6B517CE1200E9BE000CFE5DC /* MOLHFont.swift in Sources */,
+				6B271D2B201C87EC0030BBF4 /* CpatainNewOrderViewController.swift in Sources */,
+				6B271D3F201E119B0030BBF4 /* City.swift in Sources */,
 				6B517CD5200E9BD500CFE5DC /* MBProgressHUD.m in Sources */,
 				6B18DEF82010A50000C73BA2 /* CosmosDistrib.swift in Sources */,
 			);
