@@ -12,7 +12,7 @@ class AddOrderNewViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel = AddressViewModel()
-    
+    var senderAddress,weghitIndex,deliveryIndex:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         //load()
@@ -39,7 +39,11 @@ class AddOrderNewViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.hideBackButton()
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -50,10 +54,32 @@ class AddOrderNewViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSecond" {
+            
+            let vc = segue.destination as! AddOrder2ViewController
+            vc.senderAddress = senderAddress!
+            vc.weghitIndex = weghitIndex!
+            vc.deliveryIndex = deliveryIndex!
+        }
+    }
+    @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
+        
+        guard let AddAddressViewController = segue.source as? AddAddressViewController  else {
+            return
+        }
+        viewModel.addListener()
+        
+    }
+    
 
 }
 extension AddOrderNewViewController: AddressViewModelDelegate {
-    func move2(_ senderAddress: String, _ deliveryIndex: Int, weghitIndex: Int) {
+    func move2(_ senderAddress: Int, _ deliveryIndex: Int, weghitIndex: Int) {
+          self.senderAddress = senderAddress
+          self.deliveryIndex = deliveryIndex
+           self.weghitIndex = weghitIndex
           self.performSegue(withIdentifier: "toSecond", sender: self)
     }
     
@@ -62,7 +88,10 @@ extension AddOrderNewViewController: AddressViewModelDelegate {
     }
 
     func move() {
-      
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "AddAddressViewController") as! AddAddressViewController
+        let navInofrmationViewController = UINavigationController(rootViewController: AddAddressViewController)
+        self.present(navInofrmationViewController, animated:true, completion: nil)
     }
     
     func apply(changes: SectionChanges) {

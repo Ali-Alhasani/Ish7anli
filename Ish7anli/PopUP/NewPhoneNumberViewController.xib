@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="DroidSansArabic.ttf">
+            <string>DroidSansArabic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPhoneNumberViewController" customModule="Ish7anli" customModuleProvider="target">
+            <connections>
+                <outlet property="newPhoneNumberText" destination="W0G-p8-cQg" id="HQh-kH-ubR"/>
+                <outlet property="view" destination="LCe-qY-fmY" id="FK3-yb-lN1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LCe-qY-fmY">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="127"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mAT-YT-Sbr">
+                    <rect key="frame" x="0.0" y="0.0" width="295" height="127"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xN6-Zn-8gE">
+                            <rect key="frame" x="0.0" y="0.0" width="295" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yP-se-owx">
+                                    <rect key="frame" x="72" y="13.5" width="152.5" height="24.5"/>
+                                    <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0078431372550000003" green="0.46666666670000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstItem="8yP-se-owx" firstAttribute="centerX" secondItem="xN6-Zn-8gE" secondAttribute="centerX" id="d6C-KG-vps"/>
+                                <constraint firstAttribute="height" constant="50" id="q7y-K5-Pcr"/>
+                                <constraint firstItem="8yP-se-owx" firstAttribute="centerY" secondItem="xN6-Zn-8gE" secondAttribute="centerY" id="yq1-ex-Sft"/>
+                            </constraints>
+                        </view>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a new phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W0G-p8-cQg">
+                            <rect key="frame" x="8" y="72" width="279" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="YX8-97-y6y"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="W0G-p8-cQg" secondAttribute="bottom" constant="15" id="VEU-vd-EVC"/>
+                        <constraint firstItem="W0G-p8-cQg" firstAttribute="top" secondItem="xN6-Zn-8gE" secondAttribute="bottom" constant="22" id="aZk-eY-3z8"/>
+                        <constraint firstItem="W0G-p8-cQg" firstAttribute="leading" secondItem="mAT-YT-Sbr" secondAttribute="leading" constant="8" id="jKO-k6-V8P"/>
+                        <constraint firstAttribute="trailing" secondItem="W0G-p8-cQg" secondAttribute="trailing" constant="8" id="jx4-sb-7qy"/>
+                        <constraint firstItem="xN6-Zn-8gE" firstAttribute="leading" secondItem="mAT-YT-Sbr" secondAttribute="leading" id="pKz-vx-94k"/>
+                        <constraint firstAttribute="trailing" secondItem="xN6-Zn-8gE" secondAttribute="trailing" id="wj6-FC-dRy"/>
+                        <constraint firstItem="xN6-Zn-8gE" firstAttribute="top" secondItem="mAT-YT-Sbr" secondAttribute="top" id="x9I-1E-GuC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mAT-YT-Sbr" secondAttribute="trailing" id="Hud-5r-zUn"/>
+                <constraint firstAttribute="bottom" secondItem="mAT-YT-Sbr" secondAttribute="bottom" id="Jw8-g1-BeA"/>
+                <constraint firstItem="mAT-YT-Sbr" firstAttribute="top" secondItem="LCe-qY-fmY" secondAttribute="top" id="e8F-Qn-ojr"/>
+                <constraint firstItem="mAT-YT-Sbr" firstAttribute="leading" secondItem="LCe-qY-fmY" secondAttribute="leading" id="lpo-sw-l6z"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="de6-Kk-3FO"/>
+            <point key="canvasLocation" x="323.5" y="235.5"/>
+        </view>
+    </objects>
+</document>

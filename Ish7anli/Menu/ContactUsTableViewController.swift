@@ -8,11 +8,15 @@
 
 import UIKit
 
-class ContactUsTableViewController: UITableViewController {
-
+class ContactUsTableViewController: UIViewController {
+    @IBOutlet weak var backButton: UIBarButtonItem!
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if !MOLHLanguage.isRTL() {
+            backButton.image = UIImage(named: "leftback")
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

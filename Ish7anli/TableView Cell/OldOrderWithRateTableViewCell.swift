@@ -9,6 +9,8 @@
 import UIKit
 protocol OldOrderWithRateTableViewDelegate : class {
     func didPressFinishedDetailsButton(sender: UIButton)
+    func didPressRateButton(sender: UIButton)
+
 }
 
 struct OldOrderWithRateTableViewData {
@@ -66,7 +68,7 @@ class OldOrderWithRateTableViewCell: UITableViewCell {
     }
     
     @IBAction func rateButtonAction(_ sender: Any) {
-        
+        cellDelegate?.didPressRateButton(sender: sender as! UIButton)
     }
     @IBAction func detailsAction(_ sender: Any) {
         cellDelegate?.didPressFinishedDetailsButton(sender: sender as! UIButton)

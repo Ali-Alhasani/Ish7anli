@@ -7,8 +7,9 @@
 //
 
 import UIKit
-protocol MessageTableViewCellDelegate : class {
-    func didPressCell(sender: UIButton)
+protocol TmpTableViewCellDelegate : class {
+    func didPressChoose(sender: UIButton)
+    func didPressChat(sender: UIButton)
 }
 
 struct TmpTableViewCellData {
@@ -27,11 +28,14 @@ struct TmpTableViewCellData {
    
 }
 class TmpTableViewCell: UITableViewCell {
-    weak var cellDelegate: MessageTableViewCellDelegate?
+    weak var cellDelegate: TmpTableViewCellDelegate?
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var captionNameLabel: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var chooseButton: UIButton!
+    @IBOutlet weak var chatButton: UIButton!
     
     
     override func awakeFromNib() {
@@ -46,6 +50,12 @@ class TmpTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func chooseAction(_ sender: Any) {
+        cellDelegate?.didPressChoose(sender: sender as! UIButton as! UIButton)
+    }
+    @IBAction func chatAction(_ sender: Any) {
+        cellDelegate?.didPressChat(sender: sender as! UIButton)
+    }
     func setData(_ data: Any?) {
         if let data = data as? TmpTableViewCellData {
             

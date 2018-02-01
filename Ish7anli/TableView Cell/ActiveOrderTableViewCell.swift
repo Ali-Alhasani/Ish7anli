@@ -41,9 +41,19 @@ class ActiveOrderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var actionButton: UIButton!
     
+    var isChecked: Bool = false {
+        didSet{
+            if isChecked == true {
+               actionButton.backgroundColor = UIColor.blue
+            } else {
+              actionButton.backgroundColor = UIColor.black
+            }
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+           self.isChecked = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

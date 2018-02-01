@@ -31,14 +31,14 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var iconMenus = ["notificationBlue","aboutUs","captain","share","contactUs","logout"]
     var NotificationViewController: UIViewController!
     var AboutUsViewController: UIViewController!
-    var ContactUsTableViewController: UITableViewController!
+    var ContactUsTableViewController: UIViewController!
     var CaptainLoginViewController: UIViewController!
     var imageHeaderView: ImageHeaderView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if MOLHLanguage.isRTL() {
-            menus = []
+           // menus = []
         }else{
             menus = ["Notification","About Us","Captain Login","Share App","Contact Us","Logout"]
         }
@@ -54,10 +54,13 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.AboutUsViewController = UINavigationController(rootViewController: AboutUsViewController)
         
         let ContactUsTableViewController = storyboard.instantiateViewController(withIdentifier: "ContactUsTableViewController") as! ContactUsTableViewController
-        self.ContactUsTableViewController = ContactUsTableViewController
+        self.ContactUsTableViewController = UINavigationController(rootViewController: ContactUsTableViewController)
+        
 
         let CaptainLoginViewController = storyboard.instantiateViewController(withIdentifier: "CaptainLoginViewController") as! CaptainLoginViewController
-        self.CaptainLoginViewController = CaptainLoginViewController
+        self.CaptainLoginViewController =
+        UINavigationController(rootViewController: CaptainLoginViewController)
+        
 
         self.tableView.registerCellClass(DataTableViewCell.self)
         
@@ -82,6 +85,7 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             })
         
         case .AboutUs:
+         
             self.present(self.AboutUsViewController, animated: true, completion: {
                 self.slideMenuController()?.closeRight()
             })

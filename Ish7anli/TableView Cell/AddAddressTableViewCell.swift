@@ -17,8 +17,15 @@ protocol AddAddressTableViewCellDelegate2 : class {
 class AddAddressTableViewCell: UITableViewCell{
  weak var cellDelegate: AddAddressTableViewCellDelegate?
     weak var cellDelegate2: AddAddressTableViewCellDelegate2?
+    
+    @IBOutlet weak var addAddressButton: UIButton!
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        if MOLHLanguage.isRTL(){
+             addAddressButton?.setTitle("إضافة عنوان ", for: UIControlState.normal)
+        }
         // Initialization code
     }
     static var nib:UINib {

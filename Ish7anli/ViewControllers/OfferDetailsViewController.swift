@@ -22,8 +22,13 @@ class OfferDetailsViewController: UIViewController {
     @IBOutlet weak var dateTo: UILabel!
     @IBOutlet weak var price: UILabel!
     var indexPath:Int?
+    var type:Int?
+    @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !MOLHLanguage.isRTL(){
+            arrowImage.image = UIImage(named: "backBlueLeft")
+        }
         if indexPath != nil {
         nameLabel.text = DataClient.shared.offer[indexPath!].captainName
         starsView.rating = DataClient.shared.offer[indexPath!].captainRate!
@@ -41,6 +46,23 @@ class OfferDetailsViewController: UIViewController {
                 
             })
         }
+        if (type == 2) {
+            nameLabel.text = DataClient.shared.offerPrice[indexPath!].captainName
+            starsView.rating = DataClient.shared.offerPrice[indexPath!].captainRate!
+            destinationCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameTo
+            fromCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameFrom
+            timeFrom.text = DataClient.shared.offerPrice[indexPath!].goTime
+            timeTo.text =  DataClient.shared.offerPrice[indexPath!].arrivalTime
+            dateFrom.text = DataClient.shared.offerPrice[indexPath!].goDate
+            dateTo.text = DataClient.shared.offerPrice[indexPath!].arrivalDate
+            price.text = DataClient.shared.offerPrice[indexPath!].price! + " SAR"
+            
+            APIClient.sendImageRequest(path: DataClient.shared.offerPrice[indexPath!].captainImage!, success: { (_ image) in
+                self.imageView.image = image
+            }, failure: { (_ error) in
+                
+            })
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -48,12 +70,29 @@ class OfferDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.hideBackButton()
+        
+    }
     
     @IBAction func chooseAction(_ sender: Any) {
         self.performSegue(withIdentifier: "toAddOffer", sender: self)
     }
     
     @IBAction func chatAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "toChat", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toChat" {
+            let vc = segue.destination as! ChatViewController
+            vc.senderType = .U
+            vc.senderId = String(DataClient.shared.offer[indexPath!].id!)
+            vc.targetId = String(DataClient.shared.offer[indexPath!].captainId!)
+            
+        }
+        
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

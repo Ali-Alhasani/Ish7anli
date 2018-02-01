@@ -7,27 +7,51 @@
 //
 
 import UIKit
-
-class NewOrderViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
+import XLPagerTabStrip
+class NewOrderViewController: UIViewController,IndicatorInfoProvider,UICollectionViewDelegate, UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
 
     
     @IBOutlet weak var collectionView: UICollectionView!
     var indexPath:Int?
+      var itemInfo: IndicatorInfo = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        load()
+      
+        
+        if MOLHLanguage.isRTL() {
+            ok = "موافق"
+            alartTitle = "تنبيه"
+        }else{
+            ok = "Ok"
+            alartTitle = "Alert"
+            
+        }
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
+        
+    }
+
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        if MOLHLanguage.isRTL() {
+            itemInfo = "الأعلى تقييماً"
+        }else {
+            itemInfo = "Highest Rate"
+        }
+        
+        return itemInfo
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (self.collectionView.frame.width / 2.05)  , height: self.collectionView.frame.height * 0.4)
         
     }
     
@@ -55,9 +79,13 @@ class NewOrderViewController: UIViewController,UICollectionViewDelegate, UIColle
     
     func load(){
         DataClient.shared.getOffer(success: {
-            self.collectionView.reloadData()
+              DispatchQueue.main.async {
+               self.collectionView.reloadData()
+            }
         }) { (_ error) in
-            print(error)
+            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
     

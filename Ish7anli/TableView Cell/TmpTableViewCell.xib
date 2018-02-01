@@ -49,6 +49,9 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="chooseAction:" destination="Xmg-iL-uja" eventType="touchUpInside" id="blL-UC-Zvh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pji-c1-vfB">
                                         <rect key="frame" x="156" y="0.0" width="104" height="42"/>
@@ -66,6 +69,9 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="chatAction:" destination="Xmg-iL-uja" eventType="touchUpInside" id="Ezr-BE-uIu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="background"/>
@@ -168,6 +174,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="captionNameLabel" destination="Z3a-XW-DVl" id="VLY-Fw-0bD"/>
+                <outlet property="chatButton" destination="pji-c1-vfB" id="3p2-A7-wPl"/>
+                <outlet property="chooseButton" destination="N9G-NF-jy3" id="gCm-km-1cW"/>
                 <outlet property="priceLabel" destination="NGP-PH-IBS" id="ZRO-c9-Iax"/>
                 <outlet property="profileImageView" destination="xff-SX-RI6" id="Xk0-Ah-lVI"/>
                 <outlet property="ratingView" destination="8dD-ED-0Rz" id="8Yi-f3-FrI"/>

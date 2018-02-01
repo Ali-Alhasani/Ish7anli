@@ -11,6 +11,12 @@ import UIKit
 class AddOrder2ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel = AddressViewModel2()
+    
+    var receiverAddress,senderAddress,weghitIndex,deliveryIndex:Int?
+    
+    var receiverName:String?
+    var receiverPhone:String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +43,11 @@ class AddOrder2ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.hideBackButton()
+        
+    }
     
 
     /*
@@ -48,19 +59,56 @@ class AddOrder2ViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPayment2" {
+            
+            let vc = segue.destination as! PaymentMethodViewController
+            vc.receiveAddress = receiverAddress!
+            vc.type = deliveryIndex!
+            vc.senderAddress = senderAddress!
+            vc.weghitIndex = weghitIndex!
+            vc.receiverName = receiverName!
+           vc.receiverPhone = receiverPhone!
+        }
+    }
+    @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
+        
+        guard let AddAddressViewController = segue.source as? AddAddressViewController  else {
+            return
+        }
+        viewModel.addListener()
+        
+    }
+    
 
 }
 extension AddOrder2ViewController: AddressViewModel2Delegate {
-    func move2() {
+    
+    func move2(_ receiverAddress: Int, information: [Int]) {
+       
+        
+        let multilineCell = tableView.cellForRow(at: IndexPath(row: information.first!, section: 2)) as? TextViewTableViewCell
+        let multilineCell2 = tableView.cellForRow(at: IndexPath(row: information.last!, section: 2)) as? TextViewTableViewCell
+        // (index: ))
+        //cellForRow(at: ) as? TextViewTableViewCell // we cast here so that you can access your custom property.
+        self.receiverAddress = receiverAddress
+        self.receiverName =   multilineCell!.textView.text!
+        self.receiverPhone = multilineCell2!.textView.text!
+        
          self.performSegue(withIdentifier: "toPayment2", sender: self)
     }
+    
+
     
     func apply2() {
         self.tableView?.reloadData()
     }
     
     func move() {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "AddAddressViewController") as! AddAddressViewController
+        let navInofrmationViewController = UINavigationController(rootViewController: AddAddressViewController)
+        self.present(navInofrmationViewController, animated:true, completion: nil)
     }
     
     func apply(changes: SectionChanges) {

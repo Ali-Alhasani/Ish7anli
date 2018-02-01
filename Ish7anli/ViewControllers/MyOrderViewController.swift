@@ -7,8 +7,21 @@
 //
 
 import UIKit
-
-class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource  {
+ var ok,error,alartTitle,loadingtitle,message:String?
+class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TmpTableViewCellDelegate  {
+    
+    
+    
+  
+    
+    func didPressChoose(sender: UIButton) {
+        self.loadChoose(customerOfferId: DataClient.shared.CustomerOrder[sender.tag].id!, captainId: DataClient.shared.CustomerOrder[(cellIsSelected?.row)!].bid[sender.tag].captainId!)
+    }
+    
+    func didPressChat(sender: UIButton) {
+        
+    }
+    
     
     var cellIsSelected: IndexPath?
     
@@ -23,11 +36,31 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var arrowImage: UIImageView!
     
+    @IBOutlet var tapGesture: UITapGestureRecognizer!
+    
+    @IBAction func tapGestureAction(_ sender: Any) {
+   self.performSegue(withIdentifier: "toMyOrderDetails", sender: self)
+    }
     var index = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
+        nextButton.isEnabled = false
+        previousButton.isEnabled = false
+        
+        if MOLHLanguage.isRTL() {
+            
+            ok = "موافق"
+            alartTitle = "تنبيه"
+        }else{
+              arrowImage.image = UIImage(named: "backBlueLeft")
+            ok = "Ok"
+            alartTitle = "Alert"
+            
+        }
+     
         // Do any additional setup after loading the view.
     }
     
@@ -63,6 +96,8 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let cell = Bundle.main.loadNibNamed("TmpTableViewCell", owner: self, options: nil)?.first as! TmpTableViewCell
         cell.selectionStyle = .none
         cell.setData(TmpTableViewCellData(price: DataClient.shared.CustomerOrder[index].bid[indexPath.row].price!, image: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainImage!, name: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainName!, stars: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainRate))
+        cell.cellDelegate = self
+        cell.chooseButton.tag = indexPath.row
         return cell
     }
     
@@ -77,15 +112,17 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     @IBAction func previousButton(_ sender: Any) {
+             tmp()
          self.index -= 1
-         tmp()
+    
         self.view(index: index )
           self.tabelView.reloadData()
     }
     
     @IBAction func nextButton(_ sender: Any) {
-          self.index += 1
           tmp()
+          self.index += 1
+        
           self.view(index: index)
         self.tabelView.reloadData()
       
@@ -115,8 +152,24 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
             self.tmp()
             print(DataClient.shared.CustomerOrder.count)
         }) { (_ error) in
-            
+         
+            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
+    }
+    
+    func loadChoose(customerOfferId: Int, captainId: Int){
+        //print(customerOfferId)
+        //print(captainId)
+        DataClient.shared.chooseCaptain(success: {
+            self.tabelView.reloadData()
+        }, failuer: { (_ error) in
+            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        }, customerOfferId: customerOfferId, captainId: captainId)
     }
     
     
@@ -126,6 +179,14 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         fromCityLabel.text = DataClient.shared.CustomerOrder[index].addressSenderCity!
         destinationCityLabel.text = DataClient.shared.CustomerOrder[index].addressReceiverCity!
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMyOrderDetails" {
+            let vc = segue.destination as! OrderDetailsViewController
+            vc.indexPath = self.cellIsSelected?.row
+        }
+        
     }
     
     /*

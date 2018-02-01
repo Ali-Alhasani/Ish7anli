@@ -9,16 +9,31 @@
 import UIKit
 
 class AboutUsViewController: UIViewController {
-
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var infoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if !MOLHLanguage.isRTL() {
+            backButton.image = UIImage(named: "leftback")
+        }
         // Do any additional setup after loading the view.
+        load()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func load(){
+        DataClient.shared.contactUs(success: { (_ info) in
+            self.infoLabel.text = info
+        }) { (_ error) in
+            
+        }
     }
     
 

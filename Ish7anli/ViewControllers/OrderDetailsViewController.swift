@@ -26,8 +26,14 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var receiverAddressLabel: UILabel!
      var weightArray = ["heavy", "Light"]
     var deliveryArray = ["Form the door to door" , "from caption cite"]
+    @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !MOLHLanguage.isRTL(){
+           arrowImage.image = UIImage(named: "backBlueLeft")
+        }
+        
+        if (DataClient.shared.lastOffer.count != 0) {
       sendTimeLabel.text = DataClient.shared.lastOffer[indexPath!].time
          sendDateLabel.text = DataClient.shared.lastOffer[indexPath!].date
         weightLabel.text = weightArray[DataClient.shared.lastOffer[indexPath!].weight! - 1 ]
@@ -38,7 +44,7 @@ class OrderDetailsViewController: UIViewController {
         receiverNameLabel.text = DataClient.shared.lastOffer[indexPath!].receiverName
         receiverPhoneLabel.text = DataClient.shared.lastOffer[indexPath!].receiverPhone
         receiverAddressLabel.text = DataClient.shared.lastOffer[indexPath!].addressReceiverCity! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverTitle!
-
+        }
         
         // Do any additional setup after loading the view.
     }

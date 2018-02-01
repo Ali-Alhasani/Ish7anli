@@ -11,9 +11,12 @@ import UIKit
 class AddOfferViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel = OfferAddressViewModel()
-    var senderAddress:String?
-    var receiveAddress:String?
+    var senderAddress:Int?
+    var receiveAddress:Int?
     var weghitIndex:Int?
+    var receiverName:String?
+    var receiverPhone:String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +37,12 @@ class AddOfferViewController: UIViewController {
 
         viewModel.addListener()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarItem()
+        self.hideBackButton()
+        viewModel.addListener()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,16 +76,33 @@ class AddOfferViewController: UIViewController {
             vc.senderAddress = senderAddress!
             vc.receiveAddress = receiveAddress!
             vc.weghitIndex = weghitIndex!
+            vc.receiverName = receiverName!
+            vc.receiverPhone = receiverPhone!
         }
     }
 
 
 }
 extension AddOfferViewController: OfferAddressViewModelDelegate {
-    func move2(_ senderAddress: String, _ receiveAddress: String, weghitIndex: Int) {
+    func presentError(_ error: String) {
+        let alert = UIAlertController(title: alartTitle, message:error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    func move2(_ senderAddress: Int, _ receiveAddress: Int, weghitIndex: Int, information: [Int]) {
         self.senderAddress = senderAddress
           self.receiveAddress = receiveAddress
          self.weghitIndex = weghitIndex
+        
+        let multilineCell = tableView.cellForRow(at: IndexPath(row: information.first!, section: 4)) as? TextViewTableViewCell
+          let multilineCell2 = tableView.cellForRow(at: IndexPath(row: information.last!, section: 4)) as? TextViewTableViewCell
+           // (index: ))
+        //cellForRow(at: ) as? TextViewTableViewCell // we cast here so that you can access your custom property.
+      self.receiverName =   multilineCell!.textView.text!
+          self.receiverPhone = multilineCell2!.textView.text!
+    
+
         self.performSegue(withIdentifier: "toPayment", sender: self)
     }
     

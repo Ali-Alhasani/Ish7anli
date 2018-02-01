@@ -10,9 +10,15 @@ import UIKit
 
 class NotificationViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if !MOLHLanguage.isRTL() {
+            backButton.image = UIImage(named: "leftback")
+        }
         // Do any additional setup after loading the view.
     }
 

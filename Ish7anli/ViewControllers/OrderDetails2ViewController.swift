@@ -45,8 +45,12 @@ class OrderDetails2ViewController: UIViewController {
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var receiverAddressLabel: UILabel!
 
+    @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !MOLHLanguage.isRTL(){
+            arrowImage.image = UIImage(named: "backBlueLeft")
+        }
      nameLabel.text = DataClient.shared.lastOffer[indexPath!].captainName
         ratingView.rating = DataClient.shared.lastOffer[indexPath!].captainRate!
      priceLabel.text = String((DataClient.shared.lastOffer[indexPath!].offerPrice)!)

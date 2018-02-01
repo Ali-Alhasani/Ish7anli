@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="DroidSansArabic.ttf">
+            <string>DroidSansArabic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Ish7anli" customModuleProvider="target">
+            <connections>
+                <outlet property="emailLabel" destination="MnO-0J-s1p" id="v41-Yk-p3o"/>
+                <outlet property="mobileLabel" destination="IJH-mu-uQ2" id="9yW-uI-v97"/>
+                <outlet property="nameLabel" destination="pKo-k5-go5" id="Sa8-15-2d5"/>
+                <outlet property="view" destination="sk1-BS-2Re" id="PLb-59-ZNP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="sk1-BS-2Re">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBU-sk-bTt">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wf0-Cn-Sqn">
+                            <rect key="frame" x="146.5" y="15.5" width="82" height="20"/>
+                            <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0078431372550000003" green="0.46666666670000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="wf0-Cn-Sqn" firstAttribute="centerY" secondItem="IBU-sk-bTt" secondAttribute="centerY" id="GBU-cF-Q5C"/>
+                        <constraint firstItem="wf0-Cn-Sqn" firstAttribute="centerX" secondItem="IBU-sk-bTt" secondAttribute="centerX" id="veM-ND-pPD"/>
+                        <constraint firstAttribute="height" constant="50" id="zWJ-Bf-i04"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKo-k5-go5">
+                    <rect key="frame" x="16" y="72" width="343" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="18E-eG-lEk"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="16"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IJH-mu-uQ2">
+                    <rect key="frame" x="16" y="120" width="343" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="UA7-by-xHh"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="16"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MnO-0J-s1p">
+                    <rect key="frame" x="16" y="168" width="343" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="XQC-QN-THn"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="16"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rca-WG-tgF">
+                    <rect key="frame" x="16" y="258" width="343" height="50"/>
+                    <color key="backgroundColor" red="0.0078431372550000003" green="0.46666666670000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="KLO-rG-Kww"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
+                    <state key="normal" title=" حفظ">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="saveButtonAction:" destination="-1" eventType="touchUpInside" id="uQJ-Kc-0xV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="tMu-Kz-eZj" firstAttribute="trailing" secondItem="rca-WG-tgF" secondAttribute="trailing" constant="16" id="4WD-Co-6dz"/>
+                <constraint firstItem="pKo-k5-go5" firstAttribute="leading" secondItem="tMu-Kz-eZj" secondAttribute="leading" constant="16" id="7h3-lb-UNB"/>
+                <constraint firstItem="pKo-k5-go5" firstAttribute="top" secondItem="IBU-sk-bTt" secondAttribute="bottom" constant="22" id="Es8-C5-61L"/>
+                <constraint firstItem="IJH-mu-uQ2" firstAttribute="top" secondItem="pKo-k5-go5" secondAttribute="bottom" constant="8" symbolic="YES" id="J2n-sB-pTg"/>
+                <constraint firstItem="IBU-sk-bTt" firstAttribute="top" secondItem="sk1-BS-2Re" secondAttribute="top" id="KBf-Cd-LWZ"/>
+                <constraint firstItem="IBU-sk-bTt" firstAttribute="trailing" secondItem="tMu-Kz-eZj" secondAttribute="trailing" id="PCd-MA-0L2"/>
+                <constraint firstItem="tMu-Kz-eZj" firstAttribute="trailing" secondItem="pKo-k5-go5" secondAttribute="trailing" constant="16" id="Q1R-hq-Rn5"/>
+                <constraint firstItem="MnO-0J-s1p" firstAttribute="leading" secondItem="tMu-Kz-eZj" secondAttribute="leading" constant="16" id="T7v-A3-v6O"/>
+                <constraint firstItem="tMu-Kz-eZj" firstAttribute="bottom" secondItem="rca-WG-tgF" secondAttribute="bottom" constant="20" id="Ydx-3x-1Lb"/>
+                <constraint firstItem="IJH-mu-uQ2" firstAttribute="leading" secondItem="tMu-Kz-eZj" secondAttribute="leading" constant="16" id="bwR-Mf-QrE"/>
+                <constraint firstItem="tMu-Kz-eZj" firstAttribute="trailing" secondItem="MnO-0J-s1p" secondAttribute="trailing" constant="16" id="d5A-Za-Agl"/>
+                <constraint firstItem="tMu-Kz-eZj" firstAttribute="trailing" secondItem="IJH-mu-uQ2" secondAttribute="trailing" constant="16" id="dXY-Lw-S2U"/>
+                <constraint firstItem="rca-WG-tgF" firstAttribute="leading" secondItem="tMu-Kz-eZj" secondAttribute="leading" constant="16" id="iMU-bm-zl1"/>
+                <constraint firstItem="IBU-sk-bTt" firstAttribute="leading" secondItem="tMu-Kz-eZj" secondAttribute="leading" id="ieM-3R-cWp"/>
+                <constraint firstItem="rca-WG-tgF" firstAttribute="top" secondItem="MnO-0J-s1p" secondAttribute="bottom" constant="50" id="r2Y-xr-AIa"/>
+                <constraint firstItem="MnO-0J-s1p" firstAttribute="top" secondItem="IJH-mu-uQ2" secondAttribute="bottom" constant="8" symbolic="YES" id="t9y-bI-Yjn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="tMu-Kz-eZj"/>
+            <point key="canvasLocation" x="-135.5" y="-214"/>
+        </view>
+    </objects>
+</document>

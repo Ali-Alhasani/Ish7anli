@@ -7,18 +7,23 @@
 //
 
 import UIKit
-
+import PopupDialog
 class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,OldOrderWithRateTableViewDelegate,OldOrderTableViewDelegate  {
-
     
- 
     
+    
+    
+    
+    func didPressRateButton(sender: UIButton) {
+        showCustomDialog(indexPath: sender.tag)
+    }
     
     var cellIsSelected: IndexPath?
     var indexPath:Int?
     @IBOutlet weak var tabelView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         load()
         // Do any additional setup after loading the view.
     }
@@ -26,6 +31,13 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setNavigationBarItem()
+        self.hideBackButton()
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,7 +66,8 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 let cell = Bundle.main.loadNibNamed("OldOrderWithRateTableViewCell", owner: self, options: nil)?.first as! OldOrderWithRateTableViewCell
                 cell.setData(OldOrderWithRateTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!))
                
-                  cell.detailsButton.tag = indexPath.row
+                cell.detailsButton.tag = indexPath.row
+                cell.rateButton.tag = indexPath.row
                 cell.cellDelegate = self
                 cell.selectionStyle = .none
                 return cell
@@ -90,16 +103,55 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         DataClient.shared.getOldOrder(success: {
             self.tabelView.reloadData()
         }) { (_ error) in
-            print(error)
+            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
     
+    func loadRate(rate:Double , captainId:Int ,customerOfferId:Int ){
+        DataClient.shared.rateCatpain(success: {
+            
+        }, failuer: { (_ error) in
+            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }, customerOfferId: customerOfferId, captainId: captainId, rate: rate)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFinishedDetails" {
             let vc = segue.destination as! OrderDetails2ViewController
             vc.indexPath = self.cellIsSelected?.row
         }
       
+    }
+    
+    func showCustomDialog(animated: Bool = true , indexPath:Int) {
+        
+        // Create a custom view controller
+        let ratingVC = RatingViewController(nibName: "RatingViewController", bundle: nil)
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: ratingVC, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true)
+        
+        // Create first button
+        let buttonOne = CancelButton(title: "CANCEL", height: 60) {
+            //self.label.text = "You canceled the rating dialog"
+        }
+        
+        // Create second button
+        let buttonTwo = DefaultButton(title: "RATE", height: 60) {
+         
+            self.loadRate(rate: ratingVC.cosmosStarRating.rating, captainId: DataClient.shared.lastOffer[indexPath].captainId!, customerOfferId: DataClient.shared.lastOffer[indexPath].customerId!)
+           
+            //self.label.text = "You rated \(ratingVC.cosmosStarRating.rating) stars"
+        }
+        
+        // Add buttons to dialog
+        popup.addButtons([buttonOne, buttonTwo])
+        
+        // Present dialog
+        present(popup, animated: animated, completion: nil)
     }
     
     

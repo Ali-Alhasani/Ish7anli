@@ -16,7 +16,7 @@ class RadioButton: UIButton {
     let uncheckedImage = UIImage(named: "unCheckCombo")! as UIImage
     
     override func awakeFromNib() {
-      //self.isSelected = false
+      self.isSelected = false
     }
     
     func unselectAlternateButtons(){
