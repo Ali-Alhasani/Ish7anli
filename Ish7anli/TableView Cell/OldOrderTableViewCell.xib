@@ -42,6 +42,9 @@
                                                 <real key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="chatAction:" destination="U1k-F3-V8I" eventType="touchUpInside" id="obp-4F-CBZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqH-a4-QNA">
                                         <rect key="frame" x="247" y="5.5" width="104" height="42"/>

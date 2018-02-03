@@ -71,7 +71,7 @@ class SettingsViewController: UIViewController {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
-        
+        viewModel.addListener()
     }
     
     @IBAction func editImageAction(_ sender: Any) {

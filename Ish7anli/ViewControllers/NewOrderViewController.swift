@@ -14,6 +14,8 @@ class NewOrderViewController: UIViewController,IndicatorInfoProvider,UICollectio
     @IBOutlet weak var collectionView: UICollectionView!
     var indexPath:Int?
       var itemInfo: IndicatorInfo = ""
+    var refreshControl = UIRefreshControl()
+    var dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -26,6 +28,12 @@ class NewOrderViewController: UIViewController,IndicatorInfoProvider,UICollectio
             alartTitle = "Alert"
             
         }
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.black
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
+        self.collectionView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +51,26 @@ class NewOrderViewController: UIViewController,IndicatorInfoProvider,UICollectio
         }
         
         return itemInfo
+    }
+    @objc func PullRefresh()
+    {
+        //loading = true
+        DispatchQueue.main.async {
+            let now = NSDate()
+            let updateString = "last update was" + self.dateFormatter.string(from: now as Date)
+            
+            self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+            self.load()
+            
+            if self.refreshControl.isRefreshing
+            {
+                self.refreshControl.endRefreshing()
+            }
+            
+            return
+        }
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

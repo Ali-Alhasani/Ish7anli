@@ -73,7 +73,7 @@ class ActivationViewController: UIViewController {
         spiningActivity.detailsLabel.text = self.message
         
         DataClient.shared.activate(success: {
-            SessionManager.loadSessionManager()
+            //SessionManager.loadSessionManager()
            self.performSegue(withIdentifier: "completeRegistration", sender: self)
      MBProgressHUD.hide(for: self.view, animated: true)
         }, failuer: { (_ error) in

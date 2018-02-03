@@ -33,10 +33,11 @@ class ChatViewController: JSQMessagesViewController {
     var collectionName: String = ""
 
 
-
+     var isFirstRunForObserver = true
+       var isFirstTimeToLoadData = true
     var messages = [JSQMessage]()
 
-
+ var ok,error,alartTitle,loadingtitle,message:String?
     private var photoMessageMap = [String: JSQPhotoMediaItem]()
     private var updatedMessageRefHandle: DatabaseHandle?
     var secondsFromGMT: Int { return 0 }
@@ -85,10 +86,14 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        // self.senderId = ""
+        if MOLHLanguage.isRTL() {
+              self.title = "المحادثات"
+        }else{
+            self.title = "Chat"
+        }
+        self.inputToolbar.contentView.leftBarButtonItem = nil;
 
-        
-        
-     //senderId =
+     senderId = SessionManager.shared.userId
      senderDisplayName = ""
      //   clientName =
         
@@ -97,7 +102,7 @@ class ChatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
 
-       // observeMessages()
+      //  observeMessages()
        // db.collection("Fucking my method")
         // Do any additional setup after loading the view.
     }
@@ -184,6 +189,14 @@ class ChatViewController: JSQMessagesViewController {
             messages.append(message)
         }
     }
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y == 0{
+            self.isFirstTimeToLoadData = false
+            
+            fetchMessages()
+        }
+        
+    }
 
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
 
@@ -196,7 +209,7 @@ class ChatViewController: JSQMessagesViewController {
 //
 //        itemRef.setValue(messageItem) // 3
 //
-//        JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
+       JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
         addNewMessage(senderId: senderId, displayName: senderDisplayName, type: "TEXT", text: text, downloadUrl: nil)
         //finishSendingMessage()
         finishSendingMessage() // 5
@@ -211,6 +224,18 @@ class ChatViewController: JSQMessagesViewController {
             value = ((messages.first?.date.timeIntervalSince1970)! - Double(secondsFromGMT))*1000
             query = query.start(after: [value!])
         }else{
+            let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+            if MOLHLanguage.isRTL() {
+                self.loadingtitle = "جارى الإرسال"
+                self.message = "الرجاء الانتظار"
+            }else{
+                self.loadingtitle = "Sending"
+                self.message = "Please Wait"
+            }
+            spiningActivity.label.text = loadingtitle
+            spiningActivity.detailsLabel.text = message
+            
            // ActivityIndicatorManager.start()
         }
         query.getDocuments(completion: { (snapshot, error) in
@@ -222,7 +247,7 @@ class ChatViewController: JSQMessagesViewController {
                     let dict = document.data()
                     print(dict)
                     guard let message = self.extractMessageData(dictionary: dict) else {
-                       // ActivityIndicatorManager.stop(completionIndicator: .success, title: "Error")
+                      MBProgressHUD.hide(for: self.view, animated: true)
                         return}
                     self.messages.insert(message, at: 0)
                 })
@@ -236,7 +261,7 @@ class ChatViewController: JSQMessagesViewController {
                 }else{
                     self.scrollCollectionViewDown()
                 }
-                //ActivityIndicatorManager.stop(completionIndicator: .success, title: "Success")
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
         })
     }
@@ -255,7 +280,7 @@ class ChatViewController: JSQMessagesViewController {
                 if  docDif.type == .added{
                     guard let message = self.extractMessageData(dictionary: dict) else {return}
                     self.messages.append(message)
-                    //self.scrollCollectionViewDown()
+                    self.scrollCollectionViewDown()
                 }
             })
         }
@@ -287,10 +312,31 @@ class ChatViewController: JSQMessagesViewController {
             guard let text = text else  {return}
             let dict = ["senderId": senderId, "displayName": displayName, "creationDate": dateInSecs ,"type": type, "text": text ] as [String : Any]
             refCollection.addDocument(data: dict)
-           // AddMessageNotification(withText: text, type: "TEXT")
+            AddMessageNotification(withText: text, type: "TEXT")
         }
     }
-    
+    func AddMessageNotification(withText text: String?, type: String){
+        var tempDic:Dictionary<String,Any> = [:]
+        tempDic["ProjectUID"] = "null"
+        if type == "VOICE"{
+            tempDic["Body"] = "New voice record added from "+senderId!
+        }else if type == "IMAGE"{
+            tempDic["Body"] = "New image added from "+senderId!
+        }else if type == "TEXT"{
+            tempDic["Body"] = text!
+        }
+        tempDic["Title"] = "New Message added from "+senderId!
+        tempDic["ReceiverUserName"] = targetId
+        tempDic["Type"] = "2"
+        var data:Dictionary<String, Any> = [:]
+        data["notification"] = tempDic
+        
+//        DataClient.requestAddNotification(data: data, success: {
+//
+//        }, failuer: { (error) in
+//
+//        })
+    }
     func scrollCollectionViewDown(){
         if messages.count > 0{
             collectionView.reloadData()

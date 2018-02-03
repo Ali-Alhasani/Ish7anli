@@ -58,6 +58,19 @@ class CaptainOfferDetailsViewController: UIViewController {
     }
     
     @IBAction func chatAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "toCaptainOfferDetailsChat", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCaptainOfferDetailsChat" {
+            let vc = segue.destination as! ChatViewController
+            vc.senderType = .C
+         
+                vc.targetId = String(DataClient.shared.captianOffer[indexPath!].id!)
+       
+            
+        }
+        
     }
 
     /*

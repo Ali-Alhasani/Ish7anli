@@ -100,7 +100,7 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
             vc.lng = DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderLongitude
             vc.addressName = DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderTitle
             vc.addressDetails = DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderDetails
-            
+        }
             if segue.identifier == "toReceiverActive" {
                 let vc = segue.destination as! CaptainAddressDetailsViewController
                 vc.lat = DataClient.shared.cpatainActiveOrder[indexPath!].addressReceiverLatitude
@@ -108,7 +108,14 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
                 vc.addressName = DataClient.shared.cpatainActiveOrder[indexPath!].addressReceiverTitle
                 vc.addressDetails = DataClient.shared.cpatainActiveOrder[indexPath!].addressReceiverDetails
             }
+        if segue.identifier == "toActiveChat" {
+            let vc = segue.destination as! ChatViewController
+            vc.senderType = .C
+            
+            vc.targetId = String(DataClient.shared.cpatainActiveOrder[indexPath!].customerId!)
+            
         }
+        
         
         
     }

@@ -13,6 +13,8 @@ class CaptianArchiveOrderViewController: UIViewController,UITableViewDelegate,UI
     @IBOutlet weak var tableView: UITableView!
     var indexPath:Int?
      var ok,error,alartTitle,loadingtitle,message:String?
+    var refreshControl = UIRefreshControl()
+    var dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView?.rowHeight = 150
@@ -26,6 +28,12 @@ load()
             alartTitle = "Alert"
             
         }
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.black
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
     }
 
@@ -37,6 +45,26 @@ load()
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
+        
+    }
+    @objc func PullRefresh()
+    {
+        //loading = true
+        DispatchQueue.main.async {
+            let now = NSDate()
+            let updateString = "last update was" + self.dateFormatter.string(from: now as Date)
+            
+            self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+            self.load()
+            
+            if self.refreshControl.isRefreshing
+            {
+                self.refreshControl.endRefreshing()
+            }
+            
+            return
+        }
+        
         
     }
     

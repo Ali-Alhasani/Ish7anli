@@ -93,6 +93,7 @@
 		6B55DA2F2007831C00BB535B /* OldOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B55DA2E2007831C00BB535B /* OldOrderViewController.swift */; };
 		6B55DA322007878900BB535B /* OldOrderWithRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B55DA302007878900BB535B /* OldOrderWithRateTableViewCell.swift */; };
 		6B55DA332007878900BB535B /* OldOrderWithRateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B55DA312007878900BB535B /* OldOrderWithRateTableViewCell.xib */; };
+		6B58CDDD2025126F001E89E2 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58CDDC2025126F001E89E2 /* UIColor.swift */; };
 		6B5D8B9820230F00001EA2BF /* RegistrationDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D8B9720230F00001EA2BF /* RegistrationDataViewController.swift */; };
 		6B5D8B9A20233CED001EA2BF /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B5D8B9920233CEC001EA2BF /* Launch.png */; };
 		6B5D8B9C2023642C001EA2BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D8B9B2023642C001EA2BF /* User.swift */; };
@@ -226,6 +227,7 @@
 		6B55DA2E2007831C00BB535B /* OldOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldOrderViewController.swift; sourceTree = "<group>"; };
 		6B55DA302007878900BB535B /* OldOrderWithRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldOrderWithRateTableViewCell.swift; sourceTree = "<group>"; };
 		6B55DA312007878900BB535B /* OldOrderWithRateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OldOrderWithRateTableViewCell.xib; sourceTree = "<group>"; };
+		6B58CDDC2025126F001E89E2 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		6B5D8B9720230F00001EA2BF /* RegistrationDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataViewController.swift; sourceTree = "<group>"; };
 		6B5D8B9920233CEC001EA2BF /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
 		6B5D8B9B2023642C001EA2BF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder22ViewController.swift; sourceTree = "<group>"; };
 		6BD15AC4202124AA00129DF9 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		6BD15ACB20220D9F00129DF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6BE1F0D42026056B00DC40B0 /* Ish7anli.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ish7anli.entitlements; sourceTree = "<group>"; };
 		6BF631812006E39600D19370 /* IBDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignable.swift; sourceTree = "<group>"; };
 		6BFB0B182020736C00B74C73 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		761556B0A2E39C3EFE2320BF /* Pods_Ish7anli.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Ish7anli.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -383,6 +386,7 @@
 				6B36F047201FAC4C00BDFBA5 /* CustomButton2.swift */,
 				6BFB0B182020736C00B74C73 /* UIImage.swift */,
 				6B4F43C62022620D00A51EEC /* RadioButtonGray.swift */,
+				6B58CDDC2025126F001E89E2 /* UIColor.swift */,
 			);
 			path = "Extension & Helpers";
 			sourceTree = "<group>";
@@ -439,6 +443,7 @@
 		6B9AD2D120063C0B00C4869C /* Ish7anli */ = {
 			isa = PBXGroup;
 			children = (
+				6BE1F0D42026056B00DC40B0 /* Ish7anli.entitlements */,
 				6B5D8B9920233CEC001EA2BF /* Launch.png */,
 				6B6BB45D2010C56000BECA87 /* SessionManager.swift */,
 				6B6BB45F2010C5A500BECA87 /* DataClient.swift */,
@@ -576,6 +581,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -821,6 +831,7 @@
 				6B7C88D7201BC2110096FB87 /* CompleteJoinCaptainViewController.swift in Sources */,
 				6B6BB4622010C5BB00BECA87 /* APIClient.swift in Sources */,
 				6B4F43C12022407100A51EEC /* CaptainProfileViewModel.swift in Sources */,
+				6B58CDDD2025126F001E89E2 /* UIColor.swift in Sources */,
 				6B7C88D1201A10650096FB87 /* OldOrder.swift in Sources */,
 				6B9AD2D320063C0B00C4869C /* AppDelegate.swift in Sources */,
 				6BA8267020155F09002BC608 /* OfferAddressViewModel.swift in Sources */,
@@ -973,13 +984,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Ish7anli/Ish7anli.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 745GS5QSVH;
+				DEVELOPMENT_TEAM = UR9279U935;
 				INFOPLIST_FILE = Ish7anli/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ish7anli/Extension & Helpers/Ish7anli-Bridging-Header.h";
@@ -995,13 +1007,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Ish7anli/Ish7anli.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 745GS5QSVH;
+				DEVELOPMENT_TEAM = UR9279U935;
 				INFOPLIST_FILE = Ish7anli/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ish7anli/Extension & Helpers/Ish7anli-Bridging-Header.h";

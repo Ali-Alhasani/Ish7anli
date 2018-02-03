@@ -49,10 +49,10 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        
         if MOLHLanguage.isRTL() {
           
         }else {
@@ -70,7 +70,7 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setBackButton()
+        self.setBackButton2()
     }
     
 

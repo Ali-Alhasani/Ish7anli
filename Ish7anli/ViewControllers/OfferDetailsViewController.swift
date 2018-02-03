@@ -77,19 +77,26 @@ class OfferDetailsViewController: UIViewController {
     }
     
     @IBAction func chooseAction(_ sender: Any) {
+           if indexPath != nil {
         self.performSegue(withIdentifier: "toAddOffer", sender: self)
+        }
     }
     
     @IBAction func chatAction(_ sender: Any) {
+            if indexPath != nil {
         self.performSegue(withIdentifier: "toChat", sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toChat" {
             let vc = segue.destination as! ChatViewController
             vc.senderType = .U
-            vc.senderId = String(DataClient.shared.offer[indexPath!].id!)
+            if (type == 2) {
+                  vc.targetId = String(DataClient.shared.offerPrice[indexPath!].captainId!)
+            }else {
             vc.targetId = String(DataClient.shared.offer[indexPath!].captainId!)
+            }
             
         }
         

@@ -7,7 +7,7 @@
 //
 
 import UIKit
- var ok,error,alartTitle,loadingtitle,message:String?
+ //
 class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TmpTableViewCellDelegate  {
     
     
@@ -19,7 +19,7 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func didPressChat(sender: UIButton) {
-        
+        self.performSegue(withIdentifier: "toMyOrderChat", sender: self)
     }
     
     
@@ -44,6 +44,9 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
    self.performSegue(withIdentifier: "toMyOrderDetails", sender: self)
     }
     var index = 0
+    var ok,error,alartTitle,loadingtitle,message:String?
+    var refreshControl = UIRefreshControl()
+    var dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
@@ -52,16 +55,43 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         if MOLHLanguage.isRTL() {
             
-            ok = "موافق"
-            alartTitle = "تنبيه"
+            self.ok = "موافق"
+            self.alartTitle = "تنبيه"
         }else{
               arrowImage.image = UIImage(named: "backBlueLeft")
-            ok = "Ok"
-            alartTitle = "Alert"
+            self.ok = "Ok"
+            self.alartTitle = "Alert"
             
         }
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.black
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
+        self.tabelView.addSubview(refreshControl)
      
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func PullRefresh()
+    {
+        //loading = true
+        DispatchQueue.main.async {
+            let now = NSDate()
+            let updateString = "last update was" + self.dateFormatter.string(from: now as Date)
+            
+            self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+            self.load()
+            
+            if self.refreshControl.isRefreshing
+            {
+                self.refreshControl.endRefreshing()
+            }
+            
+            return
+        }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,6 +128,7 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         cell.setData(TmpTableViewCellData(price: DataClient.shared.CustomerOrder[index].bid[indexPath.row].price!, image: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainImage!, name: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainName!, stars: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainRate))
         cell.cellDelegate = self
         cell.chooseButton.tag = indexPath.row
+        cell.chatButton.tag = indexPath.row
         return cell
     }
     
@@ -153,8 +184,8 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
             print(DataClient.shared.CustomerOrder.count)
         }) { (_ error) in
          
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
@@ -165,8 +196,8 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         DataClient.shared.chooseCaptain(success: {
             self.tabelView.reloadData()
         }, failuer: { (_ error) in
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
             
         }, customerOfferId: customerOfferId, captainId: captainId)
@@ -185,6 +216,12 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if segue.identifier == "toMyOrderDetails" {
             let vc = segue.destination as! OrderDetailsViewController
             vc.indexPath = self.cellIsSelected?.row
+        }
+        if segue.identifier == "toMyOrderChat" {
+            let vc = segue.destination as! ChatViewController
+            vc.senderType = .U
+            vc.targetId = String(DataClient.shared.CustomerOrder[cellIsSelected!.row].captainId!)
+            
         }
         
     }

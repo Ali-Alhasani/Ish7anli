@@ -17,12 +17,23 @@ class JoinCaptainViewController: UIViewController {
     @IBOutlet weak var confirmPasswordText: UITextField!
     var ok,error,alartTitle,loadingtitle,message:String?
 
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.backgroundColor = .clear
+        
+        
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        self.view.backgroundColor = UIColor(rgb: 0xf7f7f7)
+
+
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//      self.navigationController?.navigationBar.shadowImage = UIImage()
+//    self.navigationController?.navigationBar.isTranslucent = true
+//    navigationController?.navigationBar.backgroundColor = .clear
 
         
    
@@ -38,14 +49,15 @@ class JoinCaptainViewController: UIViewController {
 //          fullNameText.layer.shadowRadius = 0.0
         // Do any additional setup after loading the view.
     }
-
+    
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setBackButton()
+        self.setBackButton2()
     }
     
     @IBAction func continueAction(_ sender: Any) {

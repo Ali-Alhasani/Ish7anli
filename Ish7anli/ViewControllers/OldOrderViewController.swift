@@ -12,6 +12,9 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     
     
+    func didPressChatButton(sender: UIButton) {
+        self.performSegue(withIdentifier: "toOldOrderChat", sender: self)
+    }
     
     
     func didPressRateButton(sender: UIButton) {
@@ -21,10 +24,18 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var cellIsSelected: IndexPath?
     var indexPath:Int?
     @IBOutlet weak var tabelView: UITableView!
+    var refreshControl = UIRefreshControl()
+    var dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         load()
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.black
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
+        self.tabelView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
     }
 
@@ -37,6 +48,27 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
+        
+    }
+    
+    @objc func PullRefresh()
+    {
+        //loading = true
+        DispatchQueue.main.async {
+            let now = NSDate()
+            let updateString = "last update was" + self.dateFormatter.string(from: now as Date)
+            
+            self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+            self.load()
+            
+            if self.refreshControl.isRefreshing
+            {
+                self.refreshControl.endRefreshing()
+            }
+            
+            return
+        }
+        
         
     }
     
@@ -122,6 +154,12 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if segue.identifier == "toFinishedDetails" {
             let vc = segue.destination as! OrderDetails2ViewController
             vc.indexPath = self.cellIsSelected?.row
+        }
+        if segue.identifier == "toOldOrderChat" {
+            let vc = segue.destination as! ChatViewController
+            vc.senderType = .U
+            vc.targetId = String(DataClient.shared.lastOffer[(self.cellIsSelected?.row)!].captainId!)
+            
         }
       
     }

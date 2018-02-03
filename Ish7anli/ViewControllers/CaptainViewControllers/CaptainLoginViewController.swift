@@ -26,8 +26,9 @@ class CaptainLoginViewController: UIViewController {
        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
        self.navigationController?.navigationBar.shadowImage = UIImage()
      self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
         
-        passwordText.setBottomBorder()
+       // passwordText.setBottomBorder()
 //        if MOLHLanguage.isRTL() {
 //             backButton.setBackgroundImage(UIImage(named: "backNav"), for: UIControlState.normal)
 //        }else {

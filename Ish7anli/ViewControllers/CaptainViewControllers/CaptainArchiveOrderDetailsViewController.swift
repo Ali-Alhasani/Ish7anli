@@ -95,7 +95,7 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
             vc.lng = DataClient.shared.captianArchiveOrder[indexPath!].addressSenderLongitude
             vc.addressName = DataClient.shared.captianArchiveOrder[indexPath!].addressSenderTitle
             vc.addressDetails = DataClient.shared.captianArchiveOrder[indexPath!].addressSenderDetails
-            
+        }
             if segue.identifier == "toReceiverArchive" {
                 let vc = segue.destination as! CaptainAddressDetailsViewController
                 vc.lat = DataClient.shared.captianArchiveOrder[indexPath!].addressReceiverLatitude
@@ -103,7 +103,14 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
                 vc.addressName = DataClient.shared.captianArchiveOrder[indexPath!].addressReceiverTitle
                 vc.addressDetails = DataClient.shared.captianArchiveOrder[indexPath!].addressReceiverDetails
             }
+        if segue.identifier == "toArchiveChat" {
+            let vc = segue.destination as! ChatViewController
+            vc.senderType = .C
+            
+            vc.targetId = String(DataClient.shared.captianArchiveOrder[indexPath!].customerId!)
+            
         }
+        
         
         
     }

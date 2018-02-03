@@ -1,23 +1,25 @@
 //
-//  CaptainOfferViewController.swift
+//  NewOrder22ViewController.swift
 //  Ish7anli
 //
-//  Created by Ali Al-Hassany on 1/27/18.
+//  Created by Ali Al-Hassany on 1/30/18.
 //  Copyright © 2018 Ali Al-Hassany. All rights reserved.
 //
 
 import UIKit
-
-class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+import XLPagerTabStrip
+class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollectionViewDelegate, UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     var indexPath:Int?
-    var ok,error,alartTitle,loadingtitle,message:String?
+      var itemInfo: IndicatorInfo = ""
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.tableView?.rowHeight = UITableViewAutomaticDimension
+      
+        
         if MOLHLanguage.isRTL() {
             ok = "موافق"
             alartTitle = "تنبيه"
@@ -26,15 +28,15 @@ class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UIC
             alartTitle = "Alert"
             
         }
-        load()
+        // Do any additional setup after loading the view.
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         
         refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
         self.collectionView.addSubview(refreshControl)
-        // Do any additional setup after loading the view.
     }
+    
     @objc func PullRefresh()
     {
         //loading = true
@@ -55,69 +57,84 @@ class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UIC
         
         
     }
-
+    
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        if MOLHLanguage.isRTL() {
+            itemInfo = "الاقل سعراً"
+        }else {
+            itemInfo = "Lowest Price"
+        }
+        
+        return itemInfo
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
+        self.collectionView.reloadData()
         
     }
     
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.collectionView.frame.width / 2.05)  , height: self.collectionView.frame.height * 0.4)
+        return CGSize(width: self.collectionView.frame.width * 0.485 , height: self.collectionView.frame.height * 0.4)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return  DataClient.shared.captianOffer.count
+        return  DataClient.shared.offerPrice.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         //
-        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "NewOrder2",
+        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "NewOrder",
                                                        for: indexPath) as! NewOrderCollectionViewCell
-        if (DataClient.shared.captianOffer.count != 0 ){
-                cell.setData(NewOrderCollectionViewData(price: DataClient.shared.captianOffer[indexPath.row].price!, image: DataClient.shared.captianOffer[indexPath.row].captainImage!, name: DataClient.shared.captianOffer[indexPath.row].captainName!, time: DataClient.shared.captianOffer[indexPath.row].goTime!, day: "", date: DataClient.shared.captianOffer[indexPath.row].goDate!, cityFrom: DataClient.shared.captianOffer[indexPath.row].cityNameFrom!, cityTo: DataClient.shared.captianOffer[indexPath.row].cityNameTo!, stars: DataClient.shared.captianOffer[indexPath.row].captainRate!))
+        if (DataClient.shared.offerPrice.count != 0 ){
+            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.offerPrice[indexPath.row].price!, image: DataClient.shared.offerPrice[indexPath.row].captainImage!, name: DataClient.shared.offerPrice[indexPath.row].captainName!, time: DataClient.shared.offerPrice[indexPath.row].goTime!, day: "", date: DataClient.shared.offerPrice[indexPath.row].goDate!, cityFrom: DataClient.shared.offerPrice[indexPath.row].cityNameFrom!, cityTo: DataClient.shared.offerPrice[indexPath.row].cityNameTo!, stars: DataClient.shared.offerPrice[indexPath.row].captainRate!))
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         self.indexPath = indexPath.row
-        self.performSegue(withIdentifier: "toOfferDetailsCaptain", sender: self)
+        self.performSegue(withIdentifier: "toOfferDetails2", sender: self)
         
     }
+    
+    
     func load(){
-        DataClient.shared.getCaptianOffer(success: {
-            self.collectionView.reloadData()
+        DataClient.shared.getPriceOffer(success: {
+           // self.collectionView.reloadData()
         }) { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
     
+    @IBAction func unwindFromAddVC2(_ sender: UIStoryboardSegue){
+        
+    }    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toOfferDetailsCaptain" {
-            let vc = segue.destination as! CaptainOfferDetailsViewController
+        if segue.identifier == "toOfferDetails2" {
+            let vc = segue.destination as! OfferDetailsViewController
             vc.indexPath = self.indexPath
+            vc.type = 2 
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

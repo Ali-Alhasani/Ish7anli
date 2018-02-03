@@ -19,26 +19,49 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
     
     @IBOutlet weak var accountNumberText: UITextField!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     var itemPicker: UIPickerView! = UIPickerView()
     var itemPicker2: UIPickerView! = UIPickerView()
+    
+    var DatePicker: UIPickerView! = UIPickerView()
+    var DatePicker2: UIPickerView! = UIPickerView()
+    
+    var timePicker: UIPickerView! = UIPickerView()
+    var timePicker2: UIPickerView! = UIPickerView()
     var tmp:Int?
     var tmp2:Int?
     var indexPath:Int?
     var ok,error,alartTitle,loadingtitle,message:String?
 
-    @IBOutlet weak var backButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if MOLHLanguage.isRTL() {
-            backButton.setBackgroundImage(UIImage(named: "backNav"), for: UIControlState.normal)
-        }else {
-            backButton.setBackgroundImage(UIImage(named: "leftback"), for: UIControlState.normal)
-            
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
         }
+        self.view.backgroundColor = UIColor(rgb: 0xf7f7f7)
+        
         self.CityToText.delegate = self
         self.cityFromText.delegate = self
+        self.DateFromText.delegate = self
+        self.DateToText.delegate = self
+        self.hourFromText.delegate = self
+        self.hourToText.delegate = self
         load()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        //self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        self.navigationController?.navigationBar.isTranslucent = false
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,8 +117,63 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
             self.itemPicker2!.dataSource = self
             self.CityToText.inputView = self.itemPicker2
         }
+        if(textField == DateFromText){
+            let datePicker = UIDatePicker()
+            datePicker.datePickerMode = UIDatePickerMode.date
+            textField.inputView = datePicker
+            datePicker.addTarget(self, action: #selector(self.datePickerchanged(sender:)), for: .valueChanged)
+        }
+        if(textField == DateToText){
+            let datePicker = UIDatePicker()
+            datePicker.datePickerMode = UIDatePickerMode.date
+            textField.inputView = datePicker
+            datePicker.addTarget(self, action: #selector(self.datePickerchanged2(sender:)), for: .valueChanged)
+        }
+        if(textField == hourFromText){
+            let datePicker = UIDatePicker()
+            datePicker.datePickerMode = UIDatePickerMode.time
+            textField.inputView = datePicker
+            datePicker.addTarget(self, action: #selector(self.startTimeDiveChanged), for: .valueChanged)
+
+           // hourToText.text = datePicker.date
+           // datePicker.addTarget(self, action: #selector(self.datePickerchanged(sender:)), for: .valueChanged)
+        }
+        if(textField == hourToText){
+            let datePicker = UIDatePicker()
+            datePicker.datePickerMode = UIDatePickerMode.time
+            textField.inputView = datePicker
+            datePicker.addTarget(self, action: #selector(self.endTimeDiveChanged), for: .valueChanged)
+
+            //datePicker.addTarget(self, action: #selector(self.datePickerchanged2(sender:)), for: .valueChanged)
+        }
         
     }
+    @objc func datePickerchanged(sender: UIDatePicker) {
+        DateFromText.text = format().string(from: sender.date)
+    }
+    @objc func datePickerchanged2(sender: UIDatePicker) {
+        DateToText.text = format().string(from: sender.date)
+    }
+   @objc func startTimeDiveChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        hourFromText.text = formatter.string(from: sender.date)
+    }
+    @objc func endTimeDiveChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        hourToText.text = formatter.string(from: sender.date)
+    }
+    
+    func format() -> DateFormatter{
+        let format = DateFormatter()
+        format.locale = NSLocale(localeIdentifier: "ja_JP") as Locale!
+        format.dateFormat = "yyyy-MM-dd"
+        return format
+    }
+    
+    
+    
 
     @IBAction func addAction(_ sender: Any) {
         DataClient.shared.captainAddOffer(success: {

@@ -90,6 +90,7 @@ class DataClient: NSObject {
             print(responseData)
             let activationCode = responseData["activated_code"] as? String ?? ""
             SessionManager.shared.phoneNumber = phone
+            SessionManager.shared.userId = String(responseData["id"] as? Int ?? 0)
             
             success(activationCode)
         }) { (error) in
@@ -273,13 +274,15 @@ class DataClient: NSObject {
     
     func loginCaptain(password:String,success: @escaping () ->Void, failuer: @escaping (_ error: LLError , _ userStatus:String) -> Void) {
         SessionManager.loadPhoneNumber()
-        APIClient.sendRequest2(path: "captain_login", httpMethod: .post, isLangRequired: false , parameters:["phone":  "059250295021","password":password], success: { (response) in
+        APIClient.sendRequest2(path: "captain_login", httpMethod: .post, isLangRequired: false , parameters:["phone":  "0597812620","password":password], success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
             let activationCode = responseData["activated_code"] as? String ?? ""
             SessionManager.shared.token = (responseData["token_type"] as? String ?? "") + " " + (responseData["access_token"] as? String ?? "")
             SessionManager.shared.isUserLogged = false
             SessionManager.shared.isCaptainLogged = true
+            SessionManager.shared.userId = String(responseData["id"] as? Int ?? 0)
+
             //          SessionManager.shared.currentUser = DataClient.shared.user
             SessionManager.saveSessionManager()
             

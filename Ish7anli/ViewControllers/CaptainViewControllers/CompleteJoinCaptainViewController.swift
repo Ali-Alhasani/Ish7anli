@@ -29,13 +29,18 @@ class CompleteJoinCaptainViewController: UIViewController {
     @IBOutlet weak var licenceImageButton: UIButton!
     @IBOutlet weak var carFormButton: UIButton!
     @IBOutlet weak var contractButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
 
-        accountNumberText.setBottomBorder()
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        self.view.backgroundColor = UIColor(rgb: 0xf7f7f7)
+
+
         // Do any additional setup after loading the view.
         
         picker.allowsEditing = false
@@ -59,7 +64,7 @@ class CompleteJoinCaptainViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setBackButton()
+        self.setBackButton2()
     }
     
     

@@ -69,6 +69,7 @@ class CpatainNewOrderDetailsViewController: UIViewController {
     }
     
     @IBAction func chatAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "toNewChat", sender: self)
     }
     
     
@@ -91,7 +92,7 @@ class CpatainNewOrderDetailsViewController: UIViewController {
             vc.lng = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderLongitude
             vc.addressName = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderTitle
             vc.addressDetails = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderDetails
-            
+        }
             if segue.identifier == "toReceiverNew" {
                 let vc = segue.destination as! CaptainAddressDetailsViewController
                 vc.lat = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderLatitude
@@ -99,7 +100,15 @@ class CpatainNewOrderDetailsViewController: UIViewController {
                 vc.addressName = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderTitle
                 vc.addressDetails = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderDetails
             }
+        if segue.identifier == "toNewChat" {
+            let vc = segue.destination as! ChatViewController
+            vc.senderType = .C
+
+                vc.targetId = String(DataClient.shared.offer[indexPath!].captainId!)
+          
+            
         }
+        
         
         
     }

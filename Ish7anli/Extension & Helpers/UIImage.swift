@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 extension UIImage {
     func compressTo(_ expectedSizeInMb:Int) -> Data? {

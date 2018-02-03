@@ -15,6 +15,7 @@ class SessionManager: NSObject {
     var phoneNumber:String = ""
     var isUserLogged: Bool = false
     var isCaptainLogged:Bool = false
+    var userId:String = ""
     //var currentUser: User!
     
     
@@ -27,8 +28,9 @@ class SessionManager: NSObject {
     
     class func loadSessionManager(){
         guard let tempDic = UserDefaults.standard.value(forKey: "SessionManager") as? Dictionary<String, Any> else {return}
-        
+          guard let userID = UserDefaults.standard.value(forKey: "userId") as? String else {return}
         SessionManager.shared.token = tempDic["token"] as! String
+        SessionManager.shared.userId = userID
         if let boolValue = tempDic["isUserLogged"] as? Bool {
             SessionManager.shared.isUserLogged = boolValue
             if boolValue{
@@ -62,12 +64,15 @@ class SessionManager: NSObject {
         tempDic["token"] = SessionManager.shared.token
         tempDic["isUserLogged"] = SessionManager.shared.isUserLogged
         tempDic["isCaptainLogged"] = SessionManager.shared.isCaptainLogged
-
+        let userID = SessionManager.shared.userId
         let phoneNumber = SessionManager.shared.phoneNumber
      //   guard let currentUser = SessionManager.shared.currentUser else {return}
         // UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: currentUser), forKey: "User")
         UserDefaults.standard.set(tempDic, forKey: "SessionManager")
         UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
+        UserDefaults.standard.set(userID, forKey: "userId")
+        
+        
 
         
     }

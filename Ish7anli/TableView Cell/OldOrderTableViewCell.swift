@@ -9,6 +9,7 @@
 import UIKit
 protocol OldOrderTableViewDelegate : class {
     func didPressNonFinishedDetailsButton(sender: UIButton)
+    func didPressChatButton(sender:UIButton)
 }
 struct OldOrderTableViewData {
     
@@ -81,4 +82,7 @@ class OldOrderTableViewCell: UITableViewCell {
         cellDelegate?.didPressNonFinishedDetailsButton(sender: sender as! UIButton)
     }
     
+    @IBAction func chatAction(_ sender: Any) {
+        cellDelegate?.didPressChatButton(sender: sender as! UIButton)
+    }
 }

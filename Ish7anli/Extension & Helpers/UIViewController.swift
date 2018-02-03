@@ -28,6 +28,7 @@ extension UIViewController {
         self.slideMenuController()?.addRightGestures()
     }
     
+
     
    
     func removeNavigationBarItem() {
@@ -39,6 +40,12 @@ extension UIViewController {
     
     func setBackButton(){
         let yourBackImage = UIImage(named: "backNav")
+        navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    func setBackButton2(){
+        let yourBackImage = UIImage(named: "leftback")
         navigationController?.navigationBar.backIndicatorImage = yourBackImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
