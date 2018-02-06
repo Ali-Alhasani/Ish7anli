@@ -41,7 +41,9 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     @IBAction func tapGestureAction(_ sender: Any) {
-   self.performSegue(withIdentifier: "toMyOrderDetails", sender: self)
+        if (DataClient.shared.CustomerOrder.count != 0) {
+   self.performSegue(withIdentifier: "toMyOrderDetails2", sender: self)
+        }
     }
     var index = 0
     var ok,error,alartTitle,loadingtitle,message:String?
@@ -52,24 +54,19 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         load()
         nextButton.isEnabled = false
         previousButton.isEnabled = false
-        
-        if MOLHLanguage.isRTL() {
-            
-            self.ok = "موافق"
-            self.alartTitle = "تنبيه"
-        }else{
-              arrowImage.image = UIImage(named: "backBlueLeft")
-            self.ok = "Ok"
-            self.alartTitle = "Alert"
-            
-        }
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         
         refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
         self.tabelView.addSubview(refreshControl)
-     
+        if MOLHLanguage.isRTL() {
+            nextButton.setBackgroundImage(UIImage(named: "left small back"), for: UIControlState.normal)
+            previousButton.setBackgroundImage(UIImage(named: "right small back"), for: UIControlState.normal)
+          
+        }else {
+              arrowImage.image = UIImage(named:"backBlueLeft")
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -184,8 +181,8 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
             print(DataClient.shared.CustomerOrder.count)
         }) { (_ error) in
          
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
@@ -196,8 +193,8 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         DataClient.shared.chooseCaptain(success: {
             self.tabelView.reloadData()
         }, failuer: { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
             
         }, customerOfferId: customerOfferId, captainId: captainId)
@@ -213,6 +210,10 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMyOrderDetails2" {
+            let vc = segue.destination as! OrderDetailsViewController
+            vc.indexPath = index
+        }
         if segue.identifier == "toMyOrderDetails" {
             let vc = segue.destination as! OrderDetailsViewController
             vc.indexPath = self.cellIsSelected?.row

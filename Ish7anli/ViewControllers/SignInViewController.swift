@@ -7,25 +7,14 @@
 //
 
 import UIKit
-var ok,error,alartTitle,loadingtitle,message:String?
 class SignInViewController: UIViewController {
     
     @IBOutlet weak var phoneNumberText: UITextField!
     var activationCode:String?
-    var ok,error,alartTitle,loadingtitle,message:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if MOLHLanguage.isRTL() {
-            self.error =  "يجب أن تقوم بإدخال رقم الهاتف المحمول"
-            self.ok = "موافق"
-            self.alartTitle = "تنبيه"
-        }else{
-            self.error = "You should enter a valid mobile number"
-            self.ok = "Ok"
-            self.alartTitle = "Alert"
-            
-        }
+
         // Do any additional setup after loading the view.
     }
     
@@ -36,24 +25,24 @@ class SignInViewController: UIViewController {
     
     @IBAction func sginInAction(_ sender: Any) {
         if (phoneNumberText.text!.isEmpty) {
-            //var ok,error,title:String?
-      
-            let alert = UIAlertController(title: self.alartTitle, message:self.error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            var error:String?
+            if MOLHLanguage.isRTL() {
+               error =  "يجب أن تقوم بإدخال رقم الهاتف المحمول"
+                
+            }else{
+                error = "You should enter a valid mobile number"
+                
+            }
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }else {
             
             let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
             
-            if MOLHLanguage.isRTL() {
-                self.loadingtitle = "جارى الإرسال"
-                self.message = "الرجاء الانتظار"
-            }else{
-                self.loadingtitle = "Sending"
-                self.message = "Please Wait"
-            }
-            spiningActivity.label.text = loadingtitle
-            spiningActivity.detailsLabel.text = message
+           
+            spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+            spiningActivity.detailsLabel.text = ErrorHelper.shared.message
             
             load()
         }
@@ -68,8 +57,8 @@ class SignInViewController: UIViewController {
             
         }) { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            let alert = UIAlertController(title: self.alartTitle!, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok!, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }

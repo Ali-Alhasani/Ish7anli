@@ -8,28 +8,22 @@
 
 import UIKit
 
-class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,ActiveOrderTableViewDelegate {
+ 
     @IBOutlet weak var tableView: UITableView!
     var indexPath:Int?
-     var ok,error,alartTitle,loadingtitle,message:String?
+   
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
     
 
-load()
+      load()
        
 
         self.tableView?.rowHeight = 230
-        if MOLHLanguage.isRTL() {
-            ok = "موافق"
-            alartTitle = "تنبيه"
-        }else{
-            ok = "Ok"
-            alartTitle = "Alert"
-            
-        }
+  
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -58,6 +52,14 @@ load()
         
         
     }
+    func didPressNonFinishedDetailsButton(sender: UIButton) {
+        if DataClient.shared.cpatainActiveOrder[sender.tag].status == 1 {
+            recevied(indexPath: sender.tag)
+        }else {
+            delivery(indexPath: sender.tag)
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -77,19 +79,53 @@ load()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
-        cell.selectionStyle = .none
-        cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressReceiverCity!))
+//        let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
+        if DataClient.shared.cpatainActiveOrder.count != 0 {
         if (DataClient.shared.cpatainActiveOrder[indexPath.row].status == 1 ) {
+               let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
+            cell.selectionStyle = .none
+            cell.cellDelegate = self
             cell.actionButton.setTitle("Recevied Done", for: UIControlState.normal)
-            //cell.actionButton.backgroundColor = UIColor(named: "niceBlue")
-            cell.actionButton.backgroundColor = UIColor.red
+            cell.middlePointLabel.backgroundColor = UIColor.white
+            cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressReceiverCity!, type: 1))
+
+           // cell.actionButton.backgroundColor = UIColor.red
+           cell.actionButton.tag = indexPath.row
             //cell.isChecked = true
+            return cell
         }else if (DataClient.shared.cpatainActiveOrder[indexPath.row].status == 2){
-               cell.isChecked = false
+               let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
+              // cell.isChecked = false
+            cell.selectionStyle = .none
+            cell.cellDelegate = self
+            cell.actionButton.tag = indexPath.row
+            
+           // cell.actionButton.backgroundColor = UIColor(named: "niceBlue")
+            cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressReceiverCity!, type: 2))
                cell.actionButton.setTitle("Delivery Done", for: UIControlState.normal)
+            cell.backgroundColor = .black
+            return cell
         }
-        return cell
+        }
+        return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView,
+                   willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath){
+       
+            if (DataClient.shared.cpatainActiveOrder[indexPath.row].status == 1 ) {
+                let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
+                cell.actionButton.setTitle("Recevied Done", for: UIControlState.normal)
+                cell.middlePointLabel.backgroundColor = UIColor.white
+ 
+
+            }else if (DataClient.shared.cpatainActiveOrder[indexPath.row].status == 2){
+                let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
+                // cell.isChecked = false
+                cell.actionButton.setTitle("Delivery Done", for: UIControlState.normal)
+                cell.backgroundColor = .black
+            }
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
@@ -106,8 +142,8 @@ load()
         DataClient.shared.getActiveOrder(success: {
             self.tableView.reloadData()
         }) { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title:ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
@@ -117,6 +153,21 @@ load()
             let vc = segue.destination as! CaptainActiveOrderDetailsViewController
             vc.indexPath = self.indexPath
         }
+    }
+    
+    func recevied(indexPath:Int){
+        DataClient.shared.receivedOffer(success: {
+            print("recevied done")
+        }, failuer: { (_ error) in
+            
+        }, customerOfferId: DataClient.shared.cpatainActiveOrder[indexPath].id!)
+    }
+    func delivery(indexPath:Int){
+        DataClient.shared.deliveryOffer(success: {
+                      print("delivery done")
+        }, failuer: { (_ error) in
+            
+        }, customerOfferId: DataClient.shared.cpatainActiveOrder[indexPath].id!)
     }
     
 

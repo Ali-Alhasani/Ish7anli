@@ -12,20 +12,12 @@ class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UIC
     
     @IBOutlet weak var collectionView: UICollectionView!
     var indexPath:Int?
-    var ok,error,alartTitle,loadingtitle,message:String?
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
        // self.tableView?.rowHeight = UITableViewAutomaticDimension
-        if MOLHLanguage.isRTL() {
-            ok = "موافق"
-            alartTitle = "تنبيه"
-        }else{
-            ok = "Ok"
-            alartTitle = "Alert"
-            
-        }
+ 
         load()
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
@@ -69,7 +61,7 @@ class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UIC
     
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (self.collectionView.frame.width / 2.05)  , height: self.collectionView.frame.height * 0.4)
+        return CGSize(width: (self.collectionView.frame.width / 2.05)  , height: self.collectionView.frame.height * 0.48)
         
     }
     
@@ -97,8 +89,8 @@ class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UIC
         DataClient.shared.getCaptianOffer(success: {
             self.collectionView.reloadData()
         }) { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }

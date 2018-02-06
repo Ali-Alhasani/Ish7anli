@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
         
         Messaging.messaging().delegate = self
         
-        
+        ErrorHelper.loadErrorHelper()
         application.registerForRemoteNotifications()
         registerForPushNotifications()
         return true

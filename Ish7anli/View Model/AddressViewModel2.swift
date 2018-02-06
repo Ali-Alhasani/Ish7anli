@@ -72,7 +72,7 @@ class AddressViewModel2: NSObject {
         newItems.append(addressItem)
         
         if MOLHLanguage.isRTL() {
-            textPalceHolder2 = ["من الباب إلى الباب", "رقم الجوال"]
+            textPalceHolder2 = ["الاسم","رقم الجوال"]
         }
         let addAddressItem = AddressViewMode2AddAddress()
         newItems.append(addAddressItem)
@@ -117,8 +117,9 @@ extension AddressViewModel2: UITableViewDataSource,AddAddressTableViewCellDelega
         case .item1:
             delegate?.apply2()
             
-        case .item2:
-            delegate?.apply2()
+        case .weghit:
+        delegate?.apply2()
+
         case .addressRecevier:
             delegate?.apply2()
         }

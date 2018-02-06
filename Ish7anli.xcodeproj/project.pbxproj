@@ -29,12 +29,11 @@
 		6B18DF082010B81B00C73BA2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DF072010B81B00C73BA2 /* SettingsViewController.swift */; };
 		6B18DF0A2010BBD500C73BA2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DF092010BBD500C73BA2 /* ProfileModel.swift */; };
 		6B24DA40201FDBD100D5B619 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B24DA3E201FDBD100D5B619 /* ProfileViewController.swift */; };
-		6B24DA41201FDBD100D5B619 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B24DA3F201FDBD100D5B619 /* ProfileViewController.xib */; };
 		6B271D29201C85440030BBF4 /* CaptainCustomerOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */; };
 		6B271D2B201C87EC0030BBF4 /* CpatainNewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */; };
 		6B271D2D201C94E20030BBF4 /* CpatainActiveOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D2C201C94E20030BBF4 /* CpatainActiveOrderViewController.swift */; };
 		6B271D2F201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D2E201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift */; };
-		6B271D31201C9BF00030BBF4 /* CaptainOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D30201C9BF00030BBF4 /* CaptainOfferViewController.swift */; };
+		6B271D31201C9BF00030BBF4 /* CaptainOfferViewRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D30201C9BF00030BBF4 /* CaptainOfferViewRootController.swift */; };
 		6B271D33201D18C80030BBF4 /* CaptainSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D32201D18C80030BBF4 /* CaptainSettingsViewController.swift */; };
 		6B271D35201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D34201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift */; };
 		6B271D37201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D36201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift */; };
@@ -46,13 +45,19 @@
 		6B2723092020B146003A0125 /* UnderRreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2723082020B146003A0125 /* UnderRreviewViewController.swift */; };
 		6B27230C2020BB61003A0125 /* CaptainTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B27230A2020BB61003A0125 /* CaptainTypeCollectionViewCell.swift */; };
 		6B36F03F201E983B00BDFBA5 /* AddPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36F03D201E983B00BDFBA5 /* AddPriceViewController.swift */; };
-		6B36F040201E983B00BDFBA5 /* AddPriceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B36F03E201E983B00BDFBA5 /* AddPriceViewController.xib */; };
-		6B36F042201E998F00BDFBA5 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B36F041201E998F00BDFBA5 /* RatingViewController.xib */; };
 		6B36F044201E999F00BDFBA5 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36F043201E999F00BDFBA5 /* RatingViewController.swift */; };
 		6B36F046201FA6C900BDFBA5 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36F045201FA6C900BDFBA5 /* CustomButton.swift */; };
 		6B36F048201FAC4C00BDFBA5 /* CustomButton2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36F047201FAC4C00BDFBA5 /* CustomButton2.swift */; };
 		6B36F04B201FB29800BDFBA5 /* NewPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B36F049201FB29800BDFBA5 /* NewPhoneNumberViewController.swift */; };
-		6B36F04C201FB29800BDFBA5 /* NewPhoneNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B36F04A201FB29800BDFBA5 /* NewPhoneNumberViewController.xib */; };
+		6B3892FA2027109700E669B9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3892F92027109700E669B9 /* Notifications.swift */; };
+		6B3892FD2027217E00E669B9 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3892FB2027217E00E669B9 /* NotificationsTableViewCell.swift */; };
+		6B3892FE2027217E00E669B9 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3892FC2027217E00E669B9 /* NotificationsTableViewCell.xib */; };
+		6B4D52F92029F6BC003A2C48 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */; };
+		6B4ED007202794AA00FC5934 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4ED006202794AA00FC5934 /* ErrorHelper.swift */; };
+		6B4ED0082027C48100FC5934 /* AddPriceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4ED00A2027C48100FC5934 /* AddPriceViewController.xib */; };
+		6B4ED00D2027C4B200FC5934 /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4ED00F2027C4B200FC5934 /* RatingViewController.xib */; };
+		6B4ED0122027C4D300FC5934 /* NewPhoneNumberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4ED0142027C4D300FC5934 /* NewPhoneNumberViewController.xib */; };
+		6B4ED0172027C53000FC5934 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4ED0192027C53000FC5934 /* ProfileViewController.xib */; };
 		6B4F43BF2022405300A51EEC /* CaptainAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F43BE2022405300A51EEC /* CaptainAddressViewController.swift */; };
 		6B4F43C12022407100A51EEC /* CaptainProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F43C02022407100A51EEC /* CaptainProfileViewModel.swift */; };
 		6B4F43C32022445300A51EEC /* CaptainAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4F43C22022445300A51EEC /* CaptainAddAddressViewController.swift */; };
@@ -97,6 +102,9 @@
 		6B5D8B9820230F00001EA2BF /* RegistrationDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D8B9720230F00001EA2BF /* RegistrationDataViewController.swift */; };
 		6B5D8B9A20233CED001EA2BF /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B5D8B9920233CEC001EA2BF /* Launch.png */; };
 		6B5D8B9C2023642C001EA2BF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5D8B9B2023642C001EA2BF /* User.swift */; };
+		6B69AEB120293A35000F3695 /* CaptainOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69AEB020293A35000F3695 /* CaptainOfferViewController.swift */; };
+		6B69AEB320293B17000F3695 /* CaptainOfferViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69AEB220293B17000F3695 /* CaptainOfferViewController2.swift */; };
+		6B69AEB52029D34F000F3695 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69AEB42029D34F000F3695 /* File.swift */; };
 		6B6BB45E2010C56000BECA87 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB45D2010C56000BECA87 /* SessionManager.swift */; };
 		6B6BB4602010C5A500BECA87 /* DataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB45F2010C5A500BECA87 /* DataClient.swift */; };
 		6B6BB4622010C5BB00BECA87 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB4612010C5BB00BECA87 /* APIClient.swift */; };
@@ -159,12 +167,11 @@
 		6B18DF072010B81B00C73BA2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6B18DF092010BBD500C73BA2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		6B24DA3E201FDBD100D5B619 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		6B24DA3F201FDBD100D5B619 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainCustomerOffer.swift; sourceTree = "<group>"; };
 		6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpatainNewOrderViewController.swift; sourceTree = "<group>"; };
 		6B271D2C201C94E20030BBF4 /* CpatainActiveOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpatainActiveOrderViewController.swift; sourceTree = "<group>"; };
 		6B271D2E201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptianArchiveOrderViewController.swift; sourceTree = "<group>"; };
-		6B271D30201C9BF00030BBF4 /* CaptainOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainOfferViewController.swift; sourceTree = "<group>"; };
+		6B271D30201C9BF00030BBF4 /* CaptainOfferViewRootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainOfferViewRootController.swift; sourceTree = "<group>"; };
 		6B271D32201D18C80030BBF4 /* CaptainSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainSettingsViewController.swift; sourceTree = "<group>"; };
 		6B271D34201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainOfferDetailsViewController.swift; sourceTree = "<group>"; };
 		6B271D36201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpatainNewOrderDetailsViewController.swift; sourceTree = "<group>"; };
@@ -176,13 +183,23 @@
 		6B2723082020B146003A0125 /* UnderRreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderRreviewViewController.swift; sourceTree = "<group>"; };
 		6B27230A2020BB61003A0125 /* CaptainTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		6B36F03D201E983B00BDFBA5 /* AddPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPriceViewController.swift; sourceTree = "<group>"; };
-		6B36F03E201E983B00BDFBA5 /* AddPriceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPriceViewController.xib; sourceTree = "<group>"; };
-		6B36F041201E998F00BDFBA5 /* RatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
 		6B36F043201E999F00BDFBA5 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		6B36F045201FA6C900BDFBA5 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		6B36F047201FAC4C00BDFBA5 /* CustomButton2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton2.swift; sourceTree = "<group>"; };
 		6B36F049201FB29800BDFBA5 /* NewPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPhoneNumberViewController.swift; sourceTree = "<group>"; };
-		6B36F04A201FB29800BDFBA5 /* NewPhoneNumberViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPhoneNumberViewController.xib; sourceTree = "<group>"; };
+		6B3892F92027109700E669B9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		6B3892FB2027217E00E669B9 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		6B3892FC2027217E00E669B9 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		6B4ED006202794AA00FC5934 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		6B4ED0092027C48100FC5934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddPriceViewController.xib; sourceTree = "<group>"; };
+		6B4ED00C2027C48900FC5934 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/AddPriceViewController.strings; sourceTree = "<group>"; };
+		6B4ED00E2027C4B200FC5934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RatingViewController.xib; sourceTree = "<group>"; };
+		6B4ED0112027C4B800FC5934 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/RatingViewController.strings; sourceTree = "<group>"; };
+		6B4ED0132027C4D300FC5934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewPhoneNumberViewController.xib; sourceTree = "<group>"; };
+		6B4ED0162027C4D700FC5934 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/NewPhoneNumberViewController.strings; sourceTree = "<group>"; };
+		6B4ED0182027C53000FC5934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfileViewController.xib; sourceTree = "<group>"; };
+		6B4ED01B2027C53400FC5934 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/ProfileViewController.strings; sourceTree = "<group>"; };
 		6B4F43BE2022405300A51EEC /* CaptainAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainAddressViewController.swift; sourceTree = "<group>"; };
 		6B4F43C02022407100A51EEC /* CaptainProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainProfileViewModel.swift; sourceTree = "<group>"; };
 		6B4F43C22022445300A51EEC /* CaptainAddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainAddAddressViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +248,9 @@
 		6B5D8B9720230F00001EA2BF /* RegistrationDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDataViewController.swift; sourceTree = "<group>"; };
 		6B5D8B9920233CEC001EA2BF /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
 		6B5D8B9B2023642C001EA2BF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6B69AEB020293A35000F3695 /* CaptainOfferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptainOfferViewController.swift; sourceTree = "<group>"; };
+		6B69AEB220293B17000F3695 /* CaptainOfferViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptainOfferViewController2.swift; sourceTree = "<group>"; };
+		6B69AEB42029D34F000F3695 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		6B6BB45D2010C56000BECA87 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		6B6BB45F2010C5A500BECA87 /* DataClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataClient.swift; sourceTree = "<group>"; };
 		6B6BB4612010C5BB00BECA87 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -324,6 +344,7 @@
 				6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */,
 				6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */,
 				6BD15AC4202124AA00129DF9 /* ChatViewController.swift */,
+				6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -358,6 +379,8 @@
 				6BA8267220156713002BC608 /* TextViewTableViewCell.xib */,
 				6BA826752015DA41002BC608 /* SubmitButtonTableViewCell.swift */,
 				6BA826762015DA41002BC608 /* SubmitButtonTableViewCell.xib */,
+				6B3892FB2027217E00E669B9 /* NotificationsTableViewCell.swift */,
+				6B3892FC2027217E00E669B9 /* NotificationsTableViewCell.xib */,
 			);
 			path = "TableView Cell";
 			sourceTree = "<group>";
@@ -368,6 +391,7 @@
 				6B6BB46920111F1000BECA87 /* Array+Extensions.swift */,
 				6B6BB46720111E9E00BECA87 /* DiffCalculator.swift */,
 				6B18DEF72010A50000C73BA2 /* CosmosDistrib.swift */,
+				6B4ED006202794AA00FC5934 /* ErrorHelper.swift */,
 				6B517CD6200E9BE000CFE5DC /* MOLH */,
 				6B517CDC200E9BE000CFE5DC /* SlideMenuController.swift */,
 				6B517CD3200E9BD500CFE5DC /* MBProgressHUD.h */,
@@ -387,6 +411,7 @@
 				6BFB0B182020736C00B74C73 /* UIImage.swift */,
 				6B4F43C62022620D00A51EEC /* RadioButtonGray.swift */,
 				6B58CDDC2025126F001E89E2 /* UIColor.swift */,
+				6B69AEB42029D34F000F3695 /* File.swift */,
 			);
 			path = "Extension & Helpers";
 			sourceTree = "<group>";
@@ -472,13 +497,13 @@
 			isa = PBXGroup;
 			children = (
 				6B36F03D201E983B00BDFBA5 /* AddPriceViewController.swift */,
-				6B36F03E201E983B00BDFBA5 /* AddPriceViewController.xib */,
+				6B4ED00A2027C48100FC5934 /* AddPriceViewController.xib */,
 				6B36F043201E999F00BDFBA5 /* RatingViewController.swift */,
-				6B36F041201E998F00BDFBA5 /* RatingViewController.xib */,
+				6B4ED00F2027C4B200FC5934 /* RatingViewController.xib */,
 				6B36F049201FB29800BDFBA5 /* NewPhoneNumberViewController.swift */,
-				6B36F04A201FB29800BDFBA5 /* NewPhoneNumberViewController.xib */,
+				6B4ED0142027C4D300FC5934 /* NewPhoneNumberViewController.xib */,
 				6B24DA3E201FDBD100D5B619 /* ProfileViewController.swift */,
-				6B24DA3F201FDBD100D5B619 /* ProfileViewController.xib */,
+				6B4ED0192027C53000FC5934 /* ProfileViewController.xib */,
 			);
 			path = PopUP;
 			sourceTree = "<group>";
@@ -494,6 +519,7 @@
 				6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */,
 				6B271D3E201E119B0030BBF4 /* City.swift */,
 				6B5D8B9B2023642C001EA2BF /* User.swift */,
+				6B3892F92027109700E669B9 /* Notifications.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -519,7 +545,9 @@
 				6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */,
 				6B271D2C201C94E20030BBF4 /* CpatainActiveOrderViewController.swift */,
 				6B271D2E201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift */,
-				6B271D30201C9BF00030BBF4 /* CaptainOfferViewController.swift */,
+				6B69AEB220293B17000F3695 /* CaptainOfferViewController2.swift */,
+				6B69AEB020293A35000F3695 /* CaptainOfferViewController.swift */,
+				6B271D30201C9BF00030BBF4 /* CaptainOfferViewRootController.swift */,
 				6B271D32201D18C80030BBF4 /* CaptainSettingsViewController.swift */,
 				6B271D34201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift */,
 				6B271D36201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift */,
@@ -596,6 +624,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 6B9AD2C620063C0B00C4869C;
 			productRefGroup = 6B9AD2D020063C0B00C4869C /* Products */;
@@ -612,11 +641,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B24DA41201FDBD100D5B619 /* ProfileViewController.xib in Resources */,
+				6B4ED0172027C53000FC5934 /* ProfileViewController.xib in Resources */,
 				6B517CBE200E250100CFE5DC /* ActiveOrderTableViewCell.xib in Resources */,
 				6B517CC2200E28BA00CFE5DC /* ArchiveOrderTableViewCell.xib in Resources */,
-				6B36F04C201FB29800BDFBA5 /* NewPhoneNumberViewController.xib in Resources */,
-				6B36F040201E983B00BDFBA5 /* AddPriceViewController.xib in Resources */,
+				6B4ED0122027C4D300FC5934 /* NewPhoneNumberViewController.xib in Resources */,
+				6B4ED0082027C48100FC5934 /* AddPriceViewController.xib in Resources */,
 				6B9AD2E5200641ED00C4869C /* TmpTableViewCell.xib in Resources */,
 				6B517CE8200E9EC200CFE5DC /* ImageHeaderView.xib in Resources */,
 				6B18DF062010B7A700C73BA2 /* ListTableViewCell.xib in Resources */,
@@ -630,8 +659,9 @@
 				6B9AD2DD20063C0B00C4869C /* LaunchScreen.storyboard in Resources */,
 				6B517CBA200E03C400CFE5DC /* newOrderTableViewCell.xib in Resources */,
 				6B18DEFC2010B33A00C73BA2 /* AddressSettingsTableViewCell.xib in Resources */,
-				6B36F042201E998F00BDFBA5 /* RatingViewController.xib in Resources */,
+				6B4ED00D2027C4B200FC5934 /* RatingViewController.xib in Resources */,
 				6BA8267420156713002BC608 /* TextViewTableViewCell.xib in Resources */,
+				6B3892FE2027217E00E669B9 /* NotificationsTableViewCell.xib in Resources */,
 				6BD15ACC20220D9F00129DF9 /* GoogleService-Info.plist in Resources */,
 				6B9AD2DA20063C0B00C4869C /* l.xcassets in Resources */,
 				6B9AD2D820063C0B00C4869C /* Main.storyboard in Resources */,
@@ -748,12 +778,15 @@
 				6B36F03F201E983B00BDFBA5 /* AddPriceViewController.swift in Sources */,
 				6B7C88D3201B437D0096FB87 /* UITextField.swift in Sources */,
 				6B517CDD200E9BE000CFE5DC /* MOLHLanguage.swift in Sources */,
+				6B3892FD2027217E00E669B9 /* NotificationsTableViewCell.swift in Sources */,
+				6B3892FA2027109700E669B9 /* Notifications.swift in Sources */,
 				6B4F43C72022620D00A51EEC /* RadioButtonGray.swift in Sources */,
 				6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */,
 				6BD15AC32021142100129DF9 /* NewOrder22ViewController.swift in Sources */,
 				6BD15AC12021127400129DF9 /* NewOrder2ViewController.swift in Sources */,
 				6B36F04B201FB29800BDFBA5 /* NewPhoneNumberViewController.swift in Sources */,
 				6B18DEE5200F8CB500C73BA2 /* ActivationViewController.swift in Sources */,
+				6B69AEB120293A35000F3695 /* CaptainOfferViewController.swift in Sources */,
 				6B6BB46A20111F1000BECA87 /* Array+Extensions.swift in Sources */,
 				6B517CF1200EA25500CFE5DC /* AboutUsViewController.swift in Sources */,
 				6B18DEEB200F94B400C73BA2 /* PaymentMethodViewController.swift in Sources */,
@@ -765,7 +798,7 @@
 				6B36F048201FAC4C00BDFBA5 /* CustomButton2.swift in Sources */,
 				6B517CDF200E9BE000CFE5DC /* MOLHSizable.swift in Sources */,
 				6B517CFB200EA49300CFE5DC /* CaptainLoginViewController.swift in Sources */,
-				6B271D31201C9BF00030BBF4 /* CaptainOfferViewController.swift in Sources */,
+				6B271D31201C9BF00030BBF4 /* CaptainOfferViewRootController.swift in Sources */,
 				6B9AD2D520063C0B00C4869C /* ViewController.swift in Sources */,
 				6B9AD2E7200642CF00C4869C /* TmpTableViewCell.swift in Sources */,
 				6B36F044201E999F00BDFBA5 /* RatingViewController.swift in Sources */,
@@ -775,6 +808,7 @@
 				6BC256A120127B4900A5AD20 /* RadioButton.swift in Sources */,
 				6BAD09D92006D72A003D63C8 /* MyOrderViewController.swift in Sources */,
 				6B7C88D5201B9A330096FB87 /* JoinCaptainViewController.swift in Sources */,
+				6B4D52F92029F6BC003A2C48 /* TabBarViewController.swift in Sources */,
 				6B27230C2020BB61003A0125 /* CaptainTypeCollectionViewCell.swift in Sources */,
 				6B18DEFB2010B33A00C73BA2 /* AddressSettingsTableViewCell.swift in Sources */,
 				6B517CB9200E03C400CFE5DC /* newOrderTableViewCell.swift in Sources */,
@@ -805,11 +839,13 @@
 				6BD15AC5202124AA00129DF9 /* ChatViewController.swift in Sources */,
 				6B271D2F201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift in Sources */,
 				6B517CE7200E9EC200CFE5DC /* ImageHeaderView.swift in Sources */,
+				6B4ED007202794AA00FC5934 /* ErrorHelper.swift in Sources */,
 				6B271D33201D18C80030BBF4 /* CaptainSettingsViewController.swift in Sources */,
 				6BA8267A20173E64002BC608 /* Offer.swift in Sources */,
 				6B517CDE200E9BE000CFE5DC /* MOLH.swift in Sources */,
 				6B5D8B9820230F00001EA2BF /* RegistrationDataViewController.swift in Sources */,
 				6B517CEB200E9ECD00CFE5DC /* DataTableViewCell.swift in Sources */,
+				6B69AEB320293B17000F3695 /* CaptainOfferViewController2.swift in Sources */,
 				6B55DA2F2007831C00BB535B /* OldOrderViewController.swift in Sources */,
 				6B517CC1200E28BA00CFE5DC /* ArchiveOrderTableViewCell.swift in Sources */,
 				6B18DEF3200F981B00C73BA2 /* OrderDetailsViewController.swift in Sources */,
@@ -832,6 +868,7 @@
 				6B6BB4622010C5BB00BECA87 /* APIClient.swift in Sources */,
 				6B4F43C12022407100A51EEC /* CaptainProfileViewModel.swift in Sources */,
 				6B58CDDD2025126F001E89E2 /* UIColor.swift in Sources */,
+				6B69AEB52029D34F000F3695 /* File.swift in Sources */,
 				6B7C88D1201A10650096FB87 /* OldOrder.swift in Sources */,
 				6B9AD2D320063C0B00C4869C /* AppDelegate.swift in Sources */,
 				6BA8267020155F09002BC608 /* OfferAddressViewModel.swift in Sources */,
@@ -848,6 +885,42 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		6B4ED00A2027C48100FC5934 /* AddPriceViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B4ED0092027C48100FC5934 /* Base */,
+				6B4ED00C2027C48900FC5934 /* ar */,
+			);
+			name = AddPriceViewController.xib;
+			sourceTree = "<group>";
+		};
+		6B4ED00F2027C4B200FC5934 /* RatingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B4ED00E2027C4B200FC5934 /* Base */,
+				6B4ED0112027C4B800FC5934 /* ar */,
+			);
+			name = RatingViewController.xib;
+			sourceTree = "<group>";
+		};
+		6B4ED0142027C4D300FC5934 /* NewPhoneNumberViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B4ED0132027C4D300FC5934 /* Base */,
+				6B4ED0162027C4D700FC5934 /* ar */,
+			);
+			name = NewPhoneNumberViewController.xib;
+			sourceTree = "<group>";
+		};
+		6B4ED0192027C53000FC5934 /* ProfileViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B4ED0182027C53000FC5934 /* Base */,
+				6B4ED01B2027C53400FC5934 /* ar */,
+			);
+			name = ProfileViewController.xib;
+			sourceTree = "<group>";
+		};
 		6B9AD2D620063C0B00C4869C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -989,7 +1062,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UR9279U935;
 				INFOPLIST_FILE = Ish7anli/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1012,7 +1085,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UR9279U935;
 				INFOPLIST_FILE = Ish7anli/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli2;
 				PRODUCT_NAME = "$(TARGET_NAME)";

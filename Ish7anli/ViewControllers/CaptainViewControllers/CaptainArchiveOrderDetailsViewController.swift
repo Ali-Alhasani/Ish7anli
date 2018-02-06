@@ -12,7 +12,6 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var IdentityLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var mailLabel: UILabel!
     
@@ -39,7 +38,6 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
             arrowImage.image = UIImage(named: "backBlueLeft")
         }
         nameLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].customerName
-        IdentityLabel.text = " "
         phoneNumberLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].customerPhone
         mailLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].customerEmail
         senderCity.text = DataClient.shared.captianArchiveOrder[indexPath!].addressSenderCity
@@ -73,15 +71,16 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
     }
     
     @IBAction func chatAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "toArchiveChat", sender: self)
     }
     
     
     @IBAction func addressAction(_ sender: Any) {
-          self.performSegue(withIdentifier: "toSenderArchive", sender: self)
+          //self.performSegue(withIdentifier: "toSenderArchive", sender: self)
     }
     
     @IBAction func receiverAddressAction(_ sender: Any) {
-          self.performSegue(withIdentifier: "toReceiverArchive", sender: self)
+         // self.performSegue(withIdentifier: "toReceiverArchive", sender: self)
     }
     
     @IBAction func cancelOrderAction(_ sender: Any) {

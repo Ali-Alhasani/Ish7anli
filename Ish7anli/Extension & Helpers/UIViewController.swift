@@ -37,6 +37,7 @@ extension UIViewController {
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.removeRightGestures()
     }
+ 
     
     func setBackButton(){
         let yourBackImage = UIImage(named: "backNav")

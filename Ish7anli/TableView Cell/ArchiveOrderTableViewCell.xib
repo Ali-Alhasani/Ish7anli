@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -12,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="DroidSansArabic.ttf">
+            <string>DroidSansArabic</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,17 +38,19 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wiI-dp-HIk">
                                                 <rect key="frame" x="0.0" y="0.0" width="134.5" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c69-7U-c4n">
-                                                        <rect key="frame" x="47.5" y="15.5" width="39.5" height="19.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c69-7U-c4n">
+                                                        <rect key="frame" x="8" y="13" width="119" height="25"/>
+                                                        <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="c69-7U-c4n" secondAttribute="trailing" constant="8" id="49c-B7-WnG"/>
                                                     <constraint firstItem="c69-7U-c4n" firstAttribute="centerX" secondItem="wiI-dp-HIk" secondAttribute="centerX" id="4OG-ZN-zFZ"/>
                                                     <constraint firstItem="c69-7U-c4n" firstAttribute="centerY" secondItem="wiI-dp-HIk" secondAttribute="centerY" id="F2b-qf-QdG"/>
+                                                    <constraint firstItem="c69-7U-c4n" firstAttribute="leading" secondItem="wiI-dp-HIk" secondAttribute="leading" constant="8" id="bHL-ux-byO"/>
                                                     <constraint firstItem="c69-7U-c4n" firstAttribute="centerX" secondItem="wiI-dp-HIk" secondAttribute="centerX" id="hI6-42-LiA"/>
                                                 </constraints>
                                             </view>
@@ -65,9 +71,9 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4yb-RZ-vfH">
                                                 <rect key="frame" x="169.5" y="0.0" width="134.5" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGt-9Q-NGW">
-                                                        <rect key="frame" x="47.5" y="15.5" width="39.5" height="19.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TGt-9Q-NGW">
+                                                        <rect key="frame" x="8" y="13" width="119" height="25"/>
+                                                        <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -76,6 +82,8 @@
                                                 <constraints>
                                                     <constraint firstItem="TGt-9Q-NGW" firstAttribute="centerY" secondItem="4yb-RZ-vfH" secondAttribute="centerY" id="9gh-Qm-PuE"/>
                                                     <constraint firstItem="TGt-9Q-NGW" firstAttribute="centerX" secondItem="4yb-RZ-vfH" secondAttribute="centerX" id="l1X-Sk-s0B"/>
+                                                    <constraint firstItem="TGt-9Q-NGW" firstAttribute="leading" secondItem="4yb-RZ-vfH" secondAttribute="leading" constant="8" id="lc9-6W-tCn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="TGt-9Q-NGW" secondAttribute="trailing" constant="8" id="u3R-qv-MSV"/>
                                                     <constraint firstItem="TGt-9Q-NGW" firstAttribute="centerX" secondItem="4yb-RZ-vfH" secondAttribute="centerX" id="vcB-Pk-Rgu"/>
                                                 </constraints>
                                             </view>
@@ -126,20 +134,20 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq4-Jh-Dk2">
-                                        <rect key="frame" x="254" y="28" width="42" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dq4-Jh-Dk2">
+                                        <rect key="frame" x="254" y="26" width="42" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVk-ZO-ax9">
-                                        <rect key="frame" x="79" y="28" width="167" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gVk-ZO-ax9">
+                                        <rect key="frame" x="79" y="26" width="167" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZI-SZ-Ney" customClass="CosmosView" customModule="Ish7anli" customModuleProvider="target">
-                                        <rect key="frame" x="79" y="53" width="80" height="14"/>
+                                        <rect key="frame" x="79" y="55" width="80" height="14"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="W3W-od-LOx"/>

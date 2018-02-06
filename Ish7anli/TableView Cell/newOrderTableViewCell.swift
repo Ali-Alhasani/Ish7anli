@@ -51,8 +51,20 @@ class newOrderTableViewCell: UITableViewCell {
     
     func setData(_ data: Any?) {
         if let data = data as? newOrderTableViewData {
+            var stringFinal:String?
+            if MOLHLanguage.isRTL() {
+                   self.priceLabel.text = String(data.price) + "ريال "
+                //let string: NSMutableAttributedString = NSMutableAttributedString(string: "ريال" + String(data.price) )
+                //string.setColorForText(textToFind: "ريال", withColor: UIColor.black)
+              
+            }else {
+                 self.priceLabel.text = String(data.price) + " SAR"
+                //let string: NSMutableAttributedString = NSMutableAttributedString(string: "SAR" + String(data.price) )
+               // string.setColorForText(textToFind: "SAR", withColor: UIColor.black)
+            }
+        
             
-            self.priceLabel.text = String(data.price)
+           
             self.senderCityLabel.text = data.senderCity
             APIClient.sendImageRequest(path: data.image, success: { (_ image) in
                 self.ProfileimageView.image = image

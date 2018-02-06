@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "7I6-MY-20H"; */
+"7I6-MY-20H.normalTitle" = "حفظ";
+
+/* Class = "UILabel"; text = "Add Price"; ObjectID = "cTE-cl-ljm"; */
+"cTE-cl-ljm.text" = "إضافة سعر";
+
+/* Class = "UITextField"; placeholder = "Bid a price"; ObjectID = "dP3-Hb-kaj"; */
+"dP3-Hb-kaj.placeholder" = "اضف سعراً";

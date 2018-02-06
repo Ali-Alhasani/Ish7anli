@@ -59,16 +59,16 @@ class ChatViewController: JSQMessagesViewController {
     func getCollectionName(){
         
         if senderType == .C{
-            if (senderId < targetId ){
+            if (senderId > targetId ){
             collectionName = senderId+"C::" + targetId+"U"
             }else{
-                  collectionName = targetId+"U::" + targetId+"C"
+                  collectionName = targetId+"U::" + senderId+"C"
             }
         }else if (senderType == .U){
-            if (senderId < targetId ){
+            if (senderId > targetId ){
                 collectionName = senderId+"U::" + targetId+"C"
             }else{
-                collectionName = targetId+"C::" + targetId+"U"
+                collectionName = targetId+"C::" + senderId+"U"
             }
         }
         

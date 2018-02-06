@@ -12,7 +12,6 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
 
     @IBOutlet weak var tableView: UITableView!
     var indexPath:Int?
-     var ok,error,alartTitle,loadingtitle,message:String?
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
     override func viewDidLoad() {
@@ -20,14 +19,7 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
          load()
 
         self.tableView.rowHeight = 160
-        if MOLHLanguage.isRTL() {
-            ok = "موافق"
-            alartTitle = "تنبيه"
-        }else{
-            ok = "Ok"
-            alartTitle = "Alert"
-            
-        }
+
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -78,7 +70,9 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("newOrderTableViewCell", owner: self, options: nil)?.first as! newOrderTableViewCell
         cell.selectionStyle = .none
+        if (DataClient.shared.cpatainCustomerOrder.count != 0) {
         cell.setData(newOrderTableViewData(price: DataClient.shared.cpatainCustomerOrder[indexPath.row].price!, image:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerImage!, name:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerName!, senderCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressSenderCity!, receiverCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressReceiverCity!))
+        }
         return cell
     }
     
@@ -104,13 +98,16 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
         DataClient.shared.getNewOfferCaptain(success: {
             self.tableView.reloadData()
         }) { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
     
     @IBAction func unwindFromAddVC3(_ sender: UIStoryboardSegue){
+        
+    }
+    @IBAction func unwindFromAddVC2(_ sender: UIStoryboardSegue){
         
     }
     

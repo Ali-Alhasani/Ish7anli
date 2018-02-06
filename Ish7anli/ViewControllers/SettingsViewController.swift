@@ -165,7 +165,7 @@ extension SettingsViewController: ProfileViewModelDelegate {
         APIClient.sendImageRequest(path: (DataClient.shared.profile?.image)!, success: { (_ image) in
             self.imageView.image = image
         }, failure: { (_ error) in
-            let alert = UIAlertController(title: alartTitle, message: error.localizedDescription, preferredStyle: .alert)
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         })

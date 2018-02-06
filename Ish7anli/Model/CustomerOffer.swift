@@ -12,8 +12,8 @@ class CustomerOffer {
     var id:Int?
     var captainId:Int?
     var customerId:Int?
-    var deliveryType:String?
-    var weight:String?
+    var deliveryType:Int?
+    var weight:Int?
     var receiverName:String?
     var receiverPhone:String?
     var paymentType:String?
@@ -40,8 +40,8 @@ class CustomerOffer {
         self.id = json["id"] as? Int ?? 0
         self.captainId = json["captain_id"] as? Int ?? 0
         self.customerId = json["customer_id"] as? Int ?? 0
-        self.deliveryType = json["delevary_type"] as? String ?? ""
-        self.weight = json["weight"] as? String ?? ""
+        self.deliveryType = json["delevary_type"] as? Int ?? 0
+        self.weight = json["weight"] as? Int ?? 0
         self.receiverName = json["receiver_name"] as? String ?? ""
         self.receiverPhone = json["receiver_phone"] as? String ?? ""
         self.paymentType = json["payment_type"] as? String ?? ""

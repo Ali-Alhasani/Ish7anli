@@ -12,18 +12,20 @@ protocol ActiveOrderTableViewDelegate : class {
 }
 struct ActiveOrderTableViewData {
     
-    init(price: Double, image:String,name:String,cityFrom:String,cityTo:String ) {
+    init(price: Double, image:String,name:String,cityFrom:String,cityTo:String,type:Int ) {
         self.price = price
         self.image = image
         self.name = name
         self.cityFrom = cityFrom
         self.cityTo = cityTo
+        self.type = type
     }
     var price: Double
     var image:String
     var name:String
     var cityFrom:String
     var cityTo:String
+    var type:Int
 }
 class ActiveOrderTableViewCell: UITableViewCell {
     weak var cellDelegate: ActiveOrderTableViewDelegate?
@@ -41,19 +43,19 @@ class ActiveOrderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var actionButton: UIButton!
     
-    var isChecked: Bool = false {
-        didSet{
-            if isChecked == true {
-               actionButton.backgroundColor = UIColor.blue
-            } else {
-              actionButton.backgroundColor = UIColor.black
-            }
-        }
-    }
+//    var isChecked: Bool = false {
+//        didSet{
+//            if isChecked == true {
+//               actionButton.backgroundColor = UIColor.blue
+//            } else {
+//              actionButton.backgroundColor = UIColor.black
+//            }
+//        }
+//    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-           self.isChecked = false
+           //self.isChecked = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -62,6 +64,8 @@ class ActiveOrderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+
     func setData(_ data: Any?) {
         if let data = data as? ActiveOrderTableViewData {
             
@@ -76,10 +80,13 @@ class ActiveOrderTableViewCell: UITableViewCell {
             self.LastCityLabel.text = data.cityTo
             self.middlePointLabel.text = "in the Way"
             
+//            if data.type == 2 {
+//                self.actionButton.backgroundColor = UIColor.red
+//            }
+            
         }
     }
     
-    @IBAction func buttonAction(_ sender: Any) {
-        
+    @IBAction func buttonAction(_ sender: Any) { cellDelegate?.didPressNonFinishedDetailsButton(sender: sender as! UIButton)
     }
 }

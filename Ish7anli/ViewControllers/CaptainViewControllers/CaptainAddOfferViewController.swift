@@ -31,7 +31,7 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
     var tmp:Int?
     var tmp2:Int?
     var indexPath:Int?
-    var ok,error,alartTitle,loadingtitle,message:String?
+   // var ok,error,alartTitle,loadingtitle,message:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,11 +176,29 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
     
 
     @IBAction func addAction(_ sender: Any) {
+        let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+      
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+        
         DataClient.shared.captainAddOffer(success: {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم اضافة الطلب بنجاح"
+                
+            }else{
+                alartmessage = "the request has been added successfully"
+                
+            }
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
+            self.present(alert, animated: true)
             
         }, failuer: { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }, cityIdFrom: tmp!, goDate: DateFromText.text!, goTime: hourFromText.text!, cityIdTo: tmp2!, arrivalDate: DateToText.text!, arrivalTime: hourToText.text!, price: accountNumberText.text!)
     }
@@ -189,10 +207,13 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
         DataClient.shared.getCity(success: {
             
         }) { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
+    }
+    func someHandler(alert: UIAlertAction!) {
+        self.performSegue(withIdentifier: "unwindFromAddVC3", sender: self)
     }
     /*
     // MARK: - Navigation

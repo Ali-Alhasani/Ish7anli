@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftyJSON
 class DataClient: NSObject {
     
     var profile : Profile?
@@ -22,6 +22,7 @@ class DataClient: NSObject {
     var captianArchiveOrder = [ArchiveOrder]()
     var captianOffer = [Offer]()
     var allCity = [City]()
+    var notifications = [Notifications]()
     class var shared: DataClient{
         struct Static{
             static let instance = DataClient()
@@ -84,15 +85,17 @@ class DataClient: NSObject {
     }
     
     func logIn(phone:String,success: @escaping (_ activationCode:String) ->Void, failuer: @escaping (_ error: LLError) -> Void){
+     //  guard let deviceToken =  UserDefaults.standard.object(forKey: "_token") as? String else { return }
+       //,"ios_token":deviceToken
         let parameters = ["phone":phone] as [String : Any]
         APIClient.sendRequest(path: "customer_login", httpMethod: .post, isLangRequired: false , parameters:parameters, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
-            let activationCode = responseData["activated_code"] as? String ?? ""
+            let activationCode = responseData["activated_code"] as? Int ?? 0
             SessionManager.shared.phoneNumber = phone
             SessionManager.shared.userId = String(responseData["id"] as? Int ?? 0)
-            
-            success(activationCode)
+            print(SessionManager.shared.userId)
+            success(String(activationCode))
         }) { (error) in
             failuer(error)
             print(error)
@@ -147,6 +150,18 @@ class DataClient: NSObject {
     func addOffer(addressSenderId:Int,deliveryType:Int,weight:Int,addressReceiverId:Int,receiverName:String,receiverPhone:String,paymentType:Int, success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
         APIClient.sendRequest(path: "customer_offer", httpMethod: .post, isLangRequired: false , parameters:["address_sender_id":addressSenderId, "delevary_type":deliveryType,"weight": weight ,"address_receiver_id":addressReceiverId,"receiver_name":receiverName,"receiver_phone":receiverPhone,"payment_type":paymentType], success: { (response) in
             let responseData = response as? [[String : Any]] ?? [[:]]
+            print(responseData)
+            //            responseData.forEach({ (data) in
+            //                DataClient.shared.offer.append(Offer(json: data))
+            //            })
+            success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    func addOffer2(addressSenderId:Int,deliveryType:Int,weight:Int,addressReceiverId:Int,receiverName:String,receiverPhone:String,paymentType:Int,captainOfferId:Int, success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
+        APIClient.sendRequest(path: "customer_offer", httpMethod: .post, isLangRequired: false , parameters:["address_sender_id":addressSenderId, "delevary_type":deliveryType,"weight": weight ,"address_receiver_id":addressReceiverId,"receiver_name":receiverName,"receiver_phone":receiverPhone,"payment_type":paymentType,"captain_offer_id":captainOfferId], success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
             print(responseData)
             //            responseData.forEach({ (data) in
             //                DataClient.shared.offer.append(Offer(json: data))
@@ -296,10 +311,13 @@ class DataClient: NSObject {
         }
     }
     
-    
-    
+
     func captainRegister(name:String,email:String,password:String,phone:String,cardNumber:String,cardImage:String,licenseImage:String,carForm:String,contractImage:String,financialAccountNumber:String,captainType:Int,success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void) {
-        APIClient.sendRequest(path: "captain_register", httpMethod: .post, isLangRequired: false , parameters:["name":name, "email":email,"password":password, "phone":phone,"card_number":cardNumber, "contract_image":contractImage,"financial_account_number":financialAccountNumber,"captain_type":captainType,"license_image":licenseImage,"card_image":cardImage,"car_form":carForm], success: { (response) in
+        SessionManager.loadPhoneNumber()
+        let dict = ["name":name, "email":email,"password":password,"phone":SessionManager.shared.phoneNumber,"card_number":cardNumber, "contract_image":contractImage,"financial_account_number":financialAccountNumber,"captain_type":captainType,"license_image":licenseImage,"card_image":cardImage,"car_form":carForm] as [String : Any]
+        let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted) ?? nil
+        print(jsonData)
+        APIClient.sendRequest(path: "captain_register", httpMethod: .post, isLangRequired: false , parameters: dict, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
             //            let activationCode = responseData["activated_code"] as? String ?? ""
@@ -385,9 +403,9 @@ class DataClient: NSObject {
     
     func chooseCaptain(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void,customerOfferId :Int ,captainId :Int ){
         
-        APIClient.sendRequest(path: "choose_captain", httpMethod: .post, isLangRequired: false , parameters:["captain_id":captainId ,  "customerOfferId" :customerOfferId], success: { (response) in
-            //let responseData = response as? [String : Any] ?? [:]
-            //  print(response)
+        APIClient.sendRequest(path: "choose_captain", httpMethod: .post, isLangRequired: false , parameters:["captian_id":captainId ,  "customer_offer_id" :customerOfferId], success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
+             print(response)
             
             success()
             
@@ -486,6 +504,51 @@ class DataClient: NSObject {
             
             
             
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
+    func notifications(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
+        DataClient.shared.notifications.removeAll()
+        APIClient.sendRequest(path: "notifications", httpMethod: .get, isLangRequired: false , parameters: [:], success: { (response) in
+            let responseData = response as? [[String : Any]] ?? [[:]]
+            print(responseData)
+            responseData.forEach({ (data) in
+                DataClient.shared.notifications.append(Notifications(json: data))
+            })
+            //let profile = Profile(json: responseData)
+            
+            
+              success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
+    
+    func receivedOffer(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void ,customerOfferId:Int){
+        APIClient.sendRequest(path: "received_offer", httpMethod: .post, isLangRequired: false , parameters: ["customer_offer_id":customerOfferId], success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
+ 
+            //let profile = Profile(json: responseData)
+            
+            
+            
+            success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
+    func deliveryOffer(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void ,customerOfferId:Int){
+        APIClient.sendRequest(path: "delivery_offer", httpMethod: .post, isLangRequired: false , parameters: ["customer_offer_id":customerOfferId], success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
+            
+            //let profile = Profile(json: responseData)
+
+            
+            success()
         }) { (error) in
             failuer(error)
         }

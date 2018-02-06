@@ -24,11 +24,13 @@ class PaymentMethodViewController: UIViewController {
     var receiverName:String?
     var receiverPhone:String?
     var type:Int?
+    var captainOfferId:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         firstButton.alternateButton = [secondButton,thirdButton]
         secondButton.alternateButton = [firstButton,thirdButton]
         thirdButton.alternateButton = [firstButton,secondButton]
+       
         // Do any additional setup after loading the view.
     }
     
@@ -50,35 +52,56 @@ class PaymentMethodViewController: UIViewController {
         
         let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        if MOLHLanguage.isRTL() {
-            loadingtitle = "جارى الإرسال"
-            message = "الرجاء الانتظار"
-        }else{
-            loadingtitle = "Sending"
-            message = "Please Wait"
-        }
-        spiningActivity.label.text = loadingtitle
-        spiningActivity.detailsLabel.text = message
+   
+        spiningActivity.label.text =  ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text =  ErrorHelper.shared.message
         if (type != nil){
             DataClient.shared.addOffer(addressSenderId: senderAddress! , deliveryType: type!, weight: weghitIndex!, addressReceiverId: receiveAddress!, receiverName: receiverName!, receiverPhone: receiverPhone!, paymentType: paymentId!, success: {
                 MBProgressHUD.hide(for: self.view, animated: true)
-                self.dismiss(animated: true, completion: nil)
+                  var alartmessage:String?
+                if MOLHLanguage.isRTL() {
+                    alartmessage = "تم اضافة الطلب بنجاح"
+                 
+                }else{
+                   alartmessage = "the request has been added successfully"
+                   
+                }
+                let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
+                self.present(alert, animated: true)
+             
+               // self.dismiss(animated: true, completion: nil)
             }) { (_ error) in
                 MBProgressHUD.hide(for: self.view, animated: true)
-                let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+                let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
         }else {
-            DataClient.shared.addOffer(addressSenderId: senderAddress! , deliveryType: 3, weight: weghitIndex!, addressReceiverId: receiveAddress!, receiverName: receiverName!, receiverPhone: receiverPhone!, paymentType: paymentId!, success: {
+            DataClient.shared.addOffer2(addressSenderId: senderAddress! , deliveryType: 3, weight: weghitIndex!, addressReceiverId: receiveAddress!, receiverName: receiverName!, receiverPhone: receiverPhone!, paymentType: paymentId!  ,captainOfferId: captainOfferId! , success: {
+                
                 MBProgressHUD.hide(for: self.view, animated: true)
+                var alartmessage:String?
+                if MOLHLanguage.isRTL() {
+                    alartmessage = "تم اضافة الطلب بنجاح"
+                    
+                }else{
+                    alartmessage = "the request has been added successfully"
+                    
+                }
+                let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
+                self.present(alert, animated: true)
             }) { (_ error) in
                 MBProgressHUD.hide(for: self.view, animated: true)
-                let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+                let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
         }
+    }
+    func someHandler(alert: UIAlertAction!) {
+       self.performSegue(withIdentifier: "unwindFromAddVC2", sender: self)
     }
     /*
      // MARK: - Navigation

@@ -9,7 +9,7 @@
 import UIKit
 
 class OfferDetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var starsView: CosmosView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,6 +23,7 @@ class OfferDetailsViewController: UIViewController {
     @IBOutlet weak var price: UILabel!
     var indexPath:Int?
     var type:Int?
+    
     @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +31,15 @@ class OfferDetailsViewController: UIViewController {
             arrowImage.image = UIImage(named: "backBlueLeft")
         }
         if indexPath != nil {
-        nameLabel.text = DataClient.shared.offer[indexPath!].captainName
-        starsView.rating = DataClient.shared.offer[indexPath!].captainRate!
-        destinationCity.text =  DataClient.shared.offer[indexPath!].cityNameTo
-        fromCity.text =  DataClient.shared.offer[indexPath!].cityNameFrom
-        timeFrom.text = DataClient.shared.offer[indexPath!].goTime
-        timeTo.text =  DataClient.shared.offer[indexPath!].arrivalTime
-        dateFrom.text = DataClient.shared.offer[indexPath!].goDate
-        dateTo.text = DataClient.shared.offer[indexPath!].arrivalDate
-        price.text = DataClient.shared.offer[indexPath!].price! + " SAR"
+            nameLabel.text = DataClient.shared.offer[indexPath!].captainName
+            starsView.rating = DataClient.shared.offer[indexPath!].captainRate!
+            destinationCity.text =  DataClient.shared.offer[indexPath!].cityNameTo
+            fromCity.text =  DataClient.shared.offer[indexPath!].cityNameFrom
+            timeFrom.text = DataClient.shared.offer[indexPath!].goTime
+            timeTo.text =  DataClient.shared.offer[indexPath!].arrivalTime
+            dateFrom.text = DataClient.shared.offer[indexPath!].goDate
+            dateTo.text = DataClient.shared.offer[indexPath!].arrivalDate
+            price.text = DataClient.shared.offer[indexPath!].price! + " SAR"
             
             APIClient.sendImageRequest(path: DataClient.shared.offer[indexPath!].captainImage!, success: { (_ image) in
                 self.imageView.image = image
@@ -65,7 +66,7 @@ class OfferDetailsViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,46 +78,55 @@ class OfferDetailsViewController: UIViewController {
     }
     
     @IBAction func chooseAction(_ sender: Any) {
-           if indexPath != nil {
-        self.performSegue(withIdentifier: "toAddOffer", sender: self)
+        if indexPath != nil {
+            self.performSegue(withIdentifier: "toAddOffer", sender: self)
         }
     }
     
     @IBAction func chatAction(_ sender: Any) {
-            if indexPath != nil {
-        self.performSegue(withIdentifier: "toChat", sender: self)
+        if indexPath != nil {
+            self.performSegue(withIdentifier: "toChat", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddOffer" {
+            let vc = segue.destination as! AddOfferViewController
+            if (type == 2) {
+                vc.captainOfferId = DataClient.shared.offerPrice[indexPath!].id!
+            }
+            else {
+                vc.captainOfferId = DataClient.shared.offer[indexPath!].id!
+            }
+        }
         if segue.identifier == "toChat" {
             let vc = segue.destination as! ChatViewController
             vc.senderType = .U
             if (type == 2) {
-                  vc.targetId = String(DataClient.shared.offerPrice[indexPath!].captainId!)
+                vc.targetId = String(DataClient.shared.offerPrice[indexPath!].captainId!)
             }else {
-            vc.targetId = String(DataClient.shared.offer[indexPath!].captainId!)
+                vc.targetId = String(DataClient.shared.offer[indexPath!].captainId!)
             }
             
         }
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toPayment" {
-//            let vc = segue.destination as! OfferDetailsViewController
-//            vc.indexPath = self.indexPath
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "toPayment" {
+    //            let vc = segue.destination as! OfferDetailsViewController
+    //            vc.indexPath = self.indexPath
+    //        }
+    //    }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -71,8 +71,12 @@ class CaptainCustomerOffer {
         if let bid = json["bid"] as? Int {
             self.bid = bid
         }
+        if let price = json["offer_price"] as? Double  {
+            self.price = price
+        }else{
         self.price = json["price"] as? Double ?? 0.0
-      
+        }
+            
     }
     init(){
         

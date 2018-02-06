@@ -16,7 +16,7 @@ class AddOfferViewController: UIViewController {
     var weghitIndex:Int?
     var receiverName:String?
     var receiverPhone:String?
-
+   var captainOfferId:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +40,7 @@ class AddOfferViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setNavigationBarItem()
+        //self.setNavigationBarItem()
         self.hideBackButton()
         viewModel.addListener()
     }
@@ -78,6 +78,7 @@ class AddOfferViewController: UIViewController {
             vc.weghitIndex = weghitIndex!
             vc.receiverName = receiverName!
             vc.receiverPhone = receiverPhone!
+            vc.captainOfferId = captainOfferId!
         }
     }
 
@@ -85,8 +86,8 @@ class AddOfferViewController: UIViewController {
 }
 extension AddOfferViewController: OfferAddressViewModelDelegate {
     func presentError(_ error: String) {
-        let alert = UIAlertController(title: alartTitle, message:error, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+        let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
         self.present(alert, animated: true)
     }
     

@@ -18,17 +18,18 @@ class AddAddressViewController: UIViewController {
     @IBOutlet weak var googleMapView: GMSMapView!
     var lat = 0.0
     var lng = 0.0
-    private let locationManager = CLLocationManager()
-
+    var locationManager: CLLocationManager = CLLocationManager()
     var location:String?
+        var mapView:GMSMapView?
     // var mapView:GMSMapView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        googleMapView.delegate = self
-        setupMap()
+       // locationManager.delegate = self
+        //locationManager.requestWhenInUseAuthorization()
+        //googleMapView.delegate = self
+        //setupMap()
        //setupLocation()
+         setupLocation()
         // Do any additional setup after loading the view.
     }
 
@@ -40,10 +41,15 @@ class AddAddressViewController: UIViewController {
 
     @IBAction func addAddressAction(_ sender: Any) {
         if ((addressNameText.text?.isEmpty)! || (addressDetailsText.text?.isEmpty)!){
-            let alert = UIAlertController(title: "Alert", message:"", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:"", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }else{
+            let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            
+           
+            spiningActivity.label.text =  ErrorHelper.shared.loadingtitle
+            spiningActivity.detailsLabel.text =  ErrorHelper.shared.message
            load()
         }
        
@@ -62,21 +68,21 @@ class AddAddressViewController: UIViewController {
         
         locationManager.delegate = self
         
-//        if addressViewOpenForWhat == .edit{
-//
-//            if currentAddress != nil{
-//
-//                addressNameTextField.text = currentAddress.title
-//
-//                addressDetailsTextField.text = currentAddress.description
-//
+        //        if addressViewOpenForWhat == .edit{
+        //
+        //            if currentAddress != nil{
+        //
+        //                addressNameTextField.text = currentAddress.title
+        //
+        //                addressDetailsTextField.text = currentAddress.description
+        //
         //lat = currentAddress.lattitude
-//
-          //  lng = currentAddress.longitude
-//
-//            }
-//
-//        }
+        //
+        //  lng = currentAddress.longitude
+        //
+        //            }
+        //
+        //        }
         
         setupMap()
         
@@ -84,7 +90,15 @@ class AddAddressViewController: UIViewController {
     
     private func setupMap(){
 
-       // mapView!.delegate = self
+        mapView = GMSMapView()
+        mapView!.isMyLocationEnabled = true
+        // mapView.settings.myLocationButton = true
+        //
+        //        mapView.anchorSupportRTL(top: addressDetailsStack.bottomAnchor, leading: view.leadingAnchor, bottom: saveButton.topAnchor, trailing: view.trailingAnchor, paddingTop: 16, paddingLeading: 16, paddingBottom: 32, paddingTrailing: 16, width: 0, height: 0)
+        
+        mapView!.delegate = self
+        googleMapView.addSubview(mapView!)
+        googleMapView.delegate = self
      
 
         
@@ -92,11 +106,18 @@ class AddAddressViewController: UIViewController {
     
     
     func load(){
-        DataClient.shared.addAddress(title: addressDetailsText.text!, details: addressDetailsText.text!, longitude: lat, latitude: lng, success: {
+        DataClient.shared.addAddress(title: addressNameText.text!, details: addressDetailsText.text!, longitude: lng, latitude: lat, success: {
+            print(self.lat)
+            print(self.lng)
+            MBProgressHUD.hide(for: self.view, animated: true)
             self.dismiss(animated: true, completion: {
                 
             })
         }) { (_ error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
             
         }
     }
@@ -148,7 +169,6 @@ extension AddAddressViewController: CLLocationManagerDelegate {
                     let marker = GMSMarker()
                     marker.position = CLLocationCoordinate2D(latitude:lat,
                                                              longitude: lng)
-        
                     marker.map = googleMapView
                     marker.isDraggable = true
              // googleMapView.selectedMarker = marker

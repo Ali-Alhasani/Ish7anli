@@ -13,17 +13,9 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     
     func didPressChoose(sender: UIButton) {
         let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        if MOLHLanguage.isRTL() {
-          loadingtitle = "جارى الإرسال"
-          message = "الرجاء الانتظار"
-        }else{
-           loadingtitle = "Sending"
-           message = "Please Wait"
-        }
-        spiningActivity.label.text = loadingtitle
-        spiningActivity.detailsLabel.text = message
-        
+
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
        load()
     }
     
@@ -146,14 +138,14 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     }
     func load(){
       
-        DataClient.shared.captainRegister(name: fullname!, email: email!, password: password!, phone: SessionManager.shared.phoneNumber, cardNumber: cardNumber!, cardImage: cardImage!, licenseImage: licenceImage!, carForm: carForm!, contractImage: contractImage!, financialAccountNumber: accountNumber! , captainType: 1, success: {
+        DataClient.shared.captainRegister(name: fullname!, email: email!, password: password!, phone: SessionManager.shared.phoneNumber, cardNumber: cardNumber!, cardImage: cardImage!, licenseImage: licenceImage!, carForm: carForm!, contractImage: contractImage!, financialAccountNumber: accountNumber! , captainType: 2, success: {
             MBProgressHUD.hide(for: self.view, animated: true)
 
             print("fucking done")
         }) { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }

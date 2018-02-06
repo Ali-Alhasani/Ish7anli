@@ -24,7 +24,7 @@ class CompleteJoinCaptainViewController: UIViewController {
     mobile,
     email,
     password:String?
-     var ok,error,alartTitle,loadingtitle,message:String?
+    
     @IBOutlet weak var cardImageButton: UIButton!
     @IBOutlet weak var licenceImageButton: UIButton!
     @IBOutlet weak var carFormButton: UIButton!
@@ -109,18 +109,17 @@ class CompleteJoinCaptainViewController: UIViewController {
         if ((cardImage != nil) && (licenceImage != nil) && (carForm != nil) && (contractImage != nil) && !accountNumberText.text!.isEmpty ){
             self.performSegue(withIdentifier: "toCaptainType", sender: self)
         }else{
+             var error:String?
             if MOLHLanguage.isRTL() {
-                self.error =  "يجب أن تقوم باختيار كافة الصور"
-                self.ok = "موافق"
-                self.alartTitle = "تنبيه"
+               error =  "يجب أن تقوم باختيار كافة الصور"
+           
             }else{
-                self.error = "You should choose all the photo"
-                self.ok = "Ok"
-                self.alartTitle = "Alert"
+               error = "You should choose all the photo"
+              
                 
             }
-            let alert = UIAlertController(title: self.alartTitle, message:error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
@@ -164,7 +163,7 @@ extension CompleteJoinCaptainViewController: UIImagePickerControllerDelegate,UIN
         done = false
         let image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
         //let imageData = UIImagePNGRepresentation(image_data!)!
-        let imageData:Data = image_data!.compressTo(1)!
+        let imageData:Data = image_data!.compressToHalf(1)!
         let imageStr = imageData.base64EncodedString()
         if (flag == 1) {
             print("Hi")

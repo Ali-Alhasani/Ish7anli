@@ -26,9 +26,9 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["الإشعارات"  , "من نحن", "دخول كابتن", "نشر التطبيق", "راسلنا", "تسجيل خروج"]
+    var menus = ["الإشعارات"  , "من نحن", "دخول كابتن", "نشر التطبيق", "راسلنا"]
   
-    var iconMenus = ["notificationBlue","aboutUs","captain","share","contactUs","logout"]
+    var iconMenus = ["notificationBlue","aboutUs","captain","share","messageBlue"]
     var NotificationViewController: UIViewController!
     var AboutUsViewController: UIViewController!
     var ContactUsTableViewController: UIViewController!
@@ -40,7 +40,7 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         if MOLHLanguage.isRTL() {
            // menus = []
         }else{
-            menus = ["Notification","About Us","Captain Login","Share App","Contact Us","Logout"]
+            menus = ["Notification","About Us","Captain Login","Share App","Contact Us"]
         }
         // Do any additional setup after loading the view.
         

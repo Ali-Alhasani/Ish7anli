@@ -681,7 +681,7 @@
 "rRV-iM-orR.text" = "";
 
 /* Class = "UILabel"; text = "Login"; ObjectID = "rzi-cb-ZK8"; */
-"rzi-cb-ZK8.text" = "Login";
+"rzi-cb-ZK8.text" = "تسجيل دخول";
 
 /* Class = "UITabBarItem"; title = "New Offers"; ObjectID = "sLb-Ci-W5D"; */
 "sLb-Ci-W5D.title" = "عروض جديدة";
@@ -782,6 +782,9 @@
 /* Class = "UIViewController"; title = "Order Details"; ObjectID = "yZW-rr-i8h"; */
 "yZW-rr-i8h.title" = "تفاصيل الطلب";
 
+/* Class = "UIViewController"; title = "About Us"; ObjectID = "GXN-Zr-XUI"; */
+"GXN-Zr-XUI.title" = "من نحن";
+
 /* Class = "UINavigationItem"; title = "Captain Settings"; ObjectID = "yas-EH-HBd"; */
 "yas-EH-HBd.title" = "إعدادات الكابتن";
 
@@ -799,3 +802,7 @@
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "zgh-iG-fYQ"; */
 "zgh-iG-fYQ.text" = "";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LZ1-QD-eRu"; */
+"LZ1-QD-eRu.text" = "ريال";
+

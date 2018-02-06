@@ -65,8 +65,8 @@ class CaptainLoginViewController: UIViewController {
             }else if (userStatus == "5"){
                   self.performSegue(withIdentifier: "reject", sender: self)
             }
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
             
            //print()

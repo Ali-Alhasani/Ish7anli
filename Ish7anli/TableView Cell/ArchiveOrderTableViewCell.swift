@@ -51,8 +51,11 @@ class ArchiveOrderTableViewCell: UITableViewCell {
     
     func setData(_ data: Any?) {
         if let data = data as? ArchiveOrderTableViewData {
-            
-            self.priceLabel.text = String(data.price)
+            if MOLHLanguage.isRTL(){
+                   self.priceLabel.text = String(data.price) + " ريال"
+            }else {
+            self.priceLabel.text = String(data.price) + " SAR"
+            }
             APIClient.sendImageRequest(path: data.image, success: { (_ image) in
                 self.ProfileimageView.image = image
             }, failure: { (_ error) in

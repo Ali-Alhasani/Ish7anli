@@ -14,16 +14,18 @@ class CaptainAddressDetailsViewController: UIViewController {
     
     @IBOutlet weak var googleMapView: GMSMapView!
     var mapView2:GMSMapView?
-
+    
     var lat:Double?
     var lng:Double?
     var addressName,addressDetails:String?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addressNameText.text = addressName
+        addressDetailsText.text = addressDetails
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,6 +33,11 @@ class CaptainAddressDetailsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         loadMap()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.hideBackButton()
+        
     }
     
     func loadMap(){
@@ -44,15 +51,15 @@ class CaptainAddressDetailsViewController: UIViewController {
         
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

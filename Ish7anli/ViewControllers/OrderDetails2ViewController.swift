@@ -7,8 +7,8 @@
 //
 
 import UIKit
-var weightArray = ["heavy", "Light"]
-var deliveryArray = ["Form the door to door" , "from caption cite" , ""]
+var weightArray = ["Heavy", "Light"]
+var deliveryArray = ["Door to door" , "from caption cite" , ""]
 var paymentArray = ["Cash on recevie" , "Cash on delivery" , "Transfer from Bank Account"]
 
 class OrderDetails2ViewController: UIViewController {

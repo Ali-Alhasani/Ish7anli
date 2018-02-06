@@ -51,7 +51,7 @@ class TmpTableViewCell: UITableViewCell {
     }
     
     @IBAction func chooseAction(_ sender: Any) {
-        cellDelegate?.didPressChoose(sender: sender as! UIButton as! UIButton)
+        cellDelegate?.didPressChoose(sender: sender as! UIButton)
     }
     @IBAction func chatAction(_ sender: Any) {
         cellDelegate?.didPressChat(sender: sender as! UIButton)

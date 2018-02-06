@@ -52,8 +52,8 @@ class Address {
     init(json: [String: Any]) {
         self.title = json["title"] as? String
         self.details = json["details"] as? String
-        self.details = json["longitude"] as? String
-        self.details = json["latitude"] as? String
+        self.longitude = json["longitude"] as? String
+        self.latitude = json["latitude"] as? String
         self.id = json["id"] as? Int
     }
 }

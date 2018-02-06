@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "New Phone Number"; ObjectID = "8yP-se-owx"; */
+"8yP-se-owx.text" = "رقم هاتف جديد";
+
+/* Class = "UITextField"; placeholder = "Enter a new phone Number"; ObjectID = "W0G-p8-cQg"; */
+"W0G-p8-cQg.placeholder" = "ادخل رقم هاتف جديد";

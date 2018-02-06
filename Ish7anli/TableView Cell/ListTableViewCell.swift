@@ -37,10 +37,10 @@ class ListTableViewCell: UITableViewCell {
             celltype = CellType.item1
         }
     }
-    var item2: String? {
+    var weghit: String? {
         didSet {
-            nameLabel?.text = item2!
-            celltype = CellType.item2
+            nameLabel?.text = weghit!
+            celltype = CellType.weghit
         }
     }
     
@@ -70,6 +70,6 @@ class ListTableViewCell: UITableViewCell {
 }
 
 enum CellType{
-    case address, item1, item2, addressRecevier
+    case address, item1, weghit, addressRecevier
 }
 

@@ -12,7 +12,6 @@ class CaptianArchiveOrderViewController: UIViewController,UITableViewDelegate,UI
     
     @IBOutlet weak var tableView: UITableView!
     var indexPath:Int?
-     var ok,error,alartTitle,loadingtitle,message:String?
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
     override func viewDidLoad() {
@@ -20,14 +19,7 @@ class CaptianArchiveOrderViewController: UIViewController,UITableViewDelegate,UI
         self.tableView?.rowHeight = 150
 
 load()
-        if MOLHLanguage.isRTL() {
-            ok = "موافق"
-            alartTitle = "تنبيه"
-        }else{
-            ok = "Ok"
-            alartTitle = "Alert"
-            
-        }
+ 
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -96,8 +88,8 @@ load()
         DataClient.shared.getCaptianArchiveOrder(success: {
             self.tableView.reloadData()
         }) { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }

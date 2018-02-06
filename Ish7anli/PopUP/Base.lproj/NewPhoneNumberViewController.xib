@@ -33,7 +33,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="295" height="50"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Phone Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yP-se-owx">
-                                    <rect key="frame" x="72" y="13.5" width="152.5" height="24.5"/>
+                                    <rect key="frame" x="71.5" y="13" width="152.5" height="24.5"/>
                                     <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                     </subviews>
                     <constraints>

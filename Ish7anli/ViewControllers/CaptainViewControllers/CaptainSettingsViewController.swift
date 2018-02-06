@@ -70,6 +70,9 @@ class CaptainSettingsViewController: UIViewController {
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    @IBAction func unwindFromAddVC22(_ sender: UIStoryboardSegue){
+        
+    }
     
     
     @IBAction func saveButtonAction(_ sender: Any) {
@@ -94,31 +97,31 @@ class CaptainSettingsViewController: UIViewController {
         
         let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        if MOLHLanguage.isRTL() {
-            loadingtitle = "جارى الإرسال"
-            message = "الرجاء الانتظار"
-        }else{
-            loadingtitle = "Sending"
-            message = "Please Wait"
-        }
-        spiningActivity.label.text = loadingtitle
-        spiningActivity.detailsLabel.text = message
+   
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
         
         
         DataClient.shared.updateCaptainProfile(success: {
             MBProgressHUD.hide(for: self.view, animated: true)
             
-            let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
-            hud.mode = .customView
-            hud.customView = UIImageView(image: UIImage(named: "checked")) // according to the documentation a good image size is something like 37x37px
-            hud.label.text = "Completed"
-              MBProgressHUD.hide(for: self.view, animated: true)
+                var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم تعديل الملف الشخصي بنجاح"
+                
+            }else{
+                alartmessage = "the profile has been edited successfully"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
             
 
         }, failuer: { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
             
             

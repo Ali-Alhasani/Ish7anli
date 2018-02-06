@@ -85,29 +85,32 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell", owner: self, options: nil)?.first as! OldOrderTableViewCell
+        
         if DataClient.shared.lastOffer.count != 0 {
-            if DataClient.shared.lastOffer[indexPath.row].status == 2 {
+            if DataClient.shared.lastOffer[indexPath.row].status == 2 || DataClient.shared.lastOffer[indexPath.row].status == 1 {
                 let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell", owner: self, options: nil)?.first as! OldOrderTableViewCell
                 cell.setData(OldOrderTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, cityFrom: DataClient.shared.lastOffer[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.lastOffer[indexPath.row].addressReceiverCity!))
                 cell.detailsButton.tag = indexPath.row
-                   cell.cellDelegate = self
+                cell.cellDelegate = self
                 cell.selectionStyle = .none
                 return cell
             }
-            if DataClient.shared.lastOffer[indexPath.row].status == 3 {
+           else if DataClient.shared.lastOffer[indexPath.row].status == 3 {
                 let cell = Bundle.main.loadNibNamed("OldOrderWithRateTableViewCell", owner: self, options: nil)?.first as! OldOrderWithRateTableViewCell
                 cell.setData(OldOrderWithRateTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!))
                
                 cell.detailsButton.tag = indexPath.row
+                  cell.cellDelegate = self
                 cell.rateButton.tag = indexPath.row
-                cell.cellDelegate = self
+       
                 cell.selectionStyle = .none
                 return cell
             }
             
         }
-        let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell", owner: self, options: nil)?.first as! OldOrderTableViewCell
-
+      
+         cell.cellDelegate = self
         cell.selectionStyle = .none
         return cell
         
@@ -135,8 +138,8 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         DataClient.shared.getOldOrder(success: {
             self.tabelView.reloadData()
         }) { (_ error) in
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
@@ -145,8 +148,8 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         DataClient.shared.rateCatpain(success: {
             
         }, failuer: { (_ error) in
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }, customerOfferId: customerOfferId, captainId: captainId, rate: rate)
     }

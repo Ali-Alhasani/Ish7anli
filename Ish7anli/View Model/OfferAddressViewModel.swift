@@ -146,8 +146,8 @@ extension OfferAddressViewModel: UITableViewDataSource,AddAddressTableViewCellDe
             selectedType = sender.tag
             delegate?.apply2()
             
-        case .item2:
-            selectedWeghit = sender.tag
+        case .weghit:
+            selectedWeghit2 = sender.tag
             delegate?.apply2()
         case .addressRecevier:
             selectedReceiver = sender.tag
@@ -247,7 +247,7 @@ extension OfferAddressViewModel: UITableViewDataSource,AddAddressTableViewCellDe
         case .weight:
             if let item = item as? OfferAddressModeWeghitAddress ,let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell {
                 let address = item.weghit[indexPath.row]
-                cell.item2 = address
+                cell.weghit = address
                 cell.cellDelegate = self
                 cell.button.tag = indexPath.row
                 if indexPath.row == selectedWeghit2 {

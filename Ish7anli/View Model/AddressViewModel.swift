@@ -22,7 +22,7 @@ protocol AddressViewModelItem {
     var cellItems: [CellItem] { get}
 }
 
-var Type = ["From the door to the door","From Caption Address"]
+var Type = ["Door to the door","From Caption Address"]
 var Weghit = ["Light","Heavy"]
 var addressbuttons = [RadioButton]()
 var selected: Int = 0
@@ -69,7 +69,7 @@ class AddressViewModel: NSObject {
     }
     private func parseData(profile: Profile) {
           if MOLHLanguage.isRTL() {
-             Type = ["من الباب إلى الباب","من موقع الكابتن"]
+            Type = ["من الباب إلى الباب","من موقع الكابتن"]
             Weghit = ["خفيف", "ثقيل"]
         }
         var newItems = [AddressViewModelItem]()
@@ -107,7 +107,7 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
             selectedType = sender.tag
             delegate?.apply2()
             
-        case .item2:
+        case .weghit:
             selectedWeghit = sender.tag
             delegate?.apply2()
         case .addressRecevier:
@@ -115,10 +115,7 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
         }
     }
     
-    func didPressRadioButton(sender: UIButton) {
-            selected = sender.tag
-            delegate?.apply2()
-    }
+
     func didPressButtonSubmit(sender: UIButton) {
         var senderAddress:Int?
         
@@ -126,7 +123,7 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
             senderAddress = item.address[selectedSender].id
         }
         
-        delegate?.move2(senderAddress!, selectedType, weghitIndex: selectedWeghit2 + 1)
+        delegate?.move2(senderAddress!, selectedType + 1, weghitIndex: selectedWeghit2 + 1)
     }
     func didPressButton(sender: UIButton) {
         delegate?.move()
@@ -185,7 +182,7 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
         case .weghit:
             if let item = item as? AddressViewModeWeghitAddress ,let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell {
                 let address = item.weghit[indexPath.row]
-                cell.item2 = address
+                cell.weghit = address
                 cell.cellDelegate = self
                 cell.button.tag = indexPath.row
                 if indexPath.row == selectedWeghit {

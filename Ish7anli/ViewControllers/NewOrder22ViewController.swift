@@ -20,14 +20,8 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
         super.viewDidLoad()
       
         
-        if MOLHLanguage.isRTL() {
-            ok = "موافق"
-            alartTitle = "تنبيه"
-        }else{
-            ok = "Ok"
-            alartTitle = "Alert"
-            
-        }
+  
+
         // Do any additional setup after loading the view.
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
@@ -82,7 +76,7 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width * 0.485 , height: self.collectionView.frame.height * 0.4)
+        return CGSize(width: self.collectionView.frame.width * 0.485 , height: self.collectionView.frame.height * 0.48)
         
     }
     
@@ -112,8 +106,8 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
         DataClient.shared.getPriceOffer(success: {
            // self.collectionView.reloadData()
         }) { (_ error) in
-            let alert = UIAlertController(title: alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }

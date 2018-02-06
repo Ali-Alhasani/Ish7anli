@@ -1,0 +1,15 @@
+
+/* Class = "UITextField"; placeholder = "Mobile Number"; ObjectID = "IJH-mu-uQ2"; */
+"IJH-mu-uQ2.placeholder" = "رقم الهاتف";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "MnO-0J-s1p"; */
+"MnO-0J-s1p.placeholder" = "البريد الالكتروني";
+
+/* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "pKo-k5-go5"; */
+"pKo-k5-go5.placeholder" = "الاسم كاملاً";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "rca-WG-tgF"; */
+"rca-WG-tgF.normalTitle" = "حفظ";
+
+/* Class = "UILabel"; text = "Edit Profile"; ObjectID = "wf0-Cn-Sqn"; */
+"wf0-Cn-Sqn.text" = "تعديل الصفحةالشخصية";

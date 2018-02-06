@@ -153,7 +153,7 @@ extension ProfileViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
             if MOLHLanguage.isRTL() {
                 return "عناويني"
             }
-            return "MY Addres"
+            return "MY Address"
         }
 //
 //        var rowCount: Int {

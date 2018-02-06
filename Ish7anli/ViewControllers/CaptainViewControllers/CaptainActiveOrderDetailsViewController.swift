@@ -26,7 +26,6 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
     
     @IBOutlet weak var priceLabel: UILabel!
     var indexPath:Int?
-    var ok,error,alartTitle,loadingtitle,message:String?
 
     @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
@@ -37,7 +36,6 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
         
         if (DataClient.shared.cpatainActiveOrder.count != 0) {
         nameLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].customerName
-        IdentityLabel.text = " "
         phoneNumberLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].customerPhone
         mailLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].customerEmail
         senderCity.text = DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderCity
@@ -70,15 +68,16 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
     }
     
     @IBAction func chatAction(_ sender: Any) {
+        self.performSegue(withIdentifier: "toActiveChat", sender: self)
     }
     
     
     @IBAction func addressAction(_ sender: Any) {
-          self.performSegue(withIdentifier: "toSenderActive", sender: self)
+          //self.performSegue(withIdentifier: "toSenderActive", sender: self)
     }
     
     @IBAction func receiverAddressAction(_ sender: Any) {
-          self.performSegue(withIdentifier: "toReceiverActive", sender: self)
+         // self.performSegue(withIdentifier: "toReceiverActive", sender: self)
         
     }
 
@@ -86,8 +85,8 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
         DataClient.shared.captainCancelOffer(success: {
             
         }, failuer: { (_ error) in
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title:ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
             
         }, customerOfferId: DataClient.shared.cpatainActiveOrder[indexPath!].id!)

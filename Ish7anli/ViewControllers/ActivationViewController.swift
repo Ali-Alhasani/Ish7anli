@@ -15,21 +15,11 @@ class ActivationViewController: UIViewController {
     
     var activationCode:String?
     var phoneNumber:String?
-     var ok,error,alartTitle,loadingtitle,message:String?
     override func viewDidLoad() {
         super.viewDidLoad()
-      //self.activationText.text = activationCode!
+      self.activationText.text = activationCode!
       self.phoneNumberLabel.text = phoneNumber!
         // Do any additional setup after loading the view.
-        if MOLHLanguage.isRTL() {
-         
-            self.ok = "موافق"
-            self.alartTitle = "تنبيه"
-        }else{
-            self.ok = "Ok"
-            self.alartTitle = "Alert"
-            
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,15 +35,8 @@ class ActivationViewController: UIViewController {
         
         let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-        if MOLHLanguage.isRTL() {
-            self.loadingtitle = "جارى الإرسال"
-            self.message = "الرجاء الانتظار"
-        }else{
-            self.loadingtitle = "Sending"
-            self.message = "Please Wait"
-        }
-        spiningActivity.label.text = self.loadingtitle
-        spiningActivity.detailsLabel.text = self.message
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
         
           load()
     }
@@ -61,16 +44,9 @@ class ActivationViewController: UIViewController {
     @IBAction func activateButtonAction(_ sender: Any) {
         
         let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-        if MOLHLanguage.isRTL() {
-            self.loadingtitle = "جارى الإرسال"
-            self.message = "الرجاء الانتظار"
-        }else{
-            self.loadingtitle = "Sending"
-            self.message = "Please Wait"
-        }
-        spiningActivity.label.text = self.loadingtitle
-        spiningActivity.detailsLabel.text = self.message
+
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
         
         DataClient.shared.activate(success: {
             //SessionManager.loadSessionManager()
@@ -78,8 +54,8 @@ class ActivationViewController: UIViewController {
      MBProgressHUD.hide(for: self.view, animated: true)
         }, failuer: { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }, activiationCode: activationText.text!)
     }
@@ -91,8 +67,8 @@ class ActivationViewController: UIViewController {
             //self.activationCode = String(activationCode)
         }) { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
-            let alert = UIAlertController(title: self.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
     }
@@ -117,19 +93,17 @@ class ActivationViewController: UIViewController {
         // Create second button
         let buttonTwo = DefaultButton(title: "Save", height: 60) {
             if (ratingVC.newPhoneNumberText.text!.isEmpty) {
-                //var ok,error,title:String?
+                var error:String?
                 if MOLHLanguage.isRTL() {
-                    self.error =  "يجب أن تقوم بإدخال رقم الهاتف المحمول"
-                    self.ok = "موافق"
-                    self.alartTitle = "تنبيه"
+                    error =  "يجب أن تقوم بإدخال رقم الهاتف المحمول"
+               
                 }else{
-                    self.error = "You should enter a valid mobile number"
-                    self.ok = "Ok"
-                    self.alartTitle = "Alert"
+                    error = "You should enter a valid mobile number"
+                  
                     
                 }
-                let alert = UIAlertController(title: self.alartTitle, message:self.error, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+                let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
                 self.present(alert, animated: true)
             }else {
             
@@ -137,15 +111,9 @@ class ActivationViewController: UIViewController {
                 
                 let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
                 
-                if MOLHLanguage.isRTL() {
-                    self.loadingtitle = "جارى الإرسال"
-                    self.message = "الرجاء الانتظار"
-                }else{
-                    self.loadingtitle = "Sending"
-                    self.message = "Please Wait"
-                }
-                spiningActivity.label.text = self.loadingtitle
-                spiningActivity.detailsLabel.text = self.message
+              
+                spiningActivity.label.text =  ErrorHelper.shared.loadingtitle
+                spiningActivity.detailsLabel.text =  ErrorHelper.shared.message
                 
                 self.load()
             }

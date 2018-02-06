@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class JoinCaptainViewController: UIViewController {
+class JoinCaptainViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var fullNameText: UITextField!
     @IBOutlet weak var cardNumberText: UITextField!
@@ -15,8 +15,8 @@ class JoinCaptainViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmPasswordText: UITextField!
-    var ok,error,alartTitle,loadingtitle,message:String?
-
+  
+    var statusEmail:Bool = false
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,9 @@ class JoinCaptainViewController: UIViewController {
             automaticallyAdjustsScrollViewInsets = false
         }
         self.view.backgroundColor = UIColor(rgb: 0xf7f7f7)
+        emailText.delegate = self
+        passwordText.delegate = self
+        confirmPasswordText.delegate = self
 
 
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -60,20 +63,56 @@ class JoinCaptainViewController: UIViewController {
         self.setBackButton2()
     }
     
-    @IBAction func continueAction(_ sender: Any) {
-        if (fullNameText.text!.isEmpty || cardNumberText.text!.isEmpty || mobileNumberText.text!.isEmpty || emailText.text!.isEmpty || passwordText.text!.isEmpty || confirmPasswordText.text!.isEmpty) {
-            if MOLHLanguage.isRTL() {
-                self.error =  "يجب أن تقوم بإدخال كافة الحقول"
-                self.ok = "موافق"
-                self.alartTitle = "تنبيه"
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case emailText:
+             statusEmail = isValidEmail(testStr: self.emailText.text!)
+            
+            if (statusEmail){
+                //                    self.clinicEmailError.text = ""
+                self.emailText.layer.borderWidth = 0
+                
             }else{
-                self.error = "You should fill all the fields"
-                self.ok = "Ok"
-                self.alartTitle = "Alert"
+                self.emailText.layer.borderWidth = 1
+                self.emailText.layer.borderColor = UIColor.red.cgColor
+                //                    self.clinicEmailError.text = "Must be a valid email address"
                 
             }
-            let alert = UIAlertController(title: self.alartTitle, message:error, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
+           break
+        case confirmPasswordText:
+              if (passwordText.text! != confirmPasswordText.text!){
+                self.confirmPasswordText.layer.borderWidth = 1
+                self.confirmPasswordText.layer.borderColor = UIColor.red.cgColor
+              }else{
+                self.confirmPasswordText.layer.borderWidth = 0
+
+            }
+            break
+        default:
+             print(textField.text)
+        }
+       
+        
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
+    
+    @IBAction func continueAction(_ sender: Any) {
+        if (fullNameText.text!.isEmpty || cardNumberText.text!.isEmpty || mobileNumberText.text!.isEmpty || emailText.text!.isEmpty || passwordText.text!.isEmpty || confirmPasswordText.text!.isEmpty) {
+              var error:String?
+            if MOLHLanguage.isRTL() {
+                error =  "يجب أن تقوم بإدخال كافة الحقول"
+            }else{
+               error = "You should fill all the fields"
+            }
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }else {
         self.performSegue(withIdentifier: "continue", sender: self)

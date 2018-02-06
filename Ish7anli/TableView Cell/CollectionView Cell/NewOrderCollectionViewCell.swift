@@ -36,7 +36,6 @@ class NewOrderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
 
     @IBOutlet weak var cityFromLabel: UILabel!
@@ -60,7 +59,6 @@ class NewOrderCollectionViewCell: UICollectionViewCell {
             })
             self.nameLabel.text = data.name
             self.timeLabel.text = data.time
-            self.dayLabel.text = data.day
             self.dateLabel.text = data.date
             self.cityFromLabel.text = data.cityFrom
             self.cityToLabel.text = data.cityTo

@@ -10,6 +10,11 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="DroidSansArabic.ttf">
+            <string>DroidSansArabic</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,6 +32,7 @@
                             <constraint firstAttribute="height" constant="40" id="Ofk-Yw-mzr"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="gw0-ik-4YT"/>
                         </constraints>
+                        <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                         <state key="normal" title="Add Address" image="location blue">
                             <color key="titleColor" name="black"/>
                             <color key="titleShadowColor" name="black"/>

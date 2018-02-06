@@ -36,8 +36,8 @@ class CaptainAddAddressViewController: UIViewController {
     
     @IBAction func addAddressAction(_ sender: Any) {
         if ((addressNameText.text?.isEmpty)! || (addressDetailsText.text?.isEmpty)!){
-            let alert = UIAlertController(title: "Alert", message:"", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:"", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }else{
             load()
@@ -94,11 +94,15 @@ class CaptainAddAddressViewController: UIViewController {
     
     func load(){
         DataClient.shared.CaptainAddAddress(title: addressDetailsText.text!, details: addressDetailsText.text!, longitude: 10, latitude: 10, success: {
+               MBProgressHUD.hide(for: self.view, animated: true)
             self.dismiss(animated: true, completion: {
                 
             })
         }) { (_ error) in
-            
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
 
@@ -113,59 +117,73 @@ class CaptainAddAddressViewController: UIViewController {
     */
 
 }
-extension CaptainAddAddressViewController : CLLocationManagerDelegate , GMSMapViewDelegate {
+extension CaptainAddAddressViewController :CLLocationManagerDelegate {
+    // 2
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        // 3
+        guard status == .authorizedWhenInUse else {
+            return
+        }
+        // 4
+        locationManager.startUpdatingLocation()
+        
+        //5
+        googleMapView?.isMyLocationEnabled = true
+        googleMapView?.settings.myLocationButton = true
+        
+    }
     
+    // 6
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //if  addressViewOpenForWhat == .new {
-        let location: CLLocation = locations.last!
+        guard let location = locations.last else {
+            return
+        }
+        
         print("Location: \(location)")
         lat = location.coordinate.latitude
         lng = location.coordinate.longitude
         
         let camera = GMSCameraPosition.camera(withLatitude: lat,
                                               longitude: lng,
-                                              zoom: Float(12.0))
+                                              zoom: 12.0)
         
-        mapView!.camera = camera
-        //mapView!.clear()
+        googleMapView!.camera = camera
+        googleMapView!.clear()
         //
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude:lat,
                                                  longitude: lng)
-        marker.map = mapView
+        
+        marker.map = googleMapView
         marker.isDraggable = true
-        //}
+        // googleMapView.selectedMarker = marker
+        
+        // 7
+        // googleMapView?.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        
+        // 8
+        locationManager.stopUpdatingLocation()
+    }
+}
+extension CaptainAddAddressViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        //mapCenterPinImage.fadeOut(0.25)
+        return false
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .restricted:
-            print("Location access was restricted.")
-        case .denied:
-            print("User denied access to location.")
-            // Display the map using the default location.
-            mapView?.isHidden = false
-        case .notDetermined:
-            print("Location status not determined.")
-        case .authorizedAlways: fallthrough
-        case .authorizedWhenInUse:
-            print("Location status is OK.")
-        }
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        //mapCenterPinImage.fadeIn(0.25)
+        googleMapView.selectedMarker = nil
+        return false
     }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
-    {
-        print("Errors: " + error.localizedDescription)
-    }
-    
     func mapView(_ mapView: GMSMapView, didEndDragging marker: GMSMarker) {
         lat = marker.position.latitude
         lng = marker.position.longitude
+        
+        print(lat)
+        print(lng)
     }
-    
-    
-    
-    
 }
+

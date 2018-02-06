@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
+import PopupDialog
 class CpatainNewOrderDetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var IdentityLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var mailLabel: UILabel!
     
@@ -36,7 +35,6 @@ class CpatainNewOrderDetailsViewController: UIViewController {
         }
         if (DataClient.shared.cpatainCustomerOrder.count != 0) {
             nameLabel.text = DataClient.shared.cpatainCustomerOrder[indexPath!].customerName
-            IdentityLabel.text = " "
             phoneNumberLabel.text = DataClient.shared.cpatainCustomerOrder[indexPath!].customerPhone
             mailLabel.text = DataClient.shared.cpatainCustomerOrder[indexPath!].customerEmail
             senderCity.text = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderCity
@@ -74,15 +72,31 @@ class CpatainNewOrderDetailsViewController: UIViewController {
     
     
     @IBAction func addressAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "toSenderNew", sender: self)
+       // self.performSegue(withIdentifier: "toSenderNew", sender: self)
     }
     
     @IBAction func receiverAddressAction(_ sender: Any) {
-        self.performSegue(withIdentifier: "toReceiverNew", sender: self)
+        //self.performSegue(withIdentifier: "toReceiverNew", sender: self)
     }
     
     @IBAction func addPriceAction(_ sender: Any) {
+        customerOfferId = DataClient.shared.cpatainCustomerOrder[indexPath!].id!
+
+        showCustomDialog()
+    }
+    func showCustomDialog(animated: Bool = true) {
         
+        // Create a custom view controller
+        let ratingVC = AddPriceViewController(nibName: "AddPriceViewController", bundle: nil)
+        
+        // Create the dialog
+        let popup = PopupDialog(viewController: ratingVC, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true)
+        
+        // Add buttons to dialog
+        //popup.addButtons([buttonOne, buttonTwo])
+        //viewModel.addSlientData()
+        // Present dialog
+        present(popup, animated: animated, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,7 +118,7 @@ class CpatainNewOrderDetailsViewController: UIViewController {
             let vc = segue.destination as! ChatViewController
             vc.senderType = .C
 
-                vc.targetId = String(DataClient.shared.offer[indexPath!].captainId!)
+                vc.targetId = String(DataClient.shared.cpatainCustomerOrder[indexPath!].customerId!)
           
             
         }

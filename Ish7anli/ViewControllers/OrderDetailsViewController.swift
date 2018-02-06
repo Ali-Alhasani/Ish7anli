@@ -33,17 +33,17 @@ class OrderDetailsViewController: UIViewController {
            arrowImage.image = UIImage(named: "backBlueLeft")
         }
         
-        if (DataClient.shared.lastOffer.count != 0) {
-      sendTimeLabel.text = DataClient.shared.lastOffer[indexPath!].time
-         sendDateLabel.text = DataClient.shared.lastOffer[indexPath!].date
-        weightLabel.text = weightArray[DataClient.shared.lastOffer[indexPath!].weight! - 1 ]
-        deliveryLabel.text = deliveryArray[DataClient.shared.lastOffer[indexPath!].deliveryType! - 2 ]
+        if (DataClient.shared.CustomerOrder.count != 0) {
+         sendTimeLabel.text = DataClient.shared.CustomerOrder[indexPath!].time!
+         sendDateLabel.text = DataClient.shared.CustomerOrder[indexPath!].date!
+        weightLabel.text = weightArray[DataClient.shared.CustomerOrder[indexPath!].weight! - 1 ]
+        deliveryLabel.text = deliveryArray[DataClient.shared.CustomerOrder[indexPath!].deliveryType! - 1 ]
         
-        locationLabel.text = DataClient.shared.lastOffer[indexPath!].addressSenderTitle
+        locationLabel.text = DataClient.shared.CustomerOrder[indexPath!].addressSenderTitle!
         
-        receiverNameLabel.text = DataClient.shared.lastOffer[indexPath!].receiverName
-        receiverPhoneLabel.text = DataClient.shared.lastOffer[indexPath!].receiverPhone
-        receiverAddressLabel.text = DataClient.shared.lastOffer[indexPath!].addressReceiverCity! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverTitle!
+        receiverNameLabel.text = DataClient.shared.CustomerOrder[indexPath!].receiverName!
+        receiverPhoneLabel.text = DataClient.shared.CustomerOrder[indexPath!].receiverPhone!
+        receiverAddressLabel.text = DataClient.shared.CustomerOrder[indexPath!].addressReceiverCity! + " - " + DataClient.shared.CustomerOrder[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.CustomerOrder[indexPath!].addressReceiverTitle!
         }
         
         // Do any additional setup after loading the view.
