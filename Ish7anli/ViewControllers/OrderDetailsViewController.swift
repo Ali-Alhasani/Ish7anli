@@ -24,8 +24,8 @@ class OrderDetailsViewController: UIViewController {
     @IBOutlet weak var receiverNameLabel: UILabel!
     @IBOutlet weak var receiverPhoneLabel: UILabel!
     @IBOutlet weak var receiverAddressLabel: UILabel!
-     var weightArray = ["heavy", "Light"]
-    var deliveryArray = ["Form the door to door" , "from caption cite"]
+    // var weightArray = ["heavy", "Light"]
+   // var deliveryArray = ["door to door" , "from caption cite","Caption to caption"]
     @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,8 @@ class OrderDetailsViewController: UIViewController {
         if (DataClient.shared.CustomerOrder.count != 0) {
          sendTimeLabel.text = DataClient.shared.CustomerOrder[indexPath!].time!
          sendDateLabel.text = DataClient.shared.CustomerOrder[indexPath!].date!
-        weightLabel.text = weightArray[DataClient.shared.CustomerOrder[indexPath!].weight! - 1 ]
-        deliveryLabel.text = deliveryArray[DataClient.shared.CustomerOrder[indexPath!].deliveryType! - 1 ]
+        weightLabel.text = ErrorHelper.shared.weightArray[DataClient.shared.CustomerOrder[indexPath!].weight! - 1 ]
+        deliveryLabel.text = ErrorHelper.shared.deliveryArray[DataClient.shared.CustomerOrder[indexPath!].deliveryType! - 1 ]
         
         locationLabel.text = DataClient.shared.CustomerOrder[indexPath!].addressSenderTitle!
         

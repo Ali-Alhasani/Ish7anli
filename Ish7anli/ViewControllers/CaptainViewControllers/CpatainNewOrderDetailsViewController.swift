@@ -32,6 +32,7 @@ class CpatainNewOrderDetailsViewController: UIViewController {
         super.viewDidLoad()
         if !MOLHLanguage.isRTL(){
             arrowImage.image = UIImage(named: "backBlueLeft")
+           
         }
         if (DataClient.shared.cpatainCustomerOrder.count != 0) {
             nameLabel.text = DataClient.shared.cpatainCustomerOrder[indexPath!].customerName
@@ -39,8 +40,8 @@ class CpatainNewOrderDetailsViewController: UIViewController {
             mailLabel.text = DataClient.shared.cpatainCustomerOrder[indexPath!].customerEmail
             senderCity.text = DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderCity
             recevierCity.text = DataClient.shared.cpatainCustomerOrder[indexPath!].addressReceiverCity
-            deliveryLabel.text = deliveryArray[ DataClient.shared.cpatainCustomerOrder[indexPath!].deliveryType! - 1 ]
-            weightLabel.text = weightArray[DataClient.shared.cpatainCustomerOrder[indexPath!].weight! - 1 ]
+            deliveryLabel.text =  ErrorHelper.shared.deliveryArray[ DataClient.shared.cpatainCustomerOrder[indexPath!].deliveryType! - 1 ]
+            weightLabel.text =  ErrorHelper.shared.weightArray[DataClient.shared.cpatainCustomerOrder[indexPath!].weight! - 1 ]
             locationLabel.text =  DataClient.shared.cpatainCustomerOrder[indexPath!].addressSenderTitle
             receiverNameLabel.text = DataClient.shared.cpatainCustomerOrder[indexPath!].receiverName
             receiverPhoneNumberlabel.text = DataClient.shared.cpatainCustomerOrder[indexPath!].receiverPhone

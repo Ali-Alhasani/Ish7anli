@@ -49,8 +49,12 @@ class NewOrderCollectionViewCell: UICollectionViewCell {
             if !MOLHLanguage.isRTL(){
                 arrowImage.image = UIImage(named: "backBlueLeft")
             }
-            
-            self.priceLabel.text = data.price
+            if MOLHLanguage.isRTL() {
+                self.priceLabel.text = data.price + "ريال"
+            }else{
+                 self.priceLabel.text = data.price + "SAR"
+            }
+         
             self.rateView.rating = data.stars
             APIClient.sendImageRequest(path: data.image, success: { (_ image) in
                  self.imageView.image = image

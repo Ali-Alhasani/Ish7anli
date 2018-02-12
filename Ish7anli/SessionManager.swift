@@ -16,6 +16,7 @@ class SessionManager: NSObject {
     var isUserLogged: Bool = false
     var isCaptainLogged:Bool = false
     var userId:String = ""
+    var cpatainType:String = ""
     //var currentUser: User!
     
     
@@ -57,6 +58,16 @@ class SessionManager: NSObject {
      class func loadPhoneNumber(){
         guard let tempPhone = UserDefaults.standard.value(forKey: "phoneNumber") as? String else {return}
           SessionManager.shared.phoneNumber = tempPhone
+    }
+    class func saveCpatainType(){
+       let cpatainType =  SessionManager.shared.cpatainType
+        UserDefaults.standard.set(cpatainType, forKey: "cpatainType")
+        
+    }
+    
+    class func loadCpatainType(){
+        guard let tempType = UserDefaults.standard.value(forKey: "cpatainType") as? String else {return}
+        SessionManager.shared.cpatainType = tempType
     }
     
     class func saveSessionManager(){

@@ -13,13 +13,13 @@ protocol newOrderTableViewDelegate : class {
 
 struct newOrderTableViewData {
     
-    init(price: Double, image:String,name:String,senderCity:String,receiverCity:String) {
+    init(price: Double, image:String,name:String,senderCity:String,receiverCity:String,isNew:Bool) {
         self.price = price
         self.senderCity = senderCity
         self.image = image
         self.name = name
         self.receiverCity = receiverCity
-        
+        self.isNew = isNew
 
     }
     var price: Double
@@ -28,6 +28,7 @@ struct newOrderTableViewData {
     var name:String
     var senderCity:String
     var receiverCity:String
+    var isNew:Bool
 }
 class newOrderTableViewCell: UITableViewCell {
     weak var cellDelegate: newOrderTableViewDelegate?
@@ -37,6 +38,7 @@ class newOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var senderCityLabel: UILabel!
     @IBOutlet weak var receiverCityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,15 +55,29 @@ class newOrderTableViewCell: UITableViewCell {
         if let data = data as? newOrderTableViewData {
             var stringFinal:String?
             if MOLHLanguage.isRTL() {
-                   self.priceLabel.text = String(data.price) + "ريال "
+                   self.currencyLabel.text = "ريال "
                 //let string: NSMutableAttributedString = NSMutableAttributedString(string: "ريال" + String(data.price) )
                 //string.setColorForText(textToFind: "ريال", withColor: UIColor.black)
               
             }else {
-                 self.priceLabel.text = String(data.price) + " SAR"
+                 self.currencyLabel.text = " SAR"
                 //let string: NSMutableAttributedString = NSMutableAttributedString(string: "SAR" + String(data.price) )
                // string.setColorForText(textToFind: "SAR", withColor: UIColor.black)
             }
+            
+            if data.isNew {
+                 self.currencyLabel.text = ""
+                 if MOLHLanguage.isRTL() {
+                    self.priceLabel.text = "جديد"
+                    self.priceLabel.textColor = UIColor.green
+                 }else{
+                     self.priceLabel.text = "New"
+                }
+            }else {
+                self.priceLabel.text  = String(data.price)
+            }
+            
+            
         
             
            

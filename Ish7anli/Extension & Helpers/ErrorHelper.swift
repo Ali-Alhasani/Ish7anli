@@ -14,7 +14,10 @@ class ErrorHelper: NSObject {
     var alartTitle: String = ""
     var loadingtitle: String = ""
     var message: String = ""
-    
+    var weightArray = ["Heavy", "Light"]
+    var deliveryArray = ["Door to door" , "from caption cite" , "Caption to caption"]
+    var paymentArray = ["Cash on recevie" , "Cash on delivery" , "Transfer from Bank Account"]
+
     class var shared: ErrorHelper{
         struct Static{
             static let instance = ErrorHelper()
@@ -36,6 +39,18 @@ class ErrorHelper: NSObject {
        ErrorHelper.shared.ok = "Ok"
         ErrorHelper.shared.alartTitle = "Alert"
     }
+    }
+    
+    class func loadArrayHelper(){
+        if MOLHLanguage.isRTL(){
+            ErrorHelper.shared.deliveryArray = ["من الباب للباب" , "من موقع الكابتن" , "كابتن لكابتن"]
+            ErrorHelper.shared.weightArray = ["ثقيل", "خفيف"]
+            ErrorHelper.shared.paymentArray = ["كاش عند الاستلام" , "كاش عند التسليم" , "التحويل من حساب"]
+        }else{
+       ErrorHelper.shared.deliveryArray = ["Door to door" , "from caption cite" , "Caption to caption"]
+          ErrorHelper.shared.weightArray = ["Heavy", "Light"]
+           ErrorHelper.shared.paymentArray = ["Cash on recevie" , "Cash on delivery" , "Transfer from Bank Account"]
+        }
     }
     
     

@@ -64,7 +64,8 @@ class ActivationViewController: UIViewController {
     func load(){
         DataClient.shared.logIn(phone: phoneNumber!, success: { (_ activationCode) in
              MBProgressHUD.hide(for: self.view, animated: true)
-            //self.activationCode = String(activationCode)
+             self.activationCode = activationCode
+            self.activationText.text =  self.activationCode
         }) { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
@@ -108,7 +109,7 @@ class ActivationViewController: UIViewController {
             }else {
             
             self.phoneNumber = ratingVC.newPhoneNumberText.text!
-                
+               self.phoneNumberLabel.text = self.phoneNumber
                 let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
                 
               

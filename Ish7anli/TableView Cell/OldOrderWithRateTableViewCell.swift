@@ -10,6 +10,7 @@ import UIKit
 protocol OldOrderWithRateTableViewDelegate : class {
     func didPressFinishedDetailsButton(sender: UIButton)
     func didPressRateButton(sender: UIButton)
+    func didPressChatButton(sender: UIButton)
 
 }
 
@@ -40,6 +41,8 @@ class OldOrderWithRateTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var rateButton: UIButton!
     @IBOutlet weak var detailsButton: UIButton!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -64,6 +67,13 @@ class OldOrderWithRateTableViewCell: UITableViewCell {
             })
             self.nameLabel.text = data.name
             self.dateLabel.text = data.date + " - " + data.time
+            if MOLHLanguage.isRTL() {
+                detailsButton.setTitle(" تفاصيل ", for: .normal)
+                chatButton.setTitle(" محادثة ", for: .normal)
+                currencyLabel.text = "ريال"
+                rateButton.setTitle("تقييم الطلب", for: UIControlState.normal)
+            }
+            
         }
     }
     
@@ -73,6 +83,9 @@ class OldOrderWithRateTableViewCell: UITableViewCell {
     @IBAction func detailsAction(_ sender: Any) {
         cellDelegate?.didPressFinishedDetailsButton(sender: sender as! UIButton)
 
+    }
+    @IBAction func chatAction(_ sender: Any) {
+        cellDelegate?.didPressChatButton(sender: sender as! UIButton)
     }
     
 }

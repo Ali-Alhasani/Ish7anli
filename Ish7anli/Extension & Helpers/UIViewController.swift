@@ -19,6 +19,7 @@ extension UIViewController {
          } else{
             self.addRightBarButtonWithImage(UIImage(named: "notifications")!)
             self.addLeftBarButtonWithImage(UIImage(named: "menu")!)
+        
        }
         
 
@@ -27,6 +28,8 @@ extension UIViewController {
         self.slideMenuController()?.addLeftGestures()
         self.slideMenuController()?.addRightGestures()
     }
+    
+ 
     
 
     

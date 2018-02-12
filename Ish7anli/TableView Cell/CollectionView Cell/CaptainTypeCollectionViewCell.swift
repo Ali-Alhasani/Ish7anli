@@ -35,6 +35,7 @@ class CaptainTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageViewType: UIImageView!
     @IBOutlet weak var typeNameLabel: UILabel!
     @IBOutlet weak var typeDescription: UILabel!
+    @IBOutlet weak var chooseButton: CustomButton2!
     
    
     

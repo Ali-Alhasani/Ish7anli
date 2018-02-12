@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -21,24 +20,24 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="65" id="ycR-2b-rIB" customClass="ListTableViewCell" customModule="Ish7anli" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ycR-2b-rIB" id="2Md-yN-5ld">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ycR-2b-rIB" id="2Md-yN-5ld">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SgQ-h3-n4D" userLabel="View inner">
-                        <rect key="frame" x="10" y="10" width="355" height="55"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SgQ-h3-n4D" userLabel="View inner">
+                        <rect key="frame" x="10" y="5.5" width="355" height="55"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCD-kM-Gq8">
-                                <rect key="frame" x="20" y="17" width="296" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hCD-kM-Gq8">
+                                <rect key="frame" x="20" y="17.5" width="294" height="20"/>
                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sL6-vy-eyS" customClass="RadioButton" customModule="Ish7anli" customModuleProvider="target">
-                                <rect key="frame" x="324" y="16" width="23" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sL6-vy-eyS" customClass="RadioButton" customModule="Ish7anli" customModuleProvider="target">
+                                <rect key="frame" x="322" y="15" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="23" id="PbS-tW-KMA"/>
-                                    <constraint firstAttribute="width" constant="23" id="fBG-7B-JyL"/>
+                                    <constraint firstAttribute="height" constant="25" id="PbS-tW-KMA"/>
+                                    <constraint firstAttribute="width" constant="25" id="fBG-7B-JyL"/>
                                 </constraints>
                                 <state key="normal" image="unCheckCombo"/>
                                 <connections>
@@ -59,9 +58,8 @@
                 </subviews>
                 <color key="backgroundColor" name="background"/>
                 <constraints>
+                    <constraint firstItem="SgQ-h3-n4D" firstAttribute="top" secondItem="2Md-yN-5ld" secondAttribute="top" constant="5.5" id="JPv-FC-nV0"/>
                     <constraint firstAttribute="trailing" secondItem="SgQ-h3-n4D" secondAttribute="trailing" constant="10" id="LC1-Ic-eGb"/>
-                    <constraint firstAttribute="bottom" secondItem="SgQ-h3-n4D" secondAttribute="bottom" constant="20" symbolic="YES" id="Yvt-Qk-nnf"/>
-                    <constraint firstItem="SgQ-h3-n4D" firstAttribute="top" secondItem="2Md-yN-5ld" secondAttribute="top" constant="4" id="Zfs-Yf-KEE"/>
                     <constraint firstAttribute="bottom" secondItem="SgQ-h3-n4D" secondAttribute="bottom" constant="4" id="o5C-bO-5fO"/>
                     <constraint firstItem="SgQ-h3-n4D" firstAttribute="leading" secondItem="2Md-yN-5ld" secondAttribute="leading" constant="10" id="v2n-62-hM6"/>
                 </constraints>

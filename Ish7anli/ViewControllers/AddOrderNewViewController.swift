@@ -76,6 +76,20 @@ class AddOrderNewViewController: UIViewController {
 
 }
 extension AddOrderNewViewController: AddressViewModelDelegate {
+    func errorNoSelected() {
+        var error:String?
+        if MOLHLanguage.isRTL() {
+            error = "يجب أن تقوم بإضافة عنوان المرسل"
+            
+        }else{
+            error = "You should add a valid sender address"
+            
+        }
+        let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     func move2(_ senderAddress: Int, _ deliveryIndex: Int, weghitIndex: Int) {
           self.senderAddress = senderAddress
           self.deliveryIndex = deliveryIndex

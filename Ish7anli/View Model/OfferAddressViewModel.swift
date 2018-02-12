@@ -9,9 +9,9 @@
 import Foundation
 enum OfferAddressViewModelItemType: String {
     case senderAddress = "senderAddress"
-    case addSenderAddress = "addSenderAddress"
+   // case addSenderAddress = "addSenderAddress"
     case receiverAddress = "receiverAddress"
-    case addReceiverAddress = "addReceiverAddress"
+   // case addReceiverAddress = "addReceiverAddress"
     case weight = "weight"
     case receiverInformation = "receiverInformation"
     case addOrderButton = "addOrderButton"
@@ -30,7 +30,8 @@ var selectedReceiver: Int = 0
 var selectedWeghit2: Int = 0
 var informationIndexPath = [Int]()
 var textPalceHolder = ["Name", "Mobile"]
-
+var sender:String?
+var receiver:String?
 protocol OfferAddressViewModelDelegate: class {
     func apply(changes: SectionChanges)
     func move()
@@ -73,6 +74,9 @@ class OfferAddressViewModel: NSObject {
         }
         
     }
+    func addData(){
+        
+    }
     private func parseData(profile: Profile) {
         if MOLHLanguage.isRTL() {
             Type = ["من الباب إلى الباب","من موقع الكابتن"]
@@ -84,16 +88,16 @@ class OfferAddressViewModel: NSObject {
         newItems.append(senderAddressItem)
         
         
-        let addSenderAddressItem = OfferAddressViewModeAddSenderAddress()
-        newItems.append(addSenderAddressItem)
+//        let addSenderAddressItem = OfferAddressViewModeAddSenderAddress()
+//        newItems.append(addSenderAddressItem)
         
         let receiveAddressItem = OfferAddressViewModeReceiverAddressItem(address: address)
         newItems.append(receiveAddressItem)
         
         
-        let addReceiveAddressItem = OfferAddressViewModeAddReceiveAddress()
-        newItems.append(addReceiveAddressItem)
-        
+//        let addReceiveAddressItem = OfferAddressViewModeAddReceiveAddress()
+//        newItems.append(addReceiveAddressItem)
+//
      
         
         let receiverInformationItem = OfferAddressViewModeReceiverInformation(text : textPalceHolder)
@@ -192,11 +196,11 @@ extension OfferAddressViewModel: UITableViewDataSource,AddAddressTableViewCellDe
                 return cell
             }
             
-        case .addSenderAddress:
-            if  let cell = tableView.dequeueReusableCell(withIdentifier: AddAddressTableViewCell.identifier, for: indexPath) as? AddAddressTableViewCell {
-                cell.cellDelegate = self
-                return cell
-            }
+//        case .addSenderAddress:
+//            if  let cell = tableView.dequeueReusableCell(withIdentifier: AddAddressTableViewCell.identifier, for: indexPath) as? AddAddressTableViewCell {
+//                cell.cellDelegate = self
+//                return cell
+//            }
             
         case .receiverAddress:
             if let item = item as? OfferAddressViewModeReceiverAddressItem, let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell {
@@ -214,11 +218,11 @@ extension OfferAddressViewModel: UITableViewDataSource,AddAddressTableViewCellDe
                 return cell
             }
             
-        case .addReceiverAddress:
-            if  let cell = tableView.dequeueReusableCell(withIdentifier: AddAddressTableViewCell.identifier, for: indexPath) as? AddAddressTableViewCell {
-                cell.cellDelegate = self
-                return cell
-            }
+//        case .addReceiverAddress:
+//            if  let cell = tableView.dequeueReusableCell(withIdentifier: AddAddressTableViewCell.identifier, for: indexPath) as? AddAddressTableViewCell {
+//                cell.cellDelegate = self
+//                return cell
+//            }
             
         case .receiverInformation:
         
@@ -303,20 +307,20 @@ class OfferAddressViewModeSenderAddressItem: OfferAddressViewModelItem {
         self.address = address
     }
 }
-class OfferAddressViewModeAddSenderAddress: OfferAddressViewModelItem {
-    var type: OfferAddressViewModelItemType {
-        return .addSenderAddress
-    }
-    
-    var sectionTitle: String {
-        return ""
-        
-    }
-    
-    var cellItems: [CellItem] {
-        return [CellItem(value: sectionTitle, id: sectionTitle)]
-    }
-}
+//class OfferAddressViewModeAddSenderAddress: OfferAddressViewModelItem {
+//    var type: OfferAddressViewModelItemType {
+//        return .addSenderAddress
+//    }
+//
+//    var sectionTitle: String {
+//        return ""
+//
+//    }
+//
+//    var cellItems: [CellItem] {
+//        return [CellItem(value: sectionTitle, id: sectionTitle)]
+//    }
+//}
 
 class OfferAddressViewModeReceiverAddressItem: OfferAddressViewModelItem {
     var type: OfferAddressViewModelItemType {
@@ -342,20 +346,20 @@ class OfferAddressViewModeReceiverAddressItem: OfferAddressViewModelItem {
     }
 }
 
-class OfferAddressViewModeAddReceiveAddress: OfferAddressViewModelItem {
-    var type: OfferAddressViewModelItemType {
-        return .addReceiverAddress
-    }
-    
-    var sectionTitle: String {
-        return ""
-        
-    }
-    
-    var cellItems: [CellItem] {
-        return [CellItem(value: sectionTitle, id: sectionTitle)]
-    }
-}
+//class OfferAddressViewModeAddReceiveAddress: OfferAddressViewModelItem {
+//    var type: OfferAddressViewModelItemType {
+//        return .addReceiverAddress
+//    }
+//
+//    var sectionTitle: String {
+//        return ""
+//
+//    }
+//
+//    var cellItems: [CellItem] {
+//        return [CellItem(value: sectionTitle, id: sectionTitle)]
+//    }
+//}
 
 
 

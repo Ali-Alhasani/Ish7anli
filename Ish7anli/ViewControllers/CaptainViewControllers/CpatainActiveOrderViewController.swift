@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,ActiveOrderTableViewDelegate {
+class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,ActiveOrderTableViewDelegate,ActiveOrderTableViewDelegate2 {
  
     @IBOutlet weak var tableView: UITableView!
     var indexPath:Int?
@@ -94,39 +94,20 @@ class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UIT
             //cell.isChecked = true
             return cell
         }else if (DataClient.shared.cpatainActiveOrder[indexPath.row].status == 2){
-               let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
+               let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell2", owner: self, options: nil)?.first as! ActiveOrderTableViewCell2
               // cell.isChecked = false
             cell.selectionStyle = .none
             cell.cellDelegate = self
             cell.actionButton.tag = indexPath.row
             
-           // cell.actionButton.backgroundColor = UIColor(named: "niceBlue")
             cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressReceiverCity!, type: 2))
                cell.actionButton.setTitle("Delivery Done", for: UIControlState.normal)
-            cell.backgroundColor = .black
             return cell
         }
         }
         return UITableViewCell()
     }
-    func tableView(_ tableView: UITableView,
-                   willDisplay cell: UITableViewCell,
-                   forRowAt indexPath: IndexPath){
-       
-            if (DataClient.shared.cpatainActiveOrder[indexPath.row].status == 1 ) {
-                let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
-                cell.actionButton.setTitle("Recevied Done", for: UIControlState.normal)
-                cell.middlePointLabel.backgroundColor = UIColor.white
- 
-
-            }else if (DataClient.shared.cpatainActiveOrder[indexPath.row].status == 2){
-                let cell = Bundle.main.loadNibNamed("ActiveOrderTableViewCell", owner: self, options: nil)?.first as! ActiveOrderTableViewCell
-                // cell.isChecked = false
-                cell.actionButton.setTitle("Delivery Done", for: UIControlState.normal)
-                cell.backgroundColor = .black
-            }
-
-    }
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         self.indexPath = indexPath.row

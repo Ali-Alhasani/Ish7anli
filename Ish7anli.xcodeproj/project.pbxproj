@@ -11,6 +11,7 @@
 		6B10F6002019EC67002F5276 /* AddressViewModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */; };
 		6B10F6022019F384002F5276 /* AddOrder2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */; };
 		6B10F6042019FBD5002F5276 /* ArchiveOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F6032019FBD5002F5276 /* ArchiveOrder.swift */; };
+		6B1787EC20324AFB005E7D24 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1787EB20324AFB005E7D24 /* ForgetPasswordViewController.swift */; };
 		6B18DEE3200F8BBE00C73BA2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEE2200F8BBE00C73BA2 /* SignInViewController.swift */; };
 		6B18DEE5200F8CB500C73BA2 /* ActivationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEE4200F8CB500C73BA2 /* ActivationViewController.swift */; };
 		6B18DEE7200F8E3800C73BA2 /* OfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DEE6200F8E3800C73BA2 /* OfferDetailsViewController.swift */; };
@@ -52,6 +53,8 @@
 		6B3892FA2027109700E669B9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3892F92027109700E669B9 /* Notifications.swift */; };
 		6B3892FD2027217E00E669B9 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3892FB2027217E00E669B9 /* NotificationsTableViewCell.swift */; };
 		6B3892FE2027217E00E669B9 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3892FC2027217E00E669B9 /* NotificationsTableViewCell.xib */; };
+		6B48938C202AED3C00F6769C /* ActiveOrderTableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B48938A202AED3B00F6769C /* ActiveOrderTableViewCell2.xib */; };
+		6B48938F202AEDFE00F6769C /* ActiveOrderTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48938E202AEDFD00F6769C /* ActiveOrderTableViewCell2.swift */; };
 		6B4D52F92029F6BC003A2C48 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */; };
 		6B4ED007202794AA00FC5934 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4ED006202794AA00FC5934 /* ErrorHelper.swift */; };
 		6B4ED0082027C48100FC5934 /* AddPriceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4ED00A2027C48100FC5934 /* AddPriceViewController.xib */; };
@@ -112,11 +115,13 @@
 		6B6BB4662010CC1800BECA87 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB4652010CC1800BECA87 /* ProfileViewModel.swift */; };
 		6B6BB46820111E9E00BECA87 /* DiffCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB46720111E9E00BECA87 /* DiffCalculator.swift */; };
 		6B6BB46A20111F1000BECA87 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6BB46920111F1000BECA87 /* Array+Extensions.swift */; };
+		6B759813202BA75500D92D63 /* BlockedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B759812202BA75500D92D63 /* BlockedViewController.swift */; };
 		6B7C88D1201A10650096FB87 /* OldOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D0201A10650096FB87 /* OldOrder.swift */; };
 		6B7C88D3201B437D0096FB87 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D2201B437D0096FB87 /* UITextField.swift */; };
 		6B7C88D5201B9A330096FB87 /* JoinCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D4201B9A330096FB87 /* JoinCaptainViewController.swift */; };
 		6B7C88D7201BC2110096FB87 /* CompleteJoinCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D6201BC2110096FB87 /* CompleteJoinCaptainViewController.swift */; };
 		6B7C88D9201BC3CB0096FB87 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D8201BC3CB0096FB87 /* CheckBox.swift */; };
+		6B85DFDE202BA9CF001A1662 /* AcceptedCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B85DFDD202BA9CF001A1662 /* AcceptedCaptainViewController.swift */; };
 		6B96F3FF201290D100AE909C /* AddOrderNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */; };
 		6B9AD2D320063C0B00C4869C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9AD2D220063C0B00C4869C /* AppDelegate.swift */; };
 		6B9AD2D520063C0B00C4869C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9AD2D420063C0B00C4869C /* ViewController.swift */; };
@@ -134,10 +139,14 @@
 		6BAD09D92006D72A003D63C8 /* MyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD09D82006D72A003D63C8 /* MyOrderViewController.swift */; };
 		6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */; };
 		6BC256A120127B4900A5AD20 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC256A020127B4900A5AD20 /* RadioButton.swift */; };
+		6BCB1B8A2030B7DA004B26D3 /* NewAddOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */; };
+		6BCB1B8C2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB1B8B2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift */; };
 		6BD15AC12021127400129DF9 /* NewOrder2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */; };
 		6BD15AC32021142100129DF9 /* NewOrder22ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */; };
 		6BD15AC5202124AA00129DF9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC4202124AA00129DF9 /* ChatViewController.swift */; };
 		6BD15ACC20220D9F00129DF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD15ACB20220D9F00129DF9 /* GoogleService-Info.plist */; };
+		6BDCA75C20304B4900989CDD /* AddOfferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCA75B20304B4900989CDD /* AddOfferViewModel.swift */; };
+		6BDCA75E2030720D00989CDD /* AddOffer2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCA75D2030720C00989CDD /* AddOffer2ViewModel.swift */; };
 		6BF631822006E39600D19370 /* IBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF631812006E39600D19370 /* IBDesignable.swift */; };
 		6BFB0B192020736C00B74C73 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFB0B182020736C00B74C73 /* UIImage.swift */; };
 		7BB5CADE2032571E5A7FE999 /* Pods_Ish7anli.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 761556B0A2E39C3EFE2320BF /* Pods_Ish7anli.framework */; };
@@ -149,6 +158,7 @@
 		6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel2.swift; sourceTree = "<group>"; };
 		6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrder2ViewController.swift; sourceTree = "<group>"; };
 		6B10F6032019FBD5002F5276 /* ArchiveOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveOrder.swift; sourceTree = "<group>"; };
+		6B1787EB20324AFB005E7D24 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		6B18DEE2200F8BBE00C73BA2 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6B18DEE4200F8CB500C73BA2 /* ActivationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationViewController.swift; sourceTree = "<group>"; };
 		6B18DEE6200F8E3800C73BA2 /* OfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferDetailsViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +200,8 @@
 		6B3892F92027109700E669B9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		6B3892FB2027217E00E669B9 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		6B3892FC2027217E00E669B9 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		6B48938A202AED3B00F6769C /* ActiveOrderTableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveOrderTableViewCell2.xib; sourceTree = "<group>"; };
+		6B48938E202AEDFD00F6769C /* ActiveOrderTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveOrderTableViewCell2.swift; sourceTree = "<group>"; };
 		6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6B4ED006202794AA00FC5934 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
 		6B4ED0092027C48100FC5934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddPriceViewController.xib; sourceTree = "<group>"; };
@@ -258,11 +270,13 @@
 		6B6BB4652010CC1800BECA87 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		6B6BB46720111E9E00BECA87 /* DiffCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffCalculator.swift; sourceTree = "<group>"; };
 		6B6BB46920111F1000BECA87 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		6B759812202BA75500D92D63 /* BlockedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockedViewController.swift; sourceTree = "<group>"; };
 		6B7C88D0201A10650096FB87 /* OldOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldOrder.swift; sourceTree = "<group>"; };
 		6B7C88D2201B437D0096FB87 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		6B7C88D4201B9A330096FB87 /* JoinCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinCaptainViewController.swift; sourceTree = "<group>"; };
 		6B7C88D6201BC2110096FB87 /* CompleteJoinCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteJoinCaptainViewController.swift; sourceTree = "<group>"; };
 		6B7C88D8201BC3CB0096FB87 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		6B85DFDD202BA9CF001A1662 /* AcceptedCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedCaptainViewController.swift; sourceTree = "<group>"; };
 		6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderNewViewController.swift; sourceTree = "<group>"; };
 		6B9AD2CF20063C0B00C4869C /* Ish7anli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ish7anli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9AD2D220063C0B00C4869C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -282,10 +296,14 @@
 		6BAD09D82006D72A003D63C8 /* MyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderViewController.swift; sourceTree = "<group>"; };
 		6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		6BC256A020127B4900A5AD20 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddOfferViewController.swift; sourceTree = "<group>"; };
+		6BCB1B8B2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptainRegisterAddAddressViewController.swift; sourceTree = "<group>"; };
 		6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder2ViewController.swift; sourceTree = "<group>"; };
 		6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder22ViewController.swift; sourceTree = "<group>"; };
 		6BD15AC4202124AA00129DF9 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		6BD15ACB20220D9F00129DF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6BDCA75B20304B4900989CDD /* AddOfferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfferViewModel.swift; sourceTree = "<group>"; };
+		6BDCA75D2030720C00989CDD /* AddOffer2ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOffer2ViewModel.swift; sourceTree = "<group>"; };
 		6BE1F0D42026056B00DC40B0 /* Ish7anli.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ish7anli.entitlements; sourceTree = "<group>"; };
 		6BF631812006E39600D19370 /* IBDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignable.swift; sourceTree = "<group>"; };
 		6BFB0B182020736C00B74C73 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -340,11 +358,13 @@
 				6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */,
 				6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */,
 				6B5D8B9720230F00001EA2BF /* RegistrationDataViewController.swift */,
-				6BD15AC92021262E00129DF9 /* CaptainViewControllers */,
 				6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */,
 				6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */,
 				6BD15AC4202124AA00129DF9 /* ChatViewController.swift */,
 				6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */,
+				6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */,
+				6BD15AC92021262E00129DF9 /* CaptainViewControllers */,
+				6B1787EB20324AFB005E7D24 /* ForgetPasswordViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -368,6 +388,8 @@
 				6B517CBC200E250100CFE5DC /* ActiveOrderTableViewCell.xib */,
 				6B517CBF200E28BA00CFE5DC /* ArchiveOrderTableViewCell.swift */,
 				6B517CC0200E28BA00CFE5DC /* ArchiveOrderTableViewCell.xib */,
+				6B48938A202AED3B00F6769C /* ActiveOrderTableViewCell2.xib */,
+				6B48938E202AEDFD00F6769C /* ActiveOrderTableViewCell2.swift */,
 				6BD15ACA2021266300129DF9 /* CollectionView Cell */,
 				6B18DEF92010B33A00C73BA2 /* AddressSettingsTableViewCell.swift */,
 				6B18DEFA2010B33A00C73BA2 /* AddressSettingsTableViewCell.xib */,
@@ -527,11 +549,13 @@
 		6BD15AC82021261200129DF9 /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				6BDCA75D2030720C00989CDD /* AddOffer2ViewModel.swift */,
 				6B4F43C02022407100A51EEC /* CaptainProfileViewModel.swift */,
 				6B6BB4652010CC1800BECA87 /* ProfileViewModel.swift */,
 				6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */,
 				6BA8266F20155F09002BC608 /* OfferAddressViewModel.swift */,
 				6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */,
+				6BDCA75B20304B4900989CDD /* AddOfferViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -556,9 +580,12 @@
 				6B271D3C201E08900030BBF4 /* CaptainAddOfferViewController.swift */,
 				6B2723062020A563003A0125 /* CaptianTypeViewController.swift */,
 				6B4F43BE2022405300A51EEC /* CaptainAddressViewController.swift */,
+				6BCB1B8B2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift */,
 				6B2723082020B146003A0125 /* UnderRreviewViewController.swift */,
 				6B4F43C22022445300A51EEC /* CaptainAddAddressViewController.swift */,
 				6B4F43C4202246D300A51EEC /* CaptainAddressDetailsViewController.swift */,
+				6B759812202BA75500D92D63 /* BlockedViewController.swift */,
+				6B85DFDD202BA9CF001A1662 /* AcceptedCaptainViewController.swift */,
 			);
 			path = CaptainViewControllers;
 			sourceTree = "<group>";
@@ -657,6 +684,7 @@
 				6B517CEC200E9ECD00CFE5DC /* DataTableViewCell.xib in Resources */,
 				6B18DF022010B72400C73BA2 /* AddAddressTableViewCell.xib in Resources */,
 				6B9AD2DD20063C0B00C4869C /* LaunchScreen.storyboard in Resources */,
+				6B48938C202AED3C00F6769C /* ActiveOrderTableViewCell2.xib in Resources */,
 				6B517CBA200E03C400CFE5DC /* newOrderTableViewCell.xib in Resources */,
 				6B18DEFC2010B33A00C73BA2 /* AddressSettingsTableViewCell.xib in Resources */,
 				6B4ED00D2027C4B200FC5934 /* RatingViewController.xib in Resources */,
@@ -779,6 +807,7 @@
 				6B7C88D3201B437D0096FB87 /* UITextField.swift in Sources */,
 				6B517CDD200E9BE000CFE5DC /* MOLHLanguage.swift in Sources */,
 				6B3892FD2027217E00E669B9 /* NotificationsTableViewCell.swift in Sources */,
+				6BDCA75E2030720D00989CDD /* AddOffer2ViewModel.swift in Sources */,
 				6B3892FA2027109700E669B9 /* Notifications.swift in Sources */,
 				6B4F43C72022620D00A51EEC /* RadioButtonGray.swift in Sources */,
 				6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */,
@@ -786,6 +815,8 @@
 				6BD15AC12021127400129DF9 /* NewOrder2ViewController.swift in Sources */,
 				6B36F04B201FB29800BDFBA5 /* NewPhoneNumberViewController.swift in Sources */,
 				6B18DEE5200F8CB500C73BA2 /* ActivationViewController.swift in Sources */,
+				6BCB1B8A2030B7DA004B26D3 /* NewAddOfferViewController.swift in Sources */,
+				6BDCA75C20304B4900989CDD /* AddOfferViewModel.swift in Sources */,
 				6B69AEB120293A35000F3695 /* CaptainOfferViewController.swift in Sources */,
 				6B6BB46A20111F1000BECA87 /* Array+Extensions.swift in Sources */,
 				6B517CF1200EA25500CFE5DC /* AboutUsViewController.swift in Sources */,
@@ -814,6 +845,7 @@
 				6B517CB9200E03C400CFE5DC /* newOrderTableViewCell.swift in Sources */,
 				6BA826772015DA41002BC608 /* SubmitButtonTableViewCell.swift in Sources */,
 				6B5D8B9C2023642C001EA2BF /* User.swift in Sources */,
+				6B48938F202AEDFE00F6769C /* ActiveOrderTableViewCell2.swift in Sources */,
 				6B517CE0200E9BE000CFE5DC /* MOLHFontLocalizableViews.swift in Sources */,
 				6B517CFD200EA6A500CFE5DC /* UIView.swift in Sources */,
 				6B517CC6200E808B00CFE5DC /* NewOrderViewController.swift in Sources */,
@@ -851,7 +883,9 @@
 				6B18DEF3200F981B00C73BA2 /* OrderDetailsViewController.swift in Sources */,
 				6B271D3B201DE0020030BBF4 /* CaptainArchiveOrderDetailsViewController.swift in Sources */,
 				6B271D35201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift in Sources */,
+				6B1787EC20324AFB005E7D24 /* ForgetPasswordViewController.swift in Sources */,
 				6B2723072020A563003A0125 /* CaptianTypeViewController.swift in Sources */,
+				6BCB1B8C2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift in Sources */,
 				6B18DEF5200F983000C73BA2 /* OrderDetails2ViewController.swift in Sources */,
 				6B18DF052010B7A700C73BA2 /* ListTableViewCell.swift in Sources */,
 				6B36F046201FA6C900BDFBA5 /* CustomButton.swift in Sources */,
@@ -871,9 +905,11 @@
 				6B69AEB52029D34F000F3695 /* File.swift in Sources */,
 				6B7C88D1201A10650096FB87 /* OldOrder.swift in Sources */,
 				6B9AD2D320063C0B00C4869C /* AppDelegate.swift in Sources */,
+				6B85DFDE202BA9CF001A1662 /* AcceptedCaptainViewController.swift in Sources */,
 				6BA8267020155F09002BC608 /* OfferAddressViewModel.swift in Sources */,
 				6B517CF5200EA39E00CFE5DC /* UITableViewExtension.swift in Sources */,
 				6B517CE1200E9BE000CFE5DC /* MOLHFont.swift in Sources */,
+				6B759813202BA75500D92D63 /* BlockedViewController.swift in Sources */,
 				6B4F43C5202246D300A51EEC /* CaptainAddressDetailsViewController.swift in Sources */,
 				6B271D2B201C87EC0030BBF4 /* CpatainNewOrderViewController.swift in Sources */,
 				6B271D3F201E119B0030BBF4 /* City.swift in Sources */,

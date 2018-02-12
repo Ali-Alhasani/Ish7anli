@@ -359,6 +359,9 @@
 /* Class = "UITextField"; placeholder = "Address Name"; ObjectID = "TGu-vB-vce"; */
 "TGu-vB-vce.placeholder" = "اسم العنوان";
 
+/* Class = "UITextField"; placeholder = "Address Name"; ObjectID = "ePx-9P-z2t"; */
+"ePx-9P-z2t.placeholder" = "اسم العنوان";
+
 /* Class = "UIButton"; normalTitle = "Resend Activation code"; ObjectID = "TKg-Qh-TIJ"; */
 "TKg-Qh-TIJ.normalTitle" = "إعادةإرسال كود التفعيل";
 
@@ -455,8 +458,17 @@
 /* Class = "UITextField"; placeholder = "Address Details"; ObjectID = "aJg-5l-G39"; */
 "aJg-5l-G39.placeholder" = "تفاصيل العنوان";
 
+/* Class = "UITextField"; placeholder = "Address Details"; ObjectID = "LOn-Va-Hch"; */
+"LOn-Va-Hch.placeholder" = "تفاصيل العنوان";
+
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "S87-6D-gP5"; */
+"S87-6D-gP5.title" = "إغلاق";
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "aSk-4U-SVI"; */
 "aSk-4U-SVI.title" = "إغلاق";
+
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "tt5-bU-wCr"; */
+"tt5-bU-wCr.title" = "إغلاق";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "aUC-X0-1vf"; */
 "aUC-X0-1vf.text" = "";
@@ -472,6 +484,12 @@
 
 /* Class = "UINavigationItem"; title = "Add Address"; ObjectID = "amX-8m-MLY"; */
 "amX-8m-MLY.title" = "إضافة عنوان";
+
+/* Class = "UINavigationItem"; title = "Add Address"; ObjectID = "TUH-iE-fzG"; */
+"TUH-iE-fzG.title" = "إضافة عنوان";
+
+/* Class = "UINavigationItem"; title = "Add Address"; ObjectID = "cEC-CD-fpf"; */
+"cEC-CD-fpf.title" = "الإشعارات";
 
 /* Class = "UILabel"; text = "Add New Address"; ObjectID = "b8E-Wh-vIm"; */
 "b8E-Wh-vIm.text" = "إضافة عنوان جديد";
@@ -635,11 +653,21 @@
 /* Class = "UILabel"; text = "We're glad to have you join us!\nEnter the activation code that we sent it to you"; ObjectID = "oWR-RU-zGl"; */
 "oWR-RU-zGl.text" = "يسعدنا انضمامك معنا\n الرجاء إدخال كود التفعيل الذي تم إرساله";
 
+
+/* Class = "UILabel"; text = "We're glad to have you join us!\nEnter the activation code that we sent it to you"; ObjectID = "0Jo-91-khf"; */
+"0Jo-91-khf.text" = "لم يتم قبول عضويتك";
+
+/* Class = "UILabel"; text = "We're glad to have you join us!\nEnter the activation code that we sent it to you"; ObjectID = "Ntx-c8-SUN"; */
+"Ntx-c8-SUN.text" = "بسبب انتهاء رخصة القيادة الخاصة بك والتي تحتاج لتجديد";
+
 /* Class = "UITextField"; placeholder = "Repate New Password"; ObjectID = "oaw-rw-4iP"; */
 "oaw-rw-4iP.placeholder" = "تأكيد كلمة المرور الجديدة";
 
 /* Class = "UINavigationItem"; title = "Archive Order"; ObjectID = "ozN-cU-zS6"; */
 "ozN-cU-zS6.title" = "ارشيف الطلبات";
+
+/* Class = "UINavigationItem"; title = "Contact Us"; ObjectID = "JB8-Qp-6wU"; */
+"JB8-Qp-6wU.title" = "اتصل بنا";
 
 /* Class = "UITabBarItem"; title = "Old Order"; ObjectID = "peP-kh-f7X"; */
 "peP-kh-f7X.title" = "طلبات سابقة";
@@ -671,6 +699,9 @@
 /* Class = "UIButton"; normalTitle = "Add"; ObjectID = "qOe-Lp-f8u"; */
 "qOe-Lp-f8u.normalTitle" = "إضافة";
 
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "JMd-Zw-Bki"; */
+"JMd-Zw-Bki.normalTitle" = "إضافة";
 /* Class = "UILabel"; text = "Choose Captain Type"; ObjectID = "r65-9E-o9O"; */
 "r65-9E-o9O.text" = "اختيار نوع الكابتن";
 
@@ -706,6 +737,8 @@
 
 /* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "tt5-bU-wCr"; */
 "tt5-bU-wCr.title" = "إغلاق";
+/* Class = "UIBarButtonItem"; title = "Close"; ObjectID = "ihI-Q6-KvD"; */
+"ihI-Q6-KvD.title" = "إغلاق";
 
 /* Class = "UIButton"; normalTitle = "Join"; ObjectID = "u1Y-NS-RIM"; */
 "u1Y-NS-RIM.normalTitle" = "اشترك";
@@ -739,6 +772,9 @@
 
 /* Class = "UIButton"; normalTitle = " Address"; ObjectID = "wQE-aD-n56"; */
 "wQE-aD-n56.normalTitle" = " العنوان";
+
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "Cfq-qf-oLO"; */
+"Cfq-qf-oLO.normalTitle" = " العنوان";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "wV4-3j-rll"; */
 "wV4-3j-rll.text" = "";

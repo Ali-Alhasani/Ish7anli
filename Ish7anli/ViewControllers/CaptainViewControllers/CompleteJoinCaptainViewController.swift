@@ -7,24 +7,33 @@
 //
 
 import UIKit
-
+import FirebaseStorage
+enum ImageType {
+    case cardImage
+    case licenceImage
+    case carForm
+    case contract
+}
 class CompleteJoinCaptainViewController: UIViewController {
-    
+ 
     @IBOutlet weak var accountNumberText: UITextField!
     let picker = UIImagePickerController()
     var pickedImagePath: URL?
     var pickedImageData: Data?
     var localPath: URL?
     var flag = 0
+    var counter = 0
     var done = false
     var cardImage,licenceImage,carForm,contractImage:String?
     
-   var fullname,
+    var fullname,
     cardNumber,
     mobile,
     email,
     password:String?
     
+    var lat,lng:Double?
+    var name,details:String?
     @IBOutlet weak var cardImageButton: UIButton!
     @IBOutlet weak var licenceImageButton: UIButton!
     @IBOutlet weak var carFormButton: UIButton!
@@ -32,15 +41,15 @@ class CompleteJoinCaptainViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         } else {
             automaticallyAdjustsScrollViewInsets = false
         }
         self.view.backgroundColor = UIColor(rgb: 0xf7f7f7)
-
-
+        
+        
         // Do any additional setup after loading the view.
         
         picker.allowsEditing = false
@@ -58,7 +67,7 @@ class CompleteJoinCaptainViewController: UIViewController {
         myPickerController.sourceType =  UIImagePickerControllerSourceType.photoLibrary
         flag = 1
         self.present(myPickerController, animated: true,completion: nil)
-
+        
         
         
     }
@@ -74,7 +83,7 @@ class CompleteJoinCaptainViewController: UIViewController {
         myPickerController.sourceType =  UIImagePickerControllerSourceType.photoLibrary
         flag = 2
         self.present(myPickerController, animated: true,completion: nil)
-
+        
         
         
     }
@@ -85,7 +94,7 @@ class CompleteJoinCaptainViewController: UIViewController {
         myPickerController.sourceType =  UIImagePickerControllerSourceType.photoLibrary
         flag = 3
         self.present(myPickerController, animated: true,completion: nil)
-
+        
         
     }
     
@@ -105,23 +114,93 @@ class CompleteJoinCaptainViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func sendMedia(image: UIImage?,type:ImageType){
+        let refStorage = Storage.storage().reference().child("::\(Date().timeIntervalSince1970)")
+        if let image = image {
+            let data = UIImageJPEGRepresentation(image, 0.2)
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            refStorage.putData(data!, metadata: metadata
+                , completion: { (metadata, error) in
+                    if error == nil{
+                        guard let downloadUrl = metadata?.downloadURL() else {return}
+                        
+                        switch type{
+                        case .cardImage:
+                            self.cardImage = downloadUrl.absoluteString
+                              self.cardImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                           
+                        case .carForm:
+                             self.carForm = downloadUrl.absoluteString
+                              self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                        case .contract:
+                               self.contractImage = downloadUrl.absoluteString
+                              self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                        case .licenceImage:
+                            self.licenceImage =  downloadUrl.absoluteString
+                               self.licenceImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            
+                        }
+                    }else{
+                        let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error?.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+            })
+        }
+    }
+    
+
+    
     @IBAction func joinAction(_ sender: Any) {
         if ((cardImage != nil) && (licenceImage != nil) && (carForm != nil) && (contractImage != nil) && !accountNumberText.text!.isEmpty ){
-            self.performSegue(withIdentifier: "toCaptainType", sender: self)
+               self.performSegue(withIdentifier: "toCaptainType", sender: self)
+//            if (counter != 3){
+//                var error:String?
+//                let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+//
+//                spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+//                spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+//                //                if MOLHLanguage.isRTL() {
+//                //                    error =  "انتظر حتى يتم رفع جميع الصور"
+//                //                }else{
+//                //                    error = "Wait until upload all the photos"
+//                //                }
+//                //                let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+//                //                alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+//                //                self.present(alert, animated: true)
+//            }else{
+//                self.performSegue(withIdentifier: "toCaptainType", sender: self)
+//            }
         }else{
-             var error:String?
+            var error:String?
             if MOLHLanguage.isRTL() {
-               error =  "يجب أن تقوم باختيار كافة الصور"
-           
+                error =  "يجب أن تقوم باختيار كافة الصور"
             }else{
-               error = "You should choose all the photo"
-              
-                
+                error = "You should choose all the photo"
             }
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }
+    }
+     @IBAction func dismisAddress(_ segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
+        
+        guard let CaptainRegisterAddAddressViewController = segue.source as? CaptainRegisterAddAddressViewController  else {
+            return
+        }
+        
+        self.lat =  CaptainRegisterAddAddressViewController.lat
+        self.lng =  CaptainRegisterAddAddressViewController.lng
+        self.name = CaptainRegisterAddAddressViewController.name
+        self.details = CaptainRegisterAddAddressViewController.details
+        
+        //viewModel.addListener()
+        
+        
     }
     
     
@@ -139,11 +218,30 @@ class CompleteJoinCaptainViewController: UIViewController {
             vc.licenceImage = licenceImage!
             vc.carForm = carForm!
             vc.contractImage = contractImage!
+            vc.tilte = name!
+            vc.details = details!
+            vc.lng = lng!
+            vc.lat = lat!
             
-           
+            
         }
+     
         
     }
+//    func uplaodPhoto(_ photo:Dictionary<String, String>){
+//        DataClient.shared.uploadCaptainPhotos(success: {
+//            self.counter += 1
+//            if (self.counter == 3){
+//                MBProgressHUD.hide(for: self.view, animated: true)
+//            }
+//        }, failuer: { (_ error) in
+//            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+//            self.present(alert, animated: true)
+//        }, parameters: photo)
+//        //self.imageView.image = self.image_data!
+//        
+//    }
     /*
      // MARK: - Navigation
      
@@ -163,24 +261,29 @@ extension CompleteJoinCaptainViewController: UIImagePickerControllerDelegate,UIN
         done = false
         let image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
         //let imageData = UIImagePNGRepresentation(image_data!)!
-        let imageData:Data = image_data!.compressToHalf(1)!
-        let imageStr = imageData.base64EncodedString()
+//        let imageData:UIImage = image_data!.compressToHalf(2)!
+//       /let imageStr = imageData.base64EncodedString()
         if (flag == 1) {
             print("Hi")
-            cardImage = imageStr
-            self.cardImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
-
+           // cardImage = imageStr
+           // uplaodPhoto(["card_image": cardImage!])
+           sendMedia(image: image_data, type: .cardImage)
+          
+            
         }else if (flag == 2) {
-            licenceImage = imageStr
-              self.licenceImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+            sendMedia(image: image_data, type: .licenceImage)
         }else if (flag == 3){
-            carForm = imageStr
-            self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
-
+             sendMedia(image: image_data, type: .carForm)
+//            carForm = imageStr
+//            //uplaodPhoto(["car_form": carForm!])
+//            self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+            
         }else if (flag == 4) {
-            contractImage = imageStr
-            self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
-
+             sendMedia(image: image_data, type: .contract)
+//            contractImage = imageStr
+//           // uplaodPhoto(["contract_image": contractImage!])
+//            self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+            
         }
         //success(imageStr)
         //uplaodPhoto(imageStr)

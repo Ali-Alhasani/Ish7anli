@@ -50,6 +50,9 @@ class OldOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var LastCityLabel: UILabel!
     
     @IBOutlet weak var detailsButton: UIButton!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -74,8 +77,15 @@ class OldOrderTableViewCell: UITableViewCell {
             self.dateLabel.text = data.date + " - " + data.time
             self.senderCityLabel.text = data.cityFrom
             self.LastCityLabel.text = data.cityTo
-            self.middlePointLabel.text = "in the Way"
-        
+      
+            if MOLHLanguage.isRTL() {
+                detailsButton.setTitle(" تفاصيل ", for: .normal)
+                chatButton.setTitle(" محادثة ", for: .normal)
+                currencyLabel.text = "ريال"
+                   self.middlePointLabel.text = "في الطريق"
+            }else{
+                self.middlePointLabel.text = "in the Way"
+            }
         }
     }
     @IBAction func detailsAction(_ sender: Any) {

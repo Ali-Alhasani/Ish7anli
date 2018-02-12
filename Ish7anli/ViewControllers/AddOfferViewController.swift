@@ -16,7 +16,9 @@ class AddOfferViewController: UIViewController {
     var weghitIndex:Int?
     var receiverName:String?
     var receiverPhone:String?
-   var captainOfferId:Int?
+    var captainOfferId:Int?
+    var senderName:String?
+    var recevierName:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +36,9 @@ class AddOfferViewController: UIViewController {
         self.tableView?.register(TextViewTableViewCell.nib, forCellReuseIdentifier: TextViewTableViewCell.identifier)
         self.tableView?.register(SubmitButtonTableViewCell.nib, forCellReuseIdentifier: SubmitButtonTableViewCell.identifier)
 
-
+        //sender = senderName
+        //receiver = recevierName
+        
         viewModel.addListener()
         // Do any additional setup after loading the view.
     }
@@ -115,7 +119,7 @@ extension AddOfferViewController: OfferAddressViewModelDelegate {
     
     func move() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "AddAddressViewController") as! AddAddressViewController
+        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "CaptainAddAddressViewController") as! CaptainAddAddressViewController
         let navInofrmationViewController = UINavigationController(rootViewController: AddAddressViewController)
         self.present(navInofrmationViewController, animated:true, completion: nil)
     }

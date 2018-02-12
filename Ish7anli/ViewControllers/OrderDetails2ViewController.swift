@@ -7,13 +7,10 @@
 //
 
 import UIKit
-var weightArray = ["Heavy", "Light"]
-var deliveryArray = ["Door to door" , "from caption cite" , ""]
-var paymentArray = ["Cash on recevie" , "Cash on delivery" , "Transfer from Bank Account"]
 
 class OrderDetails2ViewController: UIViewController {
     var indexPath:Int?
-    
+    var finished = false
     @IBOutlet weak var ProfileimageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
@@ -48,6 +45,9 @@ class OrderDetails2ViewController: UIViewController {
     @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if finished {
+            thirdPoint.backgroundColor = UIColor(named: "niceBlue")
+        }
         if !MOLHLanguage.isRTL(){
             arrowImage.image = UIImage(named: "backBlueLeft")
         }
@@ -63,18 +63,18 @@ class OrderDetails2ViewController: UIViewController {
         }, failure: { (_ error) in
             
         })
-        
+      
         sendTimeLabel.text = DataClient.shared.lastOffer[indexPath!].time
         sendDateLabel.text = DataClient.shared.lastOffer[indexPath!].date
-        weightLabel.text = weightArray[DataClient.shared.lastOffer[indexPath!].weight! - 1 ]
-        deliveryLabel.text = deliveryArray[DataClient.shared.lastOffer[indexPath!].deliveryType! - 1 ]
+        weightLabel.text =  ErrorHelper.shared.weightArray[DataClient.shared.lastOffer[indexPath!].weight! - 1 ]
+        deliveryLabel.text = ErrorHelper.shared.deliveryArray[DataClient.shared.lastOffer[indexPath!].deliveryType! - 1 ]
         
         locationLabel.text = DataClient.shared.lastOffer[indexPath!].addressSenderTitle
         
         receiverNameLabel.text = DataClient.shared.lastOffer[indexPath!].receiverName
         receiverPhoneLabel.text = DataClient.shared.lastOffer[indexPath!].receiverPhone
         receiverAddressLabel.text = DataClient.shared.lastOffer[indexPath!].addressReceiverCity! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverTitle!
-        paymentMethodLabel.text = paymentArray[DataClient.shared.lastOffer[indexPath!].paymentType! - 1 ]
+        paymentMethodLabel.text = ErrorHelper.shared.paymentArray[DataClient.shared.lastOffer[indexPath!].paymentType! - 1 ]
         accountNumberLabel.text = DataClient.shared.lastOffer[indexPath!].accountNumber
         
         

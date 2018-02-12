@@ -37,7 +37,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="134.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FrR-uV-1cZ">
-                                                        <rect key="frame" x="8" y="14" width="119" height="25"/>
+                                                        <rect key="frame" x="8" y="13" width="119" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                                 <rect key="frame" x="169.5" y="0.0" width="134.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jog-aJ-31B">
-                                                        <rect key="frame" x="8" y="14" width="119" height="25"/>
+                                                        <rect key="frame" x="8" y="13" width="119" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -132,28 +132,37 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajr-vl-Tyz">
-                                        <rect key="frame" x="254" y="33.5" width="42" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajr-vl-Tyz">
+                                        <rect key="frame" x="270.5" y="34.5" width="25.5" height="23"/>
+                                        <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="16"/>
                                         <color key="textColor" name="red"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0IJ-TP-4FQ">
-                                        <rect key="frame" x="79" y="33.5" width="167" height="24.5"/>
+                                        <rect key="frame" x="79" y="33.5" width="183.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmU-ep-bGO">
+                                        <rect key="frame" x="270.5" y="58" width="25.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" name="pinkishGrey"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="qmU-ep-bGO" firstAttribute="leading" secondItem="ajr-vl-Tyz" secondAttribute="leading" id="1TN-JC-ytz"/>
                                     <constraint firstItem="0IJ-TP-4FQ" firstAttribute="leading" secondItem="68T-dv-Ieg" secondAttribute="trailing" constant="8" id="526-SX-QnY"/>
                                     <constraint firstItem="68T-dv-Ieg" firstAttribute="centerY" secondItem="rfw-eZ-sKL" secondAttribute="centerY" id="W2E-hY-RcK"/>
                                     <constraint firstItem="ajr-vl-Tyz" firstAttribute="leading" secondItem="0IJ-TP-4FQ" secondAttribute="trailing" constant="8" id="dkD-kb-GWy"/>
                                     <constraint firstItem="68T-dv-Ieg" firstAttribute="leading" secondItem="rfw-eZ-sKL" secondAttribute="leading" constant="8" id="fne-Ce-LOS"/>
+                                    <constraint firstItem="qmU-ep-bGO" firstAttribute="top" secondItem="ajr-vl-Tyz" secondAttribute="bottom" constant="0.5" id="hpJ-Es-228"/>
                                     <constraint firstAttribute="trailing" secondItem="ajr-vl-Tyz" secondAttribute="trailing" constant="8" id="lYV-SB-32S"/>
                                     <constraint firstItem="0IJ-TP-4FQ" firstAttribute="centerY" secondItem="68T-dv-Ieg" secondAttribute="centerY" id="oKg-hS-oF5"/>
                                     <constraint firstItem="ajr-vl-Tyz" firstAttribute="centerY" secondItem="0IJ-TP-4FQ" secondAttribute="centerY" id="wCH-Oa-l7a"/>
+                                    <constraint firstAttribute="trailing" secondItem="qmU-ep-bGO" secondAttribute="trailing" constant="8" id="wft-K8-Kqf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -180,6 +189,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="ProfileimageView" destination="68T-dv-Ieg" id="9CC-8y-BIj"/>
+                <outlet property="currencyLabel" destination="qmU-ep-bGO" id="q95-2R-1Fp"/>
                 <outlet property="nameLabel" destination="0IJ-TP-4FQ" id="H1G-kv-ySo"/>
                 <outlet property="priceLabel" destination="ajr-vl-Tyz" id="lNz-2D-Vbk"/>
                 <outlet property="receiverCityLabel" destination="jog-aJ-31B" id="6kF-ih-x30"/>
@@ -191,6 +201,9 @@
         <image name="back blue" width="31" height="20"/>
         <namedColor name="background">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pinkishGrey">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
             <color red="0.83499997854232788" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

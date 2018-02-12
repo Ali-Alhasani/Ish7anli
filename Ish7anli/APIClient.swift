@@ -133,8 +133,17 @@ class APIClient:NSObject {
                             success(json)
                         }
                     }else{
+                        if let result = response.result.value {
+                            let json = result as! [String: Any]
+                          
+                         let userStatus = json["user_status"] as? String ?? ""
+                           
+                            let error = LLError.init(status: status, message: message)
+                            failure(error ,userStatus)
+                        }else{
                         let error = LLError.init(status: status, message: message)
-                        failure(error, "")
+                        failure(error, "10")
+                        }
                     }
                 }
             case .failure( let error):
@@ -148,7 +157,7 @@ class APIClient:NSObject {
                     failure(error ,userStatus)
                 }else {
                     let error = LLError.init(status: false, message: error.localizedDescription)
-                    failure(error , "")
+                    failure(error , "10")
                 }
             }
         }

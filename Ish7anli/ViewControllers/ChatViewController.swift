@@ -13,7 +13,7 @@ import JSQMessagesViewController
 import Photos
 
 enum SenderType: String {
-    case U,C
+    case U,C,CC
 }
 
 class ChatViewController: JSQMessagesViewController {
@@ -69,6 +69,12 @@ class ChatViewController: JSQMessagesViewController {
                 collectionName = senderId+"U::" + targetId+"C"
             }else{
                 collectionName = targetId+"C::" + senderId+"U"
+            }
+        }else if (senderType == .CC){
+            if (senderId > targetId ){
+                collectionName = senderId+"C::" + targetId+"C"
+            }else{
+                collectionName = targetId+"C::" + senderId+"C"
             }
         }
         

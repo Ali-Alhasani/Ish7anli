@@ -42,6 +42,9 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="chatAction:" destination="f9U-Nn-Unl" eventType="touchUpInside" id="tti-ce-zFD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qbr-31-HC7">
                                         <rect key="frame" x="247" y="3" width="104" height="42"/>
@@ -74,14 +77,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQb-9k-qJO">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="106"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-fn-tto">
-                                                <rect key="frame" x="351" y="46.5" width="0.0" height="0.0"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mau-fn-tto">
+                                                <rect key="frame" x="322" y="22.5" width="29" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                 <color key="textColor" name="red"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8B-Gh-Qfa">
-                                                <rect key="frame" x="90" y="24" width="219" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N8B-Gh-Qfa">
+                                                <rect key="frame" x="90" y="24" width="227" height="22"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -108,16 +111,16 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="duw-7a-HJN">
-                                                <rect key="frame" x="90" y="61" width="219" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="duw-7a-HJN">
+                                                <rect key="frame" x="90" y="61" width="227" height="20"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-OS-fEc">
-                                                <rect key="frame" x="317" y="52" width="34" height="23"/>
-                                                <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="16"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rh8-OS-fEc">
+                                                <rect key="frame" x="322" y="49" width="29" height="20"/>
+                                                <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="14"/>
+                                                <color key="textColor" name="pinkishGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vcP-gA-y85">
@@ -139,20 +142,21 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="Mau-fn-tto" firstAttribute="leading" secondItem="N8B-Gh-Qfa" secondAttribute="trailing" constant="5" id="0Nc-OL-wvh"/>
                                             <constraint firstItem="Mau-fn-tto" firstAttribute="baseline" secondItem="N8B-Gh-Qfa" secondAttribute="baseline" id="FmN-sK-xzq"/>
                                             <constraint firstItem="cJi-pP-BB6" firstAttribute="leading" secondItem="vcP-gA-y85" secondAttribute="trailing" constant="25" id="GRo-Db-EX7"/>
-                                            <constraint firstItem="rh8-OS-fEc" firstAttribute="top" secondItem="Mau-fn-tto" secondAttribute="bottom" constant="5" id="JHs-C1-vcy"/>
+                                            <constraint firstItem="rh8-OS-fEc" firstAttribute="top" secondItem="Mau-fn-tto" secondAttribute="bottom" constant="2" id="JHs-C1-vcy"/>
+                                            <constraint firstItem="Mau-fn-tto" firstAttribute="leading" secondItem="duw-7a-HJN" secondAttribute="trailing" constant="5" id="K2G-kk-6Wo"/>
                                             <constraint firstItem="vcP-gA-y85" firstAttribute="centerY" secondItem="TQb-9k-qJO" secondAttribute="centerY" id="KMM-NQ-TH7"/>
                                             <constraint firstItem="Mau-fn-tto" firstAttribute="trailing" secondItem="TQb-9k-qJO" secondAttribute="trailingMargin" id="PqP-N9-A3X"/>
                                             <constraint firstItem="rh8-OS-fEc" firstAttribute="trailing" secondItem="TQb-9k-qJO" secondAttribute="trailingMargin" id="Q6e-IM-MiK"/>
-                                            <constraint firstItem="rh8-OS-fEc" firstAttribute="leading" secondItem="N8B-Gh-Qfa" secondAttribute="trailing" constant="9" id="SDd-H1-0ZA"/>
-                                            <constraint firstItem="rh8-OS-fEc" firstAttribute="leading" secondItem="duw-7a-HJN" secondAttribute="trailing" constant="9" id="XNd-qw-sSJ"/>
                                             <constraint firstItem="cJi-pP-BB6" firstAttribute="centerY" secondItem="vcP-gA-y85" secondAttribute="centerY" id="Xii-jP-EI1"/>
                                             <constraint firstItem="duw-7a-HJN" firstAttribute="leading" secondItem="vcP-gA-y85" secondAttribute="trailing" constant="25" id="b2h-LR-wk4"/>
                                             <constraint firstItem="duw-7a-HJN" firstAttribute="bottom" secondItem="vcP-gA-y85" secondAttribute="bottom" id="b71-3W-K7W"/>
                                             <constraint firstItem="vcP-gA-y85" firstAttribute="leading" secondItem="TQb-9k-qJO" secondAttribute="leadingMargin" id="dcW-ht-gAq"/>
                                             <constraint firstItem="N8B-Gh-Qfa" firstAttribute="leading" secondItem="vcP-gA-y85" secondAttribute="trailing" constant="25" id="eeV-8l-aTU"/>
                                             <constraint firstItem="N8B-Gh-Qfa" firstAttribute="top" secondItem="vcP-gA-y85" secondAttribute="top" id="ekZ-Fn-aTC"/>
+                                            <constraint firstItem="rh8-OS-fEc" firstAttribute="leading" secondItem="Mau-fn-tto" secondAttribute="leading" id="oe9-Qj-k6i"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOH-xV-dq4">
@@ -228,6 +232,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="ProfileimageView" destination="vcP-gA-y85" id="IJt-gj-7sG"/>
+                <outlet property="chatButton" destination="gJm-21-2vE" id="CLK-8b-zbw"/>
+                <outlet property="currencyLabel" destination="rh8-OS-fEc" id="4zn-Um-PDa"/>
                 <outlet property="dateLabel" destination="duw-7a-HJN" id="VBw-6G-Hrb"/>
                 <outlet property="detailsButton" destination="Qbr-31-HC7" id="Njy-Fd-ANH"/>
                 <outlet property="nameLabel" destination="N8B-Gh-Qfa" id="JL2-Ol-MW5"/>
@@ -247,6 +253,9 @@
         </namedColor>
         <namedColor name="marigold">
             <color red="1" green="0.75700002909999997" blue="0.027000000699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pinkishGrey">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
             <color red="0.83499997854232788" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

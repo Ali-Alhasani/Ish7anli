@@ -34,9 +34,9 @@ extension UIImage {
         let sizeInBytes = expectedSizeInMb * 1024 * 1024
         var needCompress:Bool = true
         var imgData:Data?
-        var compressingValue:CGFloat = 0.5
+        var compressingValue:CGFloat = 1.0
         while (needCompress && compressingValue > 0.0) {
-            if let data:Data = UIImageJPEGRepresentation(self, 0.1) {
+            if let data:Data = UIImageJPEGRepresentation(self, 0.5 ) {
                 if data.count < sizeInBytes {
                     needCompress = false
                     imgData = data

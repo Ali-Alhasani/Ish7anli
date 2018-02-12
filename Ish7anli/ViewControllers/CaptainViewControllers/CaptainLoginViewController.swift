@@ -49,6 +49,20 @@ class CaptainLoginViewController: UIViewController {
     
     
     @IBAction func loginAction(_ sender: Any) {
+    
+        if (passwordText.text!.isEmpty) {
+            var error:String?
+            if MOLHLanguage.isRTL() {
+                error = "يجب أن تقوم بإدخال كلمة المرور"
+                
+            }else{
+                error = "You should enter a valid password"
+                
+            }
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }else {
         DataClient.shared.loginCaptain(password:  passwordText.text!, success: {
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.move()
@@ -64,14 +78,20 @@ class CaptainLoginViewController: UIViewController {
                   self.performSegue(withIdentifier: "reject", sender: self)
             }else if (userStatus == "5"){
                   self.performSegue(withIdentifier: "reject", sender: self)
-            }
+            }else {
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
+            }
             
            //print()
         }
+        }
    
+    }
+    
+    @IBAction func unwindFromAddVC21(_ sender: UIStoryboardSegue){
+        
     }
     
     @IBAction func forgetAction(_ sender: Any) {

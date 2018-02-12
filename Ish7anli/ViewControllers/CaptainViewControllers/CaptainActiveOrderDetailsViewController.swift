@@ -40,14 +40,19 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
         mailLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].customerEmail
         senderCity.text = DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderCity
         recevierCity.text = DataClient.shared.cpatainActiveOrder[indexPath!].addressReceiverCity
-        deliveryLabel.text = deliveryArray[ DataClient.shared.cpatainActiveOrder[indexPath!].deliveryType! - 1 ]
-        weightLabel.text = weightArray[DataClient.shared.cpatainActiveOrder[indexPath!].weight! - 1 ]
+        deliveryLabel.text = ErrorHelper.shared.deliveryArray[ DataClient.shared.cpatainActiveOrder[indexPath!].deliveryType! - 1 ]
+        weightLabel.text = ErrorHelper.shared.weightArray[DataClient.shared.cpatainActiveOrder[indexPath!].weight! - 1 ]
         locationLabel.text =  DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderTitle
         receiverNameLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].receiverName
         receiverPhoneNumberlabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].receiverPhone
         //DataClient.shared.cpatainCustomerOrder[indexPath.row].price!
         //cpatainCustomerOrder
-        priceLabel.text = String(DataClient.shared.cpatainActiveOrder[indexPath!].price!) + " SAR"
+            if MOLHLanguage.isRTL(){
+                        priceLabel.text = String(DataClient.shared.cpatainActiveOrder[indexPath!].price!) + " ريال"
+            }else{
+                        priceLabel.text = String(DataClient.shared.cpatainActiveOrder[indexPath!].price!) + " SAR"
+            }
+
         APIClient.sendImageRequest(path: DataClient.shared.cpatainActiveOrder[indexPath!].customerImage!, success: { (_ image) in
             self.imageView.image = image
         }, failure: { (_ error) in

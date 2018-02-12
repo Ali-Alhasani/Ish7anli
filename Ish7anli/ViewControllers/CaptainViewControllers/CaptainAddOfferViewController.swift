@@ -31,7 +31,13 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
     var tmp:Int?
     var tmp2:Int?
     var indexPath:Int?
-   // var ok,error,alartTitle,loadingtitle,message:String?
+    var viewModel = AddOfferViewModel()
+    var viewModel2 = AddOffer2ViewModel()
+
+    
+    @IBOutlet weak var firstTableView: UITableView!
+    @IBOutlet weak var secondTableView: UITableView!
+    // var ok,error,alartTitle,loadingtitle,message:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +59,42 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
         self.DateToText.delegate = self
         self.hourFromText.delegate = self
         self.hourToText.delegate = self
+        
+        
+        
         load()
+        
+        viewModel.delegate = self
+        
+        firstTableView?.dataSource = viewModel
+        self.firstTableView.delegate = self.viewModel
+        
+        self.firstTableView?.estimatedRowHeight = 100
+        self.firstTableView?.rowHeight = UITableViewAutomaticDimension
+        
+        
+        self.firstTableView?.register(ListTableViewCell.nib, forCellReuseIdentifier: ListTableViewCell.identifier)
+        self.firstTableView?.register(AddAddressTableViewCell.nib, forCellReuseIdentifier: AddAddressTableViewCell.identifier)
+        
+        
+        
+        viewModel.addListener()
+        
+        viewModel2.delegate = self
+        
+        secondTableView?.dataSource = viewModel2
+        self.secondTableView.delegate = self.viewModel2
+        
+        self.secondTableView?.estimatedRowHeight = 100
+        self.secondTableView?.rowHeight = UITableViewAutomaticDimension
+        
+        
+        self.secondTableView?.register(ListTableViewCell.nib, forCellReuseIdentifier: ListTableViewCell.identifier)
+        self.secondTableView?.register(AddAddressTableViewCell.nib, forCellReuseIdentifier: AddAddressTableViewCell.identifier)
+        
+        
+        
+        viewModel2.addListener()
         // Do any additional setup after loading the view.
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -226,3 +267,49 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
     */
 
 }
+extension CaptainAddOfferViewController: AddOfferViewModelDelegate,AddOffer2ViewModelDelegate {
+    func apply1(changes: SectionChanges) {
+        self.secondTableView?.beginUpdates()
+        self.secondTableView?.deleteSections(changes.deletes, with: .fade)
+        self.secondTableView?.insertSections(changes.inserts, with: .fade)
+        self.secondTableView?.reloadRows(at: changes.updates.reloads, with: .fade)
+        self.secondTableView?.insertRows(at: changes.updates.inserts, with: .fade)
+        self.secondTableView?.deleteRows(at: changes.updates.deletes, with: .fade)
+        self.secondTableView?.endUpdates()
+    }
+    
+
+    func apply(changes: SectionChanges) {
+        self.firstTableView?.beginUpdates()
+        
+        self.firstTableView?.deleteSections(changes.deletes, with: .fade)
+        self.firstTableView?.insertSections(changes.inserts, with: .fade)
+        
+        self.firstTableView?.reloadRows(at: changes.updates.reloads, with: .fade)
+        self.firstTableView?.insertRows(at: changes.updates.inserts, with: .fade)
+        self.firstTableView?.deleteRows(at: changes.updates.deletes, with: .fade)
+        
+        self.firstTableView?.endUpdates()
+        
+      
+    }
+    
+    
+    func move() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "AddAddressViewController") as! AddAddressViewController
+        let navInofrmationViewController = UINavigationController(rootViewController: AddAddressViewController)
+        self.present(navInofrmationViewController, animated:true, completion: nil)
+    }
+    
+    func apply2() {
+         self.firstTableView?.reloadData()
+    }
+    
+    func apply3() {
+        self.secondTableView?.reloadData()
+    }
+    
+    
+}
+

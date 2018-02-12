@@ -7,13 +7,15 @@
 //
 
 import UIKit
-
-class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+import XLPagerTabStrip
+class CaptainOfferViewController: UIViewController,IndicatorInfoProvider,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var indexPath:Int?
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
+    var itemInfo: IndicatorInfo = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
        // self.tableView?.rowHeight = UITableViewAutomaticDimension
@@ -57,6 +59,15 @@ class CaptainOfferViewController: UIViewController,UICollectionViewDelegate, UIC
         self.setNavigationBarItem()
         self.hideBackButton()
         
+    }
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        if MOLHLanguage.isRTL() {
+            itemInfo = "الأعلى تقييماً"
+        }else {
+            itemInfo = "Highest Rate"
+        }
+        
+        return itemInfo
     }
     
 

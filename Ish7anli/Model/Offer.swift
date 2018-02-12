@@ -24,6 +24,19 @@ class Offer {
     var captainRate:Double?
     var cityNameFrom:String?
     var cityNameTo:String?
+    var addressSenderTitle:String?
+    var addressSenderDetails:String?
+    var addressSenderLongitude:Double?
+    var addressSenderLatitude:Double?
+    var addressSenderCity:String?
+    var addressReceiverTitle:String?
+    var addressReceiverDetails:String?
+    var addressReceiverLongitude:Double?
+    var addressReceiverLatitude:Double?
+    var addressReceiverCity:String?
+    var receiverAddressId:Int?
+    var senderAddressId:Int?
+    var captainAccountNumber:String?
     
     init(json: [String: Any]) {
         let json = JSON(json)
@@ -41,6 +54,18 @@ class Offer {
         self.captainRate = json["captain_rate"].doubleValue
         self.cityNameFrom = json["city_name_from"].stringValue
         self.cityNameTo = json["city_name_to"].stringValue
+        
+        self.addressSenderTitle = json["sender_address_title"].stringValue
+        self.addressSenderDetails = json["sender_address_details"].stringValue
+        self.addressSenderLongitude = json["sender_address_longitude"].doubleValue
+        self.addressSenderLatitude = json["sender_address_latitude"].doubleValue
+        self.addressReceiverTitle = json["receiver_address_title"].stringValue
+        self.addressReceiverDetails = json["receiver_address_details"].stringValue
+        self.addressReceiverLongitude = json["receiver_address_longitude"].doubleValue
+        self.addressReceiverLatitude = json["receiver_address_latitude"].doubleValue
+        self.receiverAddressId = json["receiver_address_id"] .intValue
+        self.senderAddressId = json["sender_address_id"] .intValue
+        self.captainAccountNumber = json["captain_account_number"].stringValue
     }
    
 }

@@ -42,15 +42,18 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
         mailLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].customerEmail
         senderCity.text = DataClient.shared.captianArchiveOrder[indexPath!].addressSenderCity
         recevierCity.text = DataClient.shared.captianArchiveOrder[indexPath!].addressReceiverCity
-        deliveryLabel.text = deliveryArray[ DataClient.shared.captianArchiveOrder[indexPath!].deliveryType! - 1 ]
-        weightLabel.text = weightArray[DataClient.shared.captianArchiveOrder[indexPath!].weight! - 1 ]
+        deliveryLabel.text = ErrorHelper.shared.deliveryArray[ DataClient.shared.captianArchiveOrder[indexPath!].deliveryType! - 1 ]
+        weightLabel.text = ErrorHelper.shared.weightArray[DataClient.shared.captianArchiveOrder[indexPath!].weight! - 1 ]
         locationLabel.text =  DataClient.shared.captianArchiveOrder[indexPath!].addressSenderTitle
         receiverNameLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].receiverName
         receiverPhoneNumberlabel.text = DataClient.shared.captianArchiveOrder[indexPath!].receiverPhone
         //DataClient.shared.cpatainCustomerOrder[indexPath.row].price!
         //cpatainCustomerOrder
-        
+        if MOLHLanguage.isRTL(){
+             priceLabel.text = String((DataClient.shared.captianArchiveOrder[indexPath!].offerPrice!)) + " ريال"
+        }else{
         priceLabel.text = String((DataClient.shared.captianArchiveOrder[indexPath!].offerPrice!)) + " SAR"
+        }
         ratingView.rating = DataClient.shared.captianArchiveOrder[indexPath!].offerRate!
         APIClient.sendImageRequest(path: DataClient.shared.captianArchiveOrder[indexPath!].customerImage!, success: { (_ image) in
             self.imageView.image = image

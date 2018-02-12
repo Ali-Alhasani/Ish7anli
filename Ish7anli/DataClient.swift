@@ -85,8 +85,8 @@ class DataClient: NSObject {
     }
     
     func logIn(phone:String,success: @escaping (_ activationCode:String) ->Void, failuer: @escaping (_ error: LLError) -> Void){
-     //  guard let deviceToken =  UserDefaults.standard.object(forKey: "_token") as? String else { return }
-       //,"ios_token":deviceToken
+     //guard let deviceToken =  UserDefaults.standard.object(forKey: "_token") as? String else { return }
+       //,,"ios_token":deviceToken
         let parameters = ["phone":phone] as [String : Any]
         APIClient.sendRequest(path: "customer_login", httpMethod: .post, isLangRequired: false , parameters:parameters, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
@@ -289,16 +289,19 @@ class DataClient: NSObject {
     
     func loginCaptain(password:String,success: @escaping () ->Void, failuer: @escaping (_ error: LLError , _ userStatus:String) -> Void) {
         SessionManager.loadPhoneNumber()
-        APIClient.sendRequest2(path: "captain_login", httpMethod: .post, isLangRequired: false , parameters:["phone":  "0597812620","password":password], success: { (response) in
+        APIClient.sendRequest2(path: "captain_login", httpMethod: .post, isLangRequired: false , parameters:["phone":  SessionManager.shared.phoneNumber,"password":password], success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
-            let activationCode = responseData["activated_code"] as? String ?? ""
+          
             SessionManager.shared.token = (responseData["token_type"] as? String ?? "") + " " + (responseData["access_token"] as? String ?? "")
+            SessionManager.shared.cpatainType = responseData["captain_type"] as? String ?? ""
+          
             SessionManager.shared.isUserLogged = false
             SessionManager.shared.isCaptainLogged = true
             SessionManager.shared.userId = String(responseData["id"] as? Int ?? 0)
 
             //          SessionManager.shared.currentUser = DataClient.shared.user
+            SessionManager.saveCpatainType()
             SessionManager.saveSessionManager()
             
             
@@ -312,12 +315,26 @@ class DataClient: NSObject {
     }
     
 
-    func captainRegister(name:String,email:String,password:String,phone:String,cardNumber:String,cardImage:String,licenseImage:String,carForm:String,contractImage:String,financialAccountNumber:String,captainType:Int,success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void) {
+    func captainRegister(name:String,email:String,password:String,phone:String,cardNumber:String,cardImage:String,licenseImage:String,carForm:String,contractImage:String,financialAccountNumber:String,captainType:Int,title:String,details:String,longitude:Double,latitude:Double,success: @escaping (_ activationCode:String) ->Void, failuer: @escaping (_ error: LLError) -> Void) {
         SessionManager.loadPhoneNumber()
-        let dict = ["name":name, "email":email,"password":password,"phone":SessionManager.shared.phoneNumber,"card_number":cardNumber, "contract_image":contractImage,"financial_account_number":financialAccountNumber,"captain_type":captainType,"license_image":licenseImage,"card_image":cardImage,"car_form":carForm] as [String : Any]
+        let dict = ["name":name, "email":email,"password":password,"phone":SessionManager.shared.phoneNumber,"card_number":cardNumber, "contract_image":contractImage,"financial_account_number":financialAccountNumber,"captain_type":captainType,"license_image":licenseImage,"card_image":cardImage,"car_form":carForm,"title":title,"details":details,"longitude":longitude,"latitude":latitude] as [String : Any]
         let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted) ?? nil
         print(jsonData)
         APIClient.sendRequest(path: "captain_register", httpMethod: .post, isLangRequired: false , parameters: dict, success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
+            print(responseData)
+            let activationCode = responseData["activated_code"] as? String ?? ""
+            success(activationCode)
+            
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
+    func captainRegister3(financialAccountNumber:String,captainType:Int,success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void) {
+        SessionManager.loadPhoneNumber()
+        let dict = ["financial_account_number":financialAccountNumber,"captain_type":captainType] as [String : Any]
+        APIClient.sendRequest(path: "captain_profile/update", httpMethod: .patch, isLangRequired: false , parameters: dict, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
             //            let activationCode = responseData["activated_code"] as? String ?? ""
@@ -328,9 +345,29 @@ class DataClient: NSObject {
         }
     }
     
+    func captainNewRegister(name:String,email:String,password:String,phone:String,cardNumber:String,success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void) {
+        SessionManager.loadPhoneNumber()
+        let dict = ["name":name, "email":email,"password":password,"phone":SessionManager.shared.phoneNumber,"card_number":cardNumber] as [String : Any]
+        APIClient.sendRequest(path: "captain_register", httpMethod: .post, isLangRequired: false , parameters: dict, success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
+            print(responseData)
+            let activationCode = responseData["activated_code"] as? String ?? ""
+            success()
+            
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
     
     func activateCaptain(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void, activiationCode : String){
-        
+        APIClient.sendRequest(path: "captain_activate", httpMethod: .post, isLangRequired: false , parameters:["activated_code": activiationCode], success: { (response) in
+            let responseData = response as! [String : Any]
+            print(responseData)
+            success()
+        }) { (error) in
+            failuer(error)
+        }
     }
     
     
@@ -390,7 +427,7 @@ class DataClient: NSObject {
     
     func rateCatpain(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void,customerOfferId :Int ,captainId :Int ,rate:Double) {
         
-        APIClient.sendRequest(path: "captain_rate", httpMethod: .post, isLangRequired: false , parameters:["captain_id":captainId , "rate":rate, "customerOfferId" :customerOfferId], success: { (response) in
+        APIClient.sendRequest(path: "captain_rate", httpMethod: .post, isLangRequired: false , parameters:["captain_id":captainId , "rate":rate, "customer_offer_id" :customerOfferId], success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
             
@@ -418,6 +455,17 @@ class DataClient: NSObject {
     func uploadProfilePhoto(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void,photo :String ){
         
         APIClient.sendRequest(path: "customer_profile/update", httpMethod: .patch, isLangRequired: false , parameters:["image":photo], success: { (response) in
+            //let responseData = response as? [String : Any] ?? [:]
+            //print(response)
+            success()
+            
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    func uploadCaptainPhotos(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void,parameters:Dictionary<String, Any>){
+        
+        APIClient.sendRequest(path: "captain_profile/update", httpMethod: .patch, isLangRequired: false , parameters:parameters, success: { (response) in
             //let responseData = response as? [String : Any] ?? [:]
             //print(response)
             success()
@@ -547,6 +595,19 @@ class DataClient: NSObject {
             
             //let profile = Profile(json: responseData)
 
+            
+            success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
+    func contactUs(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void, name:String,email:String,title:String,content:String){
+        APIClient.sendRequest(path: "connect_us", httpMethod: .post, isLangRequired: false , parameters: ["name":name,"email":email,"title":title,"content":content], success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
+            
+            //let profile = Profile(json: responseData)
+            
             
             success()
         }) { (error) in

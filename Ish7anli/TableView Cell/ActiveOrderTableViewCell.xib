@@ -64,22 +64,22 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91m-vQ-3mj">
                                         <rect key="frame" x="0.0" y="0.0" width="359" height="100"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYp-C6-7ei">
-                                                <rect key="frame" x="309" y="28.5" width="42" height="24.5"/>
-                                                <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <color key="highlightedColor" name="red"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYp-C6-7ei">
+                                                <rect key="frame" x="322" y="29.5" width="29" height="23"/>
+                                                <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="16"/>
+                                                <color key="textColor" name="red"/>
+                                                <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="29s-sB-v4d">
-                                                <rect key="frame" x="90" y="39" width="211" height="24.5"/>
+                                                <rect key="frame" x="90" y="39" width="224" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="SAR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZ1-QD-eRu">
-                                                <rect key="frame" x="316" y="58" width="35" height="24.5"/>
-                                                <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZ1-QD-eRu">
+                                                <rect key="frame" x="322" y="54.5" width="29" height="20"/>
+                                                <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="14"/>
+                                                <color key="textColor" name="pinkishGrey"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="89c-vH-xgN">
@@ -101,12 +101,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="LZ1-QD-eRu" firstAttribute="top" secondItem="xYp-C6-7ei" secondAttribute="bottom" constant="5" id="4gg-9X-gCx"/>
+                                            <constraint firstItem="LZ1-QD-eRu" firstAttribute="top" secondItem="xYp-C6-7ei" secondAttribute="bottom" constant="2" id="4gg-9X-gCx"/>
                                             <constraint firstItem="xYp-C6-7ei" firstAttribute="centerY" secondItem="29s-sB-v4d" secondAttribute="centerY" multiplier="0.8" id="8U8-qO-8pP"/>
                                             <constraint firstItem="89c-vH-xgN" firstAttribute="centerY" secondItem="91m-vQ-3mj" secondAttribute="centerY" id="DVL-gv-p8M"/>
                                             <constraint firstItem="29s-sB-v4d" firstAttribute="centerY" secondItem="89c-vH-xgN" secondAttribute="centerY" id="EIe-k9-au9"/>
                                             <constraint firstItem="89c-vH-xgN" firstAttribute="leading" secondItem="91m-vQ-3mj" secondAttribute="leadingMargin" id="KDT-Z4-jSm"/>
                                             <constraint firstItem="29s-sB-v4d" firstAttribute="leading" secondItem="89c-vH-xgN" secondAttribute="trailing" constant="25" id="Mtf-ma-kiQ"/>
+                                            <constraint firstItem="LZ1-QD-eRu" firstAttribute="leading" secondItem="xYp-C6-7ei" secondAttribute="leading" id="Qde-H4-asx"/>
                                             <constraint firstItem="xYp-C6-7ei" firstAttribute="leading" secondItem="29s-sB-v4d" secondAttribute="trailing" constant="8" id="fxk-0j-fis"/>
                                             <constraint firstItem="LZ1-QD-eRu" firstAttribute="trailing" secondItem="91m-vQ-3mj" secondAttribute="trailingMargin" id="oUb-SF-4l5"/>
                                             <constraint firstItem="xYp-C6-7ei" firstAttribute="trailing" secondItem="91m-vQ-3mj" secondAttribute="trailingMargin" id="sxd-rF-Ml7"/>
@@ -164,7 +165,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Nf-48-Hr2">
                                                         <rect key="frame" x="54.5" y="8" width="10.5" height="10.5"/>
-                                                        <color key="backgroundColor" red="0.0094091929500000008" green="0.46472275260000001" blue="0.74298602339999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10.5" id="NY0-cl-VYi"/>
                                                             <constraint firstAttribute="width" constant="10.5" id="xSq-KV-WT1"/>
@@ -291,6 +292,7 @@
                 <outlet property="LastCityLabel" destination="G9t-R2-woC" id="e92-Cl-fwe"/>
                 <outlet property="ProfileimageView" destination="89c-vH-xgN" id="x97-Q4-SAG"/>
                 <outlet property="actionButton" destination="NsZ-hJ-ZkW" id="BBK-8m-jQz"/>
+                <outlet property="currencyLabel" destination="LZ1-QD-eRu" id="zGb-io-KW6"/>
                 <outlet property="firstPoint" destination="ndN-f8-naO" id="V8i-Qs-vbT"/>
                 <outlet property="middlePointLabel" destination="Fjn-zb-5Ea" id="Ezm-zo-LZ4"/>
                 <outlet property="nameLabel" destination="29s-sB-v4d" id="Ppo-Bu-Q1G"/>
@@ -308,6 +310,9 @@
         </namedColor>
         <namedColor name="darkPastelGreen">
             <color red="0.32899999618530273" green="0.70200002193450928" blue="0.3449999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="pinkishGrey">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="red">
             <color red="0.83499997854232788" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

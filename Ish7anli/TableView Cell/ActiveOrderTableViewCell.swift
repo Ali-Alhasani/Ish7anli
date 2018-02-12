@@ -42,7 +42,8 @@ class ActiveOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var LastCityLabel: UILabel!
     
     @IBOutlet weak var actionButton: UIButton!
-    
+    @IBOutlet weak var currencyLabel: UILabel!
+
 //    var isChecked: Bool = false {
 //        didSet{
 //            if isChecked == true {
@@ -78,7 +79,14 @@ class ActiveOrderTableViewCell: UITableViewCell {
             self.nameLabel.text = data.name
             self.senderCityLabel.text = data.cityFrom
             self.LastCityLabel.text = data.cityTo
-            self.middlePointLabel.text = "in the Way"
+            if MOLHLanguage.isRTL() {
+                self.currencyLabel.text = "ريال"
+                  self.middlePointLabel.text = "في الطريق"
+                
+            }else {
+               self.middlePointLabel.text = "in the Way"
+            }
+           
             
 //            if data.type == 2 {
 //                self.actionButton.backgroundColor = UIColor.red

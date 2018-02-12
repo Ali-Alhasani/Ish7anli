@@ -11,6 +11,13 @@ import UIKit
 class ContactUsTableViewController: UIViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
  
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var nameText: UITextField!
+    @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var titleText: UITextField!
+    @IBOutlet weak var contentText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,10 +35,26 @@ class ContactUsTableViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func sendAction(_ sender: Any) {
+        let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        
+        spiningActivity.label.text =  ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text =  ErrorHelper.shared.message
+        
+        DataClient.shared.contactUs(success: {
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }, failuer: { (_ error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }, name: nameText.text!, email: emailText.text!, title: titleText.text!, content: contentText.text!)
+    
     // MARK: - Table view data source
 
-
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

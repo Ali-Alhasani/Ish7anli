@@ -13,12 +13,13 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
   
-    
+    var chatIndex:Int?
     func didPressChoose(sender: UIButton) {
         self.loadChoose(customerOfferId: DataClient.shared.CustomerOrder[sender.tag].id!, captainId: DataClient.shared.CustomerOrder[(cellIsSelected?.row)!].bid[sender.tag].captainId!)
     }
     
     func didPressChat(sender: UIButton) {
+        chatIndex = sender.tag
         self.performSegue(withIdentifier: "toMyOrderChat", sender: self)
     }
     
@@ -160,6 +161,8 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tmp(){
         if DataClient.shared.CustomerOrder.count != 0 && index == 0 {
             view(index: 0)
+        }else{
+            viewEmpty()
         }
         if DataClient.shared.CustomerOrder.count == 0 || index == DataClient.shared.CustomerOrder.endIndex {
             nextButton.isEnabled = false
@@ -191,7 +194,20 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         //print(customerOfferId)
         //print(captainId)
         DataClient.shared.chooseCaptain(success: {
-            self.tabelView.reloadData()
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم اضافة الطلب بنجاح"
+                
+            }else{
+                alartmessage = "the request has been added successfully"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
+            self.present(alert, animated: true)
+            
+            self.load()
+            //self.tabelView.reloadData()
         }, failuer: { (_ error) in
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
@@ -209,6 +225,13 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
     }
     
+    func viewEmpty(){
+      
+            dateLabel.text = ""
+            fromCityLabel.text = ""
+            destinationCityLabel.text = ""
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMyOrderDetails2" {
             let vc = segue.destination as! OrderDetailsViewController
@@ -221,10 +244,18 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if segue.identifier == "toMyOrderChat" {
             let vc = segue.destination as! ChatViewController
             vc.senderType = .U
-            vc.targetId = String(DataClient.shared.CustomerOrder[cellIsSelected!.row].captainId!)
+            vc.targetId = String((DataClient.shared.CustomerOrder[index].bid[chatIndex!].captainId!))
+            
+              //  String(DataClient.shared.CustomerOrder[(cellIsSelected?.row)!].bid[chatIndex].captainId!)
+                //String(DataClient.shared.CustomerOrder[index].captainId!)
             
         }
         
+    }
+    func someHandler(alert: UIAlertAction!) {
+        tmp()
+        
+       self.tabelView.reloadData()
     }
     
     /*

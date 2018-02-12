@@ -36,7 +36,9 @@ class TmpTableViewCell: UITableViewCell {
     
     @IBOutlet weak var chooseButton: UIButton!
     @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var currencyLabel: UILabel!
     
+    @IBOutlet weak var cellImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,7 +70,12 @@ class TmpTableViewCell: UITableViewCell {
             })
         
             self.captionNameLabel.text = data.name
-        
+            if MOLHLanguage.isRTL() {
+                chooseButton.setTitle(" اختيار ", for: .normal)
+                 chatButton.setTitle(" محادثة ", for: .normal)
+                currencyLabel.text = "ريال"
+                cellImage.image = UIImage(named:"cell Right")
+            }
         }
     }
 

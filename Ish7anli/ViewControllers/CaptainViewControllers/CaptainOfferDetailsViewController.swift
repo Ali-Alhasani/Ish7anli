@@ -37,7 +37,11 @@ class CaptainOfferDetailsViewController: UIViewController {
             timeTo.text =  DataClient.shared.captianOffer[indexPath!].arrivalTime
             dateFrom.text = DataClient.shared.captianOffer[indexPath!].goDate
             dateTo.text = DataClient.shared.captianOffer[indexPath!].arrivalDate
+            if MOLHLanguage.isRTL() {
+                    price.text = DataClient.shared.captianOffer[indexPath!].price! + " ريال"
+            }else{
             price.text = DataClient.shared.captianOffer[indexPath!].price! + " SAR"
+            }
             
             APIClient.sendImageRequest(path: DataClient.shared.captianOffer[indexPath!].captainImage!, success: { (_ image) in
                 self.imageView.image = image
@@ -64,9 +68,9 @@ class CaptainOfferDetailsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toCaptainOfferDetailsChat" {
             let vc = segue.destination as! ChatViewController
-            vc.senderType = .C
+            vc.senderType = .CC
          
-                vc.targetId = String(DataClient.shared.captianOffer[indexPath!].id!)
+                vc.targetId = String(DataClient.shared.captianOffer[indexPath!].captainId!)
        
             
         }

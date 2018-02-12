@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
         Messaging.messaging().delegate = self
         
         ErrorHelper.loadErrorHelper()
+        ErrorHelper.loadArrayHelper()
         application.registerForRemoteNotifications()
         registerForPushNotifications()
         return true
@@ -64,11 +65,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")
         let rightViewController = storyboard.instantiateViewController(withIdentifier: "RightViewController") as! RightViewController
-        if MOLHLanguage.isRTL() {
-            let slideMenuController = SlideMenuController(mainViewController: mainViewController, rightMenuViewController: rightViewController)
+            
+           let leftViewController = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+            if MOLHLanguage.isRTL() {
+                let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController : leftViewController, rightMenuViewController: rightViewController)
             self.window?.rootViewController = slideMenuController
         }else {
-            let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: rightViewController)
+            let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: rightViewController , rightMenuViewController : leftViewController)
             self.window?.rootViewController = slideMenuController
             
             
@@ -80,12 +83,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainCaptainViewController")
             let rightViewController = storyboard.instantiateViewController(withIdentifier: "RightViewController") as! RightViewController
+            
+                let leftViewController = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
             if MOLHLanguage.isRTL() {
-                let slideMenuController = SlideMenuController(mainViewController: mainViewController, rightMenuViewController: rightViewController)
-                self.window?.rootViewController = slideMenuController
+          let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController : leftViewController, rightMenuViewController: rightViewController)
+            self.window?.rootViewController = slideMenuController
     
             }else {
-                let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: rightViewController)
+                let slideMenuController = SlideMenuController(mainViewController: mainViewController, leftMenuViewController: rightViewController , rightMenuViewController : leftViewController)
                 self.window?.rootViewController = slideMenuController
                 
                 

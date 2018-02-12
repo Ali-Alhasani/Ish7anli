@@ -101,7 +101,7 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
                 cell.setData(OldOrderWithRateTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!))
                
                 cell.detailsButton.tag = indexPath.row
-                  cell.cellDelegate = self
+                cell.cellDelegate = self
                 cell.rateButton.tag = indexPath.row
        
                 cell.selectionStyle = .none
@@ -131,7 +131,7 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func didPressNonFinishedDetailsButton(sender: UIButton) {
-        self.performSegue(withIdentifier: "toFinishedDetails", sender: self)
+        self.performSegue(withIdentifier: "toNonFinishedDetails", sender: self)
     }
     
     func load (){
@@ -155,6 +155,11 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFinishedDetails" {
+            let vc = segue.destination as! OrderDetails2ViewController
+            vc.finished = true
+            vc.indexPath = self.cellIsSelected?.row
+        }
+        if segue.identifier == "toNonFinishedDetails" {
             let vc = segue.destination as! OrderDetails2ViewController
             vc.indexPath = self.cellIsSelected?.row
         }
@@ -183,7 +188,7 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         // Create second button
         let buttonTwo = DefaultButton(title: "RATE", height: 60) {
          
-            self.loadRate(rate: ratingVC.cosmosStarRating.rating, captainId: DataClient.shared.lastOffer[indexPath].captainId!, customerOfferId: DataClient.shared.lastOffer[indexPath].customerId!)
+            self.loadRate(rate: ratingVC.cosmosStarRating.rating, captainId: DataClient.shared.lastOffer[indexPath].captainId!, customerOfferId: DataClient.shared.lastOffer[indexPath].id!)
            
             //self.label.text = "You rated \(ratingVC.cosmosStarRating.rating) stars"
         }

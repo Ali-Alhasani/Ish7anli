@@ -18,6 +18,7 @@ class JoinCaptainViewController: UIViewController,UITextFieldDelegate {
   
     var statusEmail:Bool = false
     @IBOutlet weak var scrollView: UIScrollView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,7 +105,7 @@ class JoinCaptainViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func continueAction(_ sender: Any) {
-        if (fullNameText.text!.isEmpty || cardNumberText.text!.isEmpty || mobileNumberText.text!.isEmpty || emailText.text!.isEmpty || passwordText.text!.isEmpty || confirmPasswordText.text!.isEmpty) {
+        if (fullNameText.text!.isEmpty || cardNumberText.text!.isEmpty || mobileNumberText.text!.isEmpty || emailText.text!.isEmpty || passwordText.text!.isEmpty || confirmPasswordText.text!.isEmpty || statusEmail == false) {
               var error:String?
             if MOLHLanguage.isRTL() {
                 error =  "يجب أن تقوم بإدخال كافة الحقول"
@@ -115,14 +116,35 @@ class JoinCaptainViewController: UIViewController,UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }else {
-        self.performSegue(withIdentifier: "continue", sender: self)
+            self.performSegue(withIdentifier: "continue", sender: self)
+//
+//            let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+//            
+//            
+//            spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+//            spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+//            load()
+       
         }
     }
     @IBAction func backButtonAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+
     
+    func load(){
+        
+        DataClient.shared.captainNewRegister(name: fullNameText.text!, email:  emailText.text!, password: passwordText.text!, phone: mobileNumberText.text!, cardNumber: cardNumberText.text!, success: {
+              MBProgressHUD.hide(for: self.view, animated: true)
+             self.performSegue(withIdentifier: "continue", sender: self)
+        }) { (_ error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "continue" {
             let vc = segue.destination as! CompleteJoinCaptainViewController

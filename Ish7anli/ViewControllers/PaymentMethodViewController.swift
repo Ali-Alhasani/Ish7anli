@@ -25,12 +25,17 @@ class PaymentMethodViewController: UIViewController {
     var receiverPhone:String?
     var type:Int?
     var captainOfferId:Int?
+    var accountNumberString,amountOfMoneyString:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         firstButton.alternateButton = [secondButton,thirdButton]
         secondButton.alternateButton = [firstButton,thirdButton]
         thirdButton.alternateButton = [firstButton,secondButton]
-       
+        if (type == nil) {
+           accountNumber.text = accountNumberString
+            amountOfMoney.text = amountOfMoneyString
+            
+        }
         // Do any additional setup after loading the view.
     }
     

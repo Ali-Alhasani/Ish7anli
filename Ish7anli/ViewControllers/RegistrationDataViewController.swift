@@ -68,13 +68,13 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func saveButton(_ sender: Any) {
-        if(emailText.text!.isEmpty || fullNameText.text!.isEmpty || imageStr == nil) {
+        if(emailText.text!.isEmpty || fullNameText.text!.isEmpty || imageStr == nil || statusEmail == false) {
             var error:String?
             if MOLHLanguage.isRTL() {
-                error =  "يجب أن تقوم بإدخال كافة الحقول"
+                error =  "يجب أن تقوم بإدخال كافة الحقول واختيار صورة شخصية"
                 
             }else{
-                error = "You should fill all the fields"
+                error = "You should fill all the fields and pick a profile photo"
             }
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))

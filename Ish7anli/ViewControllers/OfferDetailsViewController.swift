@@ -30,7 +30,37 @@ class OfferDetailsViewController: UIViewController {
         if !MOLHLanguage.isRTL(){
             arrowImage.image = UIImage(named: "backBlueLeft")
         }
+        
         if indexPath != nil {
+            if (type == 2) {
+                nameLabel.text = DataClient.shared.offerPrice[indexPath!].captainName
+                starsView.rating = DataClient.shared.offerPrice[indexPath!].captainRate!
+                destinationCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameTo
+                fromCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameFrom
+                timeFrom.text = DataClient.shared.offerPrice[indexPath!].goTime
+                timeTo.text =  DataClient.shared.offerPrice[indexPath!].arrivalTime
+                dateFrom.text = DataClient.shared.offerPrice[indexPath!].goDate
+                dateTo.text = DataClient.shared.offerPrice[indexPath!].arrivalDate
+                if MOLHLanguage.isRTL() {
+                    let string: NSMutableAttributedString = NSMutableAttributedString(string: DataClient.shared.offerPrice[indexPath!].price! + " ريال" )
+                    string.setColorForText(" ريال" , with: UIColor(named:"warmGrayText")!)
+                    price.attributedText = string
+
+                    //price.text =
+                }else{
+                    
+                    let string: NSMutableAttributedString = NSMutableAttributedString(string: DataClient.shared.offerPrice[indexPath!].price! + " SAR" )
+                    string.setColorForText(" SAR" , with: UIColor(named:"warmGrayText")!)
+                   price.attributedText = string
+                }
+                
+                
+                APIClient.sendImageRequest(path: DataClient.shared.offerPrice[indexPath!].captainImage!, success: { (_ image) in
+                    self.imageView.image = image
+                }, failure: { (_ error) in
+                    
+                })
+            }else {
             nameLabel.text = DataClient.shared.offer[indexPath!].captainName
             starsView.rating = DataClient.shared.offer[indexPath!].captainRate!
             destinationCity.text =  DataClient.shared.offer[indexPath!].cityNameTo
@@ -39,31 +69,26 @@ class OfferDetailsViewController: UIViewController {
             timeTo.text =  DataClient.shared.offer[indexPath!].arrivalTime
             dateFrom.text = DataClient.shared.offer[indexPath!].goDate
             dateTo.text = DataClient.shared.offer[indexPath!].arrivalDate
-            price.text = DataClient.shared.offer[indexPath!].price! + " SAR"
+            if MOLHLanguage.isRTL() {
+                let string: NSMutableAttributedString = NSMutableAttributedString(string: DataClient.shared.offer[indexPath!].price! + " ريال" )
+                string.setColorForText(" ريال" , with: UIColor(named:"warmGrayText")!)
+                price.attributedText = string
+              
+            }else{
+                let string: NSMutableAttributedString = NSMutableAttributedString(string: DataClient.shared.offer[indexPath!].price! + " SAR")
+                string.setColorForText(" SAR" , with: UIColor(named:"warmGrayText")!)
+                price.attributedText = string
+                
+            }
             
             APIClient.sendImageRequest(path: DataClient.shared.offer[indexPath!].captainImage!, success: { (_ image) in
                 self.imageView.image = image
             }, failure: { (_ error) in
                 
             })
+            }
         }
-        if (type == 2) {
-            nameLabel.text = DataClient.shared.offerPrice[indexPath!].captainName
-            starsView.rating = DataClient.shared.offerPrice[indexPath!].captainRate!
-            destinationCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameTo
-            fromCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameFrom
-            timeFrom.text = DataClient.shared.offerPrice[indexPath!].goTime
-            timeTo.text =  DataClient.shared.offerPrice[indexPath!].arrivalTime
-            dateFrom.text = DataClient.shared.offerPrice[indexPath!].goDate
-            dateTo.text = DataClient.shared.offerPrice[indexPath!].arrivalDate
-            price.text = DataClient.shared.offerPrice[indexPath!].price! + " SAR"
-            
-            APIClient.sendImageRequest(path: DataClient.shared.offerPrice[indexPath!].captainImage!, success: { (_ image) in
-                self.imageView.image = image
-            }, failure: { (_ error) in
-                
-            })
-        }
+     
         // Do any additional setup after loading the view.
     }
     
@@ -79,7 +104,7 @@ class OfferDetailsViewController: UIViewController {
     
     @IBAction func chooseAction(_ sender: Any) {
         if indexPath != nil {
-            self.performSegue(withIdentifier: "toAddOffer", sender: self)
+            self.performSegue(withIdentifier: "toAddOffer2", sender: self)
         }
     }
     
@@ -90,13 +115,29 @@ class OfferDetailsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddOffer" {
-            let vc = segue.destination as! AddOfferViewController
+        //        if segue.identifier == "toAddOffer" {
+        //            let vc = segue.destination as! AddOfferViewController
+        //            if (type == 2) {
+        //                vc.captainOfferId = DataClient.shared.offerPrice[indexPath!].id!
+        //            }
+        //            else {
+        //                vc.captainOfferId = DataClient.shared.offer[indexPath!].id!
+        //            }
+        //        }
+        
+        
+        
+        if segue.identifier == "toAddOffer2" {
+            let vc = segue.destination as! NewAddOfferViewController
             if (type == 2) {
                 vc.captainOfferId = DataClient.shared.offerPrice[indexPath!].id!
+                vc.type = 2
+                vc.indexPath = indexPath!
             }
             else {
                 vc.captainOfferId = DataClient.shared.offer[indexPath!].id!
+                 vc.indexPath = indexPath!
+                
             }
         }
         if segue.identifier == "toChat" {
@@ -129,4 +170,12 @@ class OfferDetailsViewController: UIViewController {
      }
      */
     
+}
+extension NSMutableAttributedString{
+    func setColorForText(_ textToFind: String, with color: UIColor) {
+        let range = self.mutableString.range(of: textToFind, options: .caseInsensitive)
+        if range.location != NSNotFound {
+            addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+        }
+    }
 }
