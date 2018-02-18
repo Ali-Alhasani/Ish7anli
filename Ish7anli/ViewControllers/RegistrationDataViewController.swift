@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseStorage
 class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -17,10 +17,14 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
     var imageStr:String?
     var image_data:UIImage?
     var statusEmail:Bool = false
+    
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         emailText.delegate = self
         // Do any additional setup after loading the view.
+        indicatorView.isHidden = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,10 +64,36 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
             }
             break
         default:
-            print(textField.text)
+            print(textField.text!)
         }
         
         
+    }
+    func sendMedia(image: UIImage?){
+         indicatorView.isHidden = false
+        indicatorView.startAnimating()
+        let refStorage = Storage.storage().reference().child("::\(Date().timeIntervalSince1970)")
+        if let image = image {
+            let data = UIImageJPEGRepresentation(image, 0.2)
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            refStorage.putData(data!, metadata: metadata
+                , completion: { (metadata, error) in
+                    if error == nil{
+                        guard let downloadUrl = metadata?.downloadURL() else {return}
+                        self.imageStr = downloadUrl.absoluteString
+                        self.indicatorView.stopAnimating()
+                        self.indicatorView.isHidden = true
+                        
+                        
+                    }else{
+                        self.indicatorView.stopAnimating()
+                        let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error?.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+            })
+        }
     }
     
     
@@ -90,13 +120,13 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
     }
     
     
-    func uplaodPhoto(_ photo:String){
-        DataClient.shared.uploadProfilePhoto(success: {
-            //self.imageView.image = self.image_data!
-        }, failuer: { (_ error) in
-            
-        }, photo: photo)
-    }
+    //    func uplaodPhoto(_ photo:String){
+    //        DataClient.shared.uploadProfilePhoto(success: {
+    //            //self.imageView.image = self.image_data!
+    //        }, failuer: { (_ error) in
+    //
+    //        }, photo: photo)
+    //    }
     
     func load(){
         DataClient.shared.saveProfileCustomer(success: {
@@ -109,7 +139,7 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
-        }, email: emailText.text!, name: fullNameText.text!)
+        }, email: emailText.text!, name: fullNameText.text!, image: imageStr!)
     }
     /*
      // MARK: - Navigation
@@ -129,10 +159,11 @@ extension RegistrationDataViewController: UIImagePickerControllerDelegate,UINavi
     {
         image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
         //let imageData = UIImagePNGRepresentation(image_data!)!
-        let imageData:Data = image_data!.compressTo(1)!
-        imageStr = imageData.base64EncodedString()
+      
+        //imageStr = imageData.base64EncodedString()
         self.imageView.image = self.image_data!
-        uplaodPhoto(imageStr!)
+        sendMedia(image: image_data)
+        // uplaodPhoto(imageStr!)
         self.dismiss(animated: true, completion: nil)
     }
 }

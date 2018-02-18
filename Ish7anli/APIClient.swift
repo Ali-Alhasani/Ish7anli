@@ -65,7 +65,7 @@ class APIClient:NSObject {
                           success(json)
                         }
                     }else{
-                        let error = LLError.init(status: status as! Bool, message: message)
+                        let error = LLError.init(status: status , message: message)
                         failure(error)
                     }
                 }

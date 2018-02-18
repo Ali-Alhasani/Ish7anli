@@ -46,8 +46,7 @@ class CaptainOfferViewController: UIViewController,IndicatorInfoProvider,UIColle
             
             return
         }
-        
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,7 +57,8 @@ class CaptainOfferViewController: UIViewController,IndicatorInfoProvider,UIColle
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
-        
+        self.collectionView.reloadData()
+        self.Refreshload()
     }
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         if MOLHLanguage.isRTL() {
@@ -97,6 +97,16 @@ class CaptainOfferViewController: UIViewController,IndicatorInfoProvider,UIColle
         
     }
     func load(){
+        DataClient.shared.getCaptianOffer(success: {
+            self.collectionView.reloadData()
+        }) { (_ error) in
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func Refreshload(){
         DataClient.shared.getCaptianOffer(success: {
             self.collectionView.reloadData()
         }) { (_ error) in

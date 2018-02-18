@@ -97,6 +97,7 @@ extension ProfileViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
     }
     
          func didPressDeleteButton(sender: UIButton) {
+            
            addListener()
         }
     

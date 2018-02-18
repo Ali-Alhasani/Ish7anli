@@ -39,7 +39,7 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
             let updateString = "last update was" + self.dateFormatter.string(from: now as Date)
             
             self.refreshControl.attributedTitle = NSAttributedString(string: updateString)
-            self.load()
+            self.Refreshload()
             
             if self.refreshControl.isRefreshing
             {
@@ -72,6 +72,7 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
         self.setNavigationBarItem()
         self.hideBackButton()
         self.collectionView.reloadData()
+        self.Refreshload()
         
     }
     
@@ -90,7 +91,7 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "NewOrder",
                                                        for: indexPath) as! NewOrderCollectionViewCell
         if (DataClient.shared.offerPrice.count != 0 ){
-            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.offerPrice[indexPath.row].price!, image: DataClient.shared.offerPrice[indexPath.row].captainImage!, name: DataClient.shared.offerPrice[indexPath.row].captainName!, time: DataClient.shared.offerPrice[indexPath.row].goTime!, day: "", date: DataClient.shared.offerPrice[indexPath.row].goDate!, cityFrom: DataClient.shared.offerPrice[indexPath.row].cityNameFrom!, cityTo: DataClient.shared.offerPrice[indexPath.row].cityNameTo!, stars: DataClient.shared.offerPrice[indexPath.row].captainRate!))
+            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.offerPrice[indexPath.row].price!, image: DataClient.shared.offerPrice[indexPath.row].captainImage!, name: DataClient.shared.offerPrice[indexPath.row].captainName!, time: DataClient.shared.offerPrice[indexPath.row].goTime!, day: "", date: DataClient.shared.offerPrice[indexPath.row].goDate!, cityFrom: DataClient.shared.offerPrice[indexPath.row].cityNameTo! , cityTo: DataClient.shared.offerPrice[indexPath.row].cityNameFrom!, stars: DataClient.shared.offerPrice[indexPath.row].captainRate!))
         }
         return cell
     }
@@ -105,6 +106,16 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
     func load(){
         DataClient.shared.getPriceOffer(success: {
            // self.collectionView.reloadData()
+        }) { (_ error) in
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func Refreshload(){
+        DataClient.shared.getPriceOffer(success: {
+            self.collectionView.reloadData()
         }) { (_ error) in
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))

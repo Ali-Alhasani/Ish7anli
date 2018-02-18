@@ -9,10 +9,6 @@
 import UIKit
  //
 class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,TmpTableViewCellDelegate  {
-    
-    
-    
-  
     var chatIndex:Int?
     func didPressChoose(sender: UIButton) {
         self.loadChoose(customerOfferId: DataClient.shared.CustomerOrder[sender.tag].id!, captainId: DataClient.shared.CustomerOrder[(cellIsSelected?.row)!].bid[sender.tag].captainId!)
@@ -141,41 +137,66 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     @IBAction func previousButton(_ sender: Any) {
-             tmp()
-         self.index -= 1
-    
-        self.view(index: index )
-          self.tabelView.reloadData()
+  tmpBack()
+       
     }
     
     @IBAction func nextButton(_ sender: Any) {
-          tmp()
-          self.index += 1
-        
-          self.view(index: index)
-        self.tabelView.reloadData()
+        tmpNext()
       
 
         
     }
+    
+    func tmpNext(){
+        if DataClient.shared.CustomerOrder.count == 0 ||  index == (DataClient.shared.CustomerOrder.endIndex - 2) {
+            nextButton.isEnabled = false
+        }else {
+            nextButton.isEnabled = true
+            self.index += 1
+            self.view(index: index)
+            self.tabelView.reloadData()
+        }
+      
+    }
+    
+    func tmpBack(){
+        if DataClient.shared.CustomerOrder.count == 0 || DataClient.shared.CustomerOrder.count == 1 || index == (DataClient.shared.CustomerOrder.startIndex + 1) || index == 0 {
+            previousButton.isEnabled = false
+            
+        }else {
+            previousButton.isEnabled = true
+            self.index -= 1
+            self.view(index: index)
+            self.tabelView.reloadData()
+        }
+       
+    }
     func tmp(){
+        
         if DataClient.shared.CustomerOrder.count != 0 && index == 0 {
             view(index: 0)
         }else{
             viewEmpty()
+          
         }
-        if DataClient.shared.CustomerOrder.count == 0 || index == DataClient.shared.CustomerOrder.endIndex {
+        
+        if DataClient.shared.CustomerOrder.count == 0 ||  index == (DataClient.shared.CustomerOrder.endIndex - 2) {
             nextButton.isEnabled = false
         }else {
             nextButton.isEnabled = true
         }
-         if DataClient.shared.CustomerOrder.count == 0 || index == DataClient.shared.CustomerOrder.startIndex {
+        
+        if DataClient.shared.CustomerOrder.count == 0 || DataClient.shared.CustomerOrder.count == 1 || index == (DataClient.shared.CustomerOrder.startIndex + 1) || index == 0{
             previousButton.isEnabled = false
             
         }else {
             previousButton.isEnabled = true
         }
+      
     }
+    
+  
     
     func load (){
         DataClient.shared.getCustomerOrder(success: {
@@ -218,7 +239,7 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     func view (index:Int){
-        if (index != DataClient.shared.CustomerOrder.endIndex) {
+        if (index != DataClient.shared.CustomerOrder.endIndex - 1) {
         dateLabel.text = DataClient.shared.CustomerOrder[index].date! + " - " +  DataClient.shared.CustomerOrder[index].time!
         fromCityLabel.text = DataClient.shared.CustomerOrder[index].addressSenderCity!
         destinationCityLabel.text = DataClient.shared.CustomerOrder[index].addressReceiverCity!

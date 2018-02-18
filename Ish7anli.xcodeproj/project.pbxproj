@@ -29,6 +29,7 @@
 		6B18DF062010B7A700C73BA2 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B18DF042010B7A700C73BA2 /* ListTableViewCell.xib */; };
 		6B18DF082010B81B00C73BA2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DF072010B81B00C73BA2 /* SettingsViewController.swift */; };
 		6B18DF0A2010BBD500C73BA2 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B18DF092010BBD500C73BA2 /* ProfileModel.swift */; };
+		6B19801C20386583009429DB /* MyOfferCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B19801B20386583009429DB /* MyOfferCaptainViewController.swift */; };
 		6B24DA40201FDBD100D5B619 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B24DA3E201FDBD100D5B619 /* ProfileViewController.swift */; };
 		6B271D29201C85440030BBF4 /* CaptainCustomerOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */; };
 		6B271D2B201C87EC0030BBF4 /* CpatainNewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */; };
@@ -53,8 +54,14 @@
 		6B3892FA2027109700E669B9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3892F92027109700E669B9 /* Notifications.swift */; };
 		6B3892FD2027217E00E669B9 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3892FB2027217E00E669B9 /* NotificationsTableViewCell.swift */; };
 		6B3892FE2027217E00E669B9 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3892FC2027217E00E669B9 /* NotificationsTableViewCell.xib */; };
+		6B3C5CBE20332E0B00C9ACB7 /* CaptainProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3C5CBD20332E0B00C9ACB7 /* CaptainProfile.swift */; };
+		6B3C5CC1203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3C5CBF203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift */; };
+		6B3C5CC2203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3C5CC0203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib */; };
 		6B48938C202AED3C00F6769C /* ActiveOrderTableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B48938A202AED3B00F6769C /* ActiveOrderTableViewCell2.xib */; };
 		6B48938F202AEDFE00F6769C /* ActiveOrderTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48938E202AEDFD00F6769C /* ActiveOrderTableViewCell2.swift */; };
+		6B4BEEA62035A2D60015CB30 /* OldOrderTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BEEA42035A2D60015CB30 /* OldOrderTableViewCell2.swift */; };
+		6B4BEEA72035A2D60015CB30 /* OldOrderTableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4BEEA52035A2D60015CB30 /* OldOrderTableViewCell2.xib */; };
+		6B4BEEA92035AA300015CB30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B4BEEA82035AA300015CB30 /* GoogleService-Info.plist */; };
 		6B4D52F92029F6BC003A2C48 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */; };
 		6B4ED007202794AA00FC5934 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4ED006202794AA00FC5934 /* ErrorHelper.swift */; };
 		6B4ED0082027C48100FC5934 /* AddPriceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B4ED00A2027C48100FC5934 /* AddPriceViewController.xib */; };
@@ -122,6 +129,7 @@
 		6B7C88D7201BC2110096FB87 /* CompleteJoinCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D6201BC2110096FB87 /* CompleteJoinCaptainViewController.swift */; };
 		6B7C88D9201BC3CB0096FB87 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C88D8201BC3CB0096FB87 /* CheckBox.swift */; };
 		6B85DFDE202BA9CF001A1662 /* AcceptedCaptainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B85DFDD202BA9CF001A1662 /* AcceptedCaptainViewController.swift */; };
+		6B880E432039859100AB7653 /* CaptainOfferCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B880E422039859100AB7653 /* CaptainOfferCancelViewController.swift */; };
 		6B96F3FF201290D100AE909C /* AddOrderNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */; };
 		6B9AD2D320063C0B00C4869C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9AD2D220063C0B00C4869C /* AppDelegate.swift */; };
 		6B9AD2D520063C0B00C4869C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9AD2D420063C0B00C4869C /* ViewController.swift */; };
@@ -144,7 +152,6 @@
 		6BD15AC12021127400129DF9 /* NewOrder2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */; };
 		6BD15AC32021142100129DF9 /* NewOrder22ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */; };
 		6BD15AC5202124AA00129DF9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC4202124AA00129DF9 /* ChatViewController.swift */; };
-		6BD15ACC20220D9F00129DF9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BD15ACB20220D9F00129DF9 /* GoogleService-Info.plist */; };
 		6BDCA75C20304B4900989CDD /* AddOfferViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCA75B20304B4900989CDD /* AddOfferViewModel.swift */; };
 		6BDCA75E2030720D00989CDD /* AddOffer2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCA75D2030720C00989CDD /* AddOffer2ViewModel.swift */; };
 		6BF631822006E39600D19370 /* IBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF631812006E39600D19370 /* IBDesignable.swift */; };
@@ -176,6 +183,7 @@
 		6B18DF042010B7A700C73BA2 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		6B18DF072010B81B00C73BA2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6B18DF092010BBD500C73BA2 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		6B19801B20386583009429DB /* MyOfferCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOfferCaptainViewController.swift; sourceTree = "<group>"; };
 		6B24DA3E201FDBD100D5B619 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6B271D28201C85440030BBF4 /* CaptainCustomerOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainCustomerOffer.swift; sourceTree = "<group>"; };
 		6B271D2A201C87EC0030BBF4 /* CpatainNewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpatainNewOrderViewController.swift; sourceTree = "<group>"; };
@@ -200,8 +208,14 @@
 		6B3892F92027109700E669B9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		6B3892FB2027217E00E669B9 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		6B3892FC2027217E00E669B9 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		6B3C5CBD20332E0B00C9ACB7 /* CaptainProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainProfile.swift; sourceTree = "<group>"; };
+		6B3C5CBF203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCaptainSettingsTableViewCell.swift; sourceTree = "<group>"; };
+		6B3C5CC0203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCaptainSettingsTableViewCell.xib; sourceTree = "<group>"; };
 		6B48938A202AED3B00F6769C /* ActiveOrderTableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveOrderTableViewCell2.xib; sourceTree = "<group>"; };
 		6B48938E202AEDFD00F6769C /* ActiveOrderTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveOrderTableViewCell2.swift; sourceTree = "<group>"; };
+		6B4BEEA42035A2D60015CB30 /* OldOrderTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldOrderTableViewCell2.swift; sourceTree = "<group>"; };
+		6B4BEEA52035A2D60015CB30 /* OldOrderTableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OldOrderTableViewCell2.xib; sourceTree = "<group>"; };
+		6B4BEEA82035AA300015CB30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B4D52F82029F6BC003A2C48 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		6B4ED006202794AA00FC5934 /* ErrorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
 		6B4ED0092027C48100FC5934 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddPriceViewController.xib; sourceTree = "<group>"; };
@@ -277,6 +291,7 @@
 		6B7C88D6201BC2110096FB87 /* CompleteJoinCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteJoinCaptainViewController.swift; sourceTree = "<group>"; };
 		6B7C88D8201BC3CB0096FB87 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		6B85DFDD202BA9CF001A1662 /* AcceptedCaptainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptedCaptainViewController.swift; sourceTree = "<group>"; };
+		6B880E422039859100AB7653 /* CaptainOfferCancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainOfferCancelViewController.swift; sourceTree = "<group>"; };
 		6B96F3FE201290D100AE909C /* AddOrderNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrderNewViewController.swift; sourceTree = "<group>"; };
 		6B9AD2CF20063C0B00C4869C /* Ish7anli.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ish7anli.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9AD2D220063C0B00C4869C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -301,7 +316,6 @@
 		6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder2ViewController.swift; sourceTree = "<group>"; };
 		6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder22ViewController.swift; sourceTree = "<group>"; };
 		6BD15AC4202124AA00129DF9 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		6BD15ACB20220D9F00129DF9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BDCA75B20304B4900989CDD /* AddOfferViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOfferViewModel.swift; sourceTree = "<group>"; };
 		6BDCA75D2030720C00989CDD /* AddOffer2ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddOffer2ViewModel.swift; sourceTree = "<group>"; };
 		6BE1F0D42026056B00DC40B0 /* Ish7anli.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ish7anli.entitlements; sourceTree = "<group>"; };
@@ -380,6 +394,8 @@
 				6B9AD2E6200642CF00C4869C /* TmpTableViewCell.swift */,
 				6B55DA2A20076EA200BB535B /* OldOrderTableViewCell.swift */,
 				6B55DA2B20076EA200BB535B /* OldOrderTableViewCell.xib */,
+				6B4BEEA42035A2D60015CB30 /* OldOrderTableViewCell2.swift */,
+				6B4BEEA52035A2D60015CB30 /* OldOrderTableViewCell2.xib */,
 				6B55DA302007878900BB535B /* OldOrderWithRateTableViewCell.swift */,
 				6B55DA312007878900BB535B /* OldOrderWithRateTableViewCell.xib */,
 				6B517CB7200E03C400CFE5DC /* newOrderTableViewCell.swift */,
@@ -393,6 +409,8 @@
 				6BD15ACA2021266300129DF9 /* CollectionView Cell */,
 				6B18DEF92010B33A00C73BA2 /* AddressSettingsTableViewCell.swift */,
 				6B18DEFA2010B33A00C73BA2 /* AddressSettingsTableViewCell.xib */,
+				6B3C5CBF203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift */,
+				6B3C5CC0203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib */,
 				6B18DEFF2010B72400C73BA2 /* AddAddressTableViewCell.swift */,
 				6B18DF002010B72400C73BA2 /* AddAddressTableViewCell.xib */,
 				6B18DF032010B7A700C73BA2 /* ListTableViewCell.swift */,
@@ -503,8 +521,8 @@
 				6B9AD2D620063C0B00C4869C /* Main.storyboard */,
 				6B9AD2D920063C0B00C4869C /* l.xcassets */,
 				6B9AD2DB20063C0B00C4869C /* LaunchScreen.storyboard */,
-				6BD15ACB20220D9F00129DF9 /* GoogleService-Info.plist */,
 				6B9AD2DE20063C0B00C4869C /* Info.plist */,
+				6B4BEEA82035AA300015CB30 /* GoogleService-Info.plist */,
 				6B517CCD200E9B4100CFE5DC /* TableView Cell */,
 				6B18DEE1200F8B0E00C73BA2 /* ViewControllers */,
 				6B517CEF200EA23400CFE5DC /* Menu */,
@@ -542,6 +560,7 @@
 				6B271D3E201E119B0030BBF4 /* City.swift */,
 				6B5D8B9B2023642C001EA2BF /* User.swift */,
 				6B3892F92027109700E669B9 /* Notifications.swift */,
+				6B3C5CBD20332E0B00C9ACB7 /* CaptainProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -586,6 +605,8 @@
 				6B4F43C4202246D300A51EEC /* CaptainAddressDetailsViewController.swift */,
 				6B759812202BA75500D92D63 /* BlockedViewController.swift */,
 				6B85DFDD202BA9CF001A1662 /* AcceptedCaptainViewController.swift */,
+				6B19801B20386583009429DB /* MyOfferCaptainViewController.swift */,
+				6B880E422039859100AB7653 /* CaptainOfferCancelViewController.swift */,
 			);
 			path = CaptainViewControllers;
 			sourceTree = "<group>";
@@ -637,6 +658,9 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -669,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B4ED0172027C53000FC5934 /* ProfileViewController.xib in Resources */,
+				6B3C5CC2203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib in Resources */,
 				6B517CBE200E250100CFE5DC /* ActiveOrderTableViewCell.xib in Resources */,
 				6B517CC2200E28BA00CFE5DC /* ArchiveOrderTableViewCell.xib in Resources */,
 				6B4ED0122027C4D300FC5934 /* NewPhoneNumberViewController.xib in Resources */,
@@ -678,6 +703,7 @@
 				6B18DF062010B7A700C73BA2 /* ListTableViewCell.xib in Resources */,
 				6B55DA2D20076EA200BB535B /* OldOrderTableViewCell.xib in Resources */,
 				6B517CD1200E9BAF00CFE5DC /* DroidSansArabic.ttf in Resources */,
+				6B4BEEA92035AA300015CB30 /* GoogleService-Info.plist in Resources */,
 				6B5D8B9A20233CED001EA2BF /* Launch.png in Resources */,
 				6BA826782015DA41002BC608 /* SubmitButtonTableViewCell.xib in Resources */,
 				6B55DA332007878900BB535B /* OldOrderWithRateTableViewCell.xib in Resources */,
@@ -690,9 +716,9 @@
 				6B4ED00D2027C4B200FC5934 /* RatingViewController.xib in Resources */,
 				6BA8267420156713002BC608 /* TextViewTableViewCell.xib in Resources */,
 				6B3892FE2027217E00E669B9 /* NotificationsTableViewCell.xib in Resources */,
-				6BD15ACC20220D9F00129DF9 /* GoogleService-Info.plist in Resources */,
 				6B9AD2DA20063C0B00C4869C /* l.xcassets in Resources */,
 				6B9AD2D820063C0B00C4869C /* Main.storyboard in Resources */,
+				6B4BEEA72035A2D60015CB30 /* OldOrderTableViewCell2.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +847,7 @@
 				6B6BB46A20111F1000BECA87 /* Array+Extensions.swift in Sources */,
 				6B517CF1200EA25500CFE5DC /* AboutUsViewController.swift in Sources */,
 				6B18DEEB200F94B400C73BA2 /* PaymentMethodViewController.swift in Sources */,
+				6B4BEEA62035A2D60015CB30 /* OldOrderTableViewCell2.swift in Sources */,
 				6B517CBD200E250100CFE5DC /* ActiveOrderTableViewCell.swift in Sources */,
 				6B271D3D201E08900030BBF4 /* CaptainAddOfferViewController.swift in Sources */,
 				6B6BB46820111E9E00BECA87 /* DiffCalculator.swift in Sources */,
@@ -838,12 +865,14 @@
 				6B18DEF1200F978000C73BA2 /* AddAddressViewController.swift in Sources */,
 				6BC256A120127B4900A5AD20 /* RadioButton.swift in Sources */,
 				6BAD09D92006D72A003D63C8 /* MyOrderViewController.swift in Sources */,
+				6B3C5CBE20332E0B00C9ACB7 /* CaptainProfile.swift in Sources */,
 				6B7C88D5201B9A330096FB87 /* JoinCaptainViewController.swift in Sources */,
 				6B4D52F92029F6BC003A2C48 /* TabBarViewController.swift in Sources */,
 				6B27230C2020BB61003A0125 /* CaptainTypeCollectionViewCell.swift in Sources */,
 				6B18DEFB2010B33A00C73BA2 /* AddressSettingsTableViewCell.swift in Sources */,
 				6B517CB9200E03C400CFE5DC /* newOrderTableViewCell.swift in Sources */,
 				6BA826772015DA41002BC608 /* SubmitButtonTableViewCell.swift in Sources */,
+				6B880E432039859100AB7653 /* CaptainOfferCancelViewController.swift in Sources */,
 				6B5D8B9C2023642C001EA2BF /* User.swift in Sources */,
 				6B48938F202AEDFE00F6769C /* ActiveOrderTableViewCell2.swift in Sources */,
 				6B517CE0200E9BE000CFE5DC /* MOLHFontLocalizableViews.swift in Sources */,
@@ -852,6 +881,7 @@
 				6BF631822006E39600D19370 /* IBDesignable.swift in Sources */,
 				6B271D37201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift in Sources */,
 				6B55DA322007878900BB535B /* OldOrderWithRateTableViewCell.swift in Sources */,
+				6B3C5CC1203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift in Sources */,
 				6B10F6022019F384002F5276 /* AddOrder2ViewController.swift in Sources */,
 				6B2723092020B146003A0125 /* UnderRreviewViewController.swift in Sources */,
 				6B18DF082010B81B00C73BA2 /* SettingsViewController.swift in Sources */,
@@ -883,6 +913,7 @@
 				6B18DEF3200F981B00C73BA2 /* OrderDetailsViewController.swift in Sources */,
 				6B271D3B201DE0020030BBF4 /* CaptainArchiveOrderDetailsViewController.swift in Sources */,
 				6B271D35201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift in Sources */,
+				6B19801C20386583009429DB /* MyOfferCaptainViewController.swift in Sources */,
 				6B1787EC20324AFB005E7D24 /* ForgetPasswordViewController.swift in Sources */,
 				6B2723072020A563003A0125 /* CaptianTypeViewController.swift in Sources */,
 				6BCB1B8C2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift in Sources */,
@@ -1100,8 +1131,9 @@
 				INFOPLIST_FILE = Ish7anli/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.shipForMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ish7anli/Extension & Helpers/Ish7anli-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1123,8 +1155,9 @@
 				INFOPLIST_FILE = Ish7anli/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.Ish7anli2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadidsoft.shipForMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Ish7anli/Extension & Helpers/Ish7anli-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;

@@ -22,7 +22,7 @@ class CaptainAddressViewController: UIViewController {
         self.tableView?.estimatedRowHeight = 100
         self.tableView?.rowHeight = UITableViewAutomaticDimension
 
-        self.tableView?.register(AddressSettingsTableViewCell.nib, forCellReuseIdentifier: AddressSettingsTableViewCell.identifier)
+        self.tableView?.register(AddressCaptainSettingsTableViewCell.nib, forCellReuseIdentifier: AddressCaptainSettingsTableViewCell.identifier)
         self.tableView?.register(AddAddressTableViewCell.nib, forCellReuseIdentifier: AddAddressTableViewCell.identifier)
         viewModel.addListener()
         // Do any additional setup after loading the view.

@@ -14,7 +14,7 @@ class AcceptedCaptainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      verificationCodeText.text = activationCodeC
+      verificationCodeText.text = activationCodeC!
         // Do any additional setup after loading the view.
     }
 

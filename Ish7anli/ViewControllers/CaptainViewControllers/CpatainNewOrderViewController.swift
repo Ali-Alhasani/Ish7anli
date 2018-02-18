@@ -44,7 +44,7 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
        // self.navigationController?.navigationBar.isTranslucent = false
         self.setNavigationBarItem()
         self.hideBackButton()
-        
+        load()
     }
     @objc func PullRefresh()
     {

@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController {
     
     
     func load(){
-        DataClient.shared.saveProfileCustomer(success: {
+        DataClient.shared.updateProfileCustomer(success: {
             print("success")
               MBProgressHUD.hide(for: self.view, animated: true)
               self.dismiss(animated: true, completion: nil)

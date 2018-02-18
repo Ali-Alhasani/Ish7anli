@@ -21,9 +21,9 @@ protocol AddOffer2ViewModelItem {
 protocol AddOffer2ViewModelDelegate: class {
     func apply1(changes: SectionChanges)
     func move()
-    func apply3()
+    func apply3(reciverId:Int)
 }
-var selectedOffer2: Int = 0
+var selectedOffer2: Int?
 
 class AddOffer2ViewModel: NSObject {
     fileprivate var items = [AddOffer2ViewModelItem]()
@@ -58,7 +58,7 @@ class AddOffer2ViewModel: NSObject {
         
     }
 
-    private func parseData(profile: Profile) {
+    private func parseData(profile: CaptainProfile) {
         var newItems = [AddOffer2ViewModelItem]()
         let address = profile.address
         let addressItem = AddOffer2ViewModeAddressItem(address: address)
@@ -85,8 +85,12 @@ extension AddOffer2ViewModel:UITableViewDataSource,AddAddressTableViewCellDelega
          switch type {
             
          case .address:
-            selectedOffer = sender.tag
-            delegate?.apply3()
+            selectedOffer2 = sender.tag
+              var receiverAddress:Int?
+                if let item = items[0] as? AddOffer2ViewModeAddressItem {
+                    receiverAddress = item.address[selectedOffer2!].id
+                }
+            delegate?.apply3(reciverId: receiverAddress!)
          case .item1:
           print("")
          case .weghit:
@@ -109,12 +113,12 @@ extension AddOffer2ViewModel:UITableViewDataSource,AddAddressTableViewCellDelega
         let item = items[indexPath.section]
         switch item.type {
         case .address:
-            if let item = item as? AddressViewModeAddressItem, let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell {
+            if let item = item as? AddOffer2ViewModeAddressItem, let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell {
                 let address = item.address[indexPath.row]
                 cell.item = address
                 cell.cellDelegate = self
                 cell.button.tag = indexPath.row
-                if indexPath.row == selected {
+                if indexPath.row == selectedOffer2 {
                     cell.button.isSelected = true
                 }else {
                     cell.button.isSelected = false

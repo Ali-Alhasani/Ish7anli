@@ -65,7 +65,7 @@ class ActivationViewController: UIViewController {
         DataClient.shared.logIn(phone: phoneNumber!, success: { (_ activationCode) in
              MBProgressHUD.hide(for: self.view, animated: true)
              self.activationCode = activationCode
-            self.activationText.text =  self.activationCode
+            self.activationText.text = activationCode
         }) { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)

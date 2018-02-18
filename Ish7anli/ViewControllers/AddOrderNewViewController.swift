@@ -42,7 +42,7 @@ class AddOrderNewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hideBackButton()
-        
+         viewModel.addListener()
     }
 
     /*

@@ -53,7 +53,6 @@ class newOrderTableViewCell: UITableViewCell {
     
     func setData(_ data: Any?) {
         if let data = data as? newOrderTableViewData {
-            var stringFinal:String?
             if MOLHLanguage.isRTL() {
                    self.currencyLabel.text = "ريال "
                 //let string: NSMutableAttributedString = NSMutableAttributedString(string: "ريال" + String(data.price) )

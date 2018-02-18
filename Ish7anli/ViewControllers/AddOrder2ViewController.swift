@@ -46,7 +46,7 @@ class AddOrder2ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hideBackButton()
-        
+         viewModel.addListener()
     }
     
 
@@ -95,7 +95,23 @@ extension AddOrder2ViewController: AddressViewModel2Delegate {
         self.receiverName =   multilineCell!.textView.text!
         self.receiverPhone = multilineCell2!.textView.text!
         
-         self.performSegue(withIdentifier: "toPayment2", sender: self)
+        if (senderAddress! == receiverAddress){
+            MBProgressHUD.hide(for: self.view, animated: true)
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "عذراً لا يمكن إضافة نفس عنوان المرسل والمستقبل للتوصيل"
+                
+            }else{
+                alartmessage = "You cant add the same sender and receiver address"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }else{
+            self.performSegue(withIdentifier: "toPayment2", sender: self)
+
+        }
     }
     
 

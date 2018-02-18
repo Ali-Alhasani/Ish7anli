@@ -56,8 +56,32 @@ class OrderDetailsViewController: UIViewController {
     
     
     @IBAction func cancelButtonAction(_ sender: Any) {
-        
+        DataClient.shared.captainCancelOffer(success: {
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم إلغاء الطلب بنجاح"
+
+            }else{
+                alartmessage = "the request has been canceled successfully"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
+            self.present(alert, animated: true)
+            
+        }, failuer: { (_ error) in
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }, customerOfferId: DataClient.shared.CustomerOrder[indexPath!].id!)
     }
+    
+    func someHandler(alert: UIAlertAction!) {
+       
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

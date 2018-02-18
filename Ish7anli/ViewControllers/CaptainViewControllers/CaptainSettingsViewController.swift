@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseStorage
 class CaptainSettingsViewController: UIViewController {
     
     @IBOutlet weak var accountNumberText: UITextField!
@@ -17,15 +17,16 @@ class CaptainSettingsViewController: UIViewController {
     var localPath: URL?
     var flag = 0
     var done = false
-    var cardImage,licenceImage,carForm,contractImage:String?
+    var cardImage,licenceImage,carForm,contractImage,captainImage:String?
     @IBOutlet weak var cardImageButton: UIButton!
     @IBOutlet weak var licenceImageButton: UIButton!
     @IBOutlet weak var carFormButton: UIButton!
     @IBOutlet weak var contractButton: UIButton!
-    
+    @IBOutlet weak var captainImageButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        accountNumberText.setBottomBorder()
+       // accountNumberText.setBottomBorder()
         myPickerController.delegate = self;
         myPickerController.sourceType =  UIImagePickerControllerSourceType.photoLibrary
         // Do any additional setup after loading the view.
@@ -67,11 +68,57 @@ class CaptainSettingsViewController: UIViewController {
         self.present(myPickerController, animated: true,completion: nil)
         
     }
+    
+    @IBAction func captainImageAction(_ sender: Any) {
+        flag = 5
+        self.present(myPickerController, animated: true,completion: nil)
+    }
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func unwindFromAddVC22(_ sender: UIStoryboardSegue){
         
+    }
+    
+    func sendMedia(image: UIImage?,type:ImageType){
+        let refStorage = Storage.storage().reference().child("::\(Date().timeIntervalSince1970)")
+        if let image = image {
+            let data = UIImageJPEGRepresentation(image, 0.2)
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            refStorage.putData(data!, metadata: metadata
+                , completion: { (metadata, error) in
+                    if error == nil{
+                        guard let downloadUrl = metadata?.downloadURL() else {return}
+                        
+                        switch type{
+                        case .cardImage:
+                            self.cardImage = downloadUrl.absoluteString
+                            self.cardImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            
+                        case .carForm:
+                            self.carForm = downloadUrl.absoluteString
+                            self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                        case .contract:
+                            self.contractImage = downloadUrl.absoluteString
+                            self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                        case .licenceImage:
+                            self.licenceImage =  downloadUrl.absoluteString
+                            self.licenceImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            
+                        case .captainImage:
+                            self.captainImage = downloadUrl.absoluteString
+                            self.captainImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            
+                        }
+                    }else{
+                        let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error?.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+            })
+        }
     }
     
     
@@ -151,24 +198,20 @@ extension CaptainSettingsViewController: UIImagePickerControllerDelegate,UINavig
         done = false
         let image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
         //let imageData = UIImagePNGRepresentation(image_data!)!
-        let imageData:Data = image_data!.compressTo(1)!
-        let imageStr = imageData.base64EncodedString()
         if (flag == 1) {
             print("Hi")
-            cardImage = imageStr
-            self.cardImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+            sendMedia(image: image_data, type: .cardImage)
             
         }else if (flag == 2) {
-            licenceImage = imageStr
-            self.licenceImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+            sendMedia(image: image_data, type: .licenceImage)
         }else if (flag == 3){
-            carForm = imageStr
-            self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+             sendMedia(image: image_data, type: .carForm)
             
         }else if (flag == 4) {
-            contractImage = imageStr
-            self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+              sendMedia(image: image_data, type: .contract)
             
+        }else if (flag == 5){
+            sendMedia(image: image_data, type: .captainImage)
         }
         //success(imageStr)
         //uplaodPhoto(imageStr)

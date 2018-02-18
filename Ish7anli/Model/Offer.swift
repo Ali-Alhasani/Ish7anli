@@ -37,6 +37,7 @@ class Offer {
     var receiverAddressId:Int?
     var senderAddressId:Int?
     var captainAccountNumber:String?
+    var isDeleted:Int?
     
     init(json: [String: Any]) {
         let json = JSON(json)
@@ -66,6 +67,9 @@ class Offer {
         self.receiverAddressId = json["receiver_address_id"] .intValue
         self.senderAddressId = json["sender_address_id"] .intValue
         self.captainAccountNumber = json["captain_account_number"].stringValue
+        if let tmp = json["is_delete"].int {
+            self.isDeleted = tmp
+        }
     }
    
 }

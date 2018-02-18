@@ -19,6 +19,7 @@ enum LeftMenu:Int {
 }
 enum LeftMenu2:Int {
     case Notification = 0
+    case MyOffer
     case AboutUs
     case ShareApp
     case ConnectUs
@@ -36,14 +37,15 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     
     var menus = ["الإشعارات"  , "من نحن", "دخول كابتن", "نشر التطبيق", "راسلنا"]
-    var menus2 =  ["الإشعارات"  , "من نحن", "نشر التطبيق", "راسلنا"]
+    var menus2 =  ["الإشعارات"  ,"عروضي", "من نحن", "نشر التطبيق", "راسلنا"]
   
     var iconMenus = ["notificationBlue","aboutUs","captain","share","messageBlue"]
-    var  iconMenus2 = ["notificationBlue","aboutUs","share","messageBlue"]
+    var  iconMenus2 = ["notificationBlue","captain","aboutUs","share","messageBlue"]
     var NotificationViewController: UIViewController!
     var AboutUsViewController: UIViewController!
     var ContactUsTableViewController: UIViewController!
     var CaptainLoginViewController: UIViewController!
+    var MyOfferCaptainViewController:UIViewController!
     var imageHeaderView: ImageHeaderView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +56,7 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
            // menus = []
         }else{
           
-                 menus2 = ["Notification","About Us","Share App","Contact Us"]
+                 menus2 = ["Notification","My Offer","About Us","Share App","Contact Us"]
 
             menus = ["Notification","About Us","Captain Login","Share App","Contact Us"]
         }
@@ -76,6 +78,10 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let CaptainLoginViewController = storyboard.instantiateViewController(withIdentifier: "CaptainLoginViewController") as! CaptainLoginViewController
         self.CaptainLoginViewController =
         UINavigationController(rootViewController: CaptainLoginViewController)
+        
+        let MyOfferCaptainViewController = storyboard.instantiateViewController(withIdentifier: "MyOfferCaptainViewController") as! MyOfferCaptainViewController
+        self.MyOfferCaptainViewController =
+            UINavigationController(rootViewController: MyOfferCaptainViewController)
         
 
         self.tableView.registerCellClass(DataTableViewCell.self)
@@ -142,6 +148,11 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         case .Logout:
             self.slideMenuController()?.closeRight()
             //self.slideMenuController()?.changeMainViewController(self.SettingsViewController, close: true)
+        case .MyOffer:
+            self.present(self.MyOfferCaptainViewController, animated: true, completion: {
+                self.slideMenuController()?.closeRight()
+            })
+            self.slideMenuController()?.closeRight()
         }
         
     }

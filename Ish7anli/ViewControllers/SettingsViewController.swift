@@ -8,6 +8,7 @@
 
 import UIKit
 import PopupDialog
+import FirebaseStorage
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -25,6 +26,7 @@ class SettingsViewController: UIViewController {
     var message:String?
     var Alert:String?
     var image_data:UIImage?
+    var imageStr:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,15 +97,48 @@ class SettingsViewController: UIViewController {
     }
     @IBAction func cancelToPlayersViewController(_ segue: UIStoryboardSegue) {
     }
-    
+
     func uplaodPhoto(_ photo:String){
+        let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+        
         DataClient.shared.uploadProfilePhoto(success: {
-            self.imageView.image = self.image_data
+             MBProgressHUD.hide(for: self.view, animated: true)
+            //self.imageView.image = self.image_data
         }, failuer: { (_ error) in
-          
+             MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
         }, photo: photo)
     }
     
+    func sendMedia(image: UIImage?){
+        let refStorage = Storage.storage().reference().child("::\(Date().timeIntervalSince1970)")
+        if let image = image {
+            let data = UIImageJPEGRepresentation(image, 0.2)
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            refStorage.putData(data!, metadata: metadata
+                , completion: { (metadata, error) in
+                    if error == nil{
+                        guard let downloadUrl = metadata?.downloadURL() else {return}
+                        self.imageStr = downloadUrl.absoluteString
+                        self.uplaodPhoto(self.imageStr!)
+                        
+                        
+                        
+                    }else{
+                        let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error?.localizedDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+                        self.present(alert, animated: true)
+                    }
+            })
+        }
+    }
     
     func showCustomDialog(animated: Bool = true) {
         
@@ -198,10 +233,11 @@ extension SettingsViewController: UIImagePickerControllerDelegate,UINavigationCo
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
          image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
+         self.imageView.image = self.image_data
         //let imageData = UIImagePNGRepresentation(image_data!)!
-        let imageData:Data = image_data!.compressTo(1)!
-        let imageStr = imageData.base64EncodedString()
-        uplaodPhoto(imageStr)
+//        let imageData:Data = image_data!.compressTo(1)!
+//        let imageStr = imageData.base64EncodedString()
+//        uplaodPhoto(imageStr)
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -39,9 +39,11 @@ class AddressSettingsTableViewCell: UITableViewCell {
     }
     
     @IBAction func deleteButtonAction(_ sender: Any) {
-        cellDelegate?.didPressDeleteButton(sender: sender as! UIButton)
+       
+        
         DataClient.shared.deleteAddress(id: (item?.id)!, success: {
-            print("Fucking deleted")
+            self.cellDelegate?.didPressDeleteButton(sender: sender as! UIButton)
+            
         }) { (_ error) in
             print("looser")
         }

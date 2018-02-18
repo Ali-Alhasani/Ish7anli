@@ -19,6 +19,7 @@ class ForgetPasswordViewController: UIViewController ,UITextFieldDelegate{
 
         // Do any additional setup after loading the view.
         phoneNumberLabel.text = SessionManager.shared.phoneNumber
+        verifyNewPasswordText.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,29 +29,82 @@ class ForgetPasswordViewController: UIViewController ,UITextFieldDelegate{
     
     
     @IBAction func resendActivationAction(_ sender: Any) {
+        let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
+        
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+        DataClient.shared.forgetPassword(success: {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم الطلب بنجاح"
+                
+            }else{
+                alartmessage = "the request has been done successfully"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }) { (_ error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     
     @IBAction func submitAction(_ sender: Any) {
+        let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        switch textField {
-
-        case verifyNewPasswordText:
-            if (newPasswordText.text! != verifyNewPasswordText.text!){
-                self.verifyNewPasswordText.layer.borderWidth = 1
-                self.verifyNewPasswordText.layer.borderColor = UIColor.red.cgColor
+        
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+       
+        DataClient.shared.restPassword(success: {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم تغيير كلمة المرور بنجاح"
+                
             }else{
-                self.verifyNewPasswordText.layer.borderWidth = 0
+                alartmessage = "the password has been changed successfully"
                 
             }
-            break
-        default:
-            print(textField.text)
-        }
-        
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }, failuer: { (_ error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }, oldPassword: newPasswordText.text!, newPassword: verifyNewPasswordText.text!)
+    }
+      
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        switch textField {
+//
+//        case verifyNewPasswordText:
+//            if (newPasswordText.text! != verifyNewPasswordText.text!){
+//                self.verifyNewPasswordText.layer.borderWidth = 1
+//                self.verifyNewPasswordText.layer.borderColor = UIColor.red.cgColor
+//            }else{
+//                self.verifyNewPasswordText.layer.borderWidth = 0
+//
+//            }
+//            break
+//        default:
+//            print(textField.text)
+//        }
+//    }
+//
     
 
     /*

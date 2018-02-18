@@ -61,6 +61,20 @@ class PaymentMethodViewController: UIViewController {
         spiningActivity.label.text =  ErrorHelper.shared.loadingtitle
         spiningActivity.detailsLabel.text =  ErrorHelper.shared.message
         if (type != nil){
+            if (senderAddress! == receiveAddress!){
+                MBProgressHUD.hide(for: self.view, animated: true)
+                var alartmessage:String?
+                if MOLHLanguage.isRTL() {
+                    alartmessage = "عذراً لا يمكن إضافة نفس عنوان المرسل والمستقبل للتوصيل"
+                    
+                }else{
+                    alartmessage = "You cant add the same sender and receiver address"
+                    
+                }
+                let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
             DataClient.shared.addOffer(addressSenderId: senderAddress! , deliveryType: type!, weight: weghitIndex!, addressReceiverId: receiveAddress!, receiverName: receiverName!, receiverPhone: receiverPhone!, paymentType: paymentId!, success: {
                 MBProgressHUD.hide(for: self.view, animated: true)
                   var alartmessage:String?

@@ -33,12 +33,15 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
     var indexPath:Int?
     var viewModel = AddOfferViewModel()
     var viewModel2 = AddOffer2ViewModel()
-
+    var senderId:Int?
+    var recevierId:Int?
     
     @IBOutlet weak var firstTableView: UITableView!
     @IBOutlet weak var secondTableView: UITableView!
+    @IBOutlet weak var tableViewHight: NSLayoutConstraint!
     // var ok,error,alartTitle,loadingtitle,message:String?
-
+    @IBOutlet weak var secondTableViewHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -69,7 +72,7 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
         firstTableView?.dataSource = viewModel
         self.firstTableView.delegate = self.viewModel
         
-        self.firstTableView?.estimatedRowHeight = 100
+        self.firstTableView?.estimatedRowHeight = 70
         self.firstTableView?.rowHeight = UITableViewAutomaticDimension
         
         
@@ -85,7 +88,7 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
         secondTableView?.dataSource = viewModel2
         self.secondTableView.delegate = self.viewModel2
         
-        self.secondTableView?.estimatedRowHeight = 100
+        self.secondTableView?.estimatedRowHeight = 70
         self.secondTableView?.rowHeight = UITableViewAutomaticDimension
         
         
@@ -96,6 +99,7 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
         
         viewModel2.addListener()
         // Do any additional setup after loading the view.
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -108,6 +112,25 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        viewModel.addListener()
+        viewModel2.addListener()
+       
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -213,16 +236,29 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
         return format
     }
     
-    
+  
     
 
     @IBAction func addAction(_ sender: Any) {
+        
+        if (cityFromText.text!.isEmpty || DateFromText.text!.isEmpty || hourFromText.text!.isEmpty ||  CityToText.text!.isEmpty || DateToText.text!.isEmpty || hourToText.text!.isEmpty || accountNumberText.text!.isEmpty || senderId == nil || recevierId == nil){
+            var error:String?
+            if MOLHLanguage.isRTL() {
+                error =  "يجب أن تقوم بإدخال كافة الحقول"
+                
+            }else{
+                error = "You should fill all the fields"
+            }
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }else{
         let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         
       
         spiningActivity.label.text = ErrorHelper.shared.loadingtitle
         spiningActivity.detailsLabel.text = ErrorHelper.shared.message
-        
+   
         DataClient.shared.captainAddOffer(success: {
             MBProgressHUD.hide(for: self.view, animated: true)
             var alartmessage:String?
@@ -241,7 +277,8 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
-        }, cityIdFrom: tmp!, goDate: DateFromText.text!, goTime: hourFromText.text!, cityIdTo: tmp2!, arrivalDate: DateToText.text!, arrivalTime: hourToText.text!, price: accountNumberText.text!)
+        }, cityIdFrom: tmp!, goDate: DateFromText.text!, goTime: hourFromText.text!, cityIdTo: tmp2!, arrivalDate: DateToText.text!, arrivalTime: hourToText.text!, price: accountNumberText.text!, address_receiver_id: recevierId!, address_sender_id: senderId! )
+        }
     }
     
     func load(){
@@ -268,6 +305,8 @@ class CaptainAddOfferViewController: UIViewController,UITextFieldDelegate,UIPick
 
 }
 extension CaptainAddOfferViewController: AddOfferViewModelDelegate,AddOffer2ViewModelDelegate {
+  
+    
     func apply1(changes: SectionChanges) {
         self.secondTableView?.beginUpdates()
         self.secondTableView?.deleteSections(changes.deletes, with: .fade)
@@ -275,7 +314,10 @@ extension CaptainAddOfferViewController: AddOfferViewModelDelegate,AddOffer2View
         self.secondTableView?.reloadRows(at: changes.updates.reloads, with: .fade)
         self.secondTableView?.insertRows(at: changes.updates.inserts, with: .fade)
         self.secondTableView?.deleteRows(at: changes.updates.deletes, with: .fade)
+       secondTableViewHeight.constant = secondTableView.contentSize.height - 10
         self.secondTableView?.endUpdates()
+
+       // self.secondTableView?.hight =
     }
     
 
@@ -288,7 +330,8 @@ extension CaptainAddOfferViewController: AddOfferViewModelDelegate,AddOffer2View
         self.firstTableView?.reloadRows(at: changes.updates.reloads, with: .fade)
         self.firstTableView?.insertRows(at: changes.updates.inserts, with: .fade)
         self.firstTableView?.deleteRows(at: changes.updates.deletes, with: .fade)
-        
+        tableViewHight.constant = firstTableView.contentSize.height - 10
+
         self.firstTableView?.endUpdates()
         
       
@@ -297,16 +340,18 @@ extension CaptainAddOfferViewController: AddOfferViewModelDelegate,AddOffer2View
     
     func move() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "AddAddressViewController") as! AddAddressViewController
+        let  AddAddressViewController = storyboard.instantiateViewController(withIdentifier: "CaptainAddAddressViewController") as! CaptainAddAddressViewController
         let navInofrmationViewController = UINavigationController(rootViewController: AddAddressViewController)
         self.present(navInofrmationViewController, animated:true, completion: nil)
     }
-    
-    func apply2() {
+    func apply2(senderId: Int) {
+         self.senderId = senderId
          self.firstTableView?.reloadData()
     }
+
     
-    func apply3() {
+    func apply3(reciverId:Int) {
+        self.recevierId = reciverId
         self.secondTableView?.reloadData()
     }
     

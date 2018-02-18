@@ -100,7 +100,7 @@ class ChatViewController: JSQMessagesViewController {
         self.inputToolbar.contentView.leftBarButtonItem = nil;
 
      senderId = SessionManager.shared.userId
-     senderDisplayName = ""
+     senderDisplayName = SessionManager.shared.displayName
      //   clientName =
         
         getCollectionName()
@@ -323,25 +323,24 @@ class ChatViewController: JSQMessagesViewController {
     }
     func AddMessageNotification(withText text: String?, type: String){
         var tempDic:Dictionary<String,Any> = [:]
-        tempDic["ProjectUID"] = "null"
         if type == "VOICE"{
-            tempDic["Body"] = "New voice record added from "+senderId!
+            tempDic["body"] = "New voice record added from "+senderId!
         }else if type == "IMAGE"{
-            tempDic["Body"] = "New image added from "+senderId!
+            tempDic["body"] = "New image added from "+senderId!
         }else if type == "TEXT"{
-            tempDic["Body"] = text!
+            tempDic["body"] = text!
         }
-        tempDic["Title"] = "New Message added from "+senderId!
-        tempDic["ReceiverUserName"] = targetId
-        tempDic["Type"] = "2"
+        tempDic["message"] = "New Message added from "+senderDisplayName!
+        tempDic["recever_id"] = targetId
+       // tempDic["Type"] = "2"
         var data:Dictionary<String, Any> = [:]
-        data["notification"] = tempDic
+        data = tempDic
         
-//        DataClient.requestAddNotification(data: data, success: {
-//
-//        }, failuer: { (error) in
-//
-//        })
+        DataClient.shared.requestAddNotification(data: data, success: {
+
+        }, failuer: { (error) in
+
+        })
     }
     func scrollCollectionViewDown(){
         if messages.count > 0{

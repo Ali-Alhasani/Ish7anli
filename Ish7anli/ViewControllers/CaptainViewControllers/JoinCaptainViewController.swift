@@ -22,7 +22,7 @@ class JoinCaptainViewController: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        mobileNumberText.text = SessionManager.shared.phoneNumber
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -90,7 +90,7 @@ class JoinCaptainViewController: UIViewController,UITextFieldDelegate {
             }
             break
         default:
-             print(textField.text)
+            print(textField.text!)
         }
        
         

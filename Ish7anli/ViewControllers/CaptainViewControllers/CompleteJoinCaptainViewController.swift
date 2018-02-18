@@ -10,12 +10,13 @@ import UIKit
 import FirebaseStorage
 enum ImageType {
     case cardImage
+    case captainImage
     case licenceImage
     case carForm
     case contract
 }
 class CompleteJoinCaptainViewController: UIViewController {
- 
+    
     @IBOutlet weak var accountNumberText: UITextField!
     let picker = UIImagePickerController()
     var pickedImagePath: URL?
@@ -24,7 +25,7 @@ class CompleteJoinCaptainViewController: UIViewController {
     var flag = 0
     var counter = 0
     var done = false
-    var cardImage,licenceImage,carForm,contractImage:String?
+    var cardImage,licenceImage,carForm,contractImage,captainImage:String?
     
     var fullname,
     cardNumber,
@@ -39,6 +40,8 @@ class CompleteJoinCaptainViewController: UIViewController {
     @IBOutlet weak var carFormButton: UIButton!
     @IBOutlet weak var contractButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var captainImageButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -106,6 +109,15 @@ class CompleteJoinCaptainViewController: UIViewController {
         self.present(myPickerController, animated: true,completion: nil)
         
     }
+    
+    @IBAction func captainImageAction(_ sender: Any) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType =  UIImagePickerControllerSourceType.photoLibrary
+        flag = 5
+        self.present(myPickerController, animated: true,completion: nil)
+    }
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
@@ -128,17 +140,21 @@ class CompleteJoinCaptainViewController: UIViewController {
                         switch type{
                         case .cardImage:
                             self.cardImage = downloadUrl.absoluteString
-                              self.cardImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
-                           
+                            self.cardImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            
                         case .carForm:
-                             self.carForm = downloadUrl.absoluteString
-                              self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            self.carForm = downloadUrl.absoluteString
+                            self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
                         case .contract:
-                               self.contractImage = downloadUrl.absoluteString
-                              self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            self.contractImage = downloadUrl.absoluteString
+                            self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
                         case .licenceImage:
                             self.licenceImage =  downloadUrl.absoluteString
-                               self.licenceImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            self.licenceImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+                            
+                        case .captainImage:
+                            self.captainImage = downloadUrl.absoluteString
+                            self.captainImageButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
                             
                         }
                     }else{
@@ -150,28 +166,28 @@ class CompleteJoinCaptainViewController: UIViewController {
         }
     }
     
-
+    
     
     @IBAction func joinAction(_ sender: Any) {
-        if ((cardImage != nil) && (licenceImage != nil) && (carForm != nil) && (contractImage != nil) && !accountNumberText.text!.isEmpty ){
-               self.performSegue(withIdentifier: "toCaptainType", sender: self)
-//            if (counter != 3){
-//                var error:String?
-//                let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-//
-//                spiningActivity.label.text = ErrorHelper.shared.loadingtitle
-//                spiningActivity.detailsLabel.text = ErrorHelper.shared.message
-//                //                if MOLHLanguage.isRTL() {
-//                //                    error =  "انتظر حتى يتم رفع جميع الصور"
-//                //                }else{
-//                //                    error = "Wait until upload all the photos"
-//                //                }
-//                //                let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
-//                //                alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
-//                //                self.present(alert, animated: true)
-//            }else{
-//                self.performSegue(withIdentifier: "toCaptainType", sender: self)
-//            }
+        if ((cardImage != nil) && (licenceImage != nil) && (carForm != nil) && (contractImage != nil) && (captainImage != nil) && !accountNumberText.text!.isEmpty ){
+            self.performSegue(withIdentifier: "toCaptainType", sender: self)
+            //            if (counter != 3){
+            //                var error:String?
+            //                let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+            //
+            //                spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+            //                spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+            //                //                if MOLHLanguage.isRTL() {
+            //                //                    error =  "انتظر حتى يتم رفع جميع الصور"
+            //                //                }else{
+            //                //                    error = "Wait until upload all the photos"
+            //                //                }
+            //                //                let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+            //                //                alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            //                //                self.present(alert, animated: true)
+            //            }else{
+            //                self.performSegue(withIdentifier: "toCaptainType", sender: self)
+            //            }
         }else{
             var error:String?
             if MOLHLanguage.isRTL() {
@@ -184,7 +200,7 @@ class CompleteJoinCaptainViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-     @IBAction func dismisAddress(_ segue: UIStoryboardSegue) {
+    @IBAction func dismisAddress(_ segue: UIStoryboardSegue) {
     }
     
     @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
@@ -218,6 +234,7 @@ class CompleteJoinCaptainViewController: UIViewController {
             vc.licenceImage = licenceImage!
             vc.carForm = carForm!
             vc.contractImage = contractImage!
+            vc.captainImage = captainImage!
             vc.tilte = name!
             vc.details = details!
             vc.lng = lng!
@@ -225,23 +242,23 @@ class CompleteJoinCaptainViewController: UIViewController {
             
             
         }
-     
+        
         
     }
-//    func uplaodPhoto(_ photo:Dictionary<String, String>){
-//        DataClient.shared.uploadCaptainPhotos(success: {
-//            self.counter += 1
-//            if (self.counter == 3){
-//                MBProgressHUD.hide(for: self.view, animated: true)
-//            }
-//        }, failuer: { (_ error) in
-//            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
-//            self.present(alert, animated: true)
-//        }, parameters: photo)
-//        //self.imageView.image = self.image_data!
-//        
-//    }
+    //    func uplaodPhoto(_ photo:Dictionary<String, String>){
+    //        DataClient.shared.uploadCaptainPhotos(success: {
+    //            self.counter += 1
+    //            if (self.counter == 3){
+    //                MBProgressHUD.hide(for: self.view, animated: true)
+    //            }
+    //        }, failuer: { (_ error) in
+    //            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+    //            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+    //            self.present(alert, animated: true)
+    //        }, parameters: photo)
+    //        //self.imageView.image = self.image_data!
+    //
+    //    }
     /*
      // MARK: - Navigation
      
@@ -261,29 +278,31 @@ extension CompleteJoinCaptainViewController: UIImagePickerControllerDelegate,UIN
         done = false
         let image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
         //let imageData = UIImagePNGRepresentation(image_data!)!
-//        let imageData:UIImage = image_data!.compressToHalf(2)!
-//       /let imageStr = imageData.base64EncodedString()
+        //        let imageData:UIImage = image_data!.compressToHalf(2)!
+        //       /let imageStr = imageData.base64EncodedString()
         if (flag == 1) {
             print("Hi")
-           // cardImage = imageStr
-           // uplaodPhoto(["card_image": cardImage!])
-           sendMedia(image: image_data, type: .cardImage)
-          
+            // cardImage = imageStr
+            // uplaodPhoto(["card_image": cardImage!])
+            sendMedia(image: image_data, type: .cardImage)
+            
             
         }else if (flag == 2) {
             sendMedia(image: image_data, type: .licenceImage)
         }else if (flag == 3){
-             sendMedia(image: image_data, type: .carForm)
-//            carForm = imageStr
-//            //uplaodPhoto(["car_form": carForm!])
-//            self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+            sendMedia(image: image_data, type: .carForm)
+            //            carForm = imageStr
+            //            //uplaodPhoto(["car_form": carForm!])
+            //            self.carFormButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
             
         }else if (flag == 4) {
-             sendMedia(image: image_data, type: .contract)
-//            contractImage = imageStr
-//           // uplaodPhoto(["contract_image": contractImage!])
-//            self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
+            sendMedia(image: image_data, type: .contract)
+            //            contractImage = imageStr
+            //           // uplaodPhoto(["contract_image": contractImage!])
+            //            self.contractButton.setImage(UIImage(named: "checked"), for: UIControlState.normal)
             
+        }else if (flag == 5){
+            sendMedia(image: image_data, type: .captainImage)
         }
         //success(imageStr)
         //uplaodPhoto(imageStr)

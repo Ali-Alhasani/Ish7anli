@@ -35,13 +35,11 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     email,
     password,accountNumber:String?
     
-    var cardImage,licenceImage,carForm,contractImage:String?
+    var cardImage,licenceImage,carForm,contractImage,captainImage:String?
     var lat, lng:Double?
     var tilte,details:String?
     
-    @IBOutlet weak var button1: RadioButtonGray!
-    @IBOutlet weak var button2: RadioButtonGray!
-    @IBOutlet weak var button3: RadioButtonGray!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +56,7 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
             array2 = ["Yellow Sign","Red Sign","Green Sign"]
             
         }
-        button1.alternateButton = [button2,button3]
-        button2.alternateButton = [button1,button3]
-        button3.alternateButton = [button1,button2]
+
         
         
         // Do any additional setup after loading the view.
@@ -93,7 +89,7 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
         cell.cellDelegate = self
         cell.setData(CaptainTypeCollectionViewData(type: array2[indexPath.row], image: "String", description: array[indexPath.row], image1: "String", image2: "String", image3: ""))
         cell.chooseButton.tag = indexPath.row
-        
+
         return cell
     }
     
@@ -143,7 +139,7 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
         
     }
     func load(index:Int){
-        DataClient.shared.captainRegister(name: fullname!, email: email!, password: password!, phone: mobile!, cardNumber: cardNumber!, cardImage: cardImage!, licenseImage: licenceImage!, carForm: carForm!, contractImage: contractImage!, financialAccountNumber: accountNumber!, captainType: index+1, title: tilte!, details: details!, longitude: lng!, latitude: lat!, success: { (_ activationCode) in
+        DataClient.shared.captainRegister(name: fullname!, email: email!, password: password!, phone: mobile!, cardNumber: cardNumber!, cardImage: cardImage!, licenseImage: licenceImage!, carForm: carForm!, contractImage: contractImage!, financialAccountNumber: accountNumber!, captainType: index+1, title: tilte!, details: details!, longitude: lng!, latitude: lat!,captainImage: captainImage!, success: { (_ activationCode) in
            MBProgressHUD.hide(for: self.view, animated: true)
             activationCodeC = activationCode
             var alartmessage:String?

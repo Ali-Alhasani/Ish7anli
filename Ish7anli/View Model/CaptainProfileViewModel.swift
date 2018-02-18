@@ -25,6 +25,7 @@ protocol CaptainProfileViewModelItem {
 protocol CaptainProfileViewModelDelegate: class {
     func apply(changes: SectionChanges)
     func move()
+    
 }
 class CaptainProfileViewModel: NSObject {
     fileprivate var items = [CaptainProfileViewModelItem]()
@@ -59,7 +60,7 @@ class CaptainProfileViewModel: NSObject {
         
     }
 
-    private func parseData(profile: Profile) {
+    private func parseData(profile: CaptainProfile) {
         var newItems = [CaptainProfileViewModelItem]()
         let address = profile.address
         let addressItem = CaptainProfileViewModeAddressItem(address: address)
@@ -73,7 +74,7 @@ class CaptainProfileViewModel: NSObject {
         
     }
 }
-extension CaptainProfileViewModel: UITableViewDataSource,AddressSettingsTableViewCellDelegate,AddAddressTableViewCellDelegate {
+extension CaptainProfileViewModel: UITableViewDataSource,AddressCaptainSettingsTableViewCellDelegate,AddAddressTableViewCellDelegate {
     
     
     func didPressButton(sender: UIButton) {
@@ -81,7 +82,7 @@ extension CaptainProfileViewModel: UITableViewDataSource,AddressSettingsTableVie
     }
     
     func didPressDeleteButton(sender: UIButton) {
-        addListener()
+            addListener()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -96,7 +97,7 @@ extension CaptainProfileViewModel: UITableViewDataSource,AddressSettingsTableVie
         let item = items[indexPath.section]
         switch item.type {
         case .address:
-            if let item = item as? CaptainProfileViewModeAddressItem, let cell = tableView.dequeueReusableCell(withIdentifier: AddressSettingsTableViewCell.identifier, for: indexPath) as? AddressSettingsTableViewCell {
+            if let item = item as? CaptainProfileViewModeAddressItem, let cell = tableView.dequeueReusableCell(withIdentifier: AddressCaptainSettingsTableViewCell.identifier, for: indexPath) as? AddressCaptainSettingsTableViewCell {
                 let address = item.address[indexPath.row]
                 cell.cellDelegate = self
                 cell.item = address

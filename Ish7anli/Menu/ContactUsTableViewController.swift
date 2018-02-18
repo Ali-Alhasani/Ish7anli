@@ -29,6 +29,7 @@ class ContactUsTableViewController: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        load()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +55,17 @@ class ContactUsTableViewController: UIViewController {
     
     // MARK: - Table view data source
 
+    }
+    
+    func load(){
+        DataClient.shared.contactUs(success: { (_ info, _ email , _ phone) in
+            self.phoneLabel.text = phone
+            self.messageLabel.text = email
+        }) { (_ error) in
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
 
     /*

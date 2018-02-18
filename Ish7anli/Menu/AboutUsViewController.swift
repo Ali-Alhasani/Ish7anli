@@ -29,10 +29,12 @@ class AboutUsViewController: UIViewController {
     
     
     func load(){
-        DataClient.shared.contactUs(success: { (_ info) in
+        DataClient.shared.contactUs(success: { (_ info, _ email , _ phone) in
             self.infoLabel.text = info
         }) { (_ error) in
-            
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
     

@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
         
          FirebaseApp.configure()
         // UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.blue]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "DroidSansArabic", size: 17)!,NSAttributedStringKey.foregroundColor: UIColor(named: "niceBlue")]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "DroidSansArabic", size: 17)!,NSAttributedStringKey.foregroundColor: UIColor(named: "niceBlue")!]
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DroidSansArabic", size: 17)!], for: UIControlState.normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "DroidSansArabic", size: 11)!], for: .normal)
         

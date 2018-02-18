@@ -1,0 +1,6 @@
+framework module Pods_Ish7anli {
+  umbrella header "Pods-Ish7anli-umbrella.h"
+
+  export *
+  module * { export * }
+}

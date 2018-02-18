@@ -95,7 +95,7 @@ extension AddressViewModel2: UITableViewDataSource,AddAddressTableViewCellDelega
         var senderAddress:Int?
         
         if let item = items[0] as? AddressViewMode2AddressItem {
-            senderAddress = item.address[selectedSender].id
+            senderAddress = item.address[selectedAddress].id
         }
         
         //        if let item = items[4] as? OfferAddressViewModeReceiverInformation {

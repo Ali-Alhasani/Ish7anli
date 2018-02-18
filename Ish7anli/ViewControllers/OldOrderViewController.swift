@@ -8,7 +8,7 @@
 
 import UIKit
 import PopupDialog
-class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,OldOrderWithRateTableViewDelegate,OldOrderTableViewDelegate  {
+class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,OldOrderWithRateTableViewDelegate,OldOrderTableViewDelegate,OldOrderTableViewDelegate2  {
     
     
     
@@ -88,7 +88,15 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
           let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell", owner: self, options: nil)?.first as! OldOrderTableViewCell
         
         if DataClient.shared.lastOffer.count != 0 {
-            if DataClient.shared.lastOffer[indexPath.row].status == 2 || DataClient.shared.lastOffer[indexPath.row].status == 1 {
+            if DataClient.shared.lastOffer[indexPath.row].status == 1 {
+                let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell2", owner: self, options: nil)?.first as! OldOrderTableViewCell2
+                cell.setData(OldOrderTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, cityFrom: DataClient.shared.lastOffer[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.lastOffer[indexPath.row].addressReceiverCity!))
+                cell.detailsButton.tag = indexPath.row
+                cell.cellDelegate = self
+                cell.selectionStyle = .none
+                return cell
+            }
+            if DataClient.shared.lastOffer[indexPath.row].status == 2 {
                 let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell", owner: self, options: nil)?.first as! OldOrderTableViewCell
                 cell.setData(OldOrderTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, cityFrom: DataClient.shared.lastOffer[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.lastOffer[indexPath.row].addressReceiverCity!))
                 cell.detailsButton.tag = indexPath.row
@@ -147,6 +155,18 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func loadRate(rate:Double , captainId:Int ,customerOfferId:Int ){
         DataClient.shared.rateCatpain(success: {
             
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم التقييم بنجاح"
+                
+            }else{
+                alartmessage = "the rate has been added successfully"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
+            self.present(alert, animated: true)
+                
         }, failuer: { (_ error) in
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
@@ -198,6 +218,12 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         // Present dialog
         present(popup, animated: animated, completion: nil)
+    }
+    
+    func someHandler(alert: UIAlertAction!) {
+    
+        
+        self.tabelView.reloadData()
     }
     
     

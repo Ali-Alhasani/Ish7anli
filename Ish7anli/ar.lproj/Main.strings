@@ -108,7 +108,7 @@
 "7qn-Uu-QpE.text" = "";
 
 /* Class = "UINavigationItem"; title = "My Orders"; ObjectID = "876-s9-q9Q"; */
-"876-s9-q9Q.title" = "طلباتي";
+"876-s9-q9Q.title" = "طلبات معلقة";
 
 /* Class = "UITabBarItem"; title = "Active"; ObjectID = "8AD-Od-r1m"; */
 "8AD-Od-r1m.title" = "فعال";
@@ -180,7 +180,7 @@
 "E0k-Bk-I5m.title" = "الإعدادات";
 
 /* Class = "UIViewController"; title = "My Order"; ObjectID = "E7R-WB-uGz"; */
-"E7R-WB-uGz.title" = "طلباتي";
+"E7R-WB-uGz.title" = "طلبات معلقة";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "Ea9-Zg-WM2"; */
 "Ea9-Zg-WM2.text" = "";
@@ -531,7 +531,7 @@
 "dMG-LR-NwC.title" = "طلباتي";
 
 /* Class = "UITabBarItem"; title = "My Orders"; ObjectID = "dzd-UA-Tgd"; */
-"dzd-UA-Tgd.title" = "طلباتي";
+"dzd-UA-Tgd.title" = "طلبات معلقة";
 
 /* Class = "UIViewController"; title = "My Order"; ObjectID = "eFE-Nt-Van"; */
 "eFE-Nt-Van.title" = "طلباتي";
@@ -670,7 +670,7 @@
 "JB8-Qp-6wU.title" = "اتصل بنا";
 
 /* Class = "UITabBarItem"; title = "Old Order"; ObjectID = "peP-kh-f7X"; */
-"peP-kh-f7X.title" = "طلبات سابقة";
+"peP-kh-f7X.title" = "طلباتي";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "peb-x5-lEz"; */
 "peb-x5-lEz.text" = "";
@@ -834,7 +834,7 @@
 "zBd-bR-GPx.text" = "";
 
 /* Class = "UINavigationItem"; title = "Old Orders"; ObjectID = "zV1-as-lIK"; */
-"zV1-as-lIK.title" = "الطلبات السابقة";
+"zV1-as-lIK.title" = "طلباتي";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "zgh-iG-fYQ"; */
 "zgh-iG-fYQ.text" = "";

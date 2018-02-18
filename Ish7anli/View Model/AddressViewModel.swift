@@ -25,7 +25,7 @@ protocol AddressViewModelItem {
 var Type = ["Door to the door","From Caption Address"]
 var Weghit = ["Light","Heavy"]
 var addressbuttons = [RadioButton]()
-var selected: Int = 0
+var selected: Int?
 var selectedType: Int = 0
 var selectedWeghit: Int = 0
 
@@ -119,14 +119,15 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
 
     func didPressButtonSubmit(sender: UIButton) {
         var senderAddress:Int?
-        if selectedSender == 0 {
+        //selected = sender.tag
+        if selected == nil {
          delegate?.errorNoSelected()
         }else{
         if let item = items[0] as? AddressViewModeAddressItem {
-            senderAddress = item.address[selectedSender].id
+            senderAddress = item.address[selected!].id
         }
         
-        delegate?.move2(senderAddress!, selectedType + 1, weghitIndex: selectedWeghit2 + 1)
+        delegate?.move2(senderAddress!, selectedType + 1, weghitIndex: selectedWeghit + 1)
         }
     }
     func didPressButton(sender: UIButton) {

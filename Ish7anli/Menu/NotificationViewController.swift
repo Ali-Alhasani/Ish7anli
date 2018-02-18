@@ -15,9 +15,10 @@ class NotificationViewController: UIViewController,UITableViewDelegate,UITableVi
     
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         tableView.tableFooterView = UIView()
         if !MOLHLanguage.isRTL() {
             backButton.image = UIImage(named: "leftback")
         }
