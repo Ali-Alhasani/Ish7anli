@@ -86,7 +86,7 @@ class APIClient:NSObject {
     }
     
     
-    class func sendRequest2(path: String, httpMethod: HTTPMethod ,isLangRequired : Bool ,parameters: Dictionary<String, Any>, success: @escaping (_ response: Any?) -> Void, failure: @escaping (_ error: LLError, _ userStatus:String) -> Void){
+    class func sendRequest2(path: String, httpMethod: HTTPMethod ,isLangRequired : Bool ,parameters: Dictionary<String, Any>, success: @escaping (_ response: Any?) -> Void, failure: @escaping (_ error: LLError, _ userStatus:String, _ activated_code:String) -> Void){
         var requestURL : String
         if isLangRequired{
             requestURL = SessionManager.getUrlWithLang() + path
@@ -137,12 +137,12 @@ class APIClient:NSObject {
                             let json = result as! [String: Any]
                           
                          let userStatus = json["user_status"] as? String ?? ""
-                           
+                         let activatedCode = json["activated_code"] as? String ?? ""
                             let error = LLError.init(status: status, message: message)
-                            failure(error ,userStatus)
+                            failure(error ,userStatus, activatedCode)
                         }else{
                         let error = LLError.init(status: status, message: message)
-                        failure(error, "10")
+                            failure(error, "10", "")
                         }
                     }
                 }
@@ -153,11 +153,12 @@ class APIClient:NSObject {
                     let message = json["message"] as! String
                     let userStatus = json["user_status"] as! String
                     let status = json["status"] as! Bool
+                      let activatedCode = json["activated_code"] as? String ?? ""
                     let error = LLError.init(status: status, message: message)
-                    failure(error ,userStatus)
+                    failure(error ,userStatus,activatedCode)
                 }else {
                     let error = LLError.init(status: false, message: error.localizedDescription)
-                    failure(error , "10")
+                    failure(error , "10", "")
                 }
             }
         }

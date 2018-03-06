@@ -12,7 +12,7 @@ class AddOrder2ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel = AddressViewModel2()
     
-    var receiverAddress,senderAddress,weghitIndex,deliveryIndex:Int?
+    var receiverAddress,senderAddress,weghitIndex,deliveryIndex,senderCity, receiverCity:Int?
     
     var receiverName:String?
     var receiverPhone:String?
@@ -84,7 +84,7 @@ class AddOrder2ViewController: UIViewController {
 }
 extension AddOrder2ViewController: AddressViewModel2Delegate {
     
-    func move2(_ receiverAddress: Int, information: [Int]) {
+    func move2(_ receiverAddress: Int, information: [Int] , _ receiverCity:Int) {
        
         
         let multilineCell = tableView.cellForRow(at: IndexPath(row: information.first!, section: 2)) as? TextViewTableViewCell
@@ -103,6 +103,19 @@ extension AddOrder2ViewController: AddressViewModel2Delegate {
                 
             }else{
                 alartmessage = "You cant add the same sender and receiver address"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }else if (senderCity! == receiverCity){
+            MBProgressHUD.hide(for: self.view, animated: true)
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "عذراً لا يمكن اضافة نفس المدينة في العنوان المرسل والمستقبل للتوصيل"
+                
+            }else{
+                alartmessage = "You cant add the same sender and receiver city"
                 
             }
             let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)

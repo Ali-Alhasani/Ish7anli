@@ -71,7 +71,6 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
-        self.collectionView.reloadData()
         self.Refreshload()
         
     }
@@ -91,7 +90,7 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "NewOrder",
                                                        for: indexPath) as! NewOrderCollectionViewCell
         if (DataClient.shared.offerPrice.count != 0 ){
-            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.offerPrice[indexPath.row].price!, image: DataClient.shared.offerPrice[indexPath.row].captainImage!, name: DataClient.shared.offerPrice[indexPath.row].captainName!, time: DataClient.shared.offerPrice[indexPath.row].goTime!, day: "", date: DataClient.shared.offerPrice[indexPath.row].goDate!, cityFrom: DataClient.shared.offerPrice[indexPath.row].cityNameTo! , cityTo: DataClient.shared.offerPrice[indexPath.row].cityNameFrom!, stars: DataClient.shared.offerPrice[indexPath.row].captainRate!))
+            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.offerPrice[indexPath.row].price!, image: DataClient.shared.offerPrice[indexPath.row].captainImage!, name: DataClient.shared.offerPrice[indexPath.row].captainName!, time: DataClient.shared.offerPrice[indexPath.row].goTime!, day: "", date: DataClient.shared.offerPrice[indexPath.row].goDate!, cityFrom: DataClient.shared.offerPrice[indexPath.row].cityNameTo! , cityTo: DataClient.shared.offerPrice[indexPath.row].cityNameFrom!, stars: DataClient.shared.offerPrice[indexPath.row].captainRate!, type: DataClient.shared.offerPrice[indexPath.row].captainType))
         }
         return cell
     }
@@ -114,8 +113,11 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
     }
     
     func Refreshload(){
+       self.collectionView.refreshControl?.beginRefreshing()
         DataClient.shared.getPriceOffer(success: {
+            
             self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
         }) { (_ error) in
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))

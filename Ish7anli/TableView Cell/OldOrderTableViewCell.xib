@@ -101,15 +101,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cM-sh-DcK" customClass="CosmosView" customModule="Ish7anli" customModuleProvider="target">
-                                                <rect key="frame" x="90" y="45.5" width="100" height="13"/>
+                                                <rect key="frame" x="90" y="49.5" width="100" height="15"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="13" id="PPV-mZ-oBH"/>
-                                                    <constraint firstAttribute="width" constant="100" id="s1z-c9-LFd"/>
+                                                    <constraint firstAttribute="height" constant="15" id="PPV-mZ-oBH"/>
+                                                    <constraint firstAttribute="width" constant="98" id="s1z-c9-LFd"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                                        <real key="value" value="13"/>
+                                                        <real key="value" value="16"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
                                                         <color key="value" red="0.90196078430000004" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -168,9 +168,9 @@
                                             <constraint firstItem="yHw-ym-T14" firstAttribute="top" secondItem="9sT-s0-EjJ" secondAttribute="bottom" constant="3" id="QuR-wH-49p"/>
                                             <constraint firstItem="kgJ-PY-piL" firstAttribute="leading" secondItem="io7-KF-fPf" secondAttribute="trailing" constant="25" id="doL-Aa-MxH"/>
                                             <constraint firstItem="9sT-s0-EjJ" firstAttribute="leading" secondItem="kgJ-PY-piL" secondAttribute="trailing" constant="8" id="hBL-n6-8Sy"/>
+                                            <constraint firstItem="0cM-sh-DcK" firstAttribute="top" secondItem="kgJ-PY-piL" secondAttribute="bottom" constant="4" id="ozP-Ix-SdE"/>
                                             <constraint firstItem="0cM-sh-DcK" firstAttribute="leading" secondItem="io7-KF-fPf" secondAttribute="trailing" constant="25" id="qcB-aU-eMR"/>
                                             <constraint firstItem="o0R-w5-FnR" firstAttribute="leading" secondItem="io7-KF-fPf" secondAttribute="trailing" constant="25" id="wsg-zL-cPw"/>
-                                            <constraint firstItem="0cM-sh-DcK" firstAttribute="centerY" secondItem="io7-KF-fPf" secondAttribute="centerY" id="yYh-01-w5W"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSW-w4-MjB">

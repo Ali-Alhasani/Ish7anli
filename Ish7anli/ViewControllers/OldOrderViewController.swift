@@ -90,7 +90,7 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
         if DataClient.shared.lastOffer.count != 0 {
             if DataClient.shared.lastOffer[indexPath.row].status == 1 {
                 let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell2", owner: self, options: nil)?.first as! OldOrderTableViewCell2
-                cell.setData(OldOrderTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, cityFrom: DataClient.shared.lastOffer[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.lastOffer[indexPath.row].addressReceiverCity!))
+                cell.setData(OldOrderTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, cityFrom: DataClient.shared.lastOffer[indexPath.row].addressSenderTitle!, cityTo: DataClient.shared.lastOffer[indexPath.row].addressReceiverTitle!,type: DataClient.shared.lastOffer[indexPath.row].captainType!))
                 cell.detailsButton.tag = indexPath.row
                 cell.cellDelegate = self
                 cell.selectionStyle = .none
@@ -98,7 +98,7 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
             if DataClient.shared.lastOffer[indexPath.row].status == 2 {
                 let cell = Bundle.main.loadNibNamed("OldOrderTableViewCell", owner: self, options: nil)?.first as! OldOrderTableViewCell
-                cell.setData(OldOrderTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, cityFrom: DataClient.shared.lastOffer[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.lastOffer[indexPath.row].addressReceiverCity!))
+                cell.setData(OldOrderTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, cityFrom: DataClient.shared.lastOffer[indexPath.row].addressSenderTitle!, cityTo: DataClient.shared.lastOffer[indexPath.row].addressReceiverTitle!, type: DataClient.shared.lastOffer[indexPath.row].captainType!))
                 cell.detailsButton.tag = indexPath.row
                 cell.cellDelegate = self
                 cell.selectionStyle = .none
@@ -106,7 +106,7 @@ class OldOrderViewController: UIViewController,UITableViewDelegate,UITableViewDa
             }
            else if DataClient.shared.lastOffer[indexPath.row].status == 3 {
                 let cell = Bundle.main.loadNibNamed("OldOrderWithRateTableViewCell", owner: self, options: nil)?.first as! OldOrderWithRateTableViewCell
-                cell.setData(OldOrderWithRateTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!))
+                cell.setData(OldOrderWithRateTableViewData(price: DataClient.shared.lastOffer[indexPath.row].offerPrice!, image: DataClient.shared.lastOffer[indexPath.row].captainImage!, name: DataClient.shared.lastOffer[indexPath.row].captainName!, time: DataClient.shared.lastOffer[indexPath.row].time!, date: DataClient.shared.lastOffer[indexPath.row].date!, stars: DataClient.shared.lastOffer[indexPath.row].captainRate!, type: DataClient.shared.lastOffer[indexPath.row].captainType!))
                
                 cell.detailsButton.tag = indexPath.row
                 cell.cellDelegate = self

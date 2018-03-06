@@ -60,7 +60,48 @@ class OfferDetailsViewController: UIViewController {
                 }, failure: { (_ error) in
                     
                 })
-            }else {
+                if DataClient.shared.offerPrice[indexPath!].captainType == "2"{
+                      imageView.borderColor = UIColor.red
+                }else if DataClient.shared.offerPrice[indexPath!].captainType == "3"{
+                    imageView.borderColor = UIColor.red
+                }
+              
+            }
+            else if (type == 3) {
+                nameLabel.text = DataClient.shared.offerFiltered[indexPath!].captainName
+                starsView.rating = DataClient.shared.offerFiltered[indexPath!].captainRate!
+                destinationCity.text =  DataClient.shared.offerFiltered[indexPath!].cityNameTo
+                fromCity.text =  DataClient.shared.offerFiltered[indexPath!].cityNameFrom
+                timeFrom.text = DataClient.shared.offerFiltered[indexPath!].goTime
+                timeTo.text =  DataClient.shared.offerFiltered[indexPath!].arrivalTime
+                dateFrom.text = DataClient.shared.offerFiltered[indexPath!].goDate
+                dateTo.text = DataClient.shared.offerFiltered[indexPath!].arrivalDate
+                if MOLHLanguage.isRTL() {
+                    let string: NSMutableAttributedString = NSMutableAttributedString(string: DataClient.shared.offerFiltered[indexPath!].price! + " ريال" )
+                    string.setColorForText(" ريال" , with: UIColor(named:"warmGrayText")!)
+                    price.attributedText = string
+                    
+                    //price.text =
+                }else{
+                    
+                    let string: NSMutableAttributedString = NSMutableAttributedString(string: DataClient.shared.offerFiltered[indexPath!].price! + " SAR" )
+                    string.setColorForText(" SAR" , with: UIColor(named:"warmGrayText")!)
+                    price.attributedText = string
+                }
+                
+                
+                APIClient.sendImageRequest(path: DataClient.shared.offerFiltered[indexPath!].captainImage!, success: { (_ image) in
+                    self.imageView.image = image
+                }, failure: { (_ error) in
+                    
+                })
+                if DataClient.shared.offerFiltered[indexPath!].captainType == "2"{
+                    imageView.borderColor = UIColor.red
+                }else if DataClient.shared.offerFiltered[indexPath!].captainType == "3"{
+                    imageView.borderColor = UIColor.red
+                }
+            }
+            else {
             nameLabel.text = DataClient.shared.offer[indexPath!].captainName
             starsView.rating = DataClient.shared.offer[indexPath!].captainRate!
             destinationCity.text =  DataClient.shared.offer[indexPath!].cityNameTo
@@ -86,6 +127,11 @@ class OfferDetailsViewController: UIViewController {
             }, failure: { (_ error) in
                 
             })
+                if DataClient.shared.offer[indexPath!].captainType == "2"{
+                    imageView.borderColor = UIColor.red
+                }else if DataClient.shared.offer[indexPath!].captainType == "3"{
+                    imageView.borderColor = UIColor.red
+                }
             }
         }
      

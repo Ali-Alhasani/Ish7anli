@@ -28,9 +28,10 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
         
         refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(refreshControl)
+         barButtonItem.isEnabled = false
         SessionManager.loadCpatainType()
-        if (SessionManager.shared.cpatainType != "3"){
-            barButtonItem.isEnabled = false
+        if (SessionManager.shared.cpatainType == "3" || SessionManager.shared.cpatainType == "2"){
+            barButtonItem.isEnabled = true
         }
         // Do any additional setup after loading the view.
     }
@@ -44,7 +45,7 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
        // self.navigationController?.navigationBar.isTranslucent = false
         self.setNavigationBarItem()
         self.hideBackButton()
-        load()
+      
     }
     @objc func PullRefresh()
     {
@@ -77,10 +78,10 @@ class CpatainNewOrderViewController: UIViewController,UITableViewDelegate,UITabl
         let cell = Bundle.main.loadNibNamed("newOrderTableViewCell", owner: self, options: nil)?.first as! newOrderTableViewCell
         cell.selectionStyle = .none
         if (DataClient.shared.cpatainCustomerOrder.count != 0) {
-            if (DataClient.shared.cpatainCustomerOrder[indexPath.row].price! == 0.0) {
-             cell.setData(newOrderTableViewData(price: DataClient.shared.cpatainCustomerOrder[indexPath.row].price!, image:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerImage!, name:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerName!, senderCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressSenderCity!, receiverCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressReceiverCity!, isNew: true ))
+            if (DataClient.shared.cpatainCustomerOrder[indexPath.row].price! == "0") {
+             cell.setData(newOrderTableViewData(price: DataClient.shared.cpatainCustomerOrder[indexPath.row].price!, image:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerImage!, name:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerName!, senderCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressSenderTitle!, receiverCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressReceiverTitle!, isNew: true ))
             }else{
-            cell.setData(newOrderTableViewData(price: DataClient.shared.cpatainCustomerOrder[indexPath.row].price!, image:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerImage!, name:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerName!, senderCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressSenderCity!, receiverCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressReceiverCity!, isNew: false ))
+            cell.setData(newOrderTableViewData(price: DataClient.shared.cpatainCustomerOrder[indexPath.row].price!, image:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerImage!, name:  DataClient.shared.cpatainCustomerOrder[indexPath.row].customerName!, senderCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressSenderTitle!, receiverCity:  DataClient.shared.cpatainCustomerOrder[indexPath.row].addressReceiverTitle!, isNew: false ))
             }
         }
         return cell

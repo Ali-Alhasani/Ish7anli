@@ -32,7 +32,7 @@ var selectedWeghit: Int = 0
 protocol AddressViewModelDelegate: class {
     func apply(changes: SectionChanges)
     func move()
-     func move2(_ senderAddress:Int,_ deliveryIndex:Int , weghitIndex:Int)
+    func move2(_ senderAddress:Int,_ deliveryIndex:Int , weghitIndex:Int, _ senderCity:Int)
     func apply2()
     func errorNoSelected()
 }
@@ -119,15 +119,17 @@ extension AddressViewModel: UITableViewDataSource,AddressSettingsTableViewCellDe
 
     func didPressButtonSubmit(sender: UIButton) {
         var senderAddress:Int?
+        var senderCity:Int?
         //selected = sender.tag
         if selected == nil {
          delegate?.errorNoSelected()
         }else{
         if let item = items[0] as? AddressViewModeAddressItem {
             senderAddress = item.address[selected!].id
+            senderCity = item.address[selected!].cityId
         }
         
-        delegate?.move2(senderAddress!, selectedType + 1, weghitIndex: selectedWeghit + 1)
+            delegate?.move2(senderAddress!, selectedType + 1, weghitIndex: selectedWeghit + 1, senderCity!)
         }
     }
     func didPressButton(sender: UIButton) {

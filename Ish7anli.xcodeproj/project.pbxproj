@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B0B029F203DC35100BEDBB3 /* FilterOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B029E203DC35100BEDBB3 /* FilterOfferViewController.swift */; };
 		6B10F5FC20194271002F5276 /* CustomerOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F5FB20194271002F5276 /* CustomerOffer.swift */; };
 		6B10F6002019EC67002F5276 /* AddressViewModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */; };
 		6B10F6022019F384002F5276 /* AddOrder2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */; };
@@ -145,6 +146,9 @@
 		6BA826782015DA41002BC608 /* SubmitButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BA826762015DA41002BC608 /* SubmitButtonTableViewCell.xib */; };
 		6BA8267A20173E64002BC608 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA8267920173E64002BC608 /* Offer.swift */; };
 		6BAD09D92006D72A003D63C8 /* MyOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAD09D82006D72A003D63C8 /* MyOrderViewController.swift */; };
+		6BAE0DB2203EC91600BF8C46 /* FilterOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE0DB1203EC91600BF8C46 /* FilterOfferDetailsViewController.swift */; };
+		6BAE0DB4203EDF0A00BF8C46 /* FilterNewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE0DB3203EDF0A00BF8C46 /* FilterNewOrderViewController.swift */; };
+		6BAE0DB6203EE2CD00BF8C46 /* FilterDetailsNewOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BAE0DB5203EE2CD00BF8C46 /* FilterDetailsNewOrderViewController.swift */; };
 		6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */; };
 		6BC256A120127B4900A5AD20 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC256A020127B4900A5AD20 /* RadioButton.swift */; };
 		6BCB1B8A2030B7DA004B26D3 /* NewAddOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */; };
@@ -161,6 +165,7 @@
 
 /* Begin PBXFileReference section */
 		5592F19F09592F1A3AF5E5E9 /* Pods-Ish7anli.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ish7anli.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ish7anli/Pods-Ish7anli.release.xcconfig"; sourceTree = "<group>"; };
+		6B0B029E203DC35100BEDBB3 /* FilterOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOfferViewController.swift; sourceTree = "<group>"; };
 		6B10F5FB20194271002F5276 /* CustomerOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOffer.swift; sourceTree = "<group>"; };
 		6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel2.swift; sourceTree = "<group>"; };
 		6B10F6012019F384002F5276 /* AddOrder2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrder2ViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +314,9 @@
 		6BA826762015DA41002BC608 /* SubmitButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubmitButtonTableViewCell.xib; sourceTree = "<group>"; };
 		6BA8267920173E64002BC608 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		6BAD09D82006D72A003D63C8 /* MyOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrderViewController.swift; sourceTree = "<group>"; };
+		6BAE0DB1203EC91600BF8C46 /* FilterOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOfferDetailsViewController.swift; sourceTree = "<group>"; };
+		6BAE0DB3203EDF0A00BF8C46 /* FilterNewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterNewOrderViewController.swift; sourceTree = "<group>"; };
+		6BAE0DB5203EE2CD00BF8C46 /* FilterDetailsNewOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDetailsNewOrderViewController.swift; sourceTree = "<group>"; };
 		6BC2569C2012461F00A5AD20 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		6BC256A020127B4900A5AD20 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddOfferViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +387,8 @@
 				6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */,
 				6BD15AC92021262E00129DF9 /* CaptainViewControllers */,
 				6B1787EB20324AFB005E7D24 /* ForgetPasswordViewController.swift */,
+				6B0B029E203DC35100BEDBB3 /* FilterOfferViewController.swift */,
+				6BAE0DB1203EC91600BF8C46 /* FilterOfferDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -607,6 +617,8 @@
 				6B85DFDD202BA9CF001A1662 /* AcceptedCaptainViewController.swift */,
 				6B19801B20386583009429DB /* MyOfferCaptainViewController.swift */,
 				6B880E422039859100AB7653 /* CaptainOfferCancelViewController.swift */,
+				6BAE0DB3203EDF0A00BF8C46 /* FilterNewOrderViewController.swift */,
+				6BAE0DB5203EE2CD00BF8C46 /* FilterDetailsNewOrderViewController.swift */,
 			);
 			path = CaptainViewControllers;
 			sourceTree = "<group>";
@@ -837,12 +849,14 @@
 				6B3892FA2027109700E669B9 /* Notifications.swift in Sources */,
 				6B4F43C72022620D00A51EEC /* RadioButtonGray.swift in Sources */,
 				6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */,
+				6B0B029F203DC35100BEDBB3 /* FilterOfferViewController.swift in Sources */,
 				6BD15AC32021142100129DF9 /* NewOrder22ViewController.swift in Sources */,
 				6BD15AC12021127400129DF9 /* NewOrder2ViewController.swift in Sources */,
 				6B36F04B201FB29800BDFBA5 /* NewPhoneNumberViewController.swift in Sources */,
 				6B18DEE5200F8CB500C73BA2 /* ActivationViewController.swift in Sources */,
 				6BCB1B8A2030B7DA004B26D3 /* NewAddOfferViewController.swift in Sources */,
 				6BDCA75C20304B4900989CDD /* AddOfferViewModel.swift in Sources */,
+				6BAE0DB4203EDF0A00BF8C46 /* FilterNewOrderViewController.swift in Sources */,
 				6B69AEB120293A35000F3695 /* CaptainOfferViewController.swift in Sources */,
 				6B6BB46A20111F1000BECA87 /* Array+Extensions.swift in Sources */,
 				6B517CF1200EA25500CFE5DC /* AboutUsViewController.swift in Sources */,
@@ -853,6 +867,7 @@
 				6B6BB46820111E9E00BECA87 /* DiffCalculator.swift in Sources */,
 				6B517CF9200EA3C300CFE5DC /* String.swift in Sources */,
 				6B18DF012010B72400C73BA2 /* AddAddressTableViewCell.swift in Sources */,
+				6BAE0DB2203EC91600BF8C46 /* FilterOfferDetailsViewController.swift in Sources */,
 				6B36F048201FAC4C00BDFBA5 /* CustomButton2.swift in Sources */,
 				6B517CDF200E9BE000CFE5DC /* MOLHSizable.swift in Sources */,
 				6B517CFB200EA49300CFE5DC /* CaptainLoginViewController.swift in Sources */,
@@ -880,6 +895,7 @@
 				6B517CC6200E808B00CFE5DC /* NewOrderViewController.swift in Sources */,
 				6BF631822006E39600D19370 /* IBDesignable.swift in Sources */,
 				6B271D37201D46FA0030BBF4 /* CpatainNewOrderDetailsViewController.swift in Sources */,
+				6BAE0DB6203EE2CD00BF8C46 /* FilterDetailsNewOrderViewController.swift in Sources */,
 				6B55DA322007878900BB535B /* OldOrderWithRateTableViewCell.swift in Sources */,
 				6B3C5CC1203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift in Sources */,
 				6B10F6022019F384002F5276 /* AddOrder2ViewController.swift in Sources */,

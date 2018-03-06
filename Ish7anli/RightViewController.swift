@@ -36,16 +36,17 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     @IBOutlet weak var tableView: UITableView!
     
-    var menus = ["الإشعارات"  , "من نحن", "دخول كابتن", "نشر التطبيق", "راسلنا"]
-    var menus2 =  ["الإشعارات"  ,"عروضي", "من نحن", "نشر التطبيق", "راسلنا"]
+    var menus = ["الإشعارات"  , "من نحن", "دخول كابتن", "نشر التطبيق", "راسلنا","تسجيل خروج"]
+    var menus2 =  ["الإشعارات"  ,"عروضي", "من نحن", "نشر التطبيق", "راسلنا","تسجيل خروج"]
   
-    var iconMenus = ["notificationBlue","aboutUs","captain","share","messageBlue"]
-    var  iconMenus2 = ["notificationBlue","captain","aboutUs","share","messageBlue"]
+    var iconMenus = ["notificationBlue","aboutUs","captain","share","messageBlue","logout"]
+    var  iconMenus2 = ["notificationBlue","captain","aboutUs","share","messageBlue","logout"]
     var NotificationViewController: UIViewController!
     var AboutUsViewController: UIViewController!
     var ContactUsTableViewController: UIViewController!
     var CaptainLoginViewController: UIViewController!
     var MyOfferCaptainViewController:UIViewController!
+    var FirstViewController:UIViewController!
     var imageHeaderView: ImageHeaderView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +57,9 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
            // menus = []
         }else{
           
-                 menus2 = ["Notification","My Offer","About Us","Share App","Contact Us"]
+                 menus2 = ["Notification","My Offer","About Us","Share App","Contact Us","Logout"]
 
-            menus = ["Notification","About Us","Captain Login","Share App","Contact Us"]
+            menus = ["Notification","About Us","Captain Login","Share App","Contact Us","Logout"]
         }
         // Do any additional setup after loading the view.
         
@@ -83,7 +84,12 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.MyOfferCaptainViewController =
             UINavigationController(rootViewController: MyOfferCaptainViewController)
         
+        let FirstViewController = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as! SignInViewController
+        FirstViewController.delegate = self
 
+        self.FirstViewController =
+            UINavigationController(rootViewController: FirstViewController)
+        
         self.tableView.registerCellClass(DataTableViewCell.self)
         
        // self.imageHeaderView = ImageHeaderView.loadNib()
@@ -121,7 +127,8 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             })
             
         case .Logout:
-            self.slideMenuController()?.closeRight()
+            SessionManager.clearSessionManager()
+            self.slideMenuController()?.changeMainViewController(self.FirstViewController, close: true)
             //self.slideMenuController()?.changeMainViewController(self.SettingsViewController, close: true)
         }
     }
@@ -146,8 +153,8 @@ class RightViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             })
             
         case .Logout:
-            self.slideMenuController()?.closeRight()
-            //self.slideMenuController()?.changeMainViewController(self.SettingsViewController, close: true)
+            SessionManager.clearSessionManager()
+            self.slideMenuController()?.changeMainViewController(self.FirstViewController, close: true)
         case .MyOffer:
             self.present(self.MyOfferCaptainViewController, animated: true, completion: {
                 self.slideMenuController()?.closeRight()

@@ -29,6 +29,7 @@ class CaptainSettingsViewController: UIViewController {
        // accountNumberText.setBottomBorder()
         myPickerController.delegate = self;
         myPickerController.sourceType =  UIImagePickerControllerSourceType.photoLibrary
+        load()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -179,6 +180,24 @@ class CaptainSettingsViewController: UIViewController {
 //        }, failuer: { () in
 //
 //        }, photo: <#T##String#>)
+    }
+    
+    
+    func load(){
+        let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        
+        spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+        DataClient.shared.getCaptainProfile(success: { (_ profile) in
+              MBProgressHUD.hide(for: self.view, animated: true)
+            self.accountNumberText.text = profile.financial_account_number
+        }) { (_ error) in
+               MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
     }
     /*
      // MARK: - Navigation

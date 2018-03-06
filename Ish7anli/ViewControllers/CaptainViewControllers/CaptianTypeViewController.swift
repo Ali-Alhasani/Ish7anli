@@ -7,7 +7,7 @@
 //
 
 import UIKit
-var activationCodeC:String?
+//var activationCodeC:String?
 class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,CaptainTypeCollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     
@@ -23,7 +23,7 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     var indexPath:Int?
     
-    var array = ["هم فئة الكباتن الذين لديهم مواعيد محددة للسفر وتصلهم الاشعارات اذا سجلو موعد للسفر, لذلك نوع التوصيل من موقع الكابتن","هم فئة الكباتن الذين يرغبون بالسفر و الشحن وقتما توفرت الطلبات , وتصلهم جميع الاشعارات لذلك نوع التوصيل من موقع الكابتن","هم فئة الكباتن الذين لا يرغبون بالسفر، بينما يرغبون بتجميع الطلبات لذلك نوع التوصيل من الباب للباب"]
+    var array = ["هذه الشارة للكابتن الذي يرغب في تجميع أو توزيع الشحنات داخل المنطقة فقط ولا يرغب بالسفر سوف تصله الإشعارات من الباب إلى الباب فقط" , "هذه الشارة للكابتن الذي يرغب في الشحن متى ما توافر طلب الشحن وسوف تصله جميع طلبات الشحن", "هذه الشارة للكابتن الذي يرغب في الشحن وقت ما يرغب في السفر فقط ولا تصله الاشعارات إلا إذا سجل موعد السفر فقط"]
     
     var array2 = ["الشارة الصفراء","الشارة الحمراء", "الشارة الخضراء"]
     
@@ -38,7 +38,7 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     var cardImage,licenceImage,carForm,contractImage,captainImage:String?
     var lat, lng:Double?
     var tilte,details:String?
-    
+    var cityId:Int?
 
     
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "Type",
                                                        for: indexPath) as! CaptainTypeCollectionViewCell
         cell.cellDelegate = self
-        cell.setData(CaptainTypeCollectionViewData(type: array2[indexPath.row], image: "String", description: array[indexPath.row], image1: "String", image2: "String", image3: ""))
+        cell.setData(CaptainTypeCollectionViewData(type: array2[indexPath.row], image:  color(rawValue: indexPath.row)! , description: array[indexPath.row]))
         cell.chooseButton.tag = indexPath.row
 
         return cell
@@ -139,9 +139,9 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
         
     }
     func load(index:Int){
-        DataClient.shared.captainRegister(name: fullname!, email: email!, password: password!, phone: mobile!, cardNumber: cardNumber!, cardImage: cardImage!, licenseImage: licenceImage!, carForm: carForm!, contractImage: contractImage!, financialAccountNumber: accountNumber!, captainType: index+1, title: tilte!, details: details!, longitude: lng!, latitude: lat!,captainImage: captainImage!, success: { (_ activationCode) in
+        DataClient.shared.captainRegister(name: fullname!, email: email!, password: password!, phone: mobile!, cardNumber: cardNumber!, cardImage: cardImage!, licenseImage: licenceImage!, carForm: carForm!, contractImage: contractImage!, financialAccountNumber: accountNumber!, captainType: index+1, title: tilte!, details: details!, longitude: lng!, latitude: lat!,captainImage: captainImage!, cityId: cityId!, success: { (_ activationCode) in
            MBProgressHUD.hide(for: self.view, animated: true)
-            activationCodeC = activationCode
+           //activationCodeC = activationCode
             var alartmessage:String?
             if MOLHLanguage.isRTL() {
                 alartmessage = "تم تسجيل الكابتن بنجاح"

@@ -17,6 +17,7 @@ class CaptainCustomerOffer {
     var receiverName:String?
     var receiverPhone:String?
     var paymentType:Int?
+    var accountNumber:String?
     var time:String?
     var date:String?
     var status:Int?
@@ -36,7 +37,7 @@ class CaptainCustomerOffer {
     var customerPhone:String?
     var customerEmail:String?
     var bid:Int?
-    var price:Double?
+    var price:String?
     var rate:Double?
     
     
@@ -49,6 +50,8 @@ class CaptainCustomerOffer {
         self.receiverName = json["receiver_name"] as? String ?? ""
         self.receiverPhone = json["receiver_phone"] as? String ?? ""
         self.paymentType = json["payment_type"] as? Int ?? 0
+        self.accountNumber = json["account_number"] as? String ?? ""
+
         self.time = json["time"] as? String ?? ""
         self.date = json["date"] as? String ?? ""
         self.status = json["stutas"] as? Int ?? 0
@@ -71,10 +74,16 @@ class CaptainCustomerOffer {
         if let bid = json["bid"] as? Int {
             self.bid = bid
         }
-        if let price = json["offer_price"] as? Double  {
+        if let price = json["offer_price"] as? String  {
             self.price = price
-        }else{
-        self.price = json["price"] as? Double ?? 0.0
+        }else if let price = json["price"] as? String{
+             self.price = price
+        }else if let price = json["offer_price"] as? Int {
+             self.price = String(price)
+        }else if let price = json["price"] as? Int {
+                self.price = String(price)
+        }else {
+               self.price = "0.0"
         }
             
     }

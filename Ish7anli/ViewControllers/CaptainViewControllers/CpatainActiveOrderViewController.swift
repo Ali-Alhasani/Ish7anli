@@ -69,7 +69,7 @@ class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UIT
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
-        RefreshLoad()
+      
         
     }
     
@@ -88,7 +88,7 @@ class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UIT
                 cell.cellDelegate = self
                 cell.actionButton.setTitle("Recevied Done", for: UIControlState.normal)
                 cell.middlePointLabel.backgroundColor = UIColor.white
-                cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressReceiverCity!, type: 1))
+                cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderTitle!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressReceiverTitle!, type: 1))
                 
                 // cell.actionButton.backgroundColor = UIColor.red
                 cell.actionButton.tag = indexPath.row
@@ -102,7 +102,7 @@ class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UIT
                 cell.cellDelegate = self
                 cell.actionButton.tag = indexPath.row
                 
-                cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderCity!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressReceiverCity!, type: 2))
+                cell.setData(ActiveOrderTableViewData(price: DataClient.shared.cpatainActiveOrder[indexPath.row].price!, image: DataClient.shared.cpatainActiveOrder[indexPath.row].customerImage!, name: DataClient.shared.cpatainActiveOrder[indexPath.row].customerName!,cityFrom: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderTitle!, cityTo: DataClient.shared.cpatainActiveOrder[indexPath.row].addressSenderTitle!, type: 2))
                 cell.actionButton.setTitle("Delivery Done", for: UIControlState.normal)
                 return cell
             }
@@ -126,6 +126,7 @@ class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UIT
         DataClient.shared.getActiveOrder(success: {
             self.tableView.reloadData()
         }) { (_ error) in
+               self.tableView.reloadData()
             let alert = UIAlertController(title:ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)

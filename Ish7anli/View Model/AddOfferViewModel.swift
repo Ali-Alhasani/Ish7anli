@@ -21,7 +21,7 @@ protocol AddOfferViewModelItem {
 protocol AddOfferViewModelDelegate: class {
     func apply(changes: SectionChanges)
     func move()
-    func apply2(senderId:Int)
+    func apply2(senderId:Int,cityId:Int)
     
 }
 var selectedOffer: Int?
@@ -89,11 +89,13 @@ extension AddOfferViewModel:UITableViewDataSource,AddAddressTableViewCellDelegat
             
             selectedOffer = sender.tag
               var senderAddress:Int?
+               var senderCity:Int?
             if let item = items[0] as? AddOfferViewModeAddressItem {
                 
                 senderAddress = item.address[selectedOffer!].id
+                senderCity = item.address[selectedOffer!].cityId
             }
-            delegate?.apply2(senderId: senderAddress!)
+            delegate?.apply2(senderId: senderAddress!, cityId:senderCity!)
          case .item1:
           print("")
          case .weghit:

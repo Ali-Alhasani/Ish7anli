@@ -15,7 +15,7 @@ class CaptainLoginViewController: UIViewController {
 
 
     @IBOutlet weak var backButton: UIBarButtonItem!
-    
+      var activationCodeC:String?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,12 +66,14 @@ class CaptainLoginViewController: UIViewController {
         DataClient.shared.loginCaptain(password:  passwordText.text!, success: {
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.move()
-        }) { (_ error ,_ userStatus)  in
+        }) { (_ error ,_ userStatus, _ activated_code)  in
            // print(error.message)
             if (userStatus == "1"){
                 self.performSegue(withIdentifier: "untilReview", sender: self)
             }else if (userStatus == "2"){
+                  self.activationCodeC = activated_code
                   self.performSegue(withIdentifier: "toActivation", sender: self)
+                
             }else if (userStatus == "3"){
                 
             }else if (userStatus == "4"){
@@ -99,6 +101,15 @@ class CaptainLoginViewController: UIViewController {
     }
     
     @IBAction func newAccountAction(_ sender: Any) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toActivation" {
+            let vc = segue.destination as! AcceptedCaptainViewController
+            vc.activationCodeC = activationCodeC!
+        }
+        
         
     }
     

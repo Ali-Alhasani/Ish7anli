@@ -43,7 +43,7 @@ class OrderDetailsViewController: UIViewController {
         
         receiverNameLabel.text = DataClient.shared.CustomerOrder[indexPath!].receiverName!
         receiverPhoneLabel.text = DataClient.shared.CustomerOrder[indexPath!].receiverPhone!
-        receiverAddressLabel.text = DataClient.shared.CustomerOrder[indexPath!].addressReceiverCity! + " - " + DataClient.shared.CustomerOrder[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.CustomerOrder[indexPath!].addressReceiverTitle!
+        receiverAddressLabel.text =  DataClient.shared.CustomerOrder[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.CustomerOrder[indexPath!].addressReceiverTitle!
         }
         
         // Do any additional setup after loading the view.

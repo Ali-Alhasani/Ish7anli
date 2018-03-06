@@ -57,7 +57,6 @@ class CaptainOfferViewController: UIViewController,IndicatorInfoProvider,UIColle
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
-        self.collectionView.reloadData()
         self.Refreshload()
     }
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -86,7 +85,7 @@ class CaptainOfferViewController: UIViewController,IndicatorInfoProvider,UIColle
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "NewOrder2",
                                                        for: indexPath) as! NewOrderCollectionViewCell
         if (DataClient.shared.captianOffer.count != 0 ){
-                cell.setData(NewOrderCollectionViewData(price: DataClient.shared.captianOffer[indexPath.row].price!, image: DataClient.shared.captianOffer[indexPath.row].captainImage!, name: DataClient.shared.captianOffer[indexPath.row].captainName!, time: DataClient.shared.captianOffer[indexPath.row].goTime!, day: "", date: DataClient.shared.captianOffer[indexPath.row].goDate!, cityFrom: DataClient.shared.captianOffer[indexPath.row].cityNameFrom!, cityTo: DataClient.shared.captianOffer[indexPath.row].cityNameTo!, stars: DataClient.shared.captianOffer[indexPath.row].captainRate!))
+            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.captianOffer[indexPath.row].price!, image: DataClient.shared.captianOffer[indexPath.row].captainImage!, name: DataClient.shared.captianOffer[indexPath.row].captainName!, time: DataClient.shared.captianOffer[indexPath.row].goTime!, day: "", date: DataClient.shared.captianOffer[indexPath.row].goDate!, cityFrom: DataClient.shared.captianOffer[indexPath.row].cityNameTo!, cityTo: DataClient.shared.captianOffer[indexPath.row].cityNameFrom!, stars: DataClient.shared.captianOffer[indexPath.row].captainRate!, type: DataClient.shared.captianOffer[indexPath.row].captainType ))
         }
         return cell
     }

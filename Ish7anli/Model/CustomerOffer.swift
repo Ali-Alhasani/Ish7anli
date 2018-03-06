@@ -66,6 +66,7 @@ class CustomerOffer {
             
             self.bid = bid.map { Bid(json: $0) }
         }
+      
     }
     init(){
         
@@ -75,19 +76,31 @@ class CustomerOffer {
 class Bid {
     var id:Int?
     var captainId:Int?
-    var price:Int?
+    var price:String?
     var captainName:String?
     var captainImage:String?
     var captainRate:Double
+    var cpatainType:String?
 
     
      init(json: [String: Any]) {
         self.id = json["id"] as? Int ?? 0
         self.captainId = json["captain_id"] as? Int ?? 0
-        self.price = json["price"] as? Int ?? 0
+        if let price = json["price"] as? String{
+            self.price = price
+        }else if let price = json["price"] as? Int {
+            self.price = String(price)
+        }else {
+            self.price = "0"
+        }
+      
         self.captainName = json["captain_name"] as? String ?? ""
         self.captainImage = json["captain_image"] as? String ?? ""
         self.captainRate = json["captain_rate"] as? Double ?? 0.0
+        
+        if let captainType = json["captain_type"] as? String {
+            self.cpatainType = captainType
+        }
     }
   
 }

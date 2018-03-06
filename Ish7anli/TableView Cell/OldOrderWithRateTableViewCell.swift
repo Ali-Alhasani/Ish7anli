@@ -16,20 +16,23 @@ protocol OldOrderWithRateTableViewDelegate : class {
 
 struct OldOrderWithRateTableViewData {
     
-    init(price: Double, image:String,name:String,time:String,date:String,stars: Double) {
+    init(price: String, image:String,name:String,time:String,date:String,stars: Double , type:String) {
         self.price = price
         self.stars = stars
         self.image = image
         self.name = name
         self.time = time
         self.date = date
+        self.type = type
     }
-    var price: Double
+    var price: String
     var stars: Double
     var image:String
     var name:String
     var time:String
     var date:String
+    var type:String
+    
 }
 class OldOrderWithRateTableViewCell: UITableViewCell {
     weak var cellDelegate: OldOrderWithRateTableViewDelegate?
@@ -72,6 +75,13 @@ class OldOrderWithRateTableViewCell: UITableViewCell {
                 chatButton.setTitle(" محادثة ", for: .normal)
                 currencyLabel.text = "ريال"
                 rateButton.setTitle("تقييم الطلب", for: UIControlState.normal)
+            }
+            if data.type == "1" {
+               self.ProfileimageView.borderColor = UIColor.yellow
+            }else if data.type == "2"{
+                  self.ProfileimageView.borderColor = UIColor.red
+            }else if data.type == "3"{
+                 self.ProfileimageView.borderColor = UIColor.green
             }
             
         }

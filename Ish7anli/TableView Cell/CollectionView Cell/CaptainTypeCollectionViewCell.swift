@@ -12,22 +12,25 @@ protocol CaptainTypeCollectionViewDelegate : class {
    
 }
 
+enum color: Int {
+    
+    case yellow = 0
+    case red = 1
+    case green = 2
+}
+
 struct CaptainTypeCollectionViewData {
     
-    init(type: String, image:String,description:String,image1:String ,image2:String,image3:String ) {
+    init(type: String, image:color,description:String) {
         self.type = type
         self.description = description
         self.image = image
-        self.image1 = image1
-        self.image2 = image2
-        self.image3 = image3
+      
     }
     var type: String
     var description: String
-    var image:String
-     var image1:String
-     var image2:String
-     var image3:String
+    var image:color
+
   
 }
 class CaptainTypeCollectionViewCell: UICollectionViewCell {
@@ -49,8 +52,18 @@ class CaptainTypeCollectionViewCell: UICollectionViewCell {
         if let data = data as? CaptainTypeCollectionViewData {
             
             self.typeNameLabel.text = data.type
-             self.typeDescription.text = data.description
-
+            self.typeDescription.text = data.description
+            switch data.image {
+            case .yellow:
+                 self.imageViewType.borderColor = UIColor.yellow
+            case .red:
+                  self.imageViewType.borderColor = UIColor.red
+            case .green:
+                
+                  self.imageViewType.borderColor = UIColor.green
+            }
+           
+          
             
         }
     }

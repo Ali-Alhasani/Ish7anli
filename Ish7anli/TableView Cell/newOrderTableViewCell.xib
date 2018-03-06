@@ -37,7 +37,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="134.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FrR-uV-1cZ">
-                                                        <rect key="frame" x="8" y="13" width="119" height="24.5"/>
+                                                        <rect key="frame" x="8" y="15.5" width="119" height="20"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                                 <rect key="frame" x="169.5" y="0.0" width="134.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jog-aJ-31B">
-                                                        <rect key="frame" x="8" y="13" width="119" height="24.5"/>
+                                                        <rect key="frame" x="8" y="15.5" width="119" height="20"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -133,19 +133,19 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajr-vl-Tyz">
-                                        <rect key="frame" x="270.5" y="34.5" width="25.5" height="23"/>
+                                        <rect key="frame" x="270.5" y="35.5" width="25.5" height="19"/>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="16"/>
                                         <color key="textColor" name="red"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0IJ-TP-4FQ">
-                                        <rect key="frame" x="79" y="33.5" width="183.5" height="24.5"/>
+                                        <rect key="frame" x="79" y="35" width="183.5" height="20"/>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmU-ep-bGO">
-                                        <rect key="frame" x="270.5" y="58" width="25.5" height="16"/>
+                                        <rect key="frame" x="270.5" y="55" width="25.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" name="pinkishGrey"/>
                                         <nil key="highlightedColor"/>
@@ -189,6 +189,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="ProfileimageView" destination="68T-dv-Ieg" id="9CC-8y-BIj"/>
+                <outlet property="arrowImage" destination="s5r-EM-Tge" id="z3w-Ox-pu9"/>
                 <outlet property="currencyLabel" destination="qmU-ep-bGO" id="q95-2R-1Fp"/>
                 <outlet property="nameLabel" destination="0IJ-TP-4FQ" id="H1G-kv-ySo"/>
                 <outlet property="priceLabel" destination="ajr-vl-Tyz" id="lNz-2D-Vbk"/>

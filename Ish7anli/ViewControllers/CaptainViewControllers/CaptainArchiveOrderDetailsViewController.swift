@@ -28,6 +28,9 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
     @IBOutlet weak var receiverPhoneNumberlabel: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     
+    @IBOutlet weak var accountNumberValueLabel: UILabel!
+    @IBOutlet weak var paymentMethodLabel: UILabel!
+    @IBOutlet weak var accountNumberLabel: UILabel!
     
     @IBOutlet weak var priceLabel: UILabel!
     var indexPath:Int?
@@ -40,8 +43,8 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
         nameLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].customerName
         phoneNumberLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].customerPhone
         mailLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].customerEmail
-        senderCity.text = DataClient.shared.captianArchiveOrder[indexPath!].addressSenderCity
-        recevierCity.text = DataClient.shared.captianArchiveOrder[indexPath!].addressReceiverCity
+        senderCity.text = DataClient.shared.captianArchiveOrder[indexPath!].addressSenderTitle
+        recevierCity.text = DataClient.shared.captianArchiveOrder[indexPath!].addressReceiverTitle
         deliveryLabel.text = ErrorHelper.shared.deliveryArray[ DataClient.shared.captianArchiveOrder[indexPath!].deliveryType! - 1 ]
         weightLabel.text = ErrorHelper.shared.weightArray[DataClient.shared.captianArchiveOrder[indexPath!].weight! - 1 ]
         locationLabel.text =  DataClient.shared.captianArchiveOrder[indexPath!].addressSenderTitle
@@ -65,6 +68,17 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
         }, failure: { (_ error) in
             
         })
+        
+        paymentMethodLabel.text = ErrorHelper.shared.paymentArray[DataClient.shared.captianArchiveOrder[indexPath!].paymentType! - 1 ]
+        if DataClient.shared.captianArchiveOrder[indexPath!].paymentType! == 1 || DataClient.shared.captianArchiveOrder[indexPath!].paymentType! == 2
+        {
+            accountNumberLabel.text = ""
+            accountNumberValueLabel.text = ""
+            
+        }else {
+            accountNumberLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].accountNumber
+            
+        }
         // Do any additional setup after loading the view.
     }
     

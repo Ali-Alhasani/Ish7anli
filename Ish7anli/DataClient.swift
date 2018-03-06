@@ -14,13 +14,17 @@ class DataClient: NSObject {
     var cpatainProfile: CaptainProfile?
     var offer = [Offer]()
     var offerPrice = [Offer]()
+    var offerFiltered = [Offer]()
     var CustomerOrder = [CustomerOffer]()
     var lastOffer = [OldOrder]()
     var archiveOrder = [ArchiveOrder]()
     var cpatainCustomerOrder = [CaptainCustomerOffer]()
+    
+    var cpatainCustomerOrderFiltered = [CaptainCustomerOffer]()
     var cpatainActiveOrder = [CaptainCustomerOffer]()
     var captianArchiveOrder = [ArchiveOrder]()
     var captianOffer = [Offer]()
+    var captianPriceOffer = [Offer]()
     var allCity = [City]()
     var notifications = [Notifications]()
     var myOffer = [Offer]()
@@ -85,8 +89,8 @@ class DataClient: NSObject {
         }
     }
     
-    func addAddress(title:String,details:String,longitude:Double,latitude:Double, success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
-        let parameters = ["title":title,"details":details,"longitude":longitude,"latitude":latitude] as [String : Any]
+    func addAddress(title:String,details:String,longitude:Double,latitude:Double,cityId:Int, success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
+        let parameters = ["title":title,"details":details,"longitude":longitude,"latitude":latitude,"city_id":cityId] as [String : Any]
         APIClient.sendRequest(path: "customer_address", httpMethod: .post, isLangRequired: false , parameters:parameters, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
@@ -103,18 +107,28 @@ class DataClient: NSObject {
         }
     }
     
-    func logIn(phone:String,success: @escaping (_ activationCode:String) ->Void, failuer: @escaping (_ error: LLError) -> Void){
+    func logIn(phone:String,success: @escaping (_ activationCode:String ,_ isExist:Bool, _ isCaptain:Bool) ->Void, failuer: @escaping (_ error: LLError) -> Void){
      guard let deviceToken =  UserDefaults.standard.object(forKey: "FCMtoken") as? String else { return }
        //,,"ios_token":deviceToken
         let parameters = ["phone":phone,"ios_token":deviceToken] as [String : Any]
+          var isExist = false
+          var isCaptain = false
         APIClient.sendRequest(path: "customer_login", httpMethod: .post, isLangRequired: false , parameters:parameters, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
+            let isexist =  responseData["user_status"] as? Int ?? 0
+            let roleId =  responseData["role_id"] as? Int ?? 0
+            if isexist == 3 {
+                isExist = true
+            }
+            if roleId == 2 {
+                isCaptain = true
+            }
             let activationCode = responseData["activated_code"] as? String ?? ""
             SessionManager.shared.phoneNumber = phone
             SessionManager.shared.userId = String(responseData["id"] as? Int ?? 0)
             print(SessionManager.shared.userId)
-            success(activationCode)
+            success(activationCode, isExist, isCaptain)
         }) { (error) in
             failuer(error)
             print(error)
@@ -122,8 +136,11 @@ class DataClient: NSObject {
     }
     
     func activate(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void, activiationCode : String){
+      
+
         APIClient.sendRequest(path: "customer_activate", httpMethod: .post, isLangRequired: false , parameters:["activated_code": activiationCode], success: { (response) in
             let responseData = response as! [String : Any]
+            
             print(responseData)
             SessionManager.shared.token = (responseData["token_type"] as? String ?? "") + " " + (responseData["access_token"] as? String ?? "")
             SessionManager.shared.isUserLogged = true
@@ -195,7 +212,7 @@ class DataClient: NSObject {
     func getCustomerOrder(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
         DataClient.shared.CustomerOrder.removeAll()
         
-        APIClient.sendRequest(path: "customer_user_offer", httpMethod: .get, isLangRequired: false , parameters:[:], success: { (response) in
+        APIClient.sendRequest(path: "customer_user_offer", httpMethod: .get, isLangRequired: true , parameters:[:], success: { (response) in
             if  let responseData = response as? [[String : Any]] {
                 print(responseData)
                 responseData.forEach({ (data) in
@@ -211,7 +228,7 @@ class DataClient: NSObject {
     
     func getOldOrder(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void) {
         DataClient.shared.lastOffer.removeAll()
-        APIClient.sendRequest(path: "last_offer", httpMethod: .get, isLangRequired: false , parameters:[:], success: { (response) in
+        APIClient.sendRequest(path: "last_offer", httpMethod: .get, isLangRequired: true , parameters:[:], success: { (response) in
             if let responseData = response as? [[String : Any]] {
                 print(responseData)
                 responseData.forEach({ (data) in
@@ -245,7 +262,7 @@ class DataClient: NSObject {
     func getNewOfferCaptain(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
         
         DataClient.shared.cpatainCustomerOrder.removeAll()
-        APIClient.sendRequest(path: "customer_offer", httpMethod: .get, isLangRequired: false , parameters:[:], success: { (response) in
+        APIClient.sendRequest(path: "customer_offer", httpMethod: .get, isLangRequired: true , parameters:[:], success: { (response) in
             if let responseData = response as? [[String : Any]] {
             print(responseData)
             responseData.forEach({ (data) in
@@ -261,7 +278,7 @@ class DataClient: NSObject {
     
     func getActiveOrder(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
         DataClient.shared.cpatainActiveOrder.removeAll()
-        APIClient.sendRequest(path: "active_order", httpMethod: .get, isLangRequired: false , parameters:[:], success: { (response) in
+        APIClient.sendRequest(path: "active_order", httpMethod: .get, isLangRequired: true , parameters:[:], success: { (response) in
             if let responseData = response as? [[String : Any]] {
             print(responseData)
             responseData.forEach({ (data) in
@@ -277,7 +294,7 @@ class DataClient: NSObject {
     
     func getCaptianArchiveOrder(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
         DataClient.shared.captianArchiveOrder.removeAll()
-        APIClient.sendRequest(path: "archive_order", httpMethod: .get, isLangRequired: false , parameters:[:], success: { (response) in
+        APIClient.sendRequest(path: "archive_order", httpMethod: .get, isLangRequired: true , parameters:[:], success: { (response) in
             if let responseData = response as? [[String : Any]] {
             print(responseData)
             responseData.forEach({ (data) in
@@ -305,38 +322,55 @@ class DataClient: NSObject {
         }
     }
     
+    func getCaptianPrieOffer(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
+     DataClient.shared.captianPriceOffer.removeAll()
+        APIClient.sendRequest(path: "price/captain_offer", httpMethod: .get, isLangRequired: true , parameters:[:], success: { (response) in
+            if let responseData = response as? [[String : Any]] {
+                print(responseData)
+                responseData.forEach({ (data) in
+                    DataClient.shared.captianPriceOffer.append(Offer(json: data))
+                })
+            }
+            success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
     
-    func loginCaptain(password:String,success: @escaping () ->Void, failuer: @escaping (_ error: LLError , _ userStatus:String) -> Void) {
+    
+    func loginCaptain(password:String,success: @escaping () ->Void, failuer: @escaping (_ error: LLError , _ userStatus:String,_ activated_code:String) -> Void) {
         SessionManager.loadPhoneNumber()
+      
         APIClient.sendRequest2(path: "captain_login", httpMethod: .post, isLangRequired: false , parameters:["phone":  SessionManager.shared.phoneNumber,"password":password], success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
-          
+       
+            
             SessionManager.shared.token = (responseData["token_type"] as? String ?? "") + " " + (responseData["access_token"] as? String ?? "")
             SessionManager.shared.cpatainType = responseData["captain_type"] as? String ?? ""
           
             SessionManager.shared.isUserLogged = false
             SessionManager.shared.isCaptainLogged = true
             SessionManager.shared.userId = String(responseData["id"] as? Int ?? 0)
-
+            
             //          SessionManager.shared.currentUser = DataClient.shared.user
             SessionManager.saveCpatainType()
             SessionManager.saveSessionManager()
-            
+
             
             //            responseData.forEach({ (data) in
             //                DataClient.shared.captianOffer.append(CustomerOffer(json: data))
             //            })
             success()
-        }) { (error,userStatus) in
-            failuer(error,userStatus)
+        }) { (error,userStatus,activated_code) in
+            failuer(error,userStatus,activated_code)
         }
     }
     
 
-    func captainRegister(name:String,email:String,password:String,phone:String,cardNumber:String,cardImage:String,licenseImage:String,carForm:String,contractImage:String,financialAccountNumber:String,captainType:Int,title:String,details:String,longitude:Double,latitude:Double,captainImage:String,success: @escaping (_ activationCode:String) ->Void, failuer: @escaping (_ error: LLError) -> Void) {
+    func captainRegister(name:String,email:String,password:String,phone:String,cardNumber:String,cardImage:String,licenseImage:String,carForm:String,contractImage:String,financialAccountNumber:String,captainType:Int,title:String,details:String,longitude:Double,latitude:Double,captainImage:String,cityId:Int,success: @escaping (_ activationCode:String) ->Void, failuer: @escaping (_ error: LLError) -> Void) {
         SessionManager.loadPhoneNumber()
-        let dict = ["name":name, "email":email,"password":password,"phone":SessionManager.shared.phoneNumber,"card_number":cardNumber, "contract_image":contractImage,"financial_account_number":financialAccountNumber,"captain_type":captainType,"license_image":licenseImage,"card_image":cardImage,"car_form":carForm,"title":title,"details":details,"longitude":longitude,"latitude":latitude,"image":captainImage] as [String : Any]
+        let dict = ["name":name, "email":email,"password":password,"phone":SessionManager.shared.phoneNumber,"card_number":cardNumber, "contract_image":contractImage,"financial_account_number":financialAccountNumber,"captain_type":captainType,"license_image":licenseImage,"card_image":cardImage,"car_form":carForm,"title":title,"details":details,"longitude":longitude,"latitude":latitude,"image":captainImage,"city_id":cityId] as [String : Any]
   
         APIClient.sendRequest(path: "captain_register", httpMethod: .post, isLangRequired: false , parameters: dict, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
@@ -554,8 +588,8 @@ class DataClient: NSObject {
         }
     }
     
-    func CaptainAddAddress(title:String,details:String,longitude:Double,latitude:Double, success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
-        let parameters = ["title":title,"details":details,"longitude":longitude,"latitude":latitude] as [String : Any]
+    func CaptainAddAddress(title:String,details:String,longitude:Double,latitude:Double,cityId: Int, success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void){
+        let parameters = ["title":title,"details":details,"longitude":longitude,"latitude":latitude,"city_id":cityId] as [String : Any]
         APIClient.sendRequest(path: "captain_address", httpMethod: .post, isLangRequired: false , parameters:parameters, success: { (response) in
             let responseData = response as? [String : Any] ?? [:]
             print(responseData)
@@ -717,6 +751,41 @@ class DataClient: NSObject {
         }) { (error) in
             failuer(error)
         }
+    }
+    
+    
+    func filter(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void, data:[String:Any]){
+         DataClient.shared.offerFiltered.removeAll()
+        APIClient.sendRequest(path: "filter_offer", httpMethod: .post, isLangRequired: true , parameters: data ,success: { (response) in
+            let responseData = response as? [[String : Any]] ?? [[:]]
+            responseData.forEach({ (data) in
+                DataClient.shared.offerFiltered.append(Offer(json: data))
+            })
+        
+            //let profile = Profile(json: responseData)
+            
+            success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
+    func orderFilter(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void, data:[String:Any]) {
+        DataClient.shared.cpatainCustomerOrderFiltered.removeAll()
+        
+        APIClient.sendRequest(path: "filter_order", httpMethod: .post, isLangRequired: true , parameters: data ,success: { (response) in
+            let responseData = response as? [[String : Any]] ?? [[:]]
+            responseData.forEach({ (data) in DataClient.shared.cpatainCustomerOrderFiltered.append(CaptainCustomerOffer(json: data))
+                
+            })
+            
+            //let profile = Profile(json: responseData)
+            
+            success()
+        }) { (error) in
+            failuer(error)
+        }
+        
     }
     
     

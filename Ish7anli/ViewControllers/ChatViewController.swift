@@ -55,12 +55,13 @@ class ChatViewController: JSQMessagesViewController {
 //        }
 //    }
     
-    
+
     func getCollectionName(){
         
         if senderType == .C{
+         
             if (senderId > targetId ){
-            collectionName = senderId+"C::" + targetId+"U"
+                collectionName = senderId+"C::" + targetId+"U"
             }else{
                   collectionName = targetId+"U::" + senderId+"C"
             }
@@ -99,8 +100,8 @@ class ChatViewController: JSQMessagesViewController {
         }
         self.inputToolbar.contentView.leftBarButtonItem = nil;
 
-     senderId = SessionManager.shared.userId
-     senderDisplayName = SessionManager.shared.displayName
+         senderId = SessionManager.shared.userId
+         senderDisplayName = SessionManager.shared.displayName
      //   clientName =
         
         getCollectionName()
@@ -332,6 +333,7 @@ class ChatViewController: JSQMessagesViewController {
         }
         tempDic["message"] = "New Message added from "+senderDisplayName!
         tempDic["recever_id"] = targetId
+        
        // tempDic["Type"] = "2"
         var data:Dictionary<String, Any> = [:]
         data = tempDic

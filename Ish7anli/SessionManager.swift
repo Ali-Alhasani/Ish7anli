@@ -32,9 +32,12 @@ class SessionManager: NSObject {
         guard let tempDic = UserDefaults.standard.value(forKey: "SessionManager") as? Dictionary<String, Any> else {return}
         guard let userID = UserDefaults.standard.value(forKey: "userId") as? String else {return}
        guard let displayName = UserDefaults.standard.value(forKey: "displayName") as? String else {return}
+        guard let tempPhone = UserDefaults.standard.value(forKey: "phoneNumber") as? String else {return}
+
         SessionManager.shared.token = tempDic["token"] as! String
         SessionManager.shared.userId = userID
         SessionManager.shared.displayName = displayName
+        SessionManager.shared.phoneNumber = tempPhone
         if let boolValue = tempDic["isUserLogged"] as? Bool {
             SessionManager.shared.isUserLogged = boolValue
             if boolValue{
@@ -61,6 +64,7 @@ class SessionManager: NSObject {
      class func loadPhoneNumber(){
         guard let tempPhone = UserDefaults.standard.value(forKey: "phoneNumber") as? String else {return}
           SessionManager.shared.phoneNumber = tempPhone
+        print( SessionManager.shared.phoneNumber)
     }
     class func saveCpatainType(){
        let cpatainType =  SessionManager.shared.cpatainType
@@ -95,8 +99,17 @@ class SessionManager: NSObject {
     
     class func clearSessionManager(){
         UserDefaults.standard.removeObject(forKey: "SessionManager")
+        UserDefaults.standard.removeObject(forKey: "phoneNumber")
+        UserDefaults.standard.removeObject(forKey: "userId")
+        UserDefaults.standard.removeObject(forKey: "displayName")
+        UserDefaults.standard.removeObject(forKey: "cpatainType")
+       
+
         SessionManager.shared.token = ""
         SessionManager.shared.isUserLogged = false
+        SessionManager.shared.isCaptainLogged = false
+        SessionManager.shared.userId = ""
+        SessionManager.shared.displayName = ""
     }
     
     

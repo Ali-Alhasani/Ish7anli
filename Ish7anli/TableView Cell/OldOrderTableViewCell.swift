@@ -13,7 +13,7 @@ protocol OldOrderTableViewDelegate : class {
 }
 struct OldOrderTableViewData {
     
-    init(price: Double, image:String,name:String,time:String,date:String,stars: Double,cityFrom:String,cityTo:String ) {
+    init(price: String, image:String,name:String,time:String,date:String,stars: Double,cityFrom:String,cityTo:String,type:String) {
         self.price = price
         self.stars = stars
         self.image = image
@@ -22,8 +22,9 @@ struct OldOrderTableViewData {
         self.date = date
         self.cityFrom = cityFrom
         self.cityTo = cityTo
+        self.type = type
     }
-    var price: Double
+    var price: String
     var stars: Double
     var image:String
     var name:String
@@ -31,6 +32,7 @@ struct OldOrderTableViewData {
     var date:String
     var cityFrom:String
     var cityTo:String
+    var type:String
 }
 class OldOrderTableViewCell: UITableViewCell {
     weak var cellDelegate: OldOrderTableViewDelegate?
@@ -85,6 +87,14 @@ class OldOrderTableViewCell: UITableViewCell {
                    self.middlePointLabel.text = "في الطريق"
             }else{
                 self.middlePointLabel.text = "in the Way"
+            }
+            
+            if data.type == "1" {
+                self.ProfileimageView.borderColor = UIColor.yellow
+            }else if data.type == "2"{
+                self.ProfileimageView.borderColor = UIColor.red
+            }else if data.type == "3"{
+                self.ProfileimageView.borderColor = UIColor.green
             }
         }
     }

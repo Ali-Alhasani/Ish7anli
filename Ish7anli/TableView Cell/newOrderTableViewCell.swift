@@ -13,7 +13,7 @@ protocol newOrderTableViewDelegate : class {
 
 struct newOrderTableViewData {
     
-    init(price: Double, image:String,name:String,senderCity:String,receiverCity:String,isNew:Bool) {
+    init(price: String, image:String,name:String,senderCity:String,receiverCity:String,isNew:Bool) {
         self.price = price
         self.senderCity = senderCity
         self.image = image
@@ -22,7 +22,7 @@ struct newOrderTableViewData {
         self.isNew = isNew
 
     }
-    var price: Double
+    var price: String
     var image:String
  
     var name:String
@@ -39,6 +39,7 @@ class newOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var receiverCityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var arrowImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,6 +54,11 @@ class newOrderTableViewCell: UITableViewCell {
     
     func setData(_ data: Any?) {
         if let data = data as? newOrderTableViewData {
+            
+            if !MOLHLanguage.isRTL(){
+                arrowImage.image = UIImage(named: "backBlueLeft")
+            }
+            
             if MOLHLanguage.isRTL() {
                    self.currencyLabel.text = "ريال "
                 //let string: NSMutableAttributedString = NSMutableAttributedString(string: "ريال" + String(data.price) )

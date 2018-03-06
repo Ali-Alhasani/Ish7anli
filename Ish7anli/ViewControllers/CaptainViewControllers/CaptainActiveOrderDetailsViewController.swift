@@ -23,6 +23,9 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
     @IBOutlet weak var receiverNameLabel: UILabel!
     @IBOutlet weak var receiverPhoneNumberlabel: UILabel!
     
+    @IBOutlet weak var accountNumberValueLabel: UILabel!
+    @IBOutlet weak var paymentMethodLabel: UILabel!
+    @IBOutlet weak var accountNumberLabel: UILabel!
     
     @IBOutlet weak var priceLabel: UILabel!
     var indexPath:Int?
@@ -38,8 +41,8 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
         nameLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].customerName
         phoneNumberLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].customerPhone
         mailLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].customerEmail
-        senderCity.text = DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderCity
-        recevierCity.text = DataClient.shared.cpatainActiveOrder[indexPath!].addressReceiverCity
+        senderCity.text = DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderTitle
+        recevierCity.text = DataClient.shared.cpatainActiveOrder[indexPath!].addressReceiverTitle
         deliveryLabel.text = ErrorHelper.shared.deliveryArray[ DataClient.shared.cpatainActiveOrder[indexPath!].deliveryType! - 1 ]
         weightLabel.text = ErrorHelper.shared.weightArray[DataClient.shared.cpatainActiveOrder[indexPath!].weight! - 1 ]
         locationLabel.text =  DataClient.shared.cpatainActiveOrder[indexPath!].addressSenderTitle
@@ -63,6 +66,17 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
         }, failure: { (_ error) in
             
         })
+        }
+        
+        paymentMethodLabel.text = ErrorHelper.shared.paymentArray[DataClient.shared.cpatainActiveOrder[indexPath!].paymentType! - 1 ]
+        if DataClient.shared.cpatainActiveOrder[indexPath!].paymentType! == 1 || DataClient.shared.cpatainActiveOrder[indexPath!].paymentType! == 2
+        {
+            accountNumberLabel.text = ""
+            accountNumberValueLabel.text = ""
+            
+        }else {
+            accountNumberLabel.text = DataClient.shared.cpatainActiveOrder[indexPath!].accountNumber
+            
         }
         // Do any additional setup after loading the view.
     }

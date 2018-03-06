@@ -11,6 +11,9 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var phoneNumberText: UITextField!
     var activationCode:String?
+    var isExist:Bool?
+    var isCaptain:Bool?
+    weak var delegate: LeftMenuProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +24,25 @@ class SignInViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.removeNavigationBarItem()
+
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: nil, completion: { (context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+            guard let vc = (self.slideMenuController()?.mainViewController as? UINavigationController)?.topViewController else {
+                return
+            }
+            if vc.isKind(of: SignInViewController.self)  {
+                self.slideMenuController()?.removeLeftGestures()
+                self.slideMenuController()?.removeRightGestures()
+            }
+        })
     }
     
     @IBAction func sginInAction(_ sender: Any) {
@@ -50,8 +72,10 @@ class SignInViewController: UIViewController {
     
     
     func load(){
-        DataClient.shared.logIn(phone: phoneNumberText.text!, success: { (_ activationCode) in
+        DataClient.shared.logIn(phone: phoneNumberText.text!, success: { (_ activationCode , _ isExist , _ isCaptain)  in
             self.activationCode = activationCode
+            self.isExist = isExist
+            self.isCaptain = isCaptain
             MBProgressHUD.hide(for: self.view, animated: true)
             self.performSegue(withIdentifier: "toActivation", sender: self)
             
@@ -75,6 +99,8 @@ class SignInViewController: UIViewController {
             let vc = segue.destination as! ActivationViewController
             vc.activationCode = activationCode!
             vc.phoneNumber = phoneNumberText.text!
+            vc.isExist = isExist
+            vc.isCaptain = isCaptain
         }
     }
     

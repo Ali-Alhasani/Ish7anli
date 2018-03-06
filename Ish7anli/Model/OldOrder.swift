@@ -37,7 +37,8 @@ class OldOrder {
     var captainName:String?
     var captainImage:String?
     var captainRate:Double?
-    var offerPrice:Double?
+    var offerPrice:String?
+    var captainType:String?
   
     
     
@@ -69,8 +70,20 @@ class OldOrder {
         self.addressReceiverCity = json["address_receiver_city"] as? String ?? ""
         self.captainName = json["captain_name"] as? String ?? ""
         self.captainImage = json["captain_image"] as? String ?? ""
-        self.offerPrice = json["offer_price"] as? Double ?? 0.0
+        if let price = json["offer_price"] as? String  {
+            self.offerPrice = price
+        }else if let price = json["price"] as? String{
+            self.offerPrice = price
+        }else if let price = json["offer_price"] as? Int {
+            self.offerPrice = String(price)
+        }else if let price = json["price"] as? Int {
+            self.offerPrice = String(price)
+        }else {
+            self.offerPrice = "0.0"
+        }
+      
         self.captainRate = json["captain_rate"] as? Double ?? 0.0
+        self.captainType = json["captain_type"] as? String ?? ""
         
     }
     init(){

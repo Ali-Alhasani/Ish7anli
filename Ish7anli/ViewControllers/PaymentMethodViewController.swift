@@ -28,6 +28,7 @@ class PaymentMethodViewController: UIViewController {
     var accountNumberString,amountOfMoneyString:String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstButton.isSelected = true
         firstButton.alternateButton = [secondButton,thirdButton]
         secondButton.alternateButton = [firstButton,thirdButton]
         thirdButton.alternateButton = [firstButton,secondButton]
@@ -75,6 +76,15 @@ class PaymentMethodViewController: UIViewController {
                 alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
+            print(senderAddress!)
+               print(type!)
+                 print(weghitIndex!)
+            print(receiveAddress!)
+             print(receiverName!)
+              print(receiverName!)
+             print(receiverPhone!)
+              print(paymentId!)
+         
             DataClient.shared.addOffer(addressSenderId: senderAddress! , deliveryType: type!, weight: weghitIndex!, addressReceiverId: receiveAddress!, receiverName: receiverName!, receiverPhone: receiverPhone!, paymentType: paymentId!, success: {
                 MBProgressHUD.hide(for: self.view, animated: true)
                   var alartmessage:String?

@@ -13,7 +13,7 @@ protocol ArchiveOrderTableViewDelegate : class {
 
 struct ArchiveOrderTableViewData {
     
-    init(price: Double, image:String,name:String,senderCity:String,receiverCity:String, rate:Double) {
+    init(price: String, image:String,name:String,senderCity:String,receiverCity:String, rate:Double) {
         self.price = price
         self.senderCity = senderCity
         self.image = image
@@ -21,7 +21,7 @@ struct ArchiveOrderTableViewData {
         self.receiverCity = receiverCity
         self.rate = rate
     }
-    var price: Double
+    var price: String
     var image:String
     var name:String
     var senderCity:String
@@ -38,6 +38,8 @@ class ArchiveOrderTableViewCell: UITableViewCell {
     @IBOutlet weak var senderCityLabel: UILabel!
     @IBOutlet weak var receiverCityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var arrowImage: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -51,6 +53,10 @@ class ArchiveOrderTableViewCell: UITableViewCell {
     
     func setData(_ data: Any?) {
         if let data = data as? ArchiveOrderTableViewData {
+            if !MOLHLanguage.isRTL(){
+                arrowImage.image = UIImage(named: "backBlueLeft")
+            }
+            
             if MOLHLanguage.isRTL(){
                    self.priceLabel.text = String(data.price) + " ريال"
             }else {

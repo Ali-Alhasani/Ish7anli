@@ -38,6 +38,7 @@ class Offer {
     var senderAddressId:Int?
     var captainAccountNumber:String?
     var isDeleted:Int?
+    var captainType:String = "3"
     
     init(json: [String: Any]) {
         let json = JSON(json)
@@ -49,7 +50,18 @@ class Offer {
         self.cityIdTo = json["city_id_to"].intValue
         self.arrivalDate = json["arrival_date"].stringValue
         self.arrivalTime = json["arrival_time"].stringValue
-        self.price = json["price"].stringValue
+        if let price = json["offer_price"].string  {
+            self.price = price
+        }else if let price = json["price"].string{
+            self.price = price
+        }else if let price = json["offer_price"].int{
+            self.price = String(price)
+        }else if let price = json["price"].int {
+            self.price = String(price)
+        }else {
+            self.price = "0.0"
+        }
+     
         self.captainImage = json["captain_image"].stringValue
         self.captainName = json["captain_name"].stringValue
         self.captainRate = json["captain_rate"].doubleValue
@@ -69,6 +81,10 @@ class Offer {
         self.captainAccountNumber = json["captain_account_number"].stringValue
         if let tmp = json["is_delete"].int {
             self.isDeleted = tmp
+        }
+        if let captainType = json["captain_type"].string {
+            self.captainType = captainType
+            print(captainType)
         }
     }
    

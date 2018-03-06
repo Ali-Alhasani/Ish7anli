@@ -82,7 +82,7 @@ class MyOfferCaptainViewController: UIViewController,UICollectionViewDelegate, U
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "NewOrder",
                                                        for: indexPath) as! NewOrderCollectionViewCell
         if (DataClient.shared.myOffer.count != 0 ){
-            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.myOffer[indexPath.row].price!, image: DataClient.shared.myOffer[indexPath.row].captainImage!, name: DataClient.shared.myOffer[indexPath.row].captainName!, time: DataClient.shared.myOffer[indexPath.row].goTime!, day: "", date: DataClient.shared.myOffer[indexPath.row].goDate!, cityFrom: DataClient.shared.myOffer[indexPath.row].cityNameTo!, cityTo:  DataClient.shared.myOffer[indexPath.row].cityNameFrom! , stars: DataClient.shared.myOffer[indexPath.row].captainRate!))
+            cell.setData(NewOrderCollectionViewData(price: DataClient.shared.myOffer[indexPath.row].price!, image: DataClient.shared.myOffer[indexPath.row].captainImage!, name: DataClient.shared.myOffer[indexPath.row].captainName!, time: DataClient.shared.myOffer[indexPath.row].goTime!, day: "", date: DataClient.shared.myOffer[indexPath.row].goDate!, cityFrom: DataClient.shared.myOffer[indexPath.row].cityNameTo!, cityTo:  DataClient.shared.myOffer[indexPath.row].cityNameFrom! , stars: DataClient.shared.myOffer[indexPath.row].captainRate!, type: DataClient.shared.myOffer[indexPath.row].captainType))
         }
         return cell
     }

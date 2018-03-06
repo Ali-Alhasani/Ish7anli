@@ -35,6 +35,11 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var arrowImage: UIImageView!
     
+    
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var deliveryLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
     @IBOutlet var tapGesture: UITapGestureRecognizer!
     
     @IBAction func tapGestureAction(_ sender: Any) {
@@ -49,8 +54,8 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         load()
-        nextButton.isEnabled = false
-        previousButton.isEnabled = false
+        //nextButton.isEnabled = false
+       // previousButton.isEnabled = false
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.black
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -119,7 +124,7 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TmpTableViewCell", owner: self, options: nil)?.first as! TmpTableViewCell
         cell.selectionStyle = .none
-        cell.setData(TmpTableViewCellData(price: DataClient.shared.CustomerOrder[index].bid[indexPath.row].price!, image: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainImage!, name: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainName!, stars: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainRate))
+        cell.setData(TmpTableViewCellData(price: DataClient.shared.CustomerOrder[index].bid[indexPath.row].price!, image: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainImage!, name: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainName!, stars: DataClient.shared.CustomerOrder[index].bid[indexPath.row].captainRate, type: DataClient.shared.CustomerOrder[index].bid[indexPath.row].cpatainType!))
         cell.cellDelegate = self
         cell.chooseButton.tag = indexPath.row
         cell.chatButton.tag = indexPath.row
@@ -137,62 +142,80 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     @IBAction func previousButton(_ sender: Any) {
-  tmpBack()
+        if index == DataClient.shared.CustomerOrder.startIndex {
+              // previousButton.isEnabled = false
+        }else{
+          index = index - 1
+          self.tabelView.reloadData()
+          self.view(index: index)
+        }
+ // tmpBack()
        
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        tmpNext()
+        
+        if index == DataClient.shared.CustomerOrder.endIndex - 1 {
+            // nextButton.isEnabled = false
+        }else {
+            index = index + 1
+            self.tabelView.reloadData()
+            self.view(index: index)
+        }
+        
+      //  tmpNext()
       
 
         
     }
     
-    func tmpNext(){
-        if DataClient.shared.CustomerOrder.count == 0 ||  index == (DataClient.shared.CustomerOrder.endIndex - 2) {
-            nextButton.isEnabled = false
-        }else {
-            nextButton.isEnabled = true
-            self.index += 1
-            self.view(index: index)
-            self.tabelView.reloadData()
-        }
-      
-    }
-    
-    func tmpBack(){
-        if DataClient.shared.CustomerOrder.count == 0 || DataClient.shared.CustomerOrder.count == 1 || index == (DataClient.shared.CustomerOrder.startIndex + 1) || index == 0 {
-            previousButton.isEnabled = false
-            
-        }else {
-            previousButton.isEnabled = true
-            self.index -= 1
-            self.view(index: index)
-            self.tabelView.reloadData()
-        }
-       
-    }
+//    func tmpNext(){
+//        if DataClient.shared.CustomerOrder.count == 0 ||  index == (DataClient.shared.CustomerOrder.endIndex - 2) {
+//            nextButton.isEnabled = false
+//        }else {
+//            nextButton.isEnabled = true
+//            self.index += 1
+//            self.view(index: index)
+//            self.tabelView.reloadData()
+//        }
+//
+//    }
+//
+//    func tmpBack(){
+//        if DataClient.shared.CustomerOrder.count == 0 || DataClient.shared.CustomerOrder.count == 1 || index == (DataClient.shared.CustomerOrder.startIndex + 1) || index == 0 {
+//            previousButton.isEnabled = false
+//
+//        }else {
+//            previousButton.isEnabled = true
+//            self.index -= 1
+//            self.view(index: index)
+//            self.tabelView.reloadData()
+//        }
+//
+//    }
     func tmp(){
         
         if DataClient.shared.CustomerOrder.count != 0 && index == 0 {
             view(index: 0)
+        }else if DataClient.shared.CustomerOrder.count != 0{
+            view(index: index)
         }else{
             viewEmpty()
           
         }
-        
-        if DataClient.shared.CustomerOrder.count == 0 ||  index == (DataClient.shared.CustomerOrder.endIndex - 2) {
-            nextButton.isEnabled = false
-        }else {
-            nextButton.isEnabled = true
-        }
-        
-        if DataClient.shared.CustomerOrder.count == 0 || DataClient.shared.CustomerOrder.count == 1 || index == (DataClient.shared.CustomerOrder.startIndex + 1) || index == 0{
-            previousButton.isEnabled = false
-            
-        }else {
-            previousButton.isEnabled = true
-        }
+//
+//        if DataClient.shared.CustomerOrder.count == 0 ||  index == (DataClient.shared.CustomerOrder.endIndex - 1) {
+//            nextButton.isEnabled = false
+//        }else {
+//            nextButton.isEnabled = true
+//        }
+//
+//        if DataClient.shared.CustomerOrder.count == 0 || DataClient.shared.CustomerOrder.count == 1 || index == (DataClient.shared.CustomerOrder.startIndex + 1) || index == 0{
+//            previousButton.isEnabled = false
+//
+//        }else {
+//            previousButton.isEnabled = true
+//        }
       
     }
     
@@ -201,6 +224,7 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func load (){
         DataClient.shared.getCustomerOrder(success: {
             self.tabelView.reloadData()
+        
             self.tmp()
             print(DataClient.shared.CustomerOrder.count)
         }) { (_ error) in
@@ -239,10 +263,15 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     func view (index:Int){
-        if (index != DataClient.shared.CustomerOrder.endIndex - 1) {
+        if (index != DataClient.shared.CustomerOrder.endIndex) {
         dateLabel.text = DataClient.shared.CustomerOrder[index].date! + " - " +  DataClient.shared.CustomerOrder[index].time!
-        fromCityLabel.text = DataClient.shared.CustomerOrder[index].addressSenderCity!
-        destinationCityLabel.text = DataClient.shared.CustomerOrder[index].addressReceiverCity!
+        fromCityLabel.text = DataClient.shared.CustomerOrder[index].addressSenderTitle!
+        destinationCityLabel.text = DataClient.shared.CustomerOrder[index].addressReceiverTitle!
+            
+            weightLabel.text = ErrorHelper.shared.weightArray[DataClient.shared.CustomerOrder[index].weight! - 1 ]
+            deliveryLabel.text = ErrorHelper.shared.deliveryArray[DataClient.shared.CustomerOrder[index].deliveryType! - 1 ]
+            
+            locationLabel.text = DataClient.shared.CustomerOrder[index].addressSenderTitle!
         }
     }
     
@@ -251,6 +280,11 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
             dateLabel.text = ""
             fromCityLabel.text = ""
             destinationCityLabel.text = ""
+         nextButton.isEnabled = false
+         weightLabel.text = ""
+        deliveryLabel.text = ""
+        locationLabel.text = ""
+          previousButton.isEnabled = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

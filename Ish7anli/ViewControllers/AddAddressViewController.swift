@@ -10,7 +10,7 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 
-class AddAddressViewController: UIViewController {
+class AddAddressViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource  {
 
     @IBOutlet weak var addressNameText: UITextField!
     @IBOutlet weak var addressDetailsText: UITextField!
@@ -18,9 +18,12 @@ class AddAddressViewController: UIViewController {
     @IBOutlet weak var googleMapView: GMSMapView!
     var lat = 0.0
     var lng = 0.0
+    var cityId = 0
     var locationManager: CLLocationManager = CLLocationManager()
     var location:String?
         var mapView:GMSMapView?
+    var areaPicker: UIPickerView! = UIPickerView()
+
     // var mapView:GMSMapView?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +32,58 @@ class AddAddressViewController: UIViewController {
         //googleMapView.delegate = self
         //setupMap()
        //setupLocation()
+        addressNameText.delegate = self
          setupLocation()
+        backgroundLoad()
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if (pickerView == areaPicker) {
+            
+            return DataClient.shared.allCity.count
+        }
+        return 0
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if (pickerView == areaPicker) {
+            return  DataClient.shared.allCity[row].name
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if (pickerView == areaPicker) {
+            if(DataClient.shared.allCity.count > 0) {
+                addressNameText.text = DataClient.shared.allCity[row].name
+                cityId = DataClient.shared.allCity[row].id
+                
+            }
+            
+        }
+    }
+    
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if(textField == addressNameText){
+            self.areaPicker!.delegate = self
+            self.areaPicker!.dataSource = self
+            self.addressNameText.inputView = self.areaPicker
+            
+        }
+        
     }
     
 
@@ -106,7 +154,7 @@ class AddAddressViewController: UIViewController {
     
     
     func load(){
-        DataClient.shared.addAddress(title: addressNameText.text!, details: addressDetailsText.text!, longitude: lng, latitude: lat, success: {
+        DataClient.shared.addAddress(title: addressNameText.text!, details: addressDetailsText.text!, longitude: lng, latitude: lat, cityId: cityId, success: {
             print(self.lat)
             print(self.lng)
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -119,6 +167,24 @@ class AddAddressViewController: UIViewController {
             alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
             
+        }
+    }
+    
+    func backgroundLoad(){
+        let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        
+        spiningActivity.label.text =  ErrorHelper.shared.loadingtitle
+        spiningActivity.detailsLabel.text =  ErrorHelper.shared.message
+        
+        DataClient.shared.getCity(success: {
+            MBProgressHUD.hide(for: self.view, animated: true)
+
+        }) { (_ error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
         }
     }
     /*

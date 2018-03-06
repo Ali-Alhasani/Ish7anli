@@ -9,7 +9,9 @@
 import Foundation
 class CaptainProfile {
     var address = [Address]()
+    var financial_account_number:String?
     init(json: [String: Any]) {
+        self.financial_account_number = json["financial_account_number"] as? String ?? ""
         if let address = json["address"] as? [[String: Any]] {
             self.address = address.map { Address(json: $0) }
         }

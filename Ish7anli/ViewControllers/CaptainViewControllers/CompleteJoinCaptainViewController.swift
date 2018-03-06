@@ -34,6 +34,7 @@ class CompleteJoinCaptainViewController: UIViewController {
     password:String?
     
     var lat,lng:Double?
+    var cityId:Int?
     var name,details:String?
     @IBOutlet weak var cardImageButton: UIButton!
     @IBOutlet weak var licenceImageButton: UIButton!
@@ -213,6 +214,7 @@ class CompleteJoinCaptainViewController: UIViewController {
         self.lng =  CaptainRegisterAddAddressViewController.lng
         self.name = CaptainRegisterAddAddressViewController.name
         self.details = CaptainRegisterAddAddressViewController.details
+        self.cityId = CaptainRegisterAddAddressViewController.cityId
         
         //viewModel.addListener()
         
@@ -239,6 +241,7 @@ class CompleteJoinCaptainViewController: UIViewController {
             vc.details = details!
             vc.lng = lng!
             vc.lat = lat!
+            vc.cityId = cityId!
             
             
         }

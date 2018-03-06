@@ -11,9 +11,10 @@ import UIKit
 class AcceptedCaptainViewController: UIViewController {
 
     @IBOutlet weak var verificationCodeText: UITextField!
-    
+    var activationCodeC:String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
       verificationCodeText.text = activationCodeC!
         // Do any additional setup after loading the view.
     }

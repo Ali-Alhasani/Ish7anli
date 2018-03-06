@@ -12,7 +12,7 @@ class AddOrderNewViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel = AddressViewModel()
-    var senderAddress,weghitIndex,deliveryIndex:Int?
+    var senderAddress,weghitIndex,deliveryIndex,senderCity:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         //load()
@@ -61,7 +61,10 @@ class AddOrderNewViewController: UIViewController {
             let vc = segue.destination as! AddOrder2ViewController
             vc.senderAddress = senderAddress!
             vc.weghitIndex = weghitIndex!
+            print(deliveryIndex!)
             vc.deliveryIndex = deliveryIndex!
+            vc.senderCity = senderCity!
+            print(weghitIndex!)
         }
     }
     @IBAction func savePlayerDetail(_ segue: UIStoryboardSegue) {
@@ -90,10 +93,11 @@ extension AddOrderNewViewController: AddressViewModelDelegate {
         self.present(alert, animated: true)
     }
     
-    func move2(_ senderAddress: Int, _ deliveryIndex: Int, weghitIndex: Int) {
+    func move2(_ senderAddress: Int, _ deliveryIndex: Int, weghitIndex: Int, _ cityId : Int) {
           self.senderAddress = senderAddress
           self.deliveryIndex = deliveryIndex
            self.weghitIndex = weghitIndex
+          self.senderCity = cityId
           self.performSegue(withIdentifier: "toSecond", sender: self)
     }
     

@@ -42,6 +42,8 @@ class OrderDetails2ViewController: UIViewController {
     @IBOutlet weak var accountNumberLabel: UILabel!
     @IBOutlet weak var receiverAddressLabel: UILabel!
 
+    @IBOutlet weak var accountNumberValueLabel: UILabel!
+    
     @IBOutlet weak var arrowImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +56,8 @@ class OrderDetails2ViewController: UIViewController {
      nameLabel.text = DataClient.shared.lastOffer[indexPath!].captainName
         ratingView.rating = DataClient.shared.lastOffer[indexPath!].captainRate!
      priceLabel.text = String((DataClient.shared.lastOffer[indexPath!].offerPrice)!)
-     senderCityLabel.text = DataClient.shared.lastOffer[indexPath!].addressSenderCity
-     LastCityLabel.text = DataClient.shared.lastOffer[indexPath!].addressReceiverCity
+     senderCityLabel.text = DataClient.shared.lastOffer[indexPath!].addressSenderTitle
+     LastCityLabel.text = DataClient.shared.lastOffer[indexPath!].addressReceiverTitle
         
         APIClient.sendImageRequest(path: DataClient.shared.lastOffer[indexPath!].captainImage!
 , success: { (_ image) in
@@ -63,7 +65,27 @@ class OrderDetails2ViewController: UIViewController {
         }, failure: { (_ error) in
             
         })
-      
+        
+//        if DataClient.shared.lastOffer[indexPath!].status == 1 {
+//            secondPoint.backgroundColor = UIColor.white
+//        }
+        
+        if DataClient.shared.lastOffer[indexPath!].status == 2 {
+            secondPoint.backgroundColor = UIColor(named: "niceBlue")
+        }
+        if DataClient.shared.lastOffer[indexPath!].status == 3 {
+            thirdPoint.backgroundColor = UIColor(named: "niceBlue")
+        }
+        
+        if DataClient.shared.lastOffer[indexPath!].captainType == "1" {
+            ProfileimageView.borderColor = UIColor.yellow
+        }else if DataClient.shared.lastOffer[indexPath!].captainType == "2" {
+             ProfileimageView.borderColor = UIColor.red
+        }else if DataClient.shared.lastOffer[indexPath!].captainType == "3" {
+             ProfileimageView.borderColor = UIColor.green
+        }
+        
+        
         sendTimeLabel.text = DataClient.shared.lastOffer[indexPath!].time
         sendDateLabel.text = DataClient.shared.lastOffer[indexPath!].date
         weightLabel.text =  ErrorHelper.shared.weightArray[DataClient.shared.lastOffer[indexPath!].weight! - 1 ]
@@ -73,13 +95,19 @@ class OrderDetails2ViewController: UIViewController {
         
         receiverNameLabel.text = DataClient.shared.lastOffer[indexPath!].receiverName
         receiverPhoneLabel.text = DataClient.shared.lastOffer[indexPath!].receiverPhone
-        receiverAddressLabel.text = DataClient.shared.lastOffer[indexPath!].addressReceiverCity! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverTitle!
+        receiverAddressLabel.text =  DataClient.shared.lastOffer[indexPath!].addressReceiverDetails! + " - " + DataClient.shared.lastOffer[indexPath!].addressReceiverTitle!
         paymentMethodLabel.text = ErrorHelper.shared.paymentArray[DataClient.shared.lastOffer[indexPath!].paymentType! - 1 ]
+        if DataClient.shared.lastOffer[indexPath!].paymentType! == 1 || DataClient.shared.lastOffer[indexPath!].paymentType! == 2
+        {
+            accountNumberLabel.text = ""
+            accountNumberValueLabel.text = ""
+            
+        }else {
         accountNumberLabel.text = DataClient.shared.lastOffer[indexPath!].accountNumber
         
+        }
         
-        
-        
+     
         
         // Do any additional setup after loading the view.
     }

@@ -12,7 +12,7 @@ protocol ActiveOrderTableViewDelegate : class {
 }
 struct ActiveOrderTableViewData {
     
-    init(price: Double, image:String,name:String,cityFrom:String,cityTo:String,type:Int ) {
+    init(price: String, image:String,name:String,cityFrom:String,cityTo:String,type:Int ) {
         self.price = price
         self.image = image
         self.name = name
@@ -20,7 +20,7 @@ struct ActiveOrderTableViewData {
         self.cityTo = cityTo
         self.type = type
     }
-    var price: Double
+    var price: String
     var image:String
     var name:String
     var cityFrom:String

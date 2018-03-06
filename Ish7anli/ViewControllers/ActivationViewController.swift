@@ -15,6 +15,9 @@ class ActivationViewController: UIViewController {
     
     var activationCode:String?
     var phoneNumber:String?
+    var isExist:Bool?
+    var isCaptain:Bool?
+
     override func viewDidLoad() {
         super.viewDidLoad()
       self.activationText.text = activationCode!
@@ -48,9 +51,17 @@ class ActivationViewController: UIViewController {
         spiningActivity.label.text = ErrorHelper.shared.loadingtitle
         spiningActivity.detailsLabel.text = ErrorHelper.shared.message
         
-        DataClient.shared.activate(success: {
+        DataClient.shared.activate(success:  {
             //SessionManager.loadSessionManager()
+            if (self.isCaptain)!{
+                     self.performSegue(withIdentifier: "toCpatainLogin", sender: self)
+            }
+            else if (self.isExist)! {
+                let delegate = UIApplication.shared.delegate as! AppDelegate
+                delegate.move()
+            }else{
            self.performSegue(withIdentifier: "completeRegistration", sender: self)
+            }
      MBProgressHUD.hide(for: self.view, animated: true)
         }, failuer: { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
@@ -62,10 +73,12 @@ class ActivationViewController: UIViewController {
     
     
     func load(){
-        DataClient.shared.logIn(phone: phoneNumber!, success: { (_ activationCode) in
+        DataClient.shared.logIn(phone: phoneNumber!, success: { (_ activationCode , _ isExist, _ isCaptain)  in
              MBProgressHUD.hide(for: self.view, animated: true)
              self.activationCode = activationCode
             self.activationText.text = activationCode
+            self.isExist = isExist
+            self.isCaptain = isCaptain
         }) { (_ error) in
             MBProgressHUD.hide(for: self.view, animated: true)
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)

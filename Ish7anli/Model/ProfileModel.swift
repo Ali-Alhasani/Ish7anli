@@ -47,6 +47,7 @@ class Address {
     var details:String?
     var longitude:String?
     var latitude:String?
+    var cityId:Int?
     var id:Int?
     
     init(json: [String: Any]) {
@@ -55,6 +56,7 @@ class Address {
         self.longitude = json["longitude"] as? String
         self.latitude = json["latitude"] as? String
         self.id = json["id"] as? Int
+        self.cityId = json["city_id"] as? Int
     }
 }
 

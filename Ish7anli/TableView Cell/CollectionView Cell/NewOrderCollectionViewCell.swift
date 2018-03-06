@@ -9,7 +9,7 @@
 import UIKit
 struct NewOrderCollectionViewData {
     
-    init(price: String, image:String,name:String,time:String,day:String,date:String,cityFrom:String,cityTo:String,stars: Double) {
+    init(price: String, image:String,name:String,time:String,day:String,date:String,cityFrom:String,cityTo:String,stars: Double,type:String) {
         self.price = price
         self.stars = stars
         self.image = image
@@ -19,6 +19,7 @@ struct NewOrderCollectionViewData {
         self.date = date
         self.cityFrom = cityFrom
         self.cityTo = cityTo
+        self.type = type
     }
     var price: String
     var stars: Double
@@ -29,6 +30,7 @@ struct NewOrderCollectionViewData {
     var date:String
     var cityFrom:String
     var cityTo:String
+    var type:String
 }
 class NewOrderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
@@ -66,6 +68,12 @@ class NewOrderCollectionViewCell: UICollectionViewCell {
             self.dateLabel.text = data.date
             self.cityFromLabel.text = data.cityFrom
             self.cityToLabel.text = data.cityTo
+            
+            if data.type == "2" {
+                imageView.borderColor = UIColor.red
+            }else if data.type == "3" {
+                imageView.borderColor = UIColor.green
+            }
         }
     }
    

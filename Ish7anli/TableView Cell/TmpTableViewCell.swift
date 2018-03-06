@@ -14,17 +14,19 @@ protocol TmpTableViewCellDelegate : class {
 
 struct TmpTableViewCellData {
     
-    init(price: Int, image:String,name:String,stars: Double) {
+    init(price: String, image:String,name:String,stars: Double , type :String) {
         self.price = price
         self.stars = stars
         self.image = image
         self.name = name
+        self.type = type
      
     }
-    var price: Int
+    var price: String
     var stars: Double
     var image:String
     var name:String
+    var type:String
    
 }
 class TmpTableViewCell: UITableViewCell {
@@ -75,6 +77,14 @@ class TmpTableViewCell: UITableViewCell {
                  chatButton.setTitle(" محادثة ", for: .normal)
                 currencyLabel.text = "ريال"
                 cellImage.image = UIImage(named:"cell Right")
+            }
+            
+            if data.type == "1" {
+                profileImageView.borderColor = UIColor.yellow
+            }else if data.type == "2" {
+                  profileImageView.borderColor = UIColor.red
+            }else if data.type == "3" {
+                   profileImageView.borderColor = UIColor.green
             }
         }
     }

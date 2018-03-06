@@ -30,7 +30,7 @@ var informationIndexPath2 = [Int]()
 protocol AddressViewModel2Delegate: class {
     func apply(changes: SectionChanges)
     func move()
-    func move2(_ receiverAddress:Int,information:[Int])
+    func move2(_ receiverAddress:Int,information:[Int],_ receiverCity:Int)
 
     func apply2()
 }
@@ -93,9 +93,10 @@ extension AddressViewModel2: UITableViewDataSource,AddAddressTableViewCellDelega
         
         
         var senderAddress:Int?
-        
+        var receiverCity:Int?
         if let item = items[0] as? AddressViewMode2AddressItem {
             senderAddress = item.address[selectedAddress].id
+            receiverCity = item.address[selectedAddress].cityId
         }
         
         //        if let item = items[4] as? OfferAddressViewModeReceiverInformation {
@@ -103,7 +104,7 @@ extension AddressViewModel2: UITableViewDataSource,AddAddressTableViewCellDelega
         //
         //        }
         
-        delegate?.move2(senderAddress!, information: informationIndexPath2)
+        delegate?.move2(senderAddress!, information: informationIndexPath2, receiverCity!)
         
 
     }

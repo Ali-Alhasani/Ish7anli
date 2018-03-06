@@ -48,7 +48,8 @@ class NewOrderViewController: UIViewController,IndicatorInfoProvider,UICollectio
         super.viewWillAppear(animated)
         self.setNavigationBarItem()
         self.hideBackButton()
-        self.load()
+       //  self.Refreshload()
+     
     }
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
@@ -101,7 +102,7 @@ class NewOrderViewController: UIViewController,IndicatorInfoProvider,UICollectio
                 let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "NewOrder",
                                                                for: indexPath) as! NewOrderCollectionViewCell
                 if (DataClient.shared.offer.count != 0 ){
-                cell.setData(NewOrderCollectionViewData(price: DataClient.shared.offer[indexPath.row].price!, image: DataClient.shared.offer[indexPath.row].captainImage!, name: DataClient.shared.offer[indexPath.row].captainName!, time: DataClient.shared.offer[indexPath.row].goTime!, day: "", date: DataClient.shared.offer[indexPath.row].goDate!, cityFrom: DataClient.shared.offer[indexPath.row].cityNameTo!, cityTo:  DataClient.shared.offer[indexPath.row].cityNameFrom! , stars: DataClient.shared.offer[indexPath.row].captainRate!))
+                    cell.setData(NewOrderCollectionViewData(price: DataClient.shared.offer[indexPath.row].price!, image: DataClient.shared.offer[indexPath.row].captainImage!, name: DataClient.shared.offer[indexPath.row].captainName!, time: DataClient.shared.offer[indexPath.row].goTime!, day: "", date: DataClient.shared.offer[indexPath.row].goDate!, cityFrom: DataClient.shared.offer[indexPath.row].cityNameTo!, cityTo:  DataClient.shared.offer[indexPath.row].cityNameFrom! , stars: DataClient.shared.offer[indexPath.row].captainRate!, type: DataClient.shared.offer[indexPath.row].captainType ))
                 }
                 return cell
     }
@@ -124,6 +125,20 @@ class NewOrderViewController: UIViewController,IndicatorInfoProvider,UICollectio
             self.present(alert, animated: true)
         }
     }
+    
+    
+    func Refreshload(){
+        DataClient.shared.getOffer(success: {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }) { (_ error) in
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
     
     @IBAction func unwindFromAddVC2(_ sender: UIStoryboardSegue){
         

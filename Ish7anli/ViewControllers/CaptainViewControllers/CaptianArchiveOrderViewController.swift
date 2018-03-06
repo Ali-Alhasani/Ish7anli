@@ -69,7 +69,7 @@ load()
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("ArchiveOrderTableViewCell", owner: self, options: nil)?.first as! ArchiveOrderTableViewCell
         cell.selectionStyle = .none
-        cell.setData(ArchiveOrderTableViewData(price: DataClient.shared.captianArchiveOrder[indexPath.row].offerPrice!, image: DataClient.shared.captianArchiveOrder[indexPath.row].customerImage!, name: DataClient.shared.captianArchiveOrder[indexPath.row].customerName!, senderCity: DataClient.shared.captianArchiveOrder[indexPath.row].addressSenderCity!, receiverCity: DataClient.shared.captianArchiveOrder[indexPath.row].addressReceiverCity!, rate: DataClient.shared.captianArchiveOrder[indexPath.row].offerRate!))
+        cell.setData(ArchiveOrderTableViewData(price: DataClient.shared.captianArchiveOrder[indexPath.row].offerPrice!, image: DataClient.shared.captianArchiveOrder[indexPath.row].customerImage!, name: DataClient.shared.captianArchiveOrder[indexPath.row].customerName!, senderCity: DataClient.shared.captianArchiveOrder[indexPath.row].addressSenderTitle!, receiverCity: DataClient.shared.captianArchiveOrder[indexPath.row].addressReceiverTitle!, rate: DataClient.shared.captianArchiveOrder[indexPath.row].offerRate!))
         return cell
     }
     

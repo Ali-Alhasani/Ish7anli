@@ -16,7 +16,7 @@ class ArchiveOrder {
     var weight:Int?
     var receiverName:String?
     var receiverPhone:String?
-    var paymentType:String?
+    var paymentType:Int?
     var accountNumber:String?
     var amount:String?
     var time:String?
@@ -37,7 +37,7 @@ class ArchiveOrder {
     var customerImage:String?
     var customerPhone:String?
     var customerEmail:String?
-    var offerPrice:Double?
+    var offerPrice:String?
     var offerRate:Double?
     
     
@@ -50,7 +50,7 @@ class ArchiveOrder {
         self.weight = json["weight"] as? Int ?? 0
         self.receiverName = json["receiver_name"] as? String ?? ""
         self.receiverPhone = json["receiver_phone"] as? String ?? ""
-        self.paymentType = json["payment_type"] as? String ?? ""
+        self.paymentType = json["payment_type"] as? Int ?? 0
         if let accountNumber = json["the_amount"] as? String {
              self.accountNumber = accountNumber
         }
@@ -75,7 +75,19 @@ class ArchiveOrder {
         self.customerImage = json["customer_image"] as? String ?? ""
         self.customerPhone = json["customer_phone"] as? String ?? ""
         self.customerEmail = json["customer_email"] as? String ?? ""
-        self.offerPrice = json["offer_price"] as? Double ?? 0.0
+        
+        if let price = json["offer_price"] as? String  {
+            self.offerPrice = price
+        }else if let price = json["price"] as? String{
+            self.offerPrice = price
+        }else if let price = json["offer_price"] as? Int {
+            self.offerPrice = String(price)
+        }else if let price = json["price"] as? Int {
+            self.offerPrice = String(price)
+        }else {
+            self.offerPrice = "0.0"
+        }
+      
         self.offerRate = json["offer_rate"] as? Double ?? 0.0
       
     }
