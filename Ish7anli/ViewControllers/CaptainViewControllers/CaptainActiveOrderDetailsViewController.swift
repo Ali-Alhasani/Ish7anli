@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class CaptainActiveOrderDetailsViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -86,6 +85,12 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.hideBackButton()
+        
+    }
+    
     @IBAction func chatAction(_ sender: Any) {
         self.performSegue(withIdentifier: "toActiveChat", sender: self)
     }
@@ -148,6 +153,8 @@ class CaptainActiveOrderDetailsViewController: UIViewController {
         
         
     }
+    
+  
     func someHandler(alert: UIAlertAction!) {
         
         

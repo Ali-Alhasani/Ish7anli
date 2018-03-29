@@ -17,53 +17,53 @@ enum SenderType: String {
 }
 
 class ChatViewController: JSQMessagesViewController {
-
+    
     var targetId: String = ""
     var name: String = ""
-   // var senderId:String = ""
+    // var senderId:String = ""
     var senderType: SenderType? = nil
     
     var db:Firestore? = nil
     var ref: CollectionReference? = nil
-
+    
     lazy var outgoingBubbleImageView: JSQMessagesBubbleImage = self.setupOutgoingBubble()
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
-
-
+    
+    
     var collectionName: String = ""
-
-
-     var isFirstRunForObserver = true
-       var isFirstTimeToLoadData = true
+    
+    
+    var isFirstRunForObserver = true
+    var isFirstTimeToLoadData = true
     var messages = [JSQMessage]()
-
- var ok,error,alartTitle,loadingtitle,message:String?
+    
+    var ok,error,alartTitle,loadingtitle,message:String?
     private var photoMessageMap = [String: JSQPhotoMediaItem]()
     private var updatedMessageRefHandle: DatabaseHandle?
     var secondsFromGMT: Int { return 0 }
     var isNoDataRemaingInFireBase = false
-
-            //title = channel?.name
-
-//    deinit {
-//        if let refHandle = newMessageRefHandle {
-//            messageRef.removeObserver(withHandle: refHandle)
-//        }
-//
-//        if let refHandle = updatedMessageRefHandle {
-//            messageRef.removeObserver(withHandle: refHandle)
-//        }
-//    }
     
-
+    //title = channel?.name
+    
+    //    deinit {
+    //        if let refHandle = newMessageRefHandle {
+    //            messageRef.removeObserver(withHandle: refHandle)
+    //        }
+    //
+    //        if let refHandle = updatedMessageRefHandle {
+    //            messageRef.removeObserver(withHandle: refHandle)
+    //        }
+    //    }
+    
+    
     func getCollectionName(){
         
         if senderType == .C{
-         
+            
             if (senderId > targetId ){
                 collectionName = senderId+"C::" + targetId+"U"
             }else{
-                  collectionName = targetId+"U::" + senderId+"C"
+                collectionName = targetId+"U::" + senderId+"C"
             }
         }else if (senderType == .U){
             if (senderId > targetId ){
@@ -79,11 +79,11 @@ class ChatViewController: JSQMessagesViewController {
             }
         }
         
-//        if senderId < targetId {
-//            collectionName = senderId+"\(senderType?.rawValue)::"+targetId+"
-//        }else{
-//            collectionName = targetId+"::"+senderId
-//        }
+        //        if senderId < targetId {
+        //            collectionName = senderId+"\(senderType?.rawValue)::"+targetId+"
+        //        }else{
+        //            collectionName = targetId+"::"+senderId
+        //        }
         db = Firestore.firestore()
         ref = db?.collection(collectionName)
         fetchMessages()
@@ -92,43 +92,58 @@ class ChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // self.senderId = ""
+        // self.senderId = ""
         if MOLHLanguage.isRTL() {
-              self.title = "المحادثات"
+            self.title = "المحادثات"
         }else{
             self.title = "Chat"
         }
         self.inputToolbar.contentView.leftBarButtonItem = nil;
-
-         senderId = SessionManager.shared.userId
-         senderDisplayName = SessionManager.shared.displayName
-     //   clientName =
+        
+        senderId = SessionManager.shared.userId
+        senderDisplayName = SessionManager.shared.displayName
+        //   clientName =
         
         getCollectionName()
         
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-
-      //  observeMessages()
-       // db.collection("Fucking my method")
+        self.collectionView.collectionViewLayout.springinessEnabled = false
+        self.navigationController?.toolbar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
+         self.navigationController?.navigationBar.barTintColor = UIColor.white
+//        if #available(iOS 11.0, *) {
+//        // collectionView.contentInsetAdjustmentBehavior = .never
+//       collectionView.contentInset = UIEdgeInsets.zero
+////
+//     collectionView.scrollIndicatorInsets = UIEdgeInsets.zero;
+////
+//      collectionView.contentOffset = CGPoint(x: 0.0, y: 0.0);
+// } else {
+//       automaticallyAdjustsScrollViewInsets = false
+//     }
+       // self..contentInsetAdjustmentBehavior = .always
+           //self.collectionView.contentInsetAdjustmentBehavior = .never
+        //  observeMessages()
+        // db.collection("Fucking my method")
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-      
-
+        
+        
     }
     // MARK: Collection view data source (and related) methods
-
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
-
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item] // 1
         if message.senderId == senderId { // 2
@@ -137,7 +152,7 @@ class ChatViewController: JSQMessagesViewController {
             return incomingBubbleImageView
         }
     }
-
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString? {
         let message = messages[indexPath.item]
         switch message.senderId {
@@ -151,37 +166,37 @@ class ChatViewController: JSQMessagesViewController {
             return NSAttributedString(string: senderDisplayName)
         }
     }
-
-
-
+    
+    
+    
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
     }
-
+    
     private func setupIncomingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     }
-
-
-
-      // No avatars
+    
+    
+    
+    // No avatars
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return nil
     }
-
+    
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
         return 15
     }
-
-
-
-
+    
+    
+    
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
         let message = messages[indexPath.item]
-
+        
         if message.senderId == senderId {
             cell.textView?.textColor = UIColor.white
         } else {
@@ -189,43 +204,36 @@ class ChatViewController: JSQMessagesViewController {
         }
         return cell
     }
-
-
+    
+    
     private func addMessage(withId id: String, name: String, text: String) {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
         }
     }
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y == 0{
-            self.isFirstTimeToLoadData = false
-            
-            fetchMessages()
-        }
-        
-    }
 
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-
-//        let itemRef = messageRef.childByAutoId() // 1
-//        let messageItem = [ // 2
-//            "senderId": senderId!,
-//            "senderName": senderDisplayName!,
-//            "text": text!,
-//            ]
-//
-//        itemRef.setValue(messageItem) // 3
-//
-       JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
+        
+        //        let itemRef = messageRef.childByAutoId() // 1
+        //        let messageItem = [ // 2
+        //            "senderId": senderId!,
+        //            "senderName": senderDisplayName!,
+        //            "text": text!,
+        //            ]
+        //
+        //        itemRef.setValue(messageItem) // 3
+        //
+        JSQSystemSoundPlayer.jsq_playMessageSentSound() // 4
         addNewMessage(senderId: senderId, displayName: senderDisplayName, type: "TEXT", text: text, downloadUrl: nil)
         //finishSendingMessage()
         finishSendingMessage() // 5
     }
-
+    
     func fetchMessages(){
         if self.isNoDataRemaingInFireBase{return}
         guard let chatRef = ref else {return}
-        var query = chatRef.order(by: "creationDate", descending: true).limit(to: 6)
+        var query = chatRef.order(by: "creationDate", descending: true).limit(to: 9)
         var value: Double? = nil
         if messages.count > 0 {
             value = ((messages.first?.date.timeIntervalSince1970)! - Double(secondsFromGMT))*1000
@@ -243,7 +251,7 @@ class ChatViewController: JSQMessagesViewController {
             spiningActivity.label.text = loadingtitle
             spiningActivity.detailsLabel.text = message
             
-           // ActivityIndicatorManager.start()
+            // ActivityIndicatorManager.start()
         }
         query.getDocuments(completion: { (snapshot, error) in
             if error != nil{
@@ -254,7 +262,7 @@ class ChatViewController: JSQMessagesViewController {
                     let dict = document.data()
                     print(dict)
                     guard let message = self.extractMessageData(dictionary: dict) else {
-                      MBProgressHUD.hide(for: self.view, animated: true)
+                        MBProgressHUD.hide(for: self.view, animated: true)
                         return}
                     self.messages.insert(message, at: 0)
                 })
@@ -273,7 +281,7 @@ class ChatViewController: JSQMessagesViewController {
         })
     }
     
-
+    
     private func observeMessages() {
         guard let refCollection = ref else {return}
         let dateInSecs = (Date().timeIntervalSince1970 - Double(secondsFromGMT)) * 1000
@@ -297,7 +305,7 @@ class ChatViewController: JSQMessagesViewController {
         let type = dictionary["type"] as! String
         let senderId = dictionary["senderId"] as! String
         let displayName = dictionary["displayName"] as! String
-        var secondForm1970 = dictionary["creationDate"] as! Double
+        let secondForm1970 = dictionary["creationDate"] as! Double
         // 3 + 2 = 5
         let temp = (secondForm1970/1000) + Double(secondsFromGMT)
         let creationDate = Date(timeIntervalSince1970: (temp))
@@ -334,14 +342,14 @@ class ChatViewController: JSQMessagesViewController {
         tempDic["message"] = "New Message added from "+senderDisplayName!
         tempDic["recever_id"] = targetId
         
-       // tempDic["Type"] = "2"
+        // tempDic["Type"] = "2"
         var data:Dictionary<String, Any> = [:]
         data = tempDic
         
         DataClient.shared.requestAddNotification(data: data, success: {
-
+            
         }, failuer: { (error) in
-
+            
         })
     }
     func scrollCollectionViewDown(){
@@ -351,87 +359,49 @@ class ChatViewController: JSQMessagesViewController {
             collectionView.scrollToItem(at: indexPath, at: .bottom, animated: false)
         }
     }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+      if scrollView.contentInset.top == 0{
+            self.isFirstTimeToLoadData = false
+            
+            fetchMessages()
+        }
         
-        
-//        guard let refCollection = ref else {return}
-//
-//        messageRef = channelRef!.child("messages")
-//        // 1.
-//        let messageQuery = messageRef.queryLimited(toLast:25)
-//
-//        // 2. We can use the observe method to listen for new
-//        // messages being written to the Firebase DB
-//        newMessageRefHandle = messageQuery.observe(.childAdded, with: { (snapshot) -> Void in
-//            // 3
-//            let messageData = snapshot.value as! Dictionary<String, String>
-//
-//            if let id = messageData["senderId"] as String!, let name = messageData["displayName"] as String!, let text = messageData["text"] as String!, text.characters.count > 0 {
-//                // 4
-//                self.addMessage(withId: id, name: name, text: text)
-//
-//                // 5
-//                self.finishReceivingMessage()
-//
-//            }else if let id = messageData["senderId"] as String!,
-//                let photoURL = messageData["photoURL"] as String! { // 1
-//                // 2
-//                if let mediaItem = JSQPhotoMediaItem(maskAsOutgoing: id == self.senderId) {
-//                    // 3
-//                    self.addPhotoMessage(withId: id, key: snapshot.key, mediaItem: mediaItem)
-//                    // 4
-//                    if photoURL.hasPrefix("gs://") {
-//                        self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: nil)
-//                    }
-//                }
-//            } else {
-//                print("Error! Could not decode message data")
-//            }
-//
-//        })
-//        updatedMessageRefHandle = messageRef.observe(.childChanged, with: { (snapshot) in
-//            let key = snapshot.key
-//            let messageData = snapshot.value as! Dictionary<String, String> // 1
-//
-//            if let photoURL = messageData["photoURL"] as String! { // 2
-//                // The photo has been updated.
-//                if let mediaItem = self.photoMessageMap[key] { // 3
-//                    self.fetchImageDataAtURL(photoURL, forMediaItem: mediaItem, clearsPhotoMessageMapOnSuccessForKey: key) // 4
-//                }
-//            }
-//        })
-   // }
-
-
-  
-
-  
-
-   
-
-
-
-
-
-
-   
-
-
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
     /*
      // MARK: - Navigation
-
+     
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
      }
      */
-
+    
 }
 
 

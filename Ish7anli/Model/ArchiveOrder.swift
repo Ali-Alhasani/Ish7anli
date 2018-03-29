@@ -39,6 +39,7 @@ class ArchiveOrder {
     var customerEmail:String?
     var offerPrice:String?
     var offerRate:Double?
+    var identity:String?
     
     
     
@@ -89,7 +90,11 @@ class ArchiveOrder {
         }
       
         self.offerRate = json["offer_rate"] as? Double ?? 0.0
-      
+        if let identity = json["identity"] as? String  {
+            self.identity = identity
+        }else {
+               self.identity = "0"
+        }
     }
     init(){
         

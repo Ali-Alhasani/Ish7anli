@@ -791,4 +791,16 @@ class DataClient: NSObject {
     
     
     
+    func identityCustomer(success: @escaping () ->Void, failuer: @escaping (_ error: LLError) -> Void,  identity:String , orderId:Int){
+        APIClient.sendRequest(path: "identity_customer", httpMethod: .post, isLangRequired: false , parameters: ["identity":identity, "order_id":orderId] ,success: { (response) in
+            let responseData = response as? [[String : Any]] ?? [[:]]
+           
+            
+            //let profile = Profile(json: responseData)
+            
+            success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
 }

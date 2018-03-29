@@ -388,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KxX-y0-cT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="-898.2008995502249"/>
+            <point key="canvasLocation" x="2508" y="-1411"/>
         </scene>
         <!--Pending Orders-->
         <scene sceneID="shT-vz-Rgr">
@@ -2042,13 +2042,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Captain Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r65-9E-o9O">
-                                <rect key="frame" x="16" y="142.5" width="343" height="48.5"/>
+                                <rect key="frame" x="16" y="143" width="343" height="48.5"/>
                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xWx-dW-Dcv">
-                                <rect key="frame" x="16" y="231" width="343" height="416"/>
+                                <rect key="frame" x="16" y="231.5" width="343" height="415.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="JEr-YY-dmp">
                                     <size key="itemSize" width="343" height="394"/>
@@ -2383,7 +2383,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZX-7y-Mkc">
-                                        <rect key="frame" x="56" y="18.5" width="291" height="24.5"/>
+                                        <rect key="frame" x="56" y="18" width="291" height="24.5"/>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -2410,7 +2410,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpU-Q8-cmy">
-                                        <rect key="frame" x="56" y="18.5" width="291" height="24.5"/>
+                                        <rect key="frame" x="56" y="19" width="291" height="24.5"/>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3357,10 +3357,10 @@ We will send notification within 24 hours</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNh-oC-9hv">
-                                <rect key="frame" x="16" y="28" width="343" height="60"/>
+                                <rect key="frame" x="16" y="72" width="343" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash in Received " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJ3-At-ctl">
-                                        <rect key="frame" x="24" y="18" width="280" height="24.5"/>
+                                        <rect key="frame" x="24" y="18.5" width="280" height="24.5"/>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3385,10 +3385,10 @@ We will send notification within 24 hours</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1n-fr-o9O">
-                                <rect key="frame" x="16" y="96" width="343" height="60"/>
+                                <rect key="frame" x="16" y="140" width="343" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash in Delivery " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ff2-00-55I">
-                                        <rect key="frame" x="24" y="18" width="280" height="24.5"/>
+                                        <rect key="frame" x="24" y="18.5" width="280" height="24.5"/>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -3413,13 +3413,13 @@ We will send notification within 24 hours</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEa-Kl-iK5" userLabel="View 2">
-                                <rect key="frame" x="16" y="172" width="343" height="185"/>
+                                <rect key="frame" x="16" y="216" width="343" height="185"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IvV-3x-1mF">
                                         <rect key="frame" x="0.0" y="8" width="343" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convert from Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfl-GU-iTN">
-                                                <rect key="frame" x="24" y="16" width="280" height="24.5"/>
+                                                <rect key="frame" x="24" y="15.5" width="280" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3443,7 +3443,7 @@ We will send notification within 24 hours</string>
                                             <constraint firstAttribute="height" constant="55" id="zQh-zZ-ahQ"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="The Amount of Money" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAZ-Es-pbK">
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="The Amount of Money" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAZ-Es-pbK">
                                         <rect key="frame" x="20" y="130" width="303" height="40"/>
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
@@ -3453,7 +3453,7 @@ We will send notification within 24 hours</string>
                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywe-HK-hlE">
+                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ywe-HK-hlE">
                                         <rect key="frame" x="20" y="75" width="303" height="40"/>
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
@@ -4100,10 +4100,10 @@ We will send notification within 24 hours</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="820"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEV-VJ-Tqe" userLabel="View 2">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="835.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="835"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2" translatesAutoresizingMaskIntoConstraints="NO" id="qbd-pd-Fp3">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="835.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="835"/>
                                             </imageView>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pee-sI-TbF">
                                                 <rect key="frame" x="16" y="209.5" width="343" height="50"/>
@@ -4126,7 +4126,7 @@ We will send notification within 24 hours</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete registration data " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYM-X4-0HH">
-                                                <rect key="frame" x="86.5" y="135" width="203.5" height="24.5"/>
+                                                <rect key="frame" x="86" y="135" width="203.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -4147,7 +4147,7 @@ We will send notification within 24 hours</string>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree on terms and conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjx-tj-5ht">
-                                                <rect key="frame" x="74" y="631" width="285" height="24.5"/>
+                                                <rect key="frame" x="74" y="630.5" width="285" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -4237,7 +4237,7 @@ We will send notification within 24 hours</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1Y-NS-RIM">
-                                                <rect key="frame" x="48" y="745.5" width="280" height="50"/>
+                                                <rect key="frame" x="48" y="745" width="280" height="50"/>
                                                 <color key="backgroundColor" name="niceBlue"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="UPf-oE-znc"/>
@@ -5829,7 +5829,7 @@ Enter the activation code that we sent it to you</string>
                                         <rect key="frame" x="0.0" y="310" width="343" height="68"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8zp-Mg-5Kf">
-                                                <rect key="frame" x="150.5" y="22.5" width="42" height="24.5"/>
+                                                <rect key="frame" x="150.5" y="22" width="42" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                 <color key="textColor" name="red"/>
                                                 <nil key="highlightedColor"/>
@@ -5849,19 +5849,19 @@ Enter the activation code that we sent it to you</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="154" height="127"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z3y-sd-SWp">
-                                                        <rect key="frame" x="8" y="17" width="138" height="24.5"/>
+                                                        <rect key="frame" x="8" y="17.5" width="138" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3eT-B8-wju">
-                                                        <rect key="frame" x="8" y="51.5" width="138" height="24.5"/>
+                                                        <rect key="frame" x="8" y="52" width="138" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-TI-c2k">
-                                                        <rect key="frame" x="8" y="86" width="138" height="24.5"/>
+                                                        <rect key="frame" x="8" y="86.5" width="138" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <color key="textColor" name="warmGrayText"/>
                                                         <nil key="highlightedColor"/>
@@ -5901,19 +5901,19 @@ Enter the activation code that we sent it to you</string>
                                                 <rect key="frame" x="189" y="0.0" width="154" height="127"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UC0-vG-fY2">
-                                                        <rect key="frame" x="8" y="51.5" width="138" height="24.5"/>
+                                                        <rect key="frame" x="8" y="52" width="138" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2l-c5-mSB">
-                                                        <rect key="frame" x="8" y="86" width="138" height="24.5"/>
+                                                        <rect key="frame" x="8" y="86.5" width="138" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <color key="textColor" name="warmGrayText"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M00-Bq-NUO">
-                                                        <rect key="frame" x="8" y="17" width="138" height="24.5"/>
+                                                        <rect key="frame" x="8" y="17.5" width="138" height="24.5"/>
                                                         <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -6032,10 +6032,27 @@ Enter the activation code that we sent it to you</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Sq8-FX-KL9"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kBK-Pn-O2O"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1A-x3-uBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9646" y="163"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Sd2-MT-nzM">
+            <objects>
+                <navigationController id="pee-mU-4Bu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I2V-nI-kNh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1nv-eB-S4Q" kind="relationship" relationship="rootViewController" id="Yff-YQ-dE5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MOv-7M-ngF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10495" y="-416"/>
         </scene>
         <!--Captain Add Offer View Controller-->
         <scene sceneID="gji-iA-3SE">
@@ -9711,7 +9728,7 @@ Enter the activation code that we sent it to you</string>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3oa-Dh-rXM">
-                                                                <rect key="frame" x="8" y="18" width="166.5" height="24.5"/>
+                                                                <rect key="frame" x="8" y="18.5" width="166.5" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -9748,28 +9765,41 @@ Enter the activation code that we sent it to you</string>
                                                                 </userDefinedRuntimeAttributes>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="ccD-bq-neZ">
-                                                                <rect key="frame" x="108" y="26.5" width="18" height="18"/>
+                                                                <rect key="frame" x="108" y="16.5" width="18" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="8rN-da-LfG"/>
                                                                     <constraint firstAttribute="width" constant="18" id="nBH-TJ-54r"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phoneCall" translatesAutoresizingMaskIntoConstraints="NO" id="cyK-NR-h59">
-                                                                <rect key="frame" x="108" y="56.5" width="18" height="18"/>
+                                                                <rect key="frame" x="108" y="46.5" width="18" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="18" id="LgD-AM-JaU"/>
                                                                     <constraint firstAttribute="height" constant="18" id="t6Y-CB-E5M"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yKP-lk-1gO">
-                                                                <rect key="frame" x="134" y="24" width="217" height="24.5"/>
+                                                                <rect key="frame" x="134" y="13.5" width="217" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbg-I8-eoW">
-                                                                <rect key="frame" x="134" y="54" width="217" height="24.5"/>
+                                                                <rect key="frame" x="134" y="43.5" width="217" height="24.5"/>
                                                                 <fontDescription key="fontDescription" name="DroidSansArabic" family="Droid Sans Arabic" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="identity " translatesAutoresizingMaskIntoConstraints="NO" id="ut9-pT-agG">
+                                                                <rect key="frame" x="108" y="72.5" width="18" height="18"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="18" id="8Mq-Be-Kfo"/>
+                                                                    <constraint firstAttribute="width" constant="18" id="P2V-Q3-qiK"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRe-vs-5ea">
+                                                                <rect key="frame" x="134" y="71" width="217" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -9777,16 +9807,21 @@ Enter the activation code that we sent it to you</string>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="pbg-I8-eoW" firstAttribute="centerY" secondItem="cyK-NR-h59" secondAttribute="centerY" id="0b0-TX-QG8"/>
+                                                            <constraint firstItem="XRe-vs-5ea" firstAttribute="centerY" secondItem="ut9-pT-agG" secondAttribute="centerY" id="AY8-H6-9nm"/>
                                                             <constraint firstItem="2r8-LX-THo" firstAttribute="leading" secondItem="hsy-cO-6W7" secondAttribute="leading" constant="8" id="C1q-Iu-A3t"/>
                                                             <constraint firstItem="yKP-lk-1gO" firstAttribute="centerY" secondItem="ccD-bq-neZ" secondAttribute="centerY" id="CFU-BT-lgb"/>
+                                                            <constraint firstAttribute="trailing" secondItem="XRe-vs-5ea" secondAttribute="trailing" constant="8" id="F6q-BL-HFZ"/>
                                                             <constraint firstItem="yKP-lk-1gO" firstAttribute="leading" secondItem="ccD-bq-neZ" secondAttribute="trailing" constant="8" id="If1-Xq-w58"/>
                                                             <constraint firstAttribute="trailing" secondItem="yKP-lk-1gO" secondAttribute="trailing" constant="8" id="KDa-49-7Qu"/>
                                                             <constraint firstItem="pbg-I8-eoW" firstAttribute="leading" secondItem="cyK-NR-h59" secondAttribute="trailing" constant="8" id="Klb-Cj-Trq"/>
                                                             <constraint firstItem="2r8-LX-THo" firstAttribute="centerY" secondItem="hsy-cO-6W7" secondAttribute="centerY" id="SrO-Xr-2Me"/>
-                                                            <constraint firstItem="cyK-NR-h59" firstAttribute="centerY" secondItem="2r8-LX-THo" secondAttribute="centerY" multiplier="1.3" id="hbU-I9-F67"/>
+                                                            <constraint firstItem="XRe-vs-5ea" firstAttribute="leading" secondItem="ut9-pT-agG" secondAttribute="trailing" constant="8" id="ZsR-3Y-w2d"/>
+                                                            <constraint firstItem="cyK-NR-h59" firstAttribute="centerY" secondItem="2r8-LX-THo" secondAttribute="centerY" multiplier="1.1" id="hbU-I9-F67"/>
+                                                            <constraint firstItem="ut9-pT-agG" firstAttribute="leading" secondItem="2r8-LX-THo" secondAttribute="trailing" constant="20" id="kpx-89-pb5"/>
                                                             <constraint firstItem="ccD-bq-neZ" firstAttribute="leading" secondItem="2r8-LX-THo" secondAttribute="trailing" constant="20" id="wj1-cb-Z5W"/>
                                                             <constraint firstAttribute="trailing" secondItem="pbg-I8-eoW" secondAttribute="trailing" constant="8" id="x7g-57-24t"/>
-                                                            <constraint firstItem="ccD-bq-neZ" firstAttribute="centerY" secondItem="2r8-LX-THo" secondAttribute="centerY" multiplier="0.7" id="yTg-P2-WW2"/>
+                                                            <constraint firstItem="ut9-pT-agG" firstAttribute="baseline" secondItem="2r8-LX-THo" secondAttribute="baseline" id="yAW-1q-qBy"/>
+                                                            <constraint firstItem="ccD-bq-neZ" firstAttribute="centerY" secondItem="2r8-LX-THo" secondAttribute="centerY" multiplier="0.5" id="yTg-P2-WW2"/>
                                                             <constraint firstItem="cyK-NR-h59" firstAttribute="leading" secondItem="2r8-LX-THo" secondAttribute="trailing" constant="20" id="zD4-bd-sJj"/>
                                                         </constraints>
                                                     </view>
@@ -9803,10 +9838,10 @@ Enter the activation code that we sent it to you</string>
                                                     <constraint firstAttribute="trailing" secondItem="hsy-cO-6W7" secondAttribute="trailing" id="pBw-cH-Jz6"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aib-Ih-LUj">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aib-Ih-LUj">
                                                 <rect key="frame" x="8" y="743.5" width="359" height="45.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TEz-LC-WRB" customClass="CosmosView" customModule="Ish7anli" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TEz-LC-WRB" customClass="CosmosView" customModule="Ish7anli" customModuleProvider="target">
                                                         <rect key="frame" x="129.5" y="13.5" width="100" height="20"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -9916,7 +9951,6 @@ Enter the activation code that we sent it to you</string>
                                     <constraint firstItem="ABl-8U-sHn" firstAttribute="top" secondItem="07T-N5-cHQ" secondAttribute="top" id="QEx-b3-t7M"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="SIh-UF-sW7" secondAttribute="trailing" constant="16" id="aTw-jZ-kIL"/>
                                     <constraint firstAttribute="trailing" secondItem="ABl-8U-sHn" secondAttribute="trailing" id="erO-3a-cOi"/>
-                                    <constraint firstItem="aib-Ih-LUj" firstAttribute="top" secondItem="Mzd-EK-6fg" secondAttribute="bottom" constant="8" id="k6i-Nc-drl"/>
                                     <constraint firstItem="Mzd-EK-6fg" firstAttribute="top" secondItem="SIh-UF-sW7" secondAttribute="bottom" constant="8" id="mlk-Sm-l5y"/>
                                     <constraint firstItem="SIh-UF-sW7" firstAttribute="leading" secondItem="07T-N5-cHQ" secondAttribute="leadingMargin" constant="16" id="oBk-hX-c0Y"/>
                                     <constraint firstItem="SIh-UF-sW7" firstAttribute="top" secondItem="eh9-07-vm7" secondAttribute="bottom" constant="8" id="qSo-hX-SK8"/>
@@ -9942,6 +9976,7 @@ Enter the activation code that we sent it to you</string>
                         <outlet property="accountNumberValueLabel" destination="Q0o-9v-0rO" id="5w2-eE-q2g"/>
                         <outlet property="arrowImage" destination="ZzG-ym-GFX" id="Bu8-a7-Ahb"/>
                         <outlet property="deliveryLabel" destination="CLx-4b-jIE" id="blh-aJ-QJf"/>
+                        <outlet property="identityLabel" destination="XRe-vs-5ea" id="oET-Yh-NLO"/>
                         <outlet property="imageView" destination="7aB-Xs-8qT" id="MAE-Gw-3Fh"/>
                         <outlet property="locationLabel" destination="PGx-Qc-p9h" id="Aun-Gg-xzx"/>
                         <outlet property="mailLabel" destination="XLI-Dz-Bsm" id="C2G-6w-rrZ"/>
@@ -9961,7 +9996,7 @@ Enter the activation code that we sent it to you</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6h-MC-vjq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17110" y="2663"/>
+            <point key="canvasLocation" x="17109.599999999999" y="2662.6686656671668"/>
         </scene>
     </scenes>
     <resources>
@@ -10210,13 +10245,13 @@ AAAAAAAAAAAAAAAAACYlA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="SU4-wp-XF8"/>
-        <segue reference="8dI-Yn-QKT"/>
-        <segue reference="rya-oq-MCh"/>
+        <segue reference="axC-sW-4do"/>
+        <segue reference="Yff-YQ-dE5"/>
         <segue reference="uE8-6x-ViY"/>
         <segue reference="bIF-ke-LPl"/>
-        <segue reference="iIK-ue-un3"/>
+        <segue reference="T0k-rR-1SQ"/>
         <segue reference="8aE-qm-8qV"/>
-        <segue reference="aLW-24-GTE"/>
+        <segue reference="Y5T-5l-vCq"/>
         <segue reference="XLu-Wm-U3f"/>
     </inferredMetricsTieBreakers>
 </document>

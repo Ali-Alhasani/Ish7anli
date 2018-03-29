@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B077686205A96FB0053B8F2 /* AddIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B077684205A96FB0053B8F2 /* AddIdentityViewController.swift */; };
+		6B077688205A98700053B8F2 /* AddIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B07768A205A98700053B8F2 /* AddIdentityViewController.xib */; };
 		6B0B029F203DC35100BEDBB3 /* FilterOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B029E203DC35100BEDBB3 /* FilterOfferViewController.swift */; };
 		6B10F5FC20194271002F5276 /* CustomerOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F5FB20194271002F5276 /* CustomerOffer.swift */; };
 		6B10F6002019EC67002F5276 /* AddressViewModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */; };
@@ -165,6 +167,9 @@
 
 /* Begin PBXFileReference section */
 		5592F19F09592F1A3AF5E5E9 /* Pods-Ish7anli.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ish7anli.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ish7anli/Pods-Ish7anli.release.xcconfig"; sourceTree = "<group>"; };
+		6B077684205A96FB0053B8F2 /* AddIdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdentityViewController.swift; sourceTree = "<group>"; };
+		6B07768B205A98770053B8F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddIdentityViewController.xib; sourceTree = "<group>"; };
+		6B07768C205A98800053B8F2 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/AddIdentityViewController.strings; sourceTree = "<group>"; };
 		6B0B029E203DC35100BEDBB3 /* FilterOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOfferViewController.swift; sourceTree = "<group>"; };
 		6B10F5FB20194271002F5276 /* CustomerOffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerOffer.swift; sourceTree = "<group>"; };
 		6B10F5FF2019EC67002F5276 /* AddressViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel2.swift; sourceTree = "<group>"; };
@@ -554,6 +559,8 @@
 				6B4ED0142027C4D300FC5934 /* NewPhoneNumberViewController.xib */,
 				6B24DA3E201FDBD100D5B619 /* ProfileViewController.swift */,
 				6B4ED0192027C53000FC5934 /* ProfileViewController.xib */,
+				6B077684205A96FB0053B8F2 /* AddIdentityViewController.swift */,
+				6B07768A205A98700053B8F2 /* AddIdentityViewController.xib */,
 			);
 			path = PopUP;
 			sourceTree = "<group>";
@@ -645,6 +652,7 @@
 				6B9AD2CD20063C0B00C4869C /* Resources */,
 				C0449C79FADDFF5EA5D8BC6C /* [CP] Embed Pods Frameworks */,
 				51F0DBDE681615A565F575FF /* [CP] Copy Pods Resources */,
+				6BA8B45220557F1E0078C6E1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -728,6 +736,7 @@
 				6B4ED00D2027C4B200FC5934 /* RatingViewController.xib in Resources */,
 				6BA8267420156713002BC608 /* TextViewTableViewCell.xib in Resources */,
 				6B3892FE2027217E00E669B9 /* NotificationsTableViewCell.xib in Resources */,
+				6B077688205A98700053B8F2 /* AddIdentityViewController.xib in Resources */,
 				6B9AD2DA20063C0B00C4869C /* l.xcassets in Resources */,
 				6B9AD2D820063C0B00C4869C /* Main.storyboard in Resources */,
 				6B4BEEA72035A2D60015CB30 /* OldOrderTableViewCell2.xib in Resources */,
@@ -748,12 +757,25 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Ish7anli/Pods-Ish7anli-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6BA8B45220557F1E0078C6E1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 487fe887b1fa11fc443fcebea318040fa8257762 788c21c324cae9ac35c47c13da11a7bca2bb8995b59c6c5654fe6bab4218ca4e";
 		};
 		73BC2F66E295880F2008A3C4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -916,6 +938,7 @@
 				6BA8267320156713002BC608 /* TextViewTableViewCell.swift in Sources */,
 				6BD15AC5202124AA00129DF9 /* ChatViewController.swift in Sources */,
 				6B271D2F201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift in Sources */,
+				6B077686205A96FB0053B8F2 /* AddIdentityViewController.swift in Sources */,
 				6B517CE7200E9EC200CFE5DC /* ImageHeaderView.swift in Sources */,
 				6B4ED007202794AA00FC5934 /* ErrorHelper.swift in Sources */,
 				6B271D33201D18C80030BBF4 /* CaptainSettingsViewController.swift in Sources */,
@@ -968,6 +991,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		6B07768A205A98700053B8F2 /* AddIdentityViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6B07768B205A98770053B8F2 /* Base */,
+				6B07768C205A98800053B8F2 /* ar */,
+			);
+			name = AddIdentityViewController.xib;
+			sourceTree = "<group>";
+		};
 		6B4ED00A2027C48100FC5934 /* AddPriceViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

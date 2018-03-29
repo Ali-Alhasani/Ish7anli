@@ -494,6 +494,9 @@
 /* Class = "UILabel"; text = "Add New Address"; ObjectID = "b8E-Wh-vIm"; */
 "b8E-Wh-vIm.text" = "إضافة عنوان جديد";
 
+/* Class = "UILabel"; text = "Add New Address"; ObjectID = "fux-NG-TsX"; */
+"fux-NG-TsX.text" = "إضافة عنوان جديد";
+
 /* Class = "UILabel"; text = "From"; ObjectID = "bv0-ou-PaZ"; */
 "bv0-ou-PaZ.text" = "من";
 
@@ -752,6 +755,9 @@
 /* Class = "UIButton"; normalTitle = " Address"; ObjectID = "v07-mI-b5U"; */
 "v07-mI-b5U.normalTitle" = " العنوان";
 
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "mw0-wN-jhp"; */
+"mw0-wN-jhp.normalTitle" = "صورة الكابتن ";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "vIb-b2-jmR"; */
 "vIb-b2-jmR.text" = "";
 
@@ -922,6 +928,13 @@
 /* Class = "UINavigationItem"; title = "Captain Settings"; ObjectID = "IJh-n1-COe"; */
 "IJh-n1-COe.title" = "فرز الطلبات";
 
+
+///* Class = "UIViewController"; title = "Order Details"; ObjectID = "IJh-n1-COe"; */
+//"IJh-n1-COe.title" = "تفاصيل الطلب";
+
+///* Class = "UIViewController"; title = "Order Details"; ObjectID = "gka-G6-dXC"; */
+"gka-G6-dXC.title" = "فرز الطلبات";
+
 /* Class = "UINavigationItem"; title = "Captain Settings"; ObjectID = "hee-Nq-TEi"; */
 "hee-Nq-TEi.title" = "تفاصيل العرض";
 
@@ -929,5 +942,87 @@
 "4KI-qx-Dye.title" = "عروضي";
 
 
+/* Class = "UINavigationItem"; title = "Captain Settings"; ObjectID = "8Qq-yW-v83"; */
+"8Qq-yW-v83.title" = "العروض الجديدة";
+
+
 /* Class = "UIButton"; normalTitle = "Order"; ObjectID = "jmm-nB-Bdx"; */
 "jmm-nB-Bdx.normalTitle" = "إلغاء";
+
+
+/* Class = "UILabel"; text = "Sender Information"; ObjectID = "7Kh-bV-dIz"; */
+"7Kh-bV-dIz.text" = "معلومات المرسل";
+
+
+/* Class = "UILabel"; text = "Receiver Information"; ObjectID = "9LE-a1-Y0z"; */
+"9LE-a1-Y0z.text" = "معلومات المستلم";
+
+
+/* Class = "UILabel"; text = "Order Information"; ObjectID = "pMY-f3-a4J"; */
+"pMY-f3-a4J.text" = "معلومات الطلب";
+
+/* Class = "UIButton"; normalTitle = "Add Price"; ObjectID = "jI6-Y0-8xq"; */
+"jI6-Y0-8xq.normalTitle" = "إضافة سعر";
+
+/* Class = "UIButton"; normalTitle = " Chat"; ObjectID = "bky-c1-s3R"; */
+"bky-c1-s3R.normalTitle" = " محادثة";
+
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "btE-4S-xJ4"; */
+"btE-4S-xJ4.normalTitle" = " العنوان";
+
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "XWb-Rv-DZ7"; */
+"XWb-Rv-DZ7.normalTitle" = " العنوان";
+
+
+
+
+
+/* Class = "UILabel"; text = "Sender Information"; ObjectID = "EmB-CN-Qil"; */
+"EmB-CN-Qil.text" = "معلومات المرسل";
+/* Class = "UILabel"; text = "Receiver Information"; ObjectID = "tBE-L1-CIc"; */
+"tBE-L1-CIc.text" = "معلومات المستلم";
+/* Class = "UILabel"; text = "Order Information"; ObjectID = "Mto-9W-iOU"; */
+"Mto-9W-iOU.text" = "معلومات الطلب";
+/* Class = "UIButton"; normalTitle = "Add Price"; ObjectID = "qqe-Nt-rb6"; */
+"qqe-Nt-rb6.normalTitle" = "إلغاء الطلب";
+/* Class = "UIButton"; normalTitle = " Chat"; ObjectID = "ZhJ-1S-UPF"; */
+"ZhJ-1S-UPF.normalTitle" = " محادثة";
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "KfH-TZ-wL1"; */
+"KfH-TZ-wL1.normalTitle" = " العنوان";
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "zAb-0O-WCM"; */
+"zAb-0O-WCM.normalTitle" = " العنوان";
+
+
+
+/* Class = "UILabel"; text = "Sender Information"; ObjectID = "JuK-8z-Oaa"; */
+"JuK-8z-Oaa.text" = "معلومات المرسل";
+/* Class = "UILabel"; text = "Receiver Information"; ObjectID = "ZJE-gd-mc1"; */
+"ZJE-gd-mc1.text" = "معلومات المستلم";
+/* Class = "UILabel"; text = "Order Information"; ObjectID = "XVt-Yp-ogc"; */
+"XVt-Yp-ogc.text" = "معلومات الطلب";
+/* Class = "UIButton"; normalTitle = " Chat"; ObjectID = "ayA-Wj-PS9"; */
+"ayA-Wj-PS9.normalTitle" = " محادثة";
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "CyB-Ww-BuP"; */
+"CyB-Ww-BuP.normalTitle" = " العنوان";
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "hS9-W9-Nhr"; */
+"hS9-W9-Nhr.normalTitle" = " العنوان";
+
+
+
+
+
+
+/* Class = "UIButton"; normalTitle = "Add Price"; ObjectID = "t3E-AO-jg4"; */
+"t3E-AO-jg4.normalTitle" = "صورة الكابتن";
+
+
+
+/* Class = "UIViewController"; title = "Order Details"; ObjectID = "4ft-cV-MP0"; */
+"4ft-cV-MP0.title" = "تفاصيل الطلب";
+
+/* Class = "UIViewController"; title = "Order Details"; ObjectID = "las-1c-HHr"; */
+"las-1c-HHr.title" = "تفاصيل الطلب";
+
+/* Class = "UIViewController"; title = "Order Details"; ObjectID = "m9D-Hi-e2q"; */
+"m9D-Hi-e2q.title" = "تفاصيل الطلب";
+

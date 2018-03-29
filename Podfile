@@ -22,5 +22,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Firestore'
 pod 'FirebaseStorage'
 pod 'GoogleMaps'
+pod 'Fabric'
+pod 'Crashlytics'
 
 end

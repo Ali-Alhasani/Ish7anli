@@ -34,11 +34,11 @@ class CaptainAddressDetailsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         loadMap()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.hideBackButton()
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.setBackButton2()
+//        
+//    }
     
     func loadMap(){
         let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude: lng!, zoom: 12.0)

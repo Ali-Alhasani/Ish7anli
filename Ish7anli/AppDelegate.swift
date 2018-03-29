@@ -12,6 +12,8 @@ import GoogleMaps
 import Firebase
 import UserNotifications
 import AudioToolbox
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotificationCenterDelegate, MessagingDelegate {
@@ -42,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
         GMSServices.provideAPIKey("AIzaSyAoBkqb_umUq2mUzKD-y_Z299XtBLjqPnM")
 
         IQKeyboardManager.sharedManager().enable = true
-
+        IQKeyboardManager.sharedManager().canAdjustAdditionalSafeAreaInsets = true
         UNUserNotificationCenter.current().delegate = self
         
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -56,6 +58,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
         ErrorHelper.loadArrayHelper()
         application.registerForRemoteNotifications()
         registerForPushNotifications()
+        Fabric.with([Crashlytics.self])
+
         return true
     }
     

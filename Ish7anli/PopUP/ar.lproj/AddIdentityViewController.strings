@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Add Identity"; ObjectID = "dfd-wD-QtG"; */
+"dfd-wD-QtG.text" = "أدخل رقم هوية المسلتم";
+
+/* Class = "UITextField"; placeholder = "Bid a price"; ObjectID = "k9y-ut-qLd"; */
+"k9y-ut-qLd.placeholder" = "رقم هوية المستلم";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "ywC-dY-Qkv"; */
+"ywC-dY-Qkv.normalTitle" = "حفظ";

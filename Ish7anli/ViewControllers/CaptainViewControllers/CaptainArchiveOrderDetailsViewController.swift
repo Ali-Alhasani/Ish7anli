@@ -32,6 +32,7 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
     @IBOutlet weak var paymentMethodLabel: UILabel!
     @IBOutlet weak var accountNumberLabel: UILabel!
     
+    @IBOutlet weak var identityLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     var indexPath:Int?
     @IBOutlet weak var arrowImage: UIImageView!
@@ -79,12 +80,20 @@ class CaptainArchiveOrderDetailsViewController: UIViewController {
             accountNumberLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].accountNumber
             
         }
+        
+        identityLabel.text = DataClient.shared.captianArchiveOrder[indexPath!].identity
         // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.hideBackButton()
+        
     }
     
     @IBAction func chatAction(_ sender: Any) {

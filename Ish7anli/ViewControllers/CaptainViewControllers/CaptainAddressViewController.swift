@@ -33,6 +33,12 @@ class CaptainAddressViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     
+         viewModel.addListener()
+    }
 
     /*
     // MARK: - Navigation

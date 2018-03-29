@@ -7,11 +7,37 @@
 //
 
 import UIKit
+import PopupDialog
 
-class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,ActiveOrderTableViewDelegate,ActiveOrderTableViewDelegate2 {
+class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,ActiveOrderTableViewDelegate,ActiveOrderTableViewDelegate2,OrderViewControllerDelegate {
+    
+    
+    func doneOrder() {
+        DataClient.shared.deliveryOffer(success: {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            var alartmessage:String?
+            if MOLHLanguage.isRTL() {
+                alartmessage = "تم اضافة الطلب بنجاح"
+                
+            }else{
+                alartmessage = "the request has been added successfully"
+                
+            }
+            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
+            self.present(alert, animated: true)
+        }, failuer: { (_ error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }, customerOfferId: DataClient.shared.cpatainActiveOrder[index2!].id!)
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     var indexPath:Int?
+    var index2:Int?
     
     var refreshControl = UIRefreshControl()
     var dateFormatter = DateFormatter()
@@ -177,25 +203,26 @@ class CpatainActiveOrderViewController: UIViewController,UITableViewDelegate,UIT
         }, customerOfferId: DataClient.shared.cpatainActiveOrder[indexPath].id!)
     }
     func delivery(indexPath:Int){
-        DataClient.shared.deliveryOffer(success: {
-            MBProgressHUD.hide(for: self.view, animated: true)
-            var alartmessage:String?
-            if MOLHLanguage.isRTL() {
-                alartmessage = "تم اضافة الطلب بنجاح"
-                
-            }else{
-                alartmessage = "the request has been added successfully"
-                
-            }
-            let alert = UIAlertController(title:  ErrorHelper.shared.alartTitle, message:alartmessage, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title:  ErrorHelper.shared.ok, style: .default, handler: self.someHandler))
-            self.present(alert, animated: true)
-        }, failuer: { (_ error) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
-            self.present(alert, animated: true)
-        }, customerOfferId: DataClient.shared.cpatainActiveOrder[indexPath].id!)
+          self.index2 = indexPath
+        self.showPopup()
+      
+    }
+    
+    
+    func showPopup (animated: Bool = true){
+        // Create a custom view controller
+        
+        let OfferVC = AddIdentityViewController(nibName: "AddIdentityViewController", bundle: nil)
+        
+        OfferVC.orderId = DataClient.shared.cpatainActiveOrder[index2!].id
+            
+        OfferVC.delegate2 = self
+        // Create the dialog
+        let popup = PopupDialog(viewController: OfferVC, buttonAlignment: .horizontal, transitionStyle: .bounceDown, gestureDismissal: true)
+        
+        
+        // Present dialog
+        present(popup, animated: animated, completion: nil)
     }
     
     func someHandler(alert: UIAlertAction!) {

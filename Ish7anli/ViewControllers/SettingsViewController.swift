@@ -194,6 +194,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: ProfileViewModelDelegate {
     func finishLoadData() {
         nameLabel.text = DataClient.shared.profile?.name
+     
         // IdentityLabel.text = String((DataClient.shared.profile?.id!)!)
         phoneNumberLabel.text = DataClient.shared.profile?.phone
         mailLabel.text = DataClient.shared.profile?.email
@@ -204,7 +205,8 @@ extension SettingsViewController: ProfileViewModelDelegate {
             alert.addAction(UIAlertAction(title: self.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         })
-        
+        SessionManager.shared.displayName = DataClient.shared.profile!.name!
+        SessionManager.saveSessionManager()
     }
     
     func apply(changes: SectionChanges) {

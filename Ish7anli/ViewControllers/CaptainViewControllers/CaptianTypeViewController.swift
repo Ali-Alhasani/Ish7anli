@@ -23,7 +23,8 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     var indexPath:Int?
     
-    var array = ["هذه الشارة للكابتن الذي يرغب في تجميع أو توزيع الشحنات داخل المنطقة فقط ولا يرغب بالسفر سوف تصله الإشعارات من الباب إلى الباب فقط" , "هذه الشارة للكابتن الذي يرغب في الشحن متى ما توافر طلب الشحن وسوف تصله جميع طلبات الشحن", "هذه الشارة للكابتن الذي يرغب في الشحن وقت ما يرغب في السفر فقط ولا تصله الاشعارات إلا إذا سجل موعد السفر فقط"]
+
+    var array =  [ "هم فئة الكباتن الذين يمتلكون سيارات من نوع بيك اب وتصلهم اشعارات من الباب الى الباب  فقط","هذه الشارة للكابتن الذي يرغب في الشحن متى ما توافر طلب الشحن وسوف تصله جميع طلبات الشحن  ","هذه الشارة للكابتن الذي يرغب في الشحن وقت ما يرغب في السفر فقط ولا تصله الاشعارات إلا إذا سجل موعد السفر فقط"]
     
     var array2 = ["الشارة الصفراء","الشارة الحمراء", "الشارة الخضراء"]
     
@@ -50,9 +51,9 @@ class CaptianTypeViewController: UIViewController,UICollectionViewDelegate, UICo
         if MOLHLanguage.isRTL() {
             
         }else {
+         
             
-            
-            array = ["Captains who don't want to travel, they want to collect orders and distribute it. so the  delivery type is from door to door.", "Captains who want to travel if there are  any available requests to charge.so the all notifications will arrive him.the delivery type is from the captain's location","Captains who determine his travel appointment, Notifications will arrive him if the travel scheduled, so the type of delivery is from the captain's location , so the delivery type is from the captain's location"]
+            array = ["Captains who own a pick up cars, they want to collect orders and distribute it. so he will only receive notifications for delivery type door to door only.", "Captains who want to travel if there are  any available requests to charge.so the all notifications will arrive him.the delivery type is from the captain's location","Captains who determine his travel appointment, Notifications will arrive him if the travel scheduled, so the type of delivery is from the captain's location , so the delivery type is from the captain's location"]
             array2 = ["Yellow Sign","Red Sign","Green Sign"]
             
         }

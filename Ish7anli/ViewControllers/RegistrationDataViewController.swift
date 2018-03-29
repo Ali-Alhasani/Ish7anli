@@ -131,6 +131,8 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
     func load(){
         DataClient.shared.saveProfileCustomer(success: {
             MBProgressHUD.hide(for: self.view, animated: true)
+            SessionManager.shared.displayName = self.fullNameText.text!
+            SessionManager.saveSessionManager()
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.move()
             //self.dismiss(animated: true, completion: nil)
