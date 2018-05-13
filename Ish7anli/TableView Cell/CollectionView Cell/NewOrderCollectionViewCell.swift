@@ -76,6 +76,14 @@ class NewOrderCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    
+    
+    override func prepareForReuse() {
+         //imageView.borderColor = nil
+         imageView.image = nil
+    }
+   
+   
    
     
     

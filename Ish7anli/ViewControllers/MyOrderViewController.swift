@@ -169,6 +169,10 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
     }
     
+     @IBAction func cancelToOrderViewController(_ segue: UIStoryboardSegue) {
+        self.load()
+    }
+    
 //    func tmpNext(){
 //        if DataClient.shared.CustomerOrder.count == 0 ||  index == (DataClient.shared.CustomerOrder.endIndex - 2) {
 //            nextButton.isEnabled = false
@@ -228,7 +232,7 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
             self.tmp()
             print(DataClient.shared.CustomerOrder.count)
         }) { (_ error) in
-         
+           self.tmp()
             let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error.message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -277,13 +281,13 @@ class MyOrderViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func viewEmpty(){
       
-            dateLabel.text = ""
-            fromCityLabel.text = ""
-            destinationCityLabel.text = ""
+            dateLabel.text = "-"
+            fromCityLabel.text = "-"
+            destinationCityLabel.text = "-"
          nextButton.isEnabled = false
-         weightLabel.text = ""
-        deliveryLabel.text = ""
-        locationLabel.text = ""
+         weightLabel.text = "-"
+        deliveryLabel.text = "-"
+        locationLabel.text = "-"
           previousButton.isEnabled = false
     }
     

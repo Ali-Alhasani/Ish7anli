@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
     var window: UIWindow?
  let gcmMessageIDKey = "gcm.message_id"
     func reset() {
-         move()
+        move()
+       
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -45,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
 
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().canAdjustAdditionalSafeAreaInsets = true
+        Fabric.with([Crashlytics.self])
         UNUserNotificationCenter.current().delegate = self
         
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -58,13 +60,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable, UNUserNotif
         ErrorHelper.loadArrayHelper()
         application.registerForRemoteNotifications()
         registerForPushNotifications()
-        Fabric.with([Crashlytics.self])
+       
 
         return true
     }
     
     func move(){
         SessionManager.loadSessionManager()
+        
+        
+        
+        if (SessionManager.shared.isPending) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "RegistrationDataViewController")
+            let navigationController = UINavigationController(rootViewController: mainViewController)
+            self.window?.rootViewController = navigationController
+        }
         if (SessionManager.shared.isUserLogged) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController")

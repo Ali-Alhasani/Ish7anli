@@ -18,6 +18,7 @@ class SessionManager: NSObject {
     var userId:String = ""
     var cpatainType:String = ""
     var displayName:String = ""
+    var isPending:Bool = false
     //var currentUser: User!
     
     
@@ -38,6 +39,7 @@ class SessionManager: NSObject {
         SessionManager.shared.userId = userID
         SessionManager.shared.displayName = displayName
         SessionManager.shared.phoneNumber = tempPhone
+        
         if let boolValue = tempDic["isUserLogged"] as? Bool {
             SessionManager.shared.isUserLogged = boolValue
             if boolValue{
@@ -57,6 +59,12 @@ class SessionManager: NSObject {
                 //  let currentUser = NSKeyedUnarchiver.unarchiveObject(with: decodedNSData) as! User
                 //  SessionManager.shared.currentUser = currentUser
                 
+            }
+        }
+        
+        if let boolValue = tempDic["isPending"] as? Bool {
+             SessionManager.shared.isPending = boolValue
+             if boolValue{
             }
         }
     }
@@ -82,6 +90,7 @@ class SessionManager: NSObject {
         tempDic["token"] = SessionManager.shared.token
         tempDic["isUserLogged"] = SessionManager.shared.isUserLogged
         tempDic["isCaptainLogged"] = SessionManager.shared.isCaptainLogged
+        tempDic["isPending"] = SessionManager.shared.isPending
         let userID = SessionManager.shared.userId
         let phoneNumber = SessionManager.shared.phoneNumber
         let displayName = SessionManager.shared.displayName

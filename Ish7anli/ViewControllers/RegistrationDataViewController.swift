@@ -19,12 +19,23 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
     var statusEmail:Bool = false
     
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var termsButton: CheckBox!
     
+    @IBOutlet weak var termsLabel: UILabel!
+    @IBOutlet var tap: UITapGestureRecognizer!
     override func viewDidLoad() {
         super.viewDidLoad()
         emailText.delegate = self
         // Do any additional setup after loading the view.
         indicatorView.isHidden = true
+        termsLabel.isUserInteractionEnabled = true
+        termsLabel.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.hideBackButton()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,7 +81,7 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
         
     }
     func sendMedia(image: UIImage?){
-         indicatorView.isHidden = false
+        indicatorView.isHidden = false
         indicatorView.startAnimating()
         let refStorage = Storage.storage().reference().child("::\(Date().timeIntervalSince1970)")
         if let image = image {
@@ -97,6 +108,11 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
     }
     
     
+    @IBAction func termsTapAction(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "toTerms", sender: self)
+    }
+    
+    
     @IBAction func saveButton(_ sender: Any) {
         if(emailText.text!.isEmpty || fullNameText.text!.isEmpty || imageStr == nil || statusEmail == false) {
             var error:String?
@@ -110,12 +126,25 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
             alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
             self.present(alert, animated: true)
         }else {
-            let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-            
-            
-            spiningActivity.label.text = ErrorHelper.shared.loadingtitle
-            spiningActivity.detailsLabel.text = ErrorHelper.shared.message
-            load()
+            if !termsButton.isChecked  {
+                var error:String?
+                if MOLHLanguage.isRTL() {
+                    error =  "يجب ان توافق ع سياسة الشروط والأحكام"
+                    
+                }else{
+                    error = "You should accept the terms and conditions"
+                }
+                let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }else {
+                let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+                
+                
+                spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+                spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+                load()
+            }
         }
     }
     
@@ -132,7 +161,10 @@ class RegistrationDataViewController: UIViewController,UITextFieldDelegate {
         DataClient.shared.saveProfileCustomer(success: {
             MBProgressHUD.hide(for: self.view, animated: true)
             SessionManager.shared.displayName = self.fullNameText.text!
+            SessionManager.shared.isUserLogged = true
+            SessionManager.shared.isPending = false
             SessionManager.saveSessionManager()
+            
             let delegate = UIApplication.shared.delegate as! AppDelegate
             delegate.move()
             //self.dismiss(animated: true, completion: nil)
@@ -161,7 +193,7 @@ extension RegistrationDataViewController: UIImagePickerControllerDelegate,UINavi
     {
         image_data = info[UIImagePickerControllerOriginalImage] as? UIImage
         //let imageData = UIImagePNGRepresentation(image_data!)!
-      
+        
         //imageStr = imageData.base64EncodedString()
         self.imageView.image = self.image_data!
         sendMedia(image: image_data)

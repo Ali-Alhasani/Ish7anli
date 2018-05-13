@@ -687,6 +687,11 @@
 /* Class = "UILabel"; text = "Agree on terms and conditions"; ObjectID = "pjx-tj-5ht"; */
 "pjx-tj-5ht.text" = "اوافق على الشروط والأحكام";
 
+
+/* Class = "UILabel"; text = "Agree on terms and conditions"; ObjectID = "8xB-kg-QtC"; */
+"8xB-kg-QtC.text" = "اوافق على الشروط والأحكام";
+
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "py7-z8-e0j"; */
 "py7-z8-e0j.text" = "";
 
@@ -1025,4 +1030,28 @@
 
 /* Class = "UIViewController"; title = "Order Details"; ObjectID = "m9D-Hi-e2q"; */
 "m9D-Hi-e2q.title" = "تفاصيل الطلب";
+
+/* Class = "UINavigationItem"; title = "Captain Settings"; ObjectID = "8Qq-yW-v83"; */
+"bXp-e5-wIl.title" = "الشروط والأحكام";
+
+
+
+/* Class = "UINavigationItem"; title = "Captain Settings"; ObjectID = "8Qq-yW-v83"; */
+"dlP-p8-pDa.title" = "بيانات التسجيل";
+
+/* Class = "UIButton"; normalTitle = " Address"; ObjectID = "bbY-5t-pbj"; */
+"bbY-5t-pbj.normalTitle" = "حفظ";
+
+
+
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "vjL-DA-7IH"; */
+"ehd-L4-hvj.placeholder" = "الاسم كاملاً";
+
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "vjL-DA-7IH"; */
+"5mz-nk-3Bt.placeholder" = "البريد الالكتروني";
+
+
+
 

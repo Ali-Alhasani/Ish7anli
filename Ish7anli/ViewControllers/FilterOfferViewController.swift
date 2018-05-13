@@ -101,7 +101,7 @@ class FilterOfferViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         if (!(cityToText.text?.isEmpty)!){
             parameters["city_id_from"] = recevierId
         }
-        
+ 
         DataClient.shared.filter(success: {
                MBProgressHUD.hide(for: self.view, animated: true)
             self.performSegue(withIdentifier: "FilterDetails", sender: self)

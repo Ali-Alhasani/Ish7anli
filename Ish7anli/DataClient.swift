@@ -143,7 +143,8 @@ class DataClient: NSObject {
             
             print(responseData)
             SessionManager.shared.token = (responseData["token_type"] as? String ?? "") + " " + (responseData["access_token"] as? String ?? "")
-            SessionManager.shared.isUserLogged = true
+            SessionManager.shared.isPending = true
+            //SessionManager.shared.isUserLogged = true
             //          SessionManager.shared.currentUser = DataClient.shared.user
             SessionManager.saveSessionManager()
             success()
@@ -799,6 +800,20 @@ class DataClient: NSObject {
             //let profile = Profile(json: responseData)
             
             success()
+        }) { (error) in
+            failuer(error)
+        }
+    }
+    
+    
+    func getTerms(success: @escaping (_ terms:String) ->Void, failuer: @escaping (_ error: LLError) -> Void){
+        APIClient.sendRequest(path: "terms_and_conditions", httpMethod: .get, isLangRequired: true , parameters: [:] ,success: { (response) in
+            let responseData = response as? [String : Any] ?? [:]
+            let terms_andـconditions = responseData["terms_andـconditions"] as? String ?? ""
+            
+            //let profile = Profile(json: responseData)
+            
+            success(terms_andـconditions)
         }) { (error) in
             failuer(error)
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B0148212099FC3500E60340 /* TermsCondtionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0148202099FC3500E60340 /* TermsCondtionsViewController.swift */; };
 		6B077686205A96FB0053B8F2 /* AddIdentityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B077684205A96FB0053B8F2 /* AddIdentityViewController.swift */; };
 		6B077688205A98700053B8F2 /* AddIdentityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B07768A205A98700053B8F2 /* AddIdentityViewController.xib */; };
 		6B0B029F203DC35100BEDBB3 /* FilterOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0B029E203DC35100BEDBB3 /* FilterOfferViewController.swift */; };
@@ -60,6 +61,7 @@
 		6B3C5CBE20332E0B00C9ACB7 /* CaptainProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3C5CBD20332E0B00C9ACB7 /* CaptainProfile.swift */; };
 		6B3C5CC1203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3C5CBF203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift */; };
 		6B3C5CC2203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B3C5CC0203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib */; };
+		6B3E78F920A079C90069016E /* AutoSizeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3E78F820A079C80069016E /* AutoSizeTextField.swift */; };
 		6B48938C202AED3C00F6769C /* ActiveOrderTableViewCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B48938A202AED3B00F6769C /* ActiveOrderTableViewCell2.xib */; };
 		6B48938F202AEDFE00F6769C /* ActiveOrderTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48938E202AEDFD00F6769C /* ActiveOrderTableViewCell2.swift */; };
 		6B4BEEA62035A2D60015CB30 /* OldOrderTableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4BEEA42035A2D60015CB30 /* OldOrderTableViewCell2.swift */; };
@@ -86,11 +88,6 @@
 		6B517CC8200E810900CFE5DC /* NewOrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CC7200E810900CFE5DC /* NewOrderCollectionViewCell.swift */; };
 		6B517CD1200E9BAF00CFE5DC /* DroidSansArabic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B517CD0200E9BA100CFE5DC /* DroidSansArabic.ttf */; };
 		6B517CD5200E9BD500CFE5DC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CD4200E9BD500CFE5DC /* MBProgressHUD.m */; };
-		6B517CDD200E9BE000CFE5DC /* MOLHLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CD7200E9BE000CFE5DC /* MOLHLanguage.swift */; };
-		6B517CDE200E9BE000CFE5DC /* MOLH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CD8200E9BE000CFE5DC /* MOLH.swift */; };
-		6B517CDF200E9BE000CFE5DC /* MOLHSizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CD9200E9BE000CFE5DC /* MOLHSizable.swift */; };
-		6B517CE0200E9BE000CFE5DC /* MOLHFontLocalizableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CDA200E9BE000CFE5DC /* MOLHFontLocalizableViews.swift */; };
-		6B517CE1200E9BE000CFE5DC /* MOLHFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CDB200E9BE000CFE5DC /* MOLHFont.swift */; };
 		6B517CE2200E9BE000CFE5DC /* SlideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CDC200E9BE000CFE5DC /* SlideMenuController.swift */; };
 		6B517CE4200E9C5F00CFE5DC /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CE3200E9C5F00CFE5DC /* RightViewController.swift */; };
 		6B517CE7200E9EC200CFE5DC /* ImageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B517CE5200E9EC100CFE5DC /* ImageHeaderView.swift */; };
@@ -155,6 +152,11 @@
 		6BC256A120127B4900A5AD20 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC256A020127B4900A5AD20 /* RadioButton.swift */; };
 		6BCB1B8A2030B7DA004B26D3 /* NewAddOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */; };
 		6BCB1B8C2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB1B8B2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift */; };
+		6BCEBC21207EF81D00A1617D /* MOLHLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCEBC1C207EF81D00A1617D /* MOLHLanguage.swift */; };
+		6BCEBC22207EF81D00A1617D /* MOLH.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCEBC1D207EF81D00A1617D /* MOLH.swift */; };
+		6BCEBC23207EF81D00A1617D /* MOLHSizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCEBC1E207EF81D00A1617D /* MOLHSizable.swift */; };
+		6BCEBC24207EF81D00A1617D /* MOLHFontLocalizableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCEBC1F207EF81D00A1617D /* MOLHFontLocalizableViews.swift */; };
+		6BCEBC25207EF81D00A1617D /* MOLHFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCEBC20207EF81D00A1617D /* MOLHFont.swift */; };
 		6BD15AC12021127400129DF9 /* NewOrder2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */; };
 		6BD15AC32021142100129DF9 /* NewOrder22ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */; };
 		6BD15AC5202124AA00129DF9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD15AC4202124AA00129DF9 /* ChatViewController.swift */; };
@@ -167,6 +169,7 @@
 
 /* Begin PBXFileReference section */
 		5592F19F09592F1A3AF5E5E9 /* Pods-Ish7anli.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ish7anli.release.xcconfig"; path = "Pods/Target Support Files/Pods-Ish7anli/Pods-Ish7anli.release.xcconfig"; sourceTree = "<group>"; };
+		6B0148202099FC3500E60340 /* TermsCondtionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsCondtionsViewController.swift; sourceTree = "<group>"; };
 		6B077684205A96FB0053B8F2 /* AddIdentityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIdentityViewController.swift; sourceTree = "<group>"; };
 		6B07768B205A98770053B8F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddIdentityViewController.xib; sourceTree = "<group>"; };
 		6B07768C205A98800053B8F2 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/AddIdentityViewController.strings; sourceTree = "<group>"; };
@@ -221,6 +224,7 @@
 		6B3C5CBD20332E0B00C9ACB7 /* CaptainProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptainProfile.swift; sourceTree = "<group>"; };
 		6B3C5CBF203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressCaptainSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		6B3C5CC0203333DD00C9ACB7 /* AddressCaptainSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressCaptainSettingsTableViewCell.xib; sourceTree = "<group>"; };
+		6B3E78F820A079C80069016E /* AutoSizeTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSizeTextField.swift; sourceTree = "<group>"; };
 		6B48938A202AED3B00F6769C /* ActiveOrderTableViewCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActiveOrderTableViewCell2.xib; sourceTree = "<group>"; };
 		6B48938E202AEDFD00F6769C /* ActiveOrderTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveOrderTableViewCell2.swift; sourceTree = "<group>"; };
 		6B4BEEA42035A2D60015CB30 /* OldOrderTableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldOrderTableViewCell2.swift; sourceTree = "<group>"; };
@@ -255,11 +259,6 @@
 		6B517CD2200E9BD400CFE5DC /* Ish7anli-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ish7anli-Bridging-Header.h"; sourceTree = "<group>"; };
 		6B517CD3200E9BD500CFE5DC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		6B517CD4200E9BD500CFE5DC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		6B517CD7200E9BE000CFE5DC /* MOLHLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHLanguage.swift; sourceTree = "<group>"; };
-		6B517CD8200E9BE000CFE5DC /* MOLH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLH.swift; sourceTree = "<group>"; };
-		6B517CD9200E9BE000CFE5DC /* MOLHSizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHSizable.swift; sourceTree = "<group>"; };
-		6B517CDA200E9BE000CFE5DC /* MOLHFontLocalizableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHFontLocalizableViews.swift; sourceTree = "<group>"; };
-		6B517CDB200E9BE000CFE5DC /* MOLHFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHFont.swift; sourceTree = "<group>"; };
 		6B517CDC200E9BE000CFE5DC /* SlideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuController.swift; sourceTree = "<group>"; };
 		6B517CE3200E9C5F00CFE5DC /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		6B517CE5200E9EC100CFE5DC /* ImageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderView.swift; sourceTree = "<group>"; };
@@ -326,6 +325,11 @@
 		6BC256A020127B4900A5AD20 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		6BCB1B892030B7DA004B26D3 /* NewAddOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddOfferViewController.swift; sourceTree = "<group>"; };
 		6BCB1B8B2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptainRegisterAddAddressViewController.swift; sourceTree = "<group>"; };
+		6BCEBC1C207EF81D00A1617D /* MOLHLanguage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHLanguage.swift; sourceTree = "<group>"; };
+		6BCEBC1D207EF81D00A1617D /* MOLH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLH.swift; sourceTree = "<group>"; };
+		6BCEBC1E207EF81D00A1617D /* MOLHSizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHSizable.swift; sourceTree = "<group>"; };
+		6BCEBC1F207EF81D00A1617D /* MOLHFontLocalizableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHFontLocalizableViews.swift; sourceTree = "<group>"; };
+		6BCEBC20207EF81D00A1617D /* MOLHFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOLHFont.swift; sourceTree = "<group>"; };
 		6BD15AC02021127400129DF9 /* NewOrder2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder2ViewController.swift; sourceTree = "<group>"; };
 		6BD15AC22021142100129DF9 /* NewOrder22ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrder22ViewController.swift; sourceTree = "<group>"; };
 		6BD15AC4202124AA00129DF9 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +398,7 @@
 				6B1787EB20324AFB005E7D24 /* ForgetPasswordViewController.swift */,
 				6B0B029E203DC35100BEDBB3 /* FilterOfferViewController.swift */,
 				6BAE0DB1203EC91600BF8C46 /* FilterOfferDetailsViewController.swift */,
+				6B0148202099FC3500E60340 /* TermsCondtionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -443,11 +448,11 @@
 		6B517CCE200E9B5A00CFE5DC /* Extension & Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				6BCEBC1B207EF81D00A1617D /* MOLH */,
 				6B6BB46920111F1000BECA87 /* Array+Extensions.swift */,
 				6B6BB46720111E9E00BECA87 /* DiffCalculator.swift */,
 				6B18DEF72010A50000C73BA2 /* CosmosDistrib.swift */,
 				6B4ED006202794AA00FC5934 /* ErrorHelper.swift */,
-				6B517CD6200E9BE000CFE5DC /* MOLH */,
 				6B517CDC200E9BE000CFE5DC /* SlideMenuController.swift */,
 				6B517CD3200E9BD500CFE5DC /* MBProgressHUD.h */,
 				6B517CD4200E9BD500CFE5DC /* MBProgressHUD.m */,
@@ -467,6 +472,7 @@
 				6B4F43C62022620D00A51EEC /* RadioButtonGray.swift */,
 				6B58CDDC2025126F001E89E2 /* UIColor.swift */,
 				6B69AEB42029D34F000F3695 /* File.swift */,
+				6B3E78F820A079C80069016E /* AutoSizeTextField.swift */,
 			);
 			path = "Extension & Helpers";
 			sourceTree = "<group>";
@@ -477,18 +483,6 @@
 				6B517CD0200E9BA100CFE5DC /* DroidSansArabic.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		6B517CD6200E9BE000CFE5DC /* MOLH */ = {
-			isa = PBXGroup;
-			children = (
-				6B517CD7200E9BE000CFE5DC /* MOLHLanguage.swift */,
-				6B517CD8200E9BE000CFE5DC /* MOLH.swift */,
-				6B517CD9200E9BE000CFE5DC /* MOLHSizable.swift */,
-				6B517CDA200E9BE000CFE5DC /* MOLHFontLocalizableViews.swift */,
-				6B517CDB200E9BE000CFE5DC /* MOLHFont.swift */,
-			);
-			path = MOLH;
 			sourceTree = "<group>";
 		};
 		6B517CEF200EA23400CFE5DC /* Menu */ = {
@@ -546,6 +540,19 @@
 				6BD15AC6202125DC00129DF9 /* PopUP */,
 			);
 			path = Ish7anli;
+			sourceTree = "<group>";
+		};
+		6BCEBC1B207EF81D00A1617D /* MOLH */ = {
+			isa = PBXGroup;
+			children = (
+				6BCEBC1C207EF81D00A1617D /* MOLHLanguage.swift */,
+				6BCEBC1D207EF81D00A1617D /* MOLH.swift */,
+				6BCEBC1E207EF81D00A1617D /* MOLHSizable.swift */,
+				6BCEBC1F207EF81D00A1617D /* MOLHFontLocalizableViews.swift */,
+				6BCEBC20207EF81D00A1617D /* MOLHFont.swift */,
+			);
+			name = MOLH;
+			path = "../../../../Downloads/MOLH-master-3/MOLH";
 			sourceTree = "<group>";
 		};
 		6BD15AC6202125DC00129DF9 /* PopUP */ = {
@@ -670,7 +677,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Ali Al-Hassany";
 				TargetAttributes = {
 					6B9AD2CE20063C0B00C4869C = {
@@ -865,7 +872,6 @@
 				6B10F6002019EC67002F5276 /* AddressViewModel2.swift in Sources */,
 				6B36F03F201E983B00BDFBA5 /* AddPriceViewController.swift in Sources */,
 				6B7C88D3201B437D0096FB87 /* UITextField.swift in Sources */,
-				6B517CDD200E9BE000CFE5DC /* MOLHLanguage.swift in Sources */,
 				6B3892FD2027217E00E669B9 /* NotificationsTableViewCell.swift in Sources */,
 				6BDCA75E2030720D00989CDD /* AddOffer2ViewModel.swift in Sources */,
 				6B3892FA2027109700E669B9 /* Notifications.swift in Sources */,
@@ -873,6 +879,7 @@
 				6BC2569D2012461F00A5AD20 /* AddressViewModel.swift in Sources */,
 				6B0B029F203DC35100BEDBB3 /* FilterOfferViewController.swift in Sources */,
 				6BD15AC32021142100129DF9 /* NewOrder22ViewController.swift in Sources */,
+				6BCEBC21207EF81D00A1617D /* MOLHLanguage.swift in Sources */,
 				6BD15AC12021127400129DF9 /* NewOrder2ViewController.swift in Sources */,
 				6B36F04B201FB29800BDFBA5 /* NewPhoneNumberViewController.swift in Sources */,
 				6B18DEE5200F8CB500C73BA2 /* ActivationViewController.swift in Sources */,
@@ -891,7 +898,7 @@
 				6B18DF012010B72400C73BA2 /* AddAddressTableViewCell.swift in Sources */,
 				6BAE0DB2203EC91600BF8C46 /* FilterOfferDetailsViewController.swift in Sources */,
 				6B36F048201FAC4C00BDFBA5 /* CustomButton2.swift in Sources */,
-				6B517CDF200E9BE000CFE5DC /* MOLHSizable.swift in Sources */,
+				6BCEBC25207EF81D00A1617D /* MOLHFont.swift in Sources */,
 				6B517CFB200EA49300CFE5DC /* CaptainLoginViewController.swift in Sources */,
 				6B271D31201C9BF00030BBF4 /* CaptainOfferViewRootController.swift in Sources */,
 				6B9AD2D520063C0B00C4869C /* ViewController.swift in Sources */,
@@ -904,6 +911,7 @@
 				6BAD09D92006D72A003D63C8 /* MyOrderViewController.swift in Sources */,
 				6B3C5CBE20332E0B00C9ACB7 /* CaptainProfile.swift in Sources */,
 				6B7C88D5201B9A330096FB87 /* JoinCaptainViewController.swift in Sources */,
+				6BCEBC22207EF81D00A1617D /* MOLH.swift in Sources */,
 				6B4D52F92029F6BC003A2C48 /* TabBarViewController.swift in Sources */,
 				6B27230C2020BB61003A0125 /* CaptainTypeCollectionViewCell.swift in Sources */,
 				6B18DEFB2010B33A00C73BA2 /* AddressSettingsTableViewCell.swift in Sources */,
@@ -912,7 +920,6 @@
 				6B880E432039859100AB7653 /* CaptainOfferCancelViewController.swift in Sources */,
 				6B5D8B9C2023642C001EA2BF /* User.swift in Sources */,
 				6B48938F202AEDFE00F6769C /* ActiveOrderTableViewCell2.swift in Sources */,
-				6B517CE0200E9BE000CFE5DC /* MOLHFontLocalizableViews.swift in Sources */,
 				6B517CFD200EA6A500CFE5DC /* UIView.swift in Sources */,
 				6B517CC6200E808B00CFE5DC /* NewOrderViewController.swift in Sources */,
 				6BF631822006E39600D19370 /* IBDesignable.swift in Sources */,
@@ -940,12 +947,13 @@
 				6B271D2F201C976E0030BBF4 /* CaptianArchiveOrderViewController.swift in Sources */,
 				6B077686205A96FB0053B8F2 /* AddIdentityViewController.swift in Sources */,
 				6B517CE7200E9EC200CFE5DC /* ImageHeaderView.swift in Sources */,
+				6BCEBC23207EF81D00A1617D /* MOLHSizable.swift in Sources */,
 				6B4ED007202794AA00FC5934 /* ErrorHelper.swift in Sources */,
 				6B271D33201D18C80030BBF4 /* CaptainSettingsViewController.swift in Sources */,
 				6BA8267A20173E64002BC608 /* Offer.swift in Sources */,
-				6B517CDE200E9BE000CFE5DC /* MOLH.swift in Sources */,
 				6B5D8B9820230F00001EA2BF /* RegistrationDataViewController.swift in Sources */,
 				6B517CEB200E9ECD00CFE5DC /* DataTableViewCell.swift in Sources */,
+				6B0148212099FC3500E60340 /* TermsCondtionsViewController.swift in Sources */,
 				6B69AEB320293B17000F3695 /* CaptainOfferViewController2.swift in Sources */,
 				6B55DA2F2007831C00BB535B /* OldOrderViewController.swift in Sources */,
 				6B517CC1200E28BA00CFE5DC /* ArchiveOrderTableViewCell.swift in Sources */,
@@ -954,6 +962,7 @@
 				6B271D35201D34CE0030BBF4 /* CaptainOfferDetailsViewController.swift in Sources */,
 				6B19801C20386583009429DB /* MyOfferCaptainViewController.swift in Sources */,
 				6B1787EC20324AFB005E7D24 /* ForgetPasswordViewController.swift in Sources */,
+				6B3E78F920A079C90069016E /* AutoSizeTextField.swift in Sources */,
 				6B2723072020A563003A0125 /* CaptianTypeViewController.swift in Sources */,
 				6BCB1B8C2030E421004B26D3 /* CaptainRegisterAddAddressViewController.swift in Sources */,
 				6B18DEF5200F983000C73BA2 /* OrderDetails2ViewController.swift in Sources */,
@@ -978,12 +987,12 @@
 				6B85DFDE202BA9CF001A1662 /* AcceptedCaptainViewController.swift in Sources */,
 				6BA8267020155F09002BC608 /* OfferAddressViewModel.swift in Sources */,
 				6B517CF5200EA39E00CFE5DC /* UITableViewExtension.swift in Sources */,
-				6B517CE1200E9BE000CFE5DC /* MOLHFont.swift in Sources */,
 				6B759813202BA75500D92D63 /* BlockedViewController.swift in Sources */,
 				6B4F43C5202246D300A51EEC /* CaptainAddressDetailsViewController.swift in Sources */,
 				6B271D2B201C87EC0030BBF4 /* CpatainNewOrderViewController.swift in Sources */,
 				6B271D3F201E119B0030BBF4 /* City.swift in Sources */,
 				6B517CD5200E9BD500CFE5DC /* MBProgressHUD.m in Sources */,
+				6BCEBC24207EF81D00A1617D /* MOLHFontLocalizableViews.swift in Sources */,
 				6B18DEF82010A50000C73BA2 /* CosmosDistrib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1072,6 +1081,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1079,6 +1089,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1089,7 +1100,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1130,6 +1141,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1137,6 +1149,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

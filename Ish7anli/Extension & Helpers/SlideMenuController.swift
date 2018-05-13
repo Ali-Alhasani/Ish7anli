@@ -6,7 +6,6 @@
 
 import Foundation
 import UIKit
-
 @objc public protocol SlideMenuControllerDelegate {
     @objc optional func leftWillOpen()
     @objc optional func leftDidOpen()

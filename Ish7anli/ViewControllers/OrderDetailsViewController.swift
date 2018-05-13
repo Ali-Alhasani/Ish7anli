@@ -77,7 +77,7 @@ class OrderDetailsViewController: UIViewController {
     }
     
     func someHandler(alert: UIAlertAction!) {
-       
+       self.performSegue(withIdentifier: "cancelOrder", sender: self)
         
         self.dismiss(animated: true, completion: nil)
     }

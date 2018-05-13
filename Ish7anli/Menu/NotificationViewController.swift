@@ -28,7 +28,7 @@ class NotificationViewController: UIViewController,UITableViewDelegate,UITableVi
         
         refreshControl.addTarget(self, action: #selector(self.PullRefresh), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(refreshControl)
-         self.tableView?.rowHeight = 78
+        self.tableView?.rowHeight = 78
         load()
         // Do any additional setup after loading the view.
     }

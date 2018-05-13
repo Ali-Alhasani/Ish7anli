@@ -20,7 +20,7 @@ struct NotificationsTableViewData {
 class NotificationsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+   // @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,7 +34,7 @@ class NotificationsTableViewCell: UITableViewCell {
     func setData(_ data: Any?) {
         if let data = data as? NotificationsTableViewData {
             self.nameLabel.text = data.name
-            self.timeLabel.text = data.time
+           // self.timeLabel.text = data.time
         }
     }
     

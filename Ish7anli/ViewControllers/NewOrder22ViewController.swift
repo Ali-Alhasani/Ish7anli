@@ -139,7 +139,7 @@ class NewOrder22ViewController: UIViewController,IndicatorInfoProvider,UICollect
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toOfferDetails2" {
             let vc = segue.destination as! OfferDetailsViewController
-            vc.indexPath = self.indexPath
+            vc.indexPath = self.indexPath!
             vc.type = 2 
         }
     }

@@ -12,10 +12,10 @@ class PaymentMethodViewController: UIViewController {
     
     @IBOutlet weak var firstButton: RadioButton!
     @IBOutlet weak var secondButton: RadioButton!
-    @IBOutlet weak var thirdButton: RadioButton!
+   // @IBOutlet weak var thirdButton: RadioButton!
     
-    @IBOutlet weak var accountNumber: UITextField!
-    @IBOutlet weak var amountOfMoney: UITextField!
+    //@IBOutlet weak var accountNumber: UITextField!
+   // @IBOutlet weak var amountOfMoney: UITextField!
     var indexPath:Int?
     
     var senderAddress:Int?
@@ -29,14 +29,14 @@ class PaymentMethodViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         firstButton.isSelected = true
-        firstButton.alternateButton = [secondButton,thirdButton]
-        secondButton.alternateButton = [firstButton,thirdButton]
-        thirdButton.alternateButton = [firstButton,secondButton]
-        if (type == nil) {
-           accountNumber.text = accountNumberString
-            amountOfMoney.text = amountOfMoneyString
-            
-        }
+        firstButton.alternateButton = [secondButton]
+        secondButton.alternateButton = [firstButton]
+       // thirdButton.alternateButton = [firstButton,secondButton]
+//        if (type == nil) {
+//           accountNumber.text = accountNumberString
+//            amountOfMoney.text = amountOfMoneyString
+//
+//        }
         // Do any additional setup after loading the view.
     }
     
@@ -52,9 +52,10 @@ class PaymentMethodViewController: UIViewController {
             paymentId = 1
         }else if secondButton.isSelected {
             paymentId = 2
-        }else if thirdButton.isSelected {
-            paymentId = 3
         }
+//        }else if thirdButton.isSelected {
+//            paymentId = 3
+//        }
         
         let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
         

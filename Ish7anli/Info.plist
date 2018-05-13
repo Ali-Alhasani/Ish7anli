@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.42</string>
+	<string>1.44.3</string>
 	<key>CFBundleVersion</key>
-	<string>22</string>
+	<string>29</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -42,9 +42,9 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Used to access your location</string>
+	<string>your current location will be displayed on the map and gone to be used for the captain's to reach or deliver your orders</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Used to access your location</string>
+	<string>your current location will be displayed on the map and gone to be used for the captain's to reach or deliver your orders</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Used to access the Image Gallery</string>
 	<key>UIBackgroundModes</key>

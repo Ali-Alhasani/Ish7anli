@@ -42,6 +42,9 @@ class CompleteJoinCaptainViewController: UIViewController {
     @IBOutlet weak var contractButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var captainImageButton: UIButton!
+    @IBOutlet var tap: UITapGestureRecognizer!
+    @IBOutlet weak var termsLabel: UILabel!
+    @IBOutlet weak var termsButton: CheckBox!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +61,9 @@ class CompleteJoinCaptainViewController: UIViewController {
         
         picker.allowsEditing = false
         picker.delegate = self
+        
+        termsLabel.isUserInteractionEnabled = true
+        termsLabel.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,6 +84,12 @@ class CompleteJoinCaptainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setBackButton2()
+    }
+    
+    
+    
+    @IBAction func tremsTapAction(_ sender: UITapGestureRecognizer) {
+        self.performSegue(withIdentifier: "toTerms", sender: self)
     }
     
     
@@ -171,7 +183,21 @@ class CompleteJoinCaptainViewController: UIViewController {
     
     @IBAction func joinAction(_ sender: Any) {
         if ((cardImage != nil) && (licenceImage != nil) && (carForm != nil) && (contractImage != nil) && (captainImage != nil) && !accountNumberText.text!.isEmpty ){
+            
+            if !termsButton.isChecked  {
+                var error:String?
+                if MOLHLanguage.isRTL() {
+                    error =  "يجب ان توافق ع سياسة الشروط والأحكام"
+                    
+                }else{
+                    error = "You should accept the terms and conditions"
+                }
+                let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }else {
             self.performSegue(withIdentifier: "toCaptainType", sender: self)
+            }
             //            if (counter != 3){
             //                var error:String?
             //                let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -288,8 +314,6 @@ extension CompleteJoinCaptainViewController: UIImagePickerControllerDelegate,UIN
             // cardImage = imageStr
             // uplaodPhoto(["card_image": cardImage!])
             sendMedia(image: image_data, type: .cardImage)
-            
-            
         }else if (flag == 2) {
             sendMedia(image: image_data, type: .licenceImage)
         }else if (flag == 3){

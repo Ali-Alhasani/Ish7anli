@@ -33,7 +33,7 @@ class OfferDetailsViewController: UIViewController {
         
         if indexPath != nil {
             if (type == 2) {
-                nameLabel.text = DataClient.shared.offerPrice[indexPath!].captainName
+                nameLabel.text = DataClient.shared.offerPrice[indexPath!].captainName!
                 starsView.rating = DataClient.shared.offerPrice[indexPath!].captainRate!
                 destinationCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameTo
                 fromCity.text =  DataClient.shared.offerPrice[indexPath!].cityNameFrom
@@ -63,7 +63,7 @@ class OfferDetailsViewController: UIViewController {
                 if DataClient.shared.offerPrice[indexPath!].captainType == "2"{
                       imageView.borderColor = UIColor.red
                 }else if DataClient.shared.offerPrice[indexPath!].captainType == "3"{
-                    imageView.borderColor = UIColor.red
+                    imageView.borderColor = UIColor.green
                 }
               
             }
@@ -98,7 +98,7 @@ class OfferDetailsViewController: UIViewController {
                 if DataClient.shared.offerFiltered[indexPath!].captainType == "2"{
                     imageView.borderColor = UIColor.red
                 }else if DataClient.shared.offerFiltered[indexPath!].captainType == "3"{
-                    imageView.borderColor = UIColor.red
+                    imageView.borderColor = UIColor.green
                 }
             }
             else {
@@ -130,7 +130,7 @@ class OfferDetailsViewController: UIViewController {
                 if DataClient.shared.offer[indexPath!].captainType == "2"{
                     imageView.borderColor = UIColor.red
                 }else if DataClient.shared.offer[indexPath!].captainType == "3"{
-                    imageView.borderColor = UIColor.red
+                    imageView.borderColor = UIColor.green
                 }
             }
         }
@@ -182,7 +182,7 @@ class OfferDetailsViewController: UIViewController {
             }
             else {
                 vc.captainOfferId = DataClient.shared.offer[indexPath!].id!
-                 vc.indexPath = indexPath!
+                vc.indexPath = indexPath!
                 
             }
         }

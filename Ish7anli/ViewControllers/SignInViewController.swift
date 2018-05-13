@@ -14,10 +14,10 @@ class SignInViewController: UIViewController {
     var isExist:Bool?
     var isCaptain:Bool?
     weak var delegate: LeftMenuProtocol?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -29,7 +29,7 @@ class SignInViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.removeNavigationBarItem()
-
+        
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -49,7 +49,7 @@ class SignInViewController: UIViewController {
         if (phoneNumberText.text!.isEmpty) {
             var error:String?
             if MOLHLanguage.isRTL() {
-               error =  "يجب أن تقوم بإدخال رقم الهاتف المحمول"
+                error =  "يجب أن تقوم بإدخال رقم الهاتف المحمول"
                 
             }else{
                 error = "You should enter a valid mobile number"
@@ -60,19 +60,37 @@ class SignInViewController: UIViewController {
             self.present(alert, animated: true)
         }else {
             
-            let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
-            
-           
-            spiningActivity.label.text = ErrorHelper.shared.loadingtitle
-            spiningActivity.detailsLabel.text = ErrorHelper.shared.message
-            
-            load()
+            if  isValidPhone(phone:  phoneNumberText.text!) {
+                let spiningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+                
+                
+                spiningActivity.label.text = ErrorHelper.shared.loadingtitle
+                spiningActivity.detailsLabel.text = ErrorHelper.shared.message
+                
+                load()
+            }else {
+                let error =
+"الرقم الذي قمت بإدخاله خاطئ ، الرجاء التأكد أن رقم الهاتف يتكون من ١٠ خانات مبدوءً بالمقدمة 05 "
+                let alert = UIAlertController(title: ErrorHelper.shared.alartTitle, message:error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: ErrorHelper.shared.ok, style: .default, handler: nil))
+                self.present(alert, animated: true)
+            }
         }
     }
     
     
+    func isValidPhone(phone: String) -> Bool {
+        
+         let PHONE_REGEX = "^05[0-9'@s]{8}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluate(with: phone)
+        return result
+        
+    }
+    
+    
     func load(){
-        DataClient.shared.logIn(phone: phoneNumberText.text!, success: { (_ activationCode , _ isExist , _ isCaptain)  in
+        DataClient.shared.logIn(phone: "0966"+phoneNumberText.text!, success: { (_ activationCode , _ isExist , _ isCaptain)  in
             self.activationCode = activationCode
             self.isExist = isExist
             self.isCaptain = isCaptain
